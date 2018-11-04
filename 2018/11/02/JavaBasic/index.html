@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Longquan&#39;s Blog">
 <meta property="og:description" content="面向对象面向对象的特征封装、继承、多态。  封装：隐藏对象的属性和现实细节，只对外提供公共访问方式。 封装的原则：将不需要对外提供的内容都隐藏（设置访问修饰符为‘private’），仅提供公共访问方法（加入逻辑判断）对其访问。   继承：继承是从已有类得到继承信息创建新类的过程。 多态：多态性是指允许不同子类型的对象对同一消息作出不同的响应。简单的说就是用同样的（父类）对象引用调用同样的方法但是做">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-04T03:35:04.281Z">
+<meta property="og:updated_time" content="2018-11-04T04:09:40.595Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java Basic">
 <meta name="twitter:description" content="面向对象面向对象的特征封装、继承、多态。  封装：隐藏对象的属性和现实细节，只对外提供公共访问方式。 封装的原则：将不需要对外提供的内容都隐藏（设置访问修饰符为‘private’），仅提供公共访问方法（加入逻辑判断）对其访问。   继承：继承是从已有类得到继承信息创建新类的过程。 多态：多态性是指允许不同子类型的对象对同一消息作出不同的响应。简单的说就是用同样的（父类）对象引用调用同样的方法但是做">
@@ -213,7 +213,7 @@
 <p>相同点：</p>
 <ul>
 <li>抽象类和接口都不能实例化，但可以定义抽象类和接口类型的引用；</li>
-<li>一个类如果继承某个抽象类或者实现了某个接口，必须对其中的抽象方法 _全部_ 进行实现，否则该类仍然需要被声明为抽象类；</li>
+<li>一个类如果继承某个抽象类或者实现了某个接口，必须对其中的抽象方法 <em>全部</em> 进行实现，否则该类仍然需要被声明为抽象类；</li>
 </ul>
 </blockquote>
 <blockquote>
@@ -228,41 +228,41 @@
 <h3 id="访问修饰符public-private-protected-以及不写（默认）时的区别？"><a href="#访问修饰符public-private-protected-以及不写（默认）时的区别？" class="headerlink" title="访问修饰符public,private,protected,以及不写（默认）时的区别？"></a>访问修饰符public,private,protected,以及不写（默认）时的区别？</h3><table>
 <thead>
 <tr>
-<th>修饰符</th>
-<th>当前类</th>
-<th>同包</th>
-<th>子类</th>
-<th>其他包</th>
+<th style="text-align:center">修饰符</th>
+<th style="text-align:center">当前类</th>
+<th style="text-align:center">同包</th>
+<th style="text-align:center">子类</th>
+<th style="text-align:center">其他包</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>public</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
+<td style="text-align:center">public</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
 </tr>
 <tr>
-<td>protected</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-<td>N</td>
+<td style="text-align:center">protected</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">N</td>
 </tr>
 <tr>
-<td>default</td>
-<td>Y</td>
-<td>Y</td>
-<td>N</td>
-<td>N</td>
+<td style="text-align:center">default</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N</td>
 </tr>
 <tr>
-<td>private</td>
-<td>Y</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
+<td style="text-align:center">private</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N</td>
 </tr>
 </tbody>
 </table>

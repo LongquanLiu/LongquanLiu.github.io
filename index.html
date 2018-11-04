@@ -309,7 +309,7 @@
 <p>相同点：</p>
 <ul>
 <li>抽象类和接口都不能实例化，但可以定义抽象类和接口类型的引用；</li>
-<li>一个类如果继承某个抽象类或者实现了某个接口，必须对其中的抽象方法 _全部_ 进行实现，否则该类仍然需要被声明为抽象类；</li>
+<li>一个类如果继承某个抽象类或者实现了某个接口，必须对其中的抽象方法 <em>全部</em> 进行实现，否则该类仍然需要被声明为抽象类；</li>
 </ul>
 </blockquote>
 <blockquote>
@@ -324,41 +324,41 @@
 <h3 id="访问修饰符public-private-protected-以及不写（默认）时的区别？"><a href="#访问修饰符public-private-protected-以及不写（默认）时的区别？" class="headerlink" title="访问修饰符public,private,protected,以及不写（默认）时的区别？"></a>访问修饰符public,private,protected,以及不写（默认）时的区别？</h3><table>
 <thead>
 <tr>
-<th>修饰符</th>
-<th>当前类</th>
-<th>同包</th>
-<th>子类</th>
-<th>其他包</th>
+<th style="text-align:center">修饰符</th>
+<th style="text-align:center">当前类</th>
+<th style="text-align:center">同包</th>
+<th style="text-align:center">子类</th>
+<th style="text-align:center">其他包</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>public</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
+<td style="text-align:center">public</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
 </tr>
 <tr>
-<td>protected</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-<td>N</td>
+<td style="text-align:center">protected</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">N</td>
 </tr>
 <tr>
-<td>default</td>
-<td>Y</td>
-<td>Y</td>
-<td>N</td>
-<td>N</td>
+<td style="text-align:center">default</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N</td>
 </tr>
 <tr>
-<td>private</td>
-<td>Y</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
+<td style="text-align:center">private</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N</td>
 </tr>
 </tbody>
 </table>
