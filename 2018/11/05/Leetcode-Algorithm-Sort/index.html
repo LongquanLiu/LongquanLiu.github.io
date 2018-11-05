@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Longquan&#39;s Blog">
 <meta property="og:description" content="排序快速选择用于求解 Kth Element 问题，使用快速排序的 partition() 进行实现。需要先打乱数组，否则最坏情况下时间复杂度为 O(N^2)。 堆排序用于求解 TopK Elements 问题，通过维护一个大小为 K 的堆，堆中的元素就是 TopK Elements。堆排序也可以用于求解 Kth Element 问题，堆顶元素就是 Kth Element。快速选择也可以求解 To">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-05T09:36:00.044Z">
+<meta property="og:updated_time" content="2018-11-05T09:38:11.058Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode Algorithm Sort">
 <meta name="twitter:description" content="排序快速选择用于求解 Kth Element 问题，使用快速排序的 partition() 进行实现。需要先打乱数组，否则最坏情况下时间复杂度为 O(N^2)。 堆排序用于求解 TopK Elements 问题，通过维护一个大小为 K 的堆，堆中的元素就是 TopK Elements。堆排序也可以用于求解 Kth Element 问题，堆顶元素就是 Kth Element。快速选择也可以求解 To">
@@ -185,10 +185,10 @@
 <p><strong>排序</strong>：时间复杂度 O(NlogN)，空间复杂度 O(1)</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">4</span>] and k = <span class="number">2</span></span><br><span class="line">Output: <span class="number">5</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    <span class="keyword">return</span> nums[nums.length - k];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><em>堆排序</em>：时间复杂度 O(NlogK)，空间复杂度 O(K)。</p>
+<p><strong>堆排序</strong>：时间复杂度 O(NlogK)，空间复杂度 O(K)。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    PriorityQueue&lt;Integer&gt; pq = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> ele : nums)&#123;</span><br><span class="line">        pq.add(ele);</span><br><span class="line">        <span class="keyword">if</span>(pq.size() &gt; k)&#123;</span><br><span class="line">            pq.poll();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pq.peek();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><em>快速排序</em>：时间复杂度 O(N)，空间复杂度 O(1)。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    PriorityQueue&lt;Integer&gt; pq = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> ele : nums)&#123;</span><br><span class="line">        pq.add(ele);</span><br><span class="line">        <span class="keyword">if</span>(pq.size() &gt; k)&#123;</span><br><span class="line">            pq.poll();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pq.peek();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>快速排序</strong>：时间复杂度 O(N)，空间复杂度 O(1)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -412,11 +412,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
               </li>
             
             <div class="clearfix"></div>
