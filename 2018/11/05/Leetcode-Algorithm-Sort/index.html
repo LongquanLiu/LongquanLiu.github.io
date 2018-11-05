@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://longquanliu.github.io">
   <title>Leetcode Algorithm Sort | Longquan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="排序快速选择用于求解 Kth Element 问题，使用快速排序的 partition() 进行实现。需要先打乱数组，否则最坏情况下时间复杂度为 O(N^{2})。 堆排序用于求解 TopK Elements 问题，通过维护一个大小为 K 的堆，堆中的元素就是 TopK Elements。堆排序也可以用于求解 Kth Element 问题，堆顶元素就是 Kth Element。快速选择也可以求解">
+  <meta name="description" content="排序快速选择用于求解 Kth Element 问题，使用快速排序的 partition() 进行实现。需要先打乱数组，否则最坏情况下时间复杂度为 O(N2})。 堆排序用于求解 TopK Elements 问题，通过维护一个大小为 K 的堆，堆中的元素就是 TopK Elements。堆排序也可以用于求解 Kth Element 问题，堆顶元素就是 Kth Element。快速选择也可以求解 To">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode Algorithm Sort">
 <meta property="og:url" content="https://longquanliu.github.io/2018/11/05/Leetcode-Algorithm-Sort/index.html">
 <meta property="og:site_name" content="Longquan&#39;s Blog">
-<meta property="og:description" content="排序快速选择用于求解 Kth Element 问题，使用快速排序的 partition() 进行实现。需要先打乱数组，否则最坏情况下时间复杂度为 O(N^{2})。 堆排序用于求解 TopK Elements 问题，通过维护一个大小为 K 的堆，堆中的元素就是 TopK Elements。堆排序也可以用于求解 Kth Element 问题，堆顶元素就是 Kth Element。快速选择也可以求解">
+<meta property="og:description" content="排序快速选择用于求解 Kth Element 问题，使用快速排序的 partition() 进行实现。需要先打乱数组，否则最坏情况下时间复杂度为 O(N2})。 堆排序用于求解 TopK Elements 问题，通过维护一个大小为 K 的堆，堆中的元素就是 TopK Elements。堆排序也可以用于求解 Kth Element 问题，堆顶元素就是 Kth Element。快速选择也可以求解 To">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-05T12:14:46.110Z">
+<meta property="og:updated_time" content="2018-11-05T12:16:39.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode Algorithm Sort">
-<meta name="twitter:description" content="排序快速选择用于求解 Kth Element 问题，使用快速排序的 partition() 进行实现。需要先打乱数组，否则最坏情况下时间复杂度为 O(N^{2})。 堆排序用于求解 TopK Elements 问题，通过维护一个大小为 K 的堆，堆中的元素就是 TopK Elements。堆排序也可以用于求解 Kth Element 问题，堆顶元素就是 Kth Element。快速选择也可以求解">
+<meta name="twitter:description" content="排序快速选择用于求解 Kth Element 问题，使用快速排序的 partition() 进行实现。需要先打乱数组，否则最坏情况下时间复杂度为 O(N2})。 堆排序用于求解 TopK Elements 问题，通过维护一个大小为 K 的堆，堆中的元素就是 TopK Elements。堆排序也可以用于求解 Kth Element 问题，堆顶元素就是 Kth Element。快速选择也可以求解 To">
   
     <link rel="alternative" href="/atom.xml" title="Longquan&#39;s Blog" type="application/atom+xml">
   
@@ -179,7 +179,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="快速选择"><a href="#快速选择" class="headerlink" title="快速选择"></a>快速选择</h3><p>用于求解 Kth Element 问题，使用快速排序的 partition() 进行实现。需要先打乱数组，否则最坏情况下时间复杂度为 O(N^{2})。</p>
+        <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="快速选择"><a href="#快速选择" class="headerlink" title="快速选择"></a>快速选择</h3><p>用于求解 Kth Element 问题，使用快速排序的 partition() 进行实现。需要先打乱数组，否则最坏情况下时间复杂度为 O(N<sup>2</sup>})。</p>
 <h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><p>用于求解 TopK Elements 问题，通过维护一个大小为 K 的堆，堆中的元素就是 TopK Elements。<br>堆排序也可以用于求解 Kth Element 问题，堆顶元素就是 Kth Element。<br>快速选择也可以求解 TopK Elements 问题，因为找到 Kth Element 之后，再遍历一次数组，所有小于等于 Kth Element 的元素都是 TopK Elements。<br>可以看到，快速选择和堆排序都可以求解 Kth Element 和 TopK Elements 问题。</p>
 <h4 id="Kth-Element"><a href="#Kth-Element" class="headerlink" title="Kth Element"></a>Kth Element</h4><p><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/description/" target="_blank" rel="noopener">215. Kth Largest Element in an Array (Medium)</a><br>题目描述：找到第 k 大的元素。</p>
 <p><strong>排序</strong>：时间复杂度 O(NlogN)，空间复杂度 O(1)</p>
@@ -412,11 +412,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
             
             <div class="clearfix"></div>
