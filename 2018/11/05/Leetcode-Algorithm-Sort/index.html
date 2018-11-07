@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Longquan&#39;s Blog">
 <meta property="og:description" content="排序快速选择用于求解 Kth Element 问题，使用快速排序的 partition() 进行实现。需要先打乱数组，否则最坏情况下时间复杂度为 O(N2)。 堆排序用于求解 TopK Elements 问题，通过维护一个大小为 K 的堆，堆中的元素就是 TopK Elements。堆排序也可以用于求解 Kth Element 问题，堆顶元素就是 Kth Element。快速选择也可以求解 Top">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-07T07:49:31.709Z">
+<meta property="og:updated_time" content="2018-11-07T08:00:43.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode Algorithm Sort">
 <meta name="twitter:description" content="排序快速选择用于求解 Kth Element 问题，使用快速排序的 partition() 进行实现。需要先打乱数组，否则最坏情况下时间复杂度为 O(N2)。 堆排序用于求解 TopK Elements 问题，通过维护一个大小为 K 的堆，堆中的元素就是 TopK Elements。堆排序也可以用于求解 Kth Element 问题，堆顶元素就是 Kth Element。快速选择也可以求解 Top">
@@ -201,10 +201,20 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>], k = <span class="number">2</span></span><br><span class="line">Output: [<span class="number">1</span>,<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
 <p>设置若干个桶，每个桶存储出现频率相同的数，并且桶的下标代表桶中数出现的频率，即第 i 个桶中存储的数出现的频率为 i。<br>把数都放到桶之后，从后向前遍历桶，最先得到的 k 个数就是出现频率最多的的 k 个数。</p>
 <blockquote>
-<p>Map：Map&lt; , &gt; frequencyForNum = new HashMap&lt;&gt;();<br>V put​(K key, V value)    Associates the specified value with the specified key in this map (optional operation).<br>default V    getOrDefault​(Object key, V defaultValue)    Returns the value to which the specified key is mapped, or defaultValue if this map contains no mapping for the key.<br>Set<k>    keySet​()    Returns a Set view of the keys contained in this map.<br>V    get​(Object key)    Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.</k></p>
+<p>Map：Map&lt; , &gt; frequencyForNum = new HashMap&lt;&gt;();</p>
+<ul>
+<li>V put​(K key, V value)    Associates the specified value with the specified key in this map (optional operation).</li>
+<li>default V    getOrDefault​(Object key, V defaultValue)    Returns the value to which the specified key is mapped, or defaultValue if this map contains no mapping for the key.</li>
+<li>Set<k>    keySet​()    Returns a Set view of the keys contained in this map.</k></li>
+<li>V    get​(Object key)    Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.</li>
+</ul>
 </blockquote>
 <blockquote>
-<p>List: List&lt;&gt;[]buckets = new ArrayList[]; buckets[] = new ArrayList&lt;&gt;();<br>boolean    add​(E e)    Appends the specified element to the end of this list (optional operation).<br>boolean    addAll​(Collection&lt;? extends E&gt; c)    Appends all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection’s iterator (optional operation).</p>
+<p>List: List&lt;&gt;[]buckets = new ArrayList[]; buckets[] = new ArrayList&lt;&gt;();</p>
+<ul>
+<li>boolean    add​(E e)    Appends the specified element to the end of this list (optional operation).</li>
+<li>boolean    addAll​(Collection&lt;? extends E&gt; c)    Appends all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection’s iterator (optional operation).</li>
+</ul>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">topKFrequent</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    Map&lt;Integer, Integer&gt; frequencyForNum = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">        frequencyForNum.put(num, frequencyForNum.getOrDefault(num, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;Integer&gt;[] buckets = <span class="keyword">new</span> ArrayList[nums.length + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> key : frequencyForNum.keySet()) &#123;</span><br><span class="line">        <span class="keyword">int</span> frequency = frequencyForNum.get(key);</span><br><span class="line">        <span class="keyword">if</span> (buckets[frequency] == <span class="keyword">null</span>) &#123;</span><br><span class="line">            buckets[frequency] = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        buckets[frequency].add(key);</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;Integer&gt; topK = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = buckets.length - <span class="number">1</span>; i &gt;= <span class="number">0</span> &amp;&amp; topK.size() &lt; k; i--) &#123;</span><br><span class="line">        <span class="keyword">if</span> (buckets[i] != <span class="keyword">null</span>) &#123;</span><br><span class="line">            topK.addAll(buckets[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> topK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -430,11 +440,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Leetcode Sort</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color4">Leetcode Sort</a>
               </li>
              
               <li class="article-tag-list-item">
