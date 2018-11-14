@@ -578,6 +578,18 @@
 <li>修饰方法：表示该方法不能被重写(override)；</li>
 <li>修饰变量：表示变量只能一次赋值以后值不能被修改(constant) 。</li>
 </ul>
+<h3 id="throw和throws的区别？"><a href="#throw和throws的区别？" class="headerlink" title="throw和throws的区别？"></a>throw和throws的区别？</h3><ul>
+<li>throw用于主动抛出java.lang.Throwable 类的一个实例化对象，意思是说你可以通过关键字 throw 抛出一个 Error 或者 一个Exception，如：throw new IllegalArgumentException(“size must be multiple of 2″)。</li>
+<li>throws 的作用是作为方法声明和签名的一部分，方法被抛出相应的异常以便调用者能处理。Java 中，任何未处理的受检查异常强制在 throws 子句中声明。</li>
+</ul>
+<h3 id="Error和Exception有什么区别？"><a href="#Error和Exception有什么区别？" class="headerlink" title="Error和Exception有什么区别？"></a>Error和Exception有什么区别？</h3><ul>
+<li>Error表示系统级的错误和程序不必处理的异常，是恢复很困难的问题；eg 内存溢出…不可能要求程序能处理这样的情况。</li>
+<li>Exception表示需要捕捉或者需要程序进行处理的异常，是设计或实现的问题；即表示如果程序运行正常，从不会发送的情况。</li>
+</ul>
+<h3 id="Java语言如何进行异常处理，关键字：throws、throw、try、catch、finally分别如何使用？"><a href="#Java语言如何进行异常处理，关键字：throws、throw、try、catch、finally分别如何使用？" class="headerlink" title="Java语言如何进行异常处理，关键字：throws、throw、try、catch、finally分别如何使用？"></a>Java语言如何进行异常处理，关键字：throws、throw、try、catch、finally分别如何使用？</h3><p>在Java中，每个异常都是一个对象，它是Throwable类或其子类的实例。当一个方法出现异常后便抛出一个异常对象，该对象中包含有异常信息，调用这个对象的方法可以捕获到这个异常并可以对其进行处理。<br>Java的异常处理是通过5个关键词来实现的：try、catch、throw、throws和finally。</p>
+<blockquote>
+<p>一般情况下是用try来执行一段程序，如果系统会抛出（throw）一个异常对象，可以通过它的类型来捕获（catch）它，或通过总是执行代码块（finally）来处理； try用来指定一块预防所有异常的程序； catch子句紧跟在try块后面，用来指定你想要捕获的异常的类型； throw语句用来明确地抛出一个异常； throws用来声明一个方法可能抛出的各种异常（当然声明异常时允许无病呻吟）； finally为确保一段代码不管发生什么异常状况都要被执行；<br>try语句可以嵌套，每当遇到一个try语句，异常的结构就会被放入异常栈中，直到所有的try语句都完成。如果下一级的try语句没有对某种异常进行处理，异常栈就会执行出栈操作，直到遇到有处理这种异常的try语句或者最终将异常抛给JVM。</p>
+</blockquote>
 
       
 
