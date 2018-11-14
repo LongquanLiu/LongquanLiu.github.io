@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://longquanliu.github.io">
-  <title>Archives: 2018/11 | Longquan&#39;s Blog</title>
+  <title>LeetCode-Algorithm-Greedy | Longquan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="code">
-<meta name="keywords" content="code">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Longquan&#39;s Blog">
-<meta property="og:url" content="https://longquanliu.github.io/archives/2018/11/index.html">
+  <meta name="description" content="贪心思想保证每次操作都是局部最优的，并且最后得到的结果是全局最优的。 分配饼干455. Assign Cookies (Easy) 12345678910Input: [1,2,3], [1,1]Output: 1Explanation: You have 3 children and 2 cookies. The greed factors of 3 children are 1, 2, 3.A">
+<meta name="keywords" content="LeetCode Greedy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode-Algorithm-Greedy">
+<meta property="og:url" content="https://longquanliu.github.io/2018/11/14/LeetCode-Algorithm-Greedy/index.html">
 <meta property="og:site_name" content="Longquan&#39;s Blog">
-<meta property="og:description" content="code">
+<meta property="og:description" content="贪心思想保证每次操作都是局部最优的，并且最后得到的结果是全局最优的。 分配饼干455. Assign Cookies (Easy) 12345678910Input: [1,2,3], [1,1]Output: 1Explanation: You have 3 children and 2 cookies. The greed factors of 3 children are 1, 2, 3.A">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-11-14T02:19:25.515Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Longquan&#39;s Blog">
-<meta name="twitter:description" content="code">
+<meta name="twitter:title" content="LeetCode-Algorithm-Greedy">
+<meta name="twitter:description" content="贪心思想保证每次操作都是局部最优的，并且最后得到的结果是全局最优的。 分配饼干455. Assign Cookies (Easy) 12345678910Input: [1,2,3], [1,1]Output: 1Explanation: You have 3 children and 2 cookies. The greed factors of 3 children are 1, 2, 3.A">
   
     <link rel="alternative" href="/atom.xml" title="Longquan&#39;s Blog" type="application/atom+xml">
   
@@ -158,36 +159,42 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-LeetCode-Algorithm-Greedy" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/14/LeetCode-Algorithm-Greedy/" class="archive-article-date">
-  	<time datetime="2018-11-14T01:57:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-14</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/14/LeetCode-Algorithm-Greedy/">LeetCode-Algorithm-Greedy</a>
+    <h1 class="article-title" itemprop="name">
+      LeetCode-Algorithm-Greedy
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/11/14/LeetCode-Algorithm-Greedy/" class="archive-article-date">
+  	<time datetime="2018-11-14T01:57:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="贪心思想"><a href="#贪心思想" class="headerlink" title="贪心思想"></a>贪心思想</h2><p>保证每次操作都是局部最优的，并且最后得到的结果是全局最优的。</p>
+<h3 id="分配饼干"><a href="#分配饼干" class="headerlink" title="分配饼干"></a>分配饼干</h3><p><a href="https://leetcode.com/problems/assign-cookies/description/" target="_blank" rel="noopener">455. Assign Cookies (Easy)</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], [<span class="number">1</span>,<span class="number">1</span>]</span><br><span class="line">Output: <span class="number">1</span></span><br><span class="line">Explanation: You have <span class="number">3</span> children and <span class="number">2</span> cookies. The greed factors of <span class="number">3</span> children are <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>.</span><br><span class="line">And even though you have <span class="number">2</span> cookies, since their size is both <span class="number">1</span>, you could only make the child whose greed factor is <span class="number">1</span> content.</span><br><span class="line">You need to output <span class="number">1</span>.</span><br><span class="line">Input: [<span class="number">1</span>,<span class="number">2</span>], [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">Output: <span class="number">2</span></span><br><span class="line">Explanation: You have <span class="number">2</span> children and <span class="number">3</span> cookies. The greed factors of <span class="number">2</span> children are <span class="number">1</span>, <span class="number">2</span>.</span><br><span class="line">You have <span class="number">3</span> cookies and their sizes are big enough to gratify all of the children,</span><br><span class="line">You need to output <span class="number">2</span>.</span><br></pre></td></tr></table></figure>
+<p>题目描述：每个孩子都有一个满足度，每个饼干都有一个大小，只有饼干的大小大于等于一个孩子的满足度，该孩子才会获得满足。求解最多可以获得满足的孩子数量。<br>给一个孩子的饼干应当尽量小又能满足该孩子，这样大饼干就能拿来给满足度比较大的孩子。因为最小的孩子最容易得到满足，所以先满足最小的孩子。</p>
+<blockquote>
+<p>证明：假设在某次选择中，贪心策略选择给当前满足度最小的孩子分配第 m 个饼干，第 m 个饼干为可以满足该孩子的最小饼干。假设存在一种最优策略，给该孩子分配第 n 个饼干，并且 m &lt; n。我们可以发现，经过这一轮分配，贪心策略分配后剩下的饼干一定有一个比最优策略来得大。因此在后续的分配中，贪心策略一定能满足更多的孩子。也就是说不存在比贪心策略更优的策略，即贪心策略就是最优策略。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findContentChildren</span><span class="params">(<span class="keyword">int</span>[] g, <span class="keyword">int</span>[] s)</span> </span>&#123;</span><br><span class="line">    Arrays.sort(g);</span><br><span class="line">    Arrays.sort(s);</span><br><span class="line">    <span class="keyword">int</span> gN = <span class="number">0</span>, sN = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(gN &lt; g.length &amp;&amp; sN &lt; s.length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(g[gN] &lt;= s[sN])&#123;</span><br><span class="line">            gN++;</span><br><span class="line">        &#125;</span><br><span class="line">        sN++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> gN;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -199,134 +206,119 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://longquanliu.github.io/2018/11/14/LeetCode-Algorithm-Greedy/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/05/Leetcode-Algorithm-Sort/" class="archive-article-date">
-  	<time datetime="2018-11-05T09:21:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/05/Leetcode-Algorithm-Sort/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Leetcode Algorithm Sort</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/05/Leetcode-Algorithm-Sort/">Leetcode Algorithm Sort</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Leetcode Sort</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#贪心思想"><span class="toc-number">1.</span> <span class="toc-text">贪心思想</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分配饼干"><span class="toc-number">1.1.</span> <span class="toc-text">分配饼干</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/02/Leetcodedede-Algorithm-双指针/" class="archive-article-date">
-  	<time datetime="2018-11-02T07:04:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-02</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/02/Leetcodedede-Algorithm-双指针/">Leetcode Algorithm Double pointer</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Leetcode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/02/JavaBasic/" class="archive-article-date">
-  	<time datetime="2018-11-02T04:43:57.644Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/02/JavaBasic/">Java Basic</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-
+  
 
           </div>
         </div>
@@ -348,8 +340,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
