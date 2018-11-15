@@ -673,6 +673,40 @@
 <blockquote>
 <p>一般情况下是用try来执行一段程序，如果系统会抛出（throw）一个异常对象，可以通过它的类型来捕获（catch）它，或通过总是执行代码块（finally）来处理； try用来指定一块预防所有异常的程序； catch子句紧跟在try块后面，用来指定你想要捕获的异常的类型； throw语句用来明确地抛出一个异常； throws用来声明一个方法可能抛出的各种异常（当然声明异常时允许无病呻吟）； finally为确保一段代码不管发生什么异常状况都要被执行；<br>try语句可以嵌套，每当遇到一个try语句，异常的结构就会被放入异常栈中，直到所有的try语句都完成。如果下一级的try语句没有对某种异常进行处理，异常栈就会执行出栈操作，直到遇到有处理这种异常的try语句或者最终将异常抛给JVM。</p>
 </blockquote>
+<h3 id="运行时异常与受检异常有何异同？"><a href="#运行时异常与受检异常有何异同？" class="headerlink" title="运行时异常与受检异常有何异同？"></a>运行时异常与受检异常有何异同？</h3><p>异常表示程序运行过程中可能出现的非正常状态，</p>
+<ul>
+<li>运行时异常表示虚拟机的通常操作中可能遇到的异常，是一种常见运行错误，只要程序设计得没有问题通常就不会发生。</li>
+<li>受检异常跟程序运行的上下文环境有关，即使程序设计无误，仍然可能因使用的问题而引发。Java编译器要求方法必须声明抛出可能发生的受检异常，但是并不要求必须声明抛出未被捕获的运行时异常。<blockquote>
+<p>异常和继承一样，是面向对象程序设计中经常被滥用的东西，在Effective Java中对异常的使用给出了以下指导原则：</p>
+<ul>
+<li>不要将异常处理用于正常的控制流（设计良好的API不应该强迫它的调用者为了正常的控制流而使用异常）</li>
+<li>对可以恢复的情况使用受检异常，对编程错误使用运行时异常</li>
+<li>避免不必要的使用受检异常（可以通过一些状态检测手段来避免异常的发生）</li>
+<li>优先使用标准的异常</li>
+<li>每个方法抛出的异常都要有文档</li>
+<li>保持异常的原子性</li>
+<li>不要在catch中忽略掉捕获到的异常</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="列出一些你常见的运行时异常"><a href="#列出一些你常见的运行时异常" class="headerlink" title="列出一些你常见的运行时异常"></a>列出一些你常见的运行时异常</h3><ul>
+<li>ArithmeticException（算术异常）</li>
+<li>ClassCastException （类转换异常）</li>
+<li>IllegalArgumentException （非法参数异常）</li>
+<li>IndexOutOfBoundsException （下标越界异常）</li>
+<li>NullPointerException （空指针异常）</li>
+<li>SecurityException （安全异常）</li>
+</ul>
+<h3 id="阐述final、finally、finalize的区别"><a href="#阐述final、finally、finalize的区别" class="headerlink" title="阐述final、finally、finalize的区别"></a>阐述final、finally、finalize的区别</h3><ul>
+<li>final: 主要有三种用法，若一个类被声明为final,意味着不能被继承，即派生出子类；（反义词abstract）若一个变量声明为final，必须在声明时给定初值，且无法被改变； 若一个方法被声明为final,则无法被子类重写覆盖；</li>
+<li>finally: 通常放于try..catch..语句块后，意味着无论正常执行还是出现异常，只要当JVM不关闭时这里的代码都会运行，可以将释放外部资源的代码放于此处；<blockquote>
+<ul>
+<li>finalize: Object类中定义的方法，Java中允许使用finalize()方法在垃圾收集器将对象从内存中清除出去之前做必要的清理工作。这个方法是由垃圾收集器在销毁对象时调用的，通过重写finalize()方法可以整理系统资源或者执行其他清理工作。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
 
       
 
@@ -890,11 +924,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
