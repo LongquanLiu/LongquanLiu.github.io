@@ -160,6 +160,454 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Imooc-Java-Primary II Chap4 多态" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="4-1-多态"><a href="#4-1-多态" class="headerlink" title="4.1 多态"></a>4.1 多态</h2><ol>
+<li>对象的多种形态</li>
+<li>引用多态<ul>
+<li>父类的引用可以指向本类的对象</li>
+<li>父类的引用可以指向子类的对象</li>
+</ul>
+</li>
+<li>方法多态<ul>
+<li>创建本类对象时，调用的方法为本类方法</li>
+<li>创建子类对象时，调用的方法为子类重写的方法或者继承的方法</li>
+</ul>
+</li>
+<li>继承是实现多态的基础</li>
+<li><strong>父类的引用不可以调用子类独有的方法</strong></li>
+</ol>
+<h2 id="4-2-多态中的引用类型转换"><a href="#4-2-多态中的引用类型转换" class="headerlink" title="4.2 多态中的引用类型转换"></a>4.2 多态中的<strong>引用</strong>类型转换</h2><ol>
+<li>向上类型转换（隐式/自动类型转换），是小类型到大类型的转换。杯子——茶壶（安全）</li>
+<li>向下类型转换（强制类型转换），是大类型到小类型。茶壶——杯子（不安全）</li>
+<li><strong>instanceof</strong> 运算符，来解决引用对象的类型，避免类型转换的安全性问题<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(animal <span class="keyword">instanceof</span> Cat)&#123;</span><br><span class="line">  Cat cat =(Cat)animal;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  System.out.println(<span class="string">"无法进行类型转换"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="4-3-抽象类-abstract"><a href="#4-3-抽象类-abstract" class="headerlink" title="4.3 抽象类 abstract"></a>4.3 抽象类 abstract</h2><ol>
+<li>应用场景：<ul>
+<li>某个父类只知道子类应该包含怎样的方法，但无法准确知道这些子类如何实现这些方法。</li>
+<li>从多个具有相同特征的类中抽象出一个抽象类，以这个抽象类作为子类的模板，从而避免子类设计的随意性。</li>
+</ul>
+</li>
+<li>作用：限制规定子类必须实现某些方法，但不关注实现细节</li>
+<li>使用规则：<ul>
+<li>abstract定义抽象类</li>
+<li>abstract定义抽象方法，只有声明，不需要实现</li>
+<li>包含抽象方法的类是抽象类</li>
+<li>抽象类中可以包含普通的方法，也可以没有抽象的方法</li>
+<li>抽象类不能直接创建，可以定义引用变量</li>
+</ul>
+</li>
+<li>抽象方法没有方法体以分号结束;</li>
+</ol>
+<h2 id="4-4-接口-interface-implements"><a href="#4-4-接口-interface-implements" class="headerlink" title="4.4 接口 interface implements"></a>4.4 接口 interface implements</h2><ol>
+<li>接口可以理解为一种特殊的类，由<strong>全局常量和公共的抽象方法</strong>所组成</li>
+<li>类是一种具体实现体，而接口定义了某一批类所需要遵守的<strong>规范</strong>，接口不关心这些类内部的数据，也不关心这些类里方法的实现细节，它只规定这些类必须提供某些方法</li>
+<li><p>接口定义的基本语法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] interface 接口名 [extends 父接口1,父接口2...]</span><br><span class="line">&#123;</span><br><span class="line">  零个到多个常量定义...</span><br><span class="line">  零个到多个抽象方法定义...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 接口就是用来被继承实现的，修饰符一般建议用'public',不能使用private和protected修饰接口</span></span><br><span class="line"><span class="comment">// 隐式abstract</span></span><br><span class="line"><span class="comment">// 接口可以多继承</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接口定义</p>
+<ul>
+<li>常量：接口中的属性是常量，即使定义时不添加public static final 修饰符，系统也会自动加上</li>
+<li>方法：接口中的方法只能是抽象方法，总是使用，即使定义时不添加public abstract 修饰符，系统也会自动加上</li>
+</ul>
+</li>
+<li><p>使用接口：一个类可以实现一个或多个接口，实现接口使用implements关键字。Java中一个类只能继承一个父类，是不够灵活的，通过实现多个接口可以做补充。</p>
+<ul>
+<li>继承父类实现接口的语法为：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] <span class="class"><span class="keyword">class</span> 类名 <span class="keyword">extends</span> 父类 <span class="keyword">implements</span> 接口1， 接口2 ...</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  类体部分<span class="comment">//如果继承了抽象类，需要实现继承的抽象方法；要实现接口中的抽象方法</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果要继承父类，继承父类必须在实现接口之前</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>接口引用</strong>来使用实现接口的类<br>接口名 接口引用 = new 实现接口的类();</p>
+</li>
+<li>使用接口：<ul>
+<li>接口在使用过程中，还可以与匿名内部类配合使用</li>
+<li>匿名内部类就是没有名字的内部类，多用于关注实现而不关注实现类的名称<br>语法格式：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Interface i = <span class="keyword">new</span> Interface()&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"匿名内部类实现接口的方式1"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 注意实现后的分号</span></span><br><span class="line"><span class="comment">// 即使用接口的引用然后new实现，调用实现的方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Interface()&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"匿名内部类实现接口的方式2"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;.method();</span><br><span class="line"><span class="comment">// 直接new实现，调用实现的方法 Android和框架常用</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="4-5-UML简介"><a href="#4-5-UML简介" class="headerlink" title="4.5 UML简介"></a>4.5 UML简介</h2><ol>
+<li>Unified Modeling Language(UML), <strong>统一建模语言</strong>或标准建模语言。是一个支持模型化和软件系统开发的图形化语言，为软件开发的所有阶段提供模型化和可视化的支持。</li>
+<li>常用UML图<ol>
+<li>用例图(The Use Case Diagram)，能够以可视化的方式，表达系统如何满足所收集的业务规则，以及特定的<strong>用户需求</strong>等信息。</li>
+<li>序列图(The Sequence Diagram)，用于按照交互发生的一系列顺序，显示对象之间的这些交互。</li>
+<li>类图(The Class Diagram)，UML类图、业务逻辑和所有支持结构一同被用于定义全部的结构代码。</li>
+</ol>
+</li>
+<li>UML建模工具：（<strong>类图可直接生成代码</strong>）<ol>
+<li>Rational Rose,IBM</li>
+<li>Visio,MS</li>
+<li>PowerDesigner</li>
+</ol>
+</li>
+</ol>
+<h2 id="4-6-综合练习-‘dada租车系统’"><a href="#4-6-综合练习-‘dada租车系统’" class="headerlink" title="4.6 综合练习 ‘dada租车系统’"></a>4.6 综合练习 ‘dada租车系统’</h2><ol>
+<li>项目分析<ol>
+<li>数据模型分析<ul>
+<li>通过对现实世界的事与物主要特征的分析、抽象，为信息系统的实施提供数据存取的数据结构及相应的约束。</li>
+<li>数据结构组成：操作（方法）、属性</li>
+</ul>
+</li>
+<li>业务模型分析<ul>
+<li>在设计应用程序之前，应该明确应用程序必须执行哪些任务。确认业务需求的目的在于创建一个能同时满足零售商和消费者需要的解决方案。</li>
+</ul>
+</li>
+<li>显示和流程分析<ul>
+<li>显示：用户可以看到的信息提示界面</li>
+<li>流程：显示信息的执行过程、步骤</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/26/Imooc-Java-Primary II Chap4 多态/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Imooc-Java-Primary II Chap3 继承" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="3-1-继承"><a href="#3-1-继承" class="headerlink" title="3.1 继承"></a>3.1 继承</h2><ol>
+<li>继承：是类与类的一种关系，是一种“is a”的关系 Dog is a Animal<ul>
+<li>Java中的继承是单继承的</li>
+</ul>
+</li>
+<li>继承的好处：<ul>
+<li>子类拥有父类的所有属性和方法（富二代）<br>private修饰的无效（私生子）</li>
+<li>实现代码复用</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-2-方法重写"><a href="#3-2-方法重写" class="headerlink" title="3.2 方法重写"></a>3.2 方法重写</h2><ol>
+<li>语法规则：以下三条都要与父类相同<ul>
+<li>返回值类型</li>
+<li>方法名</li>
+<li>参数类型及个数</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-3-继承的初始化顺序"><a href="#3-3-继承的初始化顺序" class="headerlink" title="3.3 继承的初始化顺序"></a>3.3 继承的初始化顺序</h2><ol>
+<li>父类对象-父类属性初始化-父类构造方法—子类对象-子类属性初始化-子类构造方法</li>
+</ol>
+<h2 id="3-4-final关键字"><a href="#3-4-final关键字" class="headerlink" title="3.4 final关键字"></a>3.4 final关键字</h2><ol>
+<li>final 修饰类，则该类<strong>不允许被继承</strong></li>
+<li>final 修饰方法，则该方法<strong>不允许被重写</strong></li>
+<li>final 修饰属性，则该类的属性不会进行隐式初始化（即初始化属性必须有值）or在构造方法中赋值</li>
+<li>final 修饰变量，则该变量只能赋一次值，即为常量</li>
+</ol>
+<h2 id="3-5-super关键字"><a href="#3-5-super关键字" class="headerlink" title="3.5 super关键字"></a>3.5 super关键字</h2><ol>
+<li>在对象的内部使用，可以代表父类对象</li>
+<li>访问父类属性 super.age; 访问父类的方法 super.eat();</li>
+<li>子类的构造过程当中必须调用其父类的构造方法（隐式）<ul>
+<li>显示调用必须在第一行</li>
+<li>隐式默认调用父类无参构造方法</li>
+<li>若父类定义了有参的构造方法（代表父类将没有默认无参的构造方法），子类又无显式调用父类的构造方法，则编译出错</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-6-Object类I"><a href="#3-6-Object类I" class="headerlink" title="3.6 Object类I"></a>3.6 Object类I</h2><ol>
+<li>toString()方法：<ul>
+<li>返回对象的<strong>hash码</strong>（对象地址字符串）,return 包名@地址</li>
+<li>可以通过重写toString()方法表示出对象的属性</li>
+</ul>
+</li>
+<li>equals()方法:<ul>
+<li>比较的是对象的<strong>引用</strong>是否指向同一块内存地址,类似于==, return boolean</li>
+<li>比较两个对象的值是否一致，即进行重写<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span> == obj)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  <span class="keyword">if</span>(obj == <span class="keyword">null</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  <span class="keyword">if</span>(getClass() != obj.getClass())</span><br><span class="line">    <span class="comment">// obj.getClass代表获取'类对象'！即判断该对象的类型</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  Dog other = (Dog)obj;</span><br><span class="line">  <span class="keyword">if</span>(age != other.age)</span><br><span class="line">    <span class="comment">// 判断'类的对象'</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/26/Imooc-Java-Primary II Chap3 继承/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Imooc-Java-Primary II Chap2 封装" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="2-1-封装"><a href="#2-1-封装" class="headerlink" title="2.1 封装"></a>2.1 封装</h2><ol>
+<li>面向对象三大特性：封装、继承、多态</li>
+<li>封装：隐藏类的信息，只能通过类提供的方法实现对隐藏信息的操作和访问</li>
+<li>封装实现步骤：<ol>
+<li>修改属性可见性，设为private</li>
+<li>创建getter/setter方法，用于属性的读写</li>
+<li>在getter/setter方法中加入属性控制语句，对属性值得合法性进行判断</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-2-包管理Java中的类"><a href="#2-2-包管理Java中的类" class="headerlink" title="2.2 包管理Java中的类"></a>2.2 包管理Java中的类</h2><ol>
+<li>包的作用：管理Java文件、解决同名文件(类)冲突</li>
+<li>定义包：package 包名<ul>
+<li>必须放在Java源程序第一行</li>
+<li>包名间可以使用“.”隔开，eg:com.imooc.MyClass</li>
+</ul>
+</li>
+<li>系统中的包：<ol>
+<li>java.(功能).(类)</li>
+<li>java.lang.(类) 包含java语言基础的类</li>
+<li>java.util.(类) 包含java语言中各种工具类</li>
+<li>java.io.(类) 包含输入、输出相关功能的类</li>
+</ol>
+</li>
+<li>包的使用：<ol>
+<li>import</li>
+<li>全小写字母</li>
+<li>com.imooc.*</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-3-访问修饰符"><a href="#2-3-访问修饰符" class="headerlink" title="2.3 访问修饰符"></a>2.3 访问修饰符</h2><ol>
+<li>修饰属性和方法的访问范围</li>
+<li>访问修饰符：private,default,protected,public</li>
+<li>对应范围：本类，同包，子类，其他</li>
+</ol>
+<h2 id="2-4-this关键字"><a href="#2-4-this关键字" class="headerlink" title="2.4 this关键字"></a>2.4 this关键字</h2><ol>
+<li>this关键字代表当前对象<ul>
+<li>this.属性 操作当前对象的属性</li>
+<li>this.方法 调用当前对象的方法</li>
+</ul>
+</li>
+<li>封装对象属性的时候，经常使用this关键字</li>
+</ol>
+<h2 id="2-5-内部类"><a href="#2-5-内部类" class="headerlink" title="2.5 内部类"></a>2.5 内部类</h2><ol>
+<li>内部类的作用<ol>
+<li>内部类提供了更好的封装，把内部类隐藏在外部类之内，不允许同一个包中的其他类访问该类。</li>
+<li>内部类可以直接访问外部类的所有数据，包括私有数据。</li>
+<li>内部类所实现的功能外部类同样可以实现，只是有时使用内部类更方便</li>
+</ol>
+</li>
+<li>内部类分为以下几种：<ul>
+<li>成员内部类</li>
+<li>静态内部类</li>
+<li>方法内部类</li>
+<li>匿名内部类</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-6-成员内部类"><a href="#2-6-成员内部类" class="headerlink" title="2.6 成员内部类"></a>2.6 成员内部类</h2><ol>
+<li>成员内部类的使用方法：<ol>
+<li>Inner 类定义在 Outer 类的内部，相当于 Outer 类的一个<strong>成员变量的位置</strong>，Inner 类可以使用任意访问控制符，如 public 、 protected 、 private 等</li>
+<li>Inner 类中定义的 test() 方法可以<strong>直接访问 Outer 类中的所有数据</strong>，而不受访问控制符的影响，如直接访问 Outer 类中的私有属性a</li>
+<li>定义了成员内部类后，<strong>必须使用外部类对象来创建内部类对象</strong>，而不能直接去 new 一个内部类对象，即：内部类 对象名 = 外部类对象.new 内部类( );</li>
+<li>编译后：内部类名.class;外部类名$内部类名.class;</li>
+</ol>
+</li>
+<li><strong>外部类是不能直接使用内部类的成员和方法</strong>滴，即先创建内部类的对象，然后通过内部类的对象来访问其成员变量和方法。</li>
+<li>如果外部类和内部类具有相同的成员变量或方法，内部类默认访问自己的成员变量或方法，如果要访问外部类的成员变量，可以使用 this 关键字。</li>
+</ol>
+<h2 id="2-7-static内部类"><a href="#2-7-static内部类" class="headerlink" title="2.7 static内部类"></a>2.7 static内部类</h2><ol>
+<li>创建static内部类的对象时，不需要外部类的对象，可以直接创建 内部类 对象名= new 内部类();</li>
+<li>static内部类不能直接访问外部类的<strong>非静态成员</strong>，但可以通过 new 外部类().成员 的方式访问</li>
+<li>如果外部类的static成员与内部类的成员名称相同，可通过<strong>类名.静态成员</strong>访问外部类的静态成员；如果外部类的静态成员与内部类的成员名称不相同，则可通过“成员名”直接调用外部类的静态成员</li>
+</ol>
+<h2 id="2-8-方法内部类"><a href="#2-8-方法内部类" class="headerlink" title="2.8 方法内部类"></a>2.8 方法内部类</h2><ol>
+<li>方法内部类就是内部类定义在外部类的方法中，方法内部类只在<strong>该方法的内部可见</strong>，即只在该方法内可以使用。</li>
+<li>由于方法内部类不能在外部类的方法以外的地方使用，因此方法内部类<strong>不能使用访问控制符和 static 修饰符</strong>。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/26/Imooc-Java-Primary II Chap2 封装/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Imooc-Java-Primary II Chap1 类和对象" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-1-类和对象定义"><a href="#1-1-类和对象定义" class="headerlink" title="1.1 类和对象定义"></a>1.1 类和对象定义</h2><ol>
+<li>类是模板，确定对象将会拥有的特征（属性）和行为（方法）</li>
+<li>对象是客观存在的具体实体；</li>
+</ol>
+<h2 id="1-2-定义类的步骤"><a href="#1-2-定义类的步骤" class="headerlink" title="1.2 定义类的步骤"></a>1.2 定义类的步骤</h2><ol>
+<li>定义一个类的步骤：<ul>
+<li>定义类的名称</li>
+<li>编写类的属性</li>
+<li>编写类的方法</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-3-使用对象步骤"><a href="#1-3-使用对象步骤" class="headerlink" title="1.3 使用对象步骤"></a>1.3 使用对象步骤</h2><ol>
+<li>使用对象的步骤：<ul>
+<li>创建对象：<br>类名 对象名 = new 类名/构造方法();<br>Telphone phone = new Telphone();</li>
+<li>使用对象：<br>对象名.属性;<br>对象名.方法名();</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-5-成员变量局部变量"><a href="#1-5-成员变量局部变量" class="headerlink" title="1.5 成员变量局部变量"></a>1.5 成员变量局部变量</h2><ol>
+<li>成员变量：有初始值</li>
+<li>局部变量：无初始值，就近原则优先</li>
+</ol>
+<h2 id="1-7-static变量"><a href="#1-7-static变量" class="headerlink" title="1.7 static变量"></a>1.7 static变量</h2><ol>
+<li>static变量 类所有对象共享，能被修改，可使用类名、对象名访问</li>
+</ol>
+<h2 id="1-9-static方法"><a href="#1-9-static方法" class="headerlink" title="1.9 static方法"></a>1.9 static方法</h2><ol>
+<li>static方法可直接调用同类中的静态成员，但不能直接调用非静态成员以及非静态的方法。</li>
+<li>普通成员方法中，可以直接访问同类的非静态成员和静态成员</li>
+</ol>
+<h2 id="1-10-static初始化块"><a href="#1-10-static初始化块" class="headerlink" title="1.10 static初始化块"></a>1.10 static初始化块</h2><ol>
+<li>Java可以通过初始化块进行数据赋值。</li>
+<li>static初始化块只在类加载时执行一次！只能给static变量赋值！</li>
+<li>static初始化块最先执行，然后执行普通初始化块，最后执行构造方法</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/26/Imooc-Java-Primary II Chap1 类和对象/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-LeetCode-Algorithm-Greedy" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     

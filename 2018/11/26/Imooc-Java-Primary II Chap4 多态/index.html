@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://longquanliu.github.io">
-  <title>Archives: 2018 | Longquan&#39;s Blog</title>
+  <title>Longquan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="code">
+  <meta name="description" content="4.1 多态 对象的多种形态 引用多态 父类的引用可以指向本类的对象 父类的引用可以指向子类的对象   方法多态 创建本类对象时，调用的方法为本类方法 创建子类对象时，调用的方法为子类重写的方法或者继承的方法   继承是实现多态的基础 父类的引用不可以调用子类独有的方法  4.2 多态中的引用类型转换 向上类型转换（隐式/自动类型转换），是小类型到大类型的转换。杯子——茶壶（安全） 向下类型转换（">
 <meta name="keywords" content="code">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Longquan&#39;s Blog">
-<meta property="og:url" content="https://longquanliu.github.io/archives/2018/index.html">
+<meta property="og:url" content="https://longquanliu.github.io/2018/11/26/Imooc-Java-Primary II Chap4 多态/index.html">
 <meta property="og:site_name" content="Longquan&#39;s Blog">
-<meta property="og:description" content="code">
+<meta property="og:description" content="4.1 多态 对象的多种形态 引用多态 父类的引用可以指向本类的对象 父类的引用可以指向子类的对象   方法多态 创建本类对象时，调用的方法为本类方法 创建子类对象时，调用的方法为子类重写的方法或者继承的方法   继承是实现多态的基础 父类的引用不可以调用子类独有的方法  4.2 多态中的引用类型转换 向上类型转换（隐式/自动类型转换），是小类型到大类型的转换。杯子——茶壶（安全） 向下类型转换（">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-11-25T03:01:24.688Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Longquan&#39;s Blog">
-<meta name="twitter:description" content="code">
+<meta name="twitter:description" content="4.1 多态 对象的多种形态 引用多态 父类的引用可以指向本类的对象 父类的引用可以指向子类的对象   方法多态 创建本类对象时，调用的方法为本类方法 创建子类对象时，调用的方法为子类重写的方法或者继承的方法   继承是实现多态的基础 父类的引用不可以调用子类独有的方法  4.2 多态中的引用类型转换 向上类型转换（隐式/自动类型转换），是小类型到大类型的转换。杯子——茶壶（安全） 向下类型转换（">
   
     <link rel="alternative" href="/atom.xml" title="Longquan&#39;s Blog" type="application/atom+xml">
   
@@ -158,286 +159,231 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Imooc-Java-Primary II Chap4 多态" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="4-1-多态"><a href="#4-1-多态" class="headerlink" title="4.1 多态"></a>4.1 多态</h2><ol>
+<li>对象的多种形态</li>
+<li>引用多态<ul>
+<li>父类的引用可以指向本类的对象</li>
+<li>父类的引用可以指向子类的对象</li>
+</ul>
+</li>
+<li>方法多态<ul>
+<li>创建本类对象时，调用的方法为本类方法</li>
+<li>创建子类对象时，调用的方法为子类重写的方法或者继承的方法</li>
+</ul>
+</li>
+<li>继承是实现多态的基础</li>
+<li><strong>父类的引用不可以调用子类独有的方法</strong></li>
+</ol>
+<h2 id="4-2-多态中的引用类型转换"><a href="#4-2-多态中的引用类型转换" class="headerlink" title="4.2 多态中的引用类型转换"></a>4.2 多态中的<strong>引用</strong>类型转换</h2><ol>
+<li>向上类型转换（隐式/自动类型转换），是小类型到大类型的转换。杯子——茶壶（安全）</li>
+<li>向下类型转换（强制类型转换），是大类型到小类型。茶壶——杯子（不安全）</li>
+<li><strong>instanceof</strong> 运算符，来解决引用对象的类型，避免类型转换的安全性问题<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(animal <span class="keyword">instanceof</span> Cat)&#123;</span><br><span class="line">  Cat cat =(Cat)animal;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  System.out.println(<span class="string">"无法进行类型转换"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="4-3-抽象类-abstract"><a href="#4-3-抽象类-abstract" class="headerlink" title="4.3 抽象类 abstract"></a>4.3 抽象类 abstract</h2><ol>
+<li>应用场景：<ul>
+<li>某个父类只知道子类应该包含怎样的方法，但无法准确知道这些子类如何实现这些方法。</li>
+<li>从多个具有相同特征的类中抽象出一个抽象类，以这个抽象类作为子类的模板，从而避免子类设计的随意性。</li>
+</ul>
+</li>
+<li>作用：限制规定子类必须实现某些方法，但不关注实现细节</li>
+<li>使用规则：<ul>
+<li>abstract定义抽象类</li>
+<li>abstract定义抽象方法，只有声明，不需要实现</li>
+<li>包含抽象方法的类是抽象类</li>
+<li>抽象类中可以包含普通的方法，也可以没有抽象的方法</li>
+<li>抽象类不能直接创建，可以定义引用变量</li>
+</ul>
+</li>
+<li>抽象方法没有方法体以分号结束;</li>
+</ol>
+<h2 id="4-4-接口-interface-implements"><a href="#4-4-接口-interface-implements" class="headerlink" title="4.4 接口 interface implements"></a>4.4 接口 interface implements</h2><ol>
+<li>接口可以理解为一种特殊的类，由<strong>全局常量和公共的抽象方法</strong>所组成</li>
+<li>类是一种具体实现体，而接口定义了某一批类所需要遵守的<strong>规范</strong>，接口不关心这些类内部的数据，也不关心这些类里方法的实现细节，它只规定这些类必须提供某些方法</li>
+<li><p>接口定义的基本语法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] interface 接口名 [extends 父接口1,父接口2...]</span><br><span class="line">&#123;</span><br><span class="line">  零个到多个常量定义...</span><br><span class="line">  零个到多个抽象方法定义...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 接口就是用来被继承实现的，修饰符一般建议用'public',不能使用private和protected修饰接口</span></span><br><span class="line"><span class="comment">// 隐式abstract</span></span><br><span class="line"><span class="comment">// 接口可以多继承</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接口定义</p>
+<ul>
+<li>常量：接口中的属性是常量，即使定义时不添加public static final 修饰符，系统也会自动加上</li>
+<li>方法：接口中的方法只能是抽象方法，总是使用，即使定义时不添加public abstract 修饰符，系统也会自动加上</li>
+</ul>
+</li>
+<li><p>使用接口：一个类可以实现一个或多个接口，实现接口使用implements关键字。Java中一个类只能继承一个父类，是不够灵活的，通过实现多个接口可以做补充。</p>
+<ul>
+<li>继承父类实现接口的语法为：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] <span class="class"><span class="keyword">class</span> 类名 <span class="keyword">extends</span> 父类 <span class="keyword">implements</span> 接口1， 接口2 ...</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  类体部分<span class="comment">//如果继承了抽象类，需要实现继承的抽象方法；要实现接口中的抽象方法</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果要继承父类，继承父类必须在实现接口之前</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>接口引用</strong>来使用实现接口的类<br>接口名 接口引用 = new 实现接口的类();</p>
+</li>
+<li>使用接口：<ul>
+<li>接口在使用过程中，还可以与匿名内部类配合使用</li>
+<li>匿名内部类就是没有名字的内部类，多用于关注实现而不关注实现类的名称<br>语法格式：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Interface i = <span class="keyword">new</span> Interface()&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"匿名内部类实现接口的方式1"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 注意实现后的分号</span></span><br><span class="line"><span class="comment">// 即使用接口的引用然后new实现，调用实现的方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Interface()&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"匿名内部类实现接口的方式2"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;.method();</span><br><span class="line"><span class="comment">// 直接new实现，调用实现的方法 Android和框架常用</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="4-5-UML简介"><a href="#4-5-UML简介" class="headerlink" title="4.5 UML简介"></a>4.5 UML简介</h2><ol>
+<li>Unified Modeling Language(UML), <strong>统一建模语言</strong>或标准建模语言。是一个支持模型化和软件系统开发的图形化语言，为软件开发的所有阶段提供模型化和可视化的支持。</li>
+<li>常用UML图<ol>
+<li>用例图(The Use Case Diagram)，能够以可视化的方式，表达系统如何满足所收集的业务规则，以及特定的<strong>用户需求</strong>等信息。</li>
+<li>序列图(The Sequence Diagram)，用于按照交互发生的一系列顺序，显示对象之间的这些交互。</li>
+<li>类图(The Class Diagram)，UML类图、业务逻辑和所有支持结构一同被用于定义全部的结构代码。</li>
+</ol>
+</li>
+<li>UML建模工具：（<strong>类图可直接生成代码</strong>）<ol>
+<li>Rational Rose,IBM</li>
+<li>Visio,MS</li>
+<li>PowerDesigner</li>
+</ol>
+</li>
+</ol>
+<h2 id="4-6-综合练习-‘dada租车系统’"><a href="#4-6-综合练习-‘dada租车系统’" class="headerlink" title="4.6 综合练习 ‘dada租车系统’"></a>4.6 综合练习 ‘dada租车系统’</h2><ol>
+<li>项目分析<ol>
+<li>数据模型分析<ul>
+<li>通过对现实世界的事与物主要特征的分析、抽象，为信息系统的实施提供数据存取的数据结构及相应的约束。</li>
+<li>数据结构组成：操作（方法）、属性</li>
+</ul>
+</li>
+<li>业务模型分析<ul>
+<li>在设计应用程序之前，应该明确应用程序必须执行哪些任务。确认业务需求的目的在于创建一个能同时满足零售商和消费者需要的解决方案。</li>
+</ul>
+</li>
+<li>显示和流程分析<ul>
+<li>显示：用户可以看到的信息提示界面</li>
+<li>流程：显示信息的执行过程、步骤</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/26/Imooc-Java-Primary II Chap4 多态/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:34:30.522Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://longquanliu.github.io/2018/11/26/Imooc-Java-Primary II Chap4 多态/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/26/Imooc-Java-Primary II Chap3 继承/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:34:30.217Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/26/Imooc-Java-Primary II Chap3 继承/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-多态"><span class="toc-number">1.</span> <span class="toc-text">4.1 多态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-多态中的引用类型转换"><span class="toc-number">2.</span> <span class="toc-text">4.2 多态中的引用类型转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-抽象类-abstract"><span class="toc-number">3.</span> <span class="toc-text">4.3 抽象类 abstract</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-接口-interface-implements"><span class="toc-number">4.</span> <span class="toc-text">4.4 接口 interface implements</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5-UML简介"><span class="toc-number">5.</span> <span class="toc-text">4.5 UML简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-6-综合练习-‘dada租车系统’"><span class="toc-number">6.</span> <span class="toc-text">4.6 综合练习 ‘dada租车系统’</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/26/Imooc-Java-Primary II Chap2 封装/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:34:30.212Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/26/Imooc-Java-Primary II Chap1 类和对象/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:34:30.208Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/14/LeetCode-Algorithm-Greedy/" class="archive-article-date">
-  	<time datetime="2018-11-14T01:57:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-14</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/14/LeetCode-Algorithm-Greedy/">LeetCode-Algorithm-Greedy</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">LeetCode Greedy</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/05/Leetcode-Algorithm-Sort/" class="archive-article-date">
-  	<time datetime="2018-11-05T09:21:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/05/Leetcode-Algorithm-Sort/">Leetcode Algorithm Sort</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Leetcode Sort</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/02/Leetcodedede-Algorithm-双指针/" class="archive-article-date">
-  	<time datetime="2018-11-02T07:04:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/02/Leetcodedede-Algorithm-双指针/">Leetcode Algorithm Double pointer</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Leetcode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/02/JavaBasic/" class="archive-article-date">
-  	<time datetime="2018-11-02T04:43:57.644Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/02/JavaBasic/">Java Basic</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/10/29/helloworld/" class="archive-article-date">
-  	<time datetime="2018-10-29T04:27:45.433Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/29/helloworld/">Hexo</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-
 
           </div>
         </div>
@@ -459,8 +405,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
