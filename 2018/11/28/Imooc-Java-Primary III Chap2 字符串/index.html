@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="https://longquanliu.github.io">
   <title>Imooc-Java-Primary III Chap2 字符串 | Longquan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2.1 字符串 字符串被作为 String 类型的对象处理。 String 类位于 java.lang 包中。默认情况下，该包被自动导入所有的程序。 创建String对象的方法： String s1 = “imooc” String s2 = new String(); String s3 = new String(“imooc”);    2.2 字符串的不变性 String 对象创建后则不能被">
+  <meta name="description" content="2.1 字符串 字符串被作为 String 类型的对象处理。 String 类位于 java.lang 包中。默认情况下，该包被自动导入所有的程序。 创建String对象的方法： String s1 = “imooc” String s2 = new String(); String s3 = new String(“imooc”);    2.2 字符串的不变性1.String 对象创建后则不能">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Imooc-Java-Primary III Chap2 字符串">
 <meta property="og:url" content="https://longquanliu.github.io/2018/11/28/Imooc-Java-Primary III Chap2 字符串/index.html">
 <meta property="og:site_name" content="Longquan&#39;s Blog">
-<meta property="og:description" content="2.1 字符串 字符串被作为 String 类型的对象处理。 String 类位于 java.lang 包中。默认情况下，该包被自动导入所有的程序。 创建String对象的方法： String s1 = “imooc” String s2 = new String(); String s3 = new String(“imooc”);    2.2 字符串的不变性 String 对象创建后则不能被">
+<meta property="og:description" content="2.1 字符串 字符串被作为 String 类型的对象处理。 String 类位于 java.lang 包中。默认情况下，该包被自动导入所有的程序。 创建String对象的方法： String s1 = “imooc” String s2 = new String(); String s3 = new String(“imooc”);    2.2 字符串的不变性1.String 对象创建后则不能">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://longquanliu.github.io/img/String.jpg">
-<meta property="og:updated_time" content="2018-11-28T09:11:52.522Z">
+<meta property="og:updated_time" content="2018-11-28T09:14:10.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Imooc-Java-Primary III Chap2 字符串">
-<meta name="twitter:description" content="2.1 字符串 字符串被作为 String 类型的对象处理。 String 类位于 java.lang 包中。默认情况下，该包被自动导入所有的程序。 创建String对象的方法： String s1 = “imooc” String s2 = new String(); String s3 = new String(“imooc”);    2.2 字符串的不变性 String 对象创建后则不能被">
+<meta name="twitter:description" content="2.1 字符串 字符串被作为 String 类型的对象处理。 String 类位于 java.lang 包中。默认情况下，该包被自动导入所有的程序。 创建String对象的方法： String s1 = “imooc” String s2 = new String(); String s3 = new String(“imooc”);    2.2 字符串的不变性1.String 对象创建后则不能">
 <meta name="twitter:image" content="https://longquanliu.github.io/img/String.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Longquan&#39;s Blog" type="application/atom+xml">
@@ -190,17 +190,12 @@
 </ol>
 </li>
 </ol>
-<h2 id="2-2-字符串的不变性"><a href="#2-2-字符串的不变性" class="headerlink" title="2.2 字符串的不变性"></a>2.2 字符串的不变性</h2><ol>
-<li><p>String 对象创建后则不能被修改，是不可变的，所谓的修改其实是创建了新的对象，所指向的内存空间不同。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">String s1 =<span class="string">"爱慕课"</span>;</span><br><span class="line">String s2 =<span class="string">"爱慕课"</span>;</span><br><span class="line">String s3 = <span class="keyword">new</span> String(<span class="string">"爱慕课"</span>);</span><br><span class="line">String s4 = <span class="keyword">new</span> String(<span class="string">"爱慕课"</span>);</span><br><span class="line"><span class="comment">// 多次出现的字符串常量，java程序只创建一个，所以返回true</span></span><br><span class="line">System.out.println(s1 == s2);</span><br><span class="line"><span class="comment">// s1和s3是不同的对象，所以返回false</span></span><br><span class="line">System.out.println(s1 == s3);</span><br><span class="line"><span class="comment">// s3和s4是不同的对象，所以返回false</span></span><br><span class="line">System.out.println(s3 == s4);</span><br><span class="line">s1 = <span class="string">"欢迎来到："</span> + s1;</span><br><span class="line"><span class="comment">// 字符串s1被修改，指向新的内存空间</span></span><br><span class="line">System.out.println(s1);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>一旦一个字符串在内存中创建，则这个字符串将不可改变。如果需要一个可以改变的字符串，我们可以使用StringBuffer或者StringBuilder</p>
-</li>
+<h2 id="2-2-字符串的不变性"><a href="#2-2-字符串的不变性" class="headerlink" title="2.2 字符串的不变性"></a>2.2 字符串的不变性</h2><p>1.String 对象创建后则不能被修改，是不可变的，所谓的修改其实是创建了新的对象，所指向的内存空间不同。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">String s1 =<span class="string">"爱慕课"</span>;</span><br><span class="line">String s2 =<span class="string">"爱慕课"</span>;</span><br><span class="line">String s3 = <span class="keyword">new</span> String(<span class="string">"爱慕课"</span>);</span><br><span class="line">String s4 = <span class="keyword">new</span> String(<span class="string">"爱慕课"</span>);</span><br><span class="line"><span class="comment">// 多次出现的字符串常量，java程序只创建一个，所以返回true</span></span><br><span class="line">System.out.println(s1 == s2);</span><br><span class="line"><span class="comment">// s1和s3是不同的对象，所以返回false</span></span><br><span class="line">System.out.println(s1 == s3);</span><br><span class="line"><span class="comment">// s3和s4是不同的对象，所以返回false</span></span><br><span class="line">System.out.println(s3 == s4);</span><br><span class="line">s1 = <span class="string">"欢迎来到："</span> + s1;</span><br><span class="line"><span class="comment">// 字符串s1被修改，指向新的内存空间</span></span><br><span class="line">System.out.println(s1);</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>一旦一个字符串在内存中创建，则这个字符串将不可改变。如果需要一个可以改变的字符串，我们可以使用StringBuffer或者StringBuilder</li>
 <li>每次 new 一个字符串就是产生一个新的对象，即便两个字符串的内容相同，使用 ”==” 比较时也为 ”false” ,如果只需比较内容是否相同，应使用 ”equals()” 方法</li>
 </ol>
-<h2 id="2-3-String-类的常用方法-I"><a href="#2-3-String-类的常用方法-I" class="headerlink" title="2.3 String 类的常用方法 I"></a>2.3 String 类的常用方法 I</h2><ol>
-<li><img src="/img/String.jpg" alt="String类的常用方法"></li>
-</ol>
+<h2 id="2-3-String-类的常用方法-I"><a href="#2-3-String-类的常用方法-I" class="headerlink" title="2.3 String 类的常用方法 I"></a>2.3 String 类的常用方法 I</h2><p>1.<br><img src="/img/String.jpg" alt="String类的常用方法"><br>2.</p>
 
       
 
