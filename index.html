@@ -194,7 +194,20 @@
 <li>一旦一个字符串在内存中创建，则这个字符串将不可改变。如果需要一个可以改变的字符串，我们可以使用StringBuffer或者StringBuilder</li>
 <li>每次 new 一个字符串就是产生一个新的对象，即便两个字符串的内容相同，使用 ”==” 比较时也为 ”false” ,如果只需比较内容是否相同，应使用 ”equals()” 方法</li>
 </ol>
-<h2 id="2-3-String-类的常用方法-I"><a href="#2-3-String-类的常用方法-I" class="headerlink" title="2.3 String 类的常用方法 I"></a>2.3 String 类的常用方法 I</h2><p>1.<br><img src="/img/String.jpg" alt="String类的常用方法"><br>2.</p>
+<h2 id="2-3-String-类的常用方法-I"><a href="#2-3-String-类的常用方法-I" class="headerlink" title="2.3 String 类的常用方法 I"></a>2.3 String 类的常用方法 I</h2><p>1.<br><img src="/img/String.jpg" alt="String类的常用方法"><br>2.<br><img src="/img/String_eg.jpg" alt="方法使用"></p>
+<ol start="3">
+<li>字符串 str 中字符的索引从0开始，范围为 0 到 str.length()-1</li>
+<li>使用 indexOf 进行字符或字符串查找时，如果匹配返回位置索引；如果没有匹配结果，返回 -1</li>
+<li>使用 substring(beginIndex , endIndex) 进行字符串截取时，包括 beginIndex 位置的字符，不包括 endIndex 位置的字符</li>
+</ol>
+<h2 id="2-4-String-类的常用方法-II"><a href="#2-4-String-类的常用方法-II" class="headerlink" title="2.4 String 类的常用方法 II"></a>2.4 String 类的常用方法 II</h2><ol>
+<li>==: 判断两个字符串在内存中首地址是否相同，即判断是否是同一个字符串对象；equals(): 比较存储在两个字符串对象中的内容是否一致</li>
+<li>字节是计算机存储信息的基本单位，1 个字节等于 8 位， gbk 编码中 1 个汉字字符存储需要 2 个字节，1 个英文字符存储需要 1 个字节。所以我们看到上面的程序运行结果中，每个汉字对应两个字节值，如“学”对应 “-47 -89” ，而英文字母 “J” 对应 “74” 。同时，我们还发现汉字对应的字节值为负数，原因在于每个字节是 8 位，最大值不能超过 127，而汉字转换为字节后超过 127，如果超过就会溢出，以负数的形式显示。</li>
+</ol>
+<h2 id="2-5-StringBuilder类"><a href="#2-5-StringBuilder类" class="headerlink" title="2.5 StringBuilder类"></a>2.5 StringBuilder类</h2><ol>
+<li>StringBuffer 是线程安全的，而 StringBuilder 则没有实现线程安全功能，所以性能略高。<br>2.<br><img src="/img/StringBuilder.jpg" alt="StringBuilder方法"></li>
+<li>在需要频繁对字符串进行修改操作时使用 StringBuilder 的效率比 String 要高</li>
+</ol>
 
       
 
@@ -674,113 +687,6 @@
 
 
   
-    <article id="post-Imooc-Java-Primary II Chap1 类和对象" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/26/Imooc-Java-Primary II Chap1 类和对象/">Imooc-Java-Primary II Chap1 类和对象</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/26/Imooc-Java-Primary II Chap1 类和对象/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-1-类和对象定义"><a href="#1-1-类和对象定义" class="headerlink" title="1.1 类和对象定义"></a>1.1 类和对象定义</h2><ol>
-<li>类是模板，确定对象将会拥有的特征（属性）和行为（方法）</li>
-<li>对象是客观存在的具体实体；</li>
-</ol>
-<h2 id="1-2-定义类的步骤"><a href="#1-2-定义类的步骤" class="headerlink" title="1.2 定义类的步骤"></a>1.2 定义类的步骤</h2><ol>
-<li>定义一个类的步骤：<ul>
-<li>定义类的名称</li>
-<li>编写类的属性</li>
-<li>编写类的方法</li>
-</ul>
-</li>
-</ol>
-<h2 id="1-3-使用对象步骤"><a href="#1-3-使用对象步骤" class="headerlink" title="1.3 使用对象步骤"></a>1.3 使用对象步骤</h2><ol>
-<li>使用对象的步骤：<ul>
-<li>创建对象：<br>类名 对象名 = new 类名/构造方法();<br>Telphone phone = new Telphone();</li>
-<li>使用对象：<br>对象名.属性;<br>对象名.方法名();</li>
-</ul>
-</li>
-</ol>
-<h2 id="1-5-成员变量局部变量"><a href="#1-5-成员变量局部变量" class="headerlink" title="1.5 成员变量局部变量"></a>1.5 成员变量局部变量</h2><ol>
-<li>成员变量：有初始值</li>
-<li>局部变量：无初始值，就近原则优先</li>
-</ol>
-<h2 id="1-7-static变量"><a href="#1-7-static变量" class="headerlink" title="1.7 static变量"></a>1.7 static变量</h2><ol>
-<li>static变量 类所有对象共享，能被修改，可使用类名、对象名访问</li>
-</ol>
-<h2 id="1-9-static方法"><a href="#1-9-static方法" class="headerlink" title="1.9 static方法"></a>1.9 static方法</h2><ol>
-<li>static方法可直接调用同类中的静态成员，但不能直接调用非静态成员以及非静态的方法。</li>
-<li>普通成员方法中，可以直接访问同类的非静态成员和静态成员</li>
-</ol>
-<h2 id="1-10-static初始化块"><a href="#1-10-static初始化块" class="headerlink" title="1.10 static初始化块"></a>1.10 static初始化块</h2><ol>
-<li>Java可以通过初始化块进行数据赋值。</li>
-<li>static初始化块只在类加载时执行一次！只能给static变量赋值！</li>
-<li>static初始化块最先执行，然后执行普通初始化块，最后执行构造方法</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/26/Imooc-Java-Primary II Chap1 类和对象/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
     <article id="post-Imooc-Java-Primary II Chap2 封装" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -904,6 +810,113 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/11/26/Imooc-Java-Primary II Chap2 封装/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Imooc-Java-Primary II Chap1 类和对象" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/26/Imooc-Java-Primary II Chap1 类和对象/">Imooc-Java-Primary II Chap1 类和对象</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/26/Imooc-Java-Primary II Chap1 类和对象/" class="archive-article-date">
+  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-1-类和对象定义"><a href="#1-1-类和对象定义" class="headerlink" title="1.1 类和对象定义"></a>1.1 类和对象定义</h2><ol>
+<li>类是模板，确定对象将会拥有的特征（属性）和行为（方法）</li>
+<li>对象是客观存在的具体实体；</li>
+</ol>
+<h2 id="1-2-定义类的步骤"><a href="#1-2-定义类的步骤" class="headerlink" title="1.2 定义类的步骤"></a>1.2 定义类的步骤</h2><ol>
+<li>定义一个类的步骤：<ul>
+<li>定义类的名称</li>
+<li>编写类的属性</li>
+<li>编写类的方法</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-3-使用对象步骤"><a href="#1-3-使用对象步骤" class="headerlink" title="1.3 使用对象步骤"></a>1.3 使用对象步骤</h2><ol>
+<li>使用对象的步骤：<ul>
+<li>创建对象：<br>类名 对象名 = new 类名/构造方法();<br>Telphone phone = new Telphone();</li>
+<li>使用对象：<br>对象名.属性;<br>对象名.方法名();</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-5-成员变量局部变量"><a href="#1-5-成员变量局部变量" class="headerlink" title="1.5 成员变量局部变量"></a>1.5 成员变量局部变量</h2><ol>
+<li>成员变量：有初始值</li>
+<li>局部变量：无初始值，就近原则优先</li>
+</ol>
+<h2 id="1-7-static变量"><a href="#1-7-static变量" class="headerlink" title="1.7 static变量"></a>1.7 static变量</h2><ol>
+<li>static变量 类所有对象共享，能被修改，可使用类名、对象名访问</li>
+</ol>
+<h2 id="1-9-static方法"><a href="#1-9-static方法" class="headerlink" title="1.9 static方法"></a>1.9 static方法</h2><ol>
+<li>static方法可直接调用同类中的静态成员，但不能直接调用非静态成员以及非静态的方法。</li>
+<li>普通成员方法中，可以直接访问同类的非静态成员和静态成员</li>
+</ol>
+<h2 id="1-10-static初始化块"><a href="#1-10-static初始化块" class="headerlink" title="1.10 static初始化块"></a>1.10 static初始化块</h2><ol>
+<li>Java可以通过初始化块进行数据赋值。</li>
+<li>static初始化块只在类加载时执行一次！只能给static变量赋值！</li>
+<li>static初始化块最先执行，然后执行普通初始化块，最后执行构造方法</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/26/Imooc-Java-Primary II Chap1 类和对象/">展开全文 >></a>
         </p>
       
 

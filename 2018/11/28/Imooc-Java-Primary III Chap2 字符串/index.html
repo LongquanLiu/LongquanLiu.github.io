@@ -17,7 +17,9 @@
 <meta property="og:description" content="2.1 字符串 字符串被作为 String 类型的对象处理。 String 类位于 java.lang 包中。默认情况下，该包被自动导入所有的程序。 创建String对象的方法： String s1 = “imooc” String s2 = new String(); String s3 = new String(“imooc”);    2.2 字符串的不变性1.String 对象创建后则不能">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://longquanliu.github.io/img/String.jpg">
-<meta property="og:updated_time" content="2018-11-28T09:14:10.790Z">
+<meta property="og:image" content="https://longquanliu.github.io/img/String_eg.jpg">
+<meta property="og:image" content="https://longquanliu.github.io/img/StringBuilder.jpg">
+<meta property="og:updated_time" content="2018-11-28T12:03:42.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Imooc-Java-Primary III Chap2 字符串">
 <meta name="twitter:description" content="2.1 字符串 字符串被作为 String 类型的对象处理。 String 类位于 java.lang 包中。默认情况下，该包被自动导入所有的程序。 创建String对象的方法： String s1 = “imooc” String s2 = new String(); String s3 = new String(“imooc”);    2.2 字符串的不变性1.String 对象创建后则不能">
@@ -195,7 +197,20 @@
 <li>一旦一个字符串在内存中创建，则这个字符串将不可改变。如果需要一个可以改变的字符串，我们可以使用StringBuffer或者StringBuilder</li>
 <li>每次 new 一个字符串就是产生一个新的对象，即便两个字符串的内容相同，使用 ”==” 比较时也为 ”false” ,如果只需比较内容是否相同，应使用 ”equals()” 方法</li>
 </ol>
-<h2 id="2-3-String-类的常用方法-I"><a href="#2-3-String-类的常用方法-I" class="headerlink" title="2.3 String 类的常用方法 I"></a>2.3 String 类的常用方法 I</h2><p>1.<br><img src="/img/String.jpg" alt="String类的常用方法"><br>2.</p>
+<h2 id="2-3-String-类的常用方法-I"><a href="#2-3-String-类的常用方法-I" class="headerlink" title="2.3 String 类的常用方法 I"></a>2.3 String 类的常用方法 I</h2><p>1.<br><img src="/img/String.jpg" alt="String类的常用方法"><br>2.<br><img src="/img/String_eg.jpg" alt="方法使用"></p>
+<ol start="3">
+<li>字符串 str 中字符的索引从0开始，范围为 0 到 str.length()-1</li>
+<li>使用 indexOf 进行字符或字符串查找时，如果匹配返回位置索引；如果没有匹配结果，返回 -1</li>
+<li>使用 substring(beginIndex , endIndex) 进行字符串截取时，包括 beginIndex 位置的字符，不包括 endIndex 位置的字符</li>
+</ol>
+<h2 id="2-4-String-类的常用方法-II"><a href="#2-4-String-类的常用方法-II" class="headerlink" title="2.4 String 类的常用方法 II"></a>2.4 String 类的常用方法 II</h2><ol>
+<li>==: 判断两个字符串在内存中首地址是否相同，即判断是否是同一个字符串对象；equals(): 比较存储在两个字符串对象中的内容是否一致</li>
+<li>字节是计算机存储信息的基本单位，1 个字节等于 8 位， gbk 编码中 1 个汉字字符存储需要 2 个字节，1 个英文字符存储需要 1 个字节。所以我们看到上面的程序运行结果中，每个汉字对应两个字节值，如“学”对应 “-47 -89” ，而英文字母 “J” 对应 “74” 。同时，我们还发现汉字对应的字节值为负数，原因在于每个字节是 8 位，最大值不能超过 127，而汉字转换为字节后超过 127，如果超过就会溢出，以负数的形式显示。</li>
+</ol>
+<h2 id="2-5-StringBuilder类"><a href="#2-5-StringBuilder类" class="headerlink" title="2.5 StringBuilder类"></a>2.5 StringBuilder类</h2><ol>
+<li>StringBuffer 是线程安全的，而 StringBuilder 则没有实现线程安全功能，所以性能略高。<br>2.<br><img src="/img/StringBuilder.jpg" alt="StringBuilder方法"></li>
+<li>在需要频繁对字符串进行修改操作时使用 StringBuilder 的效率比 String 要高</li>
+</ol>
 
       
 
@@ -308,7 +323,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-字符串"><span class="toc-number">1.</span> <span class="toc-text">2.1 字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-字符串的不变性"><span class="toc-number">2.</span> <span class="toc-text">2.2 字符串的不变性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-String-类的常用方法-I"><span class="toc-number">3.</span> <span class="toc-text">2.3 String 类的常用方法 I</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-字符串"><span class="toc-number">1.</span> <span class="toc-text">2.1 字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-字符串的不变性"><span class="toc-number">2.</span> <span class="toc-text">2.2 字符串的不变性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-String-类的常用方法-I"><span class="toc-number">3.</span> <span class="toc-text">2.3 String 类的常用方法 I</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-String-类的常用方法-II"><span class="toc-number">4.</span> <span class="toc-text">2.4 String 类的常用方法 II</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-StringBuilder类"><span class="toc-number">5.</span> <span class="toc-text">2.5 StringBuilder类</span></a></li></ol>
                     </div>
                 </span>
             </div>
