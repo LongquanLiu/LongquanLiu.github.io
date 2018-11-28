@@ -160,60 +160,45 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Imooc-Java-Primary II Chap1 类和对象" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-Imooc-Java-Primary III Chap2 字符串" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/26/Imooc-Java-Primary II Chap1 类和对象/">Imooc-Java-Primary II Chap1 类和对象</a>
+      <a class="article-title" href="/2018/11/28/Imooc-Java-Primary III Chap2 字符串/">Imooc-Java-Primary III Chap2 字符串</a>
     </h1>
   
 
         
-        <a href="/2018/11/26/Imooc-Java-Primary II Chap1 类和对象/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
+        <a href="/2018/11/28/Imooc-Java-Primary III Chap2 字符串/" class="archive-article-date">
+  	<time datetime="2018-11-28T07:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-1-类和对象定义"><a href="#1-1-类和对象定义" class="headerlink" title="1.1 类和对象定义"></a>1.1 类和对象定义</h2><ol>
-<li>类是模板，确定对象将会拥有的特征（属性）和行为（方法）</li>
-<li>对象是客观存在的具体实体；</li>
+        <h2 id="2-1-字符串"><a href="#2-1-字符串" class="headerlink" title="2.1 字符串"></a>2.1 字符串</h2><ol>
+<li>字符串被作为 String 类型的对象处理。 String 类位于 java.lang 包中。默认情况下，该包被自动导入所有的程序。</li>
+<li>创建String对象的方法：<ol>
+<li>String s1 = “imooc”</li>
+<li>String s2 = new String();</li>
+<li>String s3 = new String(“imooc”);</li>
 </ol>
-<h2 id="1-2-定义类的步骤"><a href="#1-2-定义类的步骤" class="headerlink" title="1.2 定义类的步骤"></a>1.2 定义类的步骤</h2><ol>
-<li>定义一个类的步骤：<ul>
-<li>定义类的名称</li>
-<li>编写类的属性</li>
-<li>编写类的方法</li>
-</ul>
 </li>
 </ol>
-<h2 id="1-3-使用对象步骤"><a href="#1-3-使用对象步骤" class="headerlink" title="1.3 使用对象步骤"></a>1.3 使用对象步骤</h2><ol>
-<li>使用对象的步骤：<ul>
-<li>创建对象：<br>类名 对象名 = new 类名/构造方法();<br>Telphone phone = new Telphone();</li>
-<li>使用对象：<br>对象名.属性;<br>对象名.方法名();</li>
-</ul>
+<h2 id="2-2-字符串的不变性"><a href="#2-2-字符串的不变性" class="headerlink" title="2.2 字符串的不变性"></a>2.2 字符串的不变性</h2><ol>
+<li><p>String 对象创建后则不能被修改，是不可变的，所谓的修改其实是创建了新的对象，所指向的内存空间不同。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">String s1 =<span class="string">"爱慕课"</span>;</span><br><span class="line">String s2 =<span class="string">"爱慕课"</span>;</span><br><span class="line">String s3 = <span class="keyword">new</span> String(<span class="string">"爱慕课"</span>);</span><br><span class="line">String s4 = <span class="keyword">new</span> String(<span class="string">"爱慕课"</span>);</span><br><span class="line"><span class="comment">// 多次出现的字符串常量，java程序只创建一个，所以返回true</span></span><br><span class="line">System.out.println(s1 == s2);</span><br><span class="line"><span class="comment">// s1和s3是不同的对象，所以返回false</span></span><br><span class="line">System.out.println(s1 == s3);</span><br><span class="line"><span class="comment">// s3和s4是不同的对象，所以返回false</span></span><br><span class="line">System.out.println(s3 == s4);</span><br><span class="line">s1 = <span class="string">"欢迎来到："</span> + s1;</span><br><span class="line"><span class="comment">// 字符串s1被修改，指向新的内存空间</span></span><br><span class="line">System.out.println(s1);</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>一旦一个字符串在内存中创建，则这个字符串将不可改变。如果需要一个可以改变的字符串，我们可以使用StringBuffer或者StringBuilder</p>
+</li>
+<li>每次 new 一个字符串就是产生一个新的对象，即便两个字符串的内容相同，使用 ”==” 比较时也为 ”false” ,如果只需比较内容是否相同，应使用 ”equals()” 方法</li>
 </ol>
-<h2 id="1-5-成员变量局部变量"><a href="#1-5-成员变量局部变量" class="headerlink" title="1.5 成员变量局部变量"></a>1.5 成员变量局部变量</h2><ol>
-<li>成员变量：有初始值</li>
-<li>局部变量：无初始值，就近原则优先</li>
-</ol>
-<h2 id="1-7-static变量"><a href="#1-7-static变量" class="headerlink" title="1.7 static变量"></a>1.7 static变量</h2><ol>
-<li>static变量 类所有对象共享，能被修改，可使用类名、对象名访问</li>
-</ol>
-<h2 id="1-9-static方法"><a href="#1-9-static方法" class="headerlink" title="1.9 static方法"></a>1.9 static方法</h2><ol>
-<li>static方法可直接调用同类中的静态成员，但不能直接调用非静态成员以及非静态的方法。</li>
-<li>普通成员方法中，可以直接访问同类的非静态成员和静态成员</li>
-</ol>
-<h2 id="1-10-static初始化块"><a href="#1-10-static初始化块" class="headerlink" title="1.10 static初始化块"></a>1.10 static初始化块</h2><ol>
-<li>Java可以通过初始化块进行数据赋值。</li>
-<li>static初始化块只在类加载时执行一次！只能给static变量赋值！</li>
-<li>static初始化块最先执行，然后执行普通初始化块，最后执行构造方法</li>
+<h2 id="2-3-String-类的常用方法-I"><a href="#2-3-String-类的常用方法-I" class="headerlink" title="2.3 String 类的常用方法 I"></a>2.3 String 类的常用方法 I</h2><ol>
+<li><img src="/img/String.jpg" alt="String类的常用方法"></li>
 </ol>
 
       
@@ -238,7 +223,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/26/Imooc-Java-Primary II Chap1 类和对象/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/11/28/Imooc-Java-Primary III Chap2 字符串/">展开全文 >></a>
         </p>
       
 
@@ -267,104 +252,86 @@
 
 
   
-    <article id="post-Imooc-Java-Primary II Chap2 封装" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-Imooc-Java-Primary III Chap1 异常和异常处理" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/26/Imooc-Java-Primary II Chap2 封装/">Imooc-Java-Primary II Chap2 封装</a>
+      <a class="article-title" href="/2018/11/28/Imooc-Java-Primary III Chap1 异常和异常处理/">Imooc-Java-Primary III Chap1 异常和异常处理</a>
     </h1>
   
 
         
-        <a href="/2018/11/26/Imooc-Java-Primary II Chap2 封装/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
+        <a href="/2018/11/28/Imooc-Java-Primary III Chap1 异常和异常处理/" class="archive-article-date">
+  	<time datetime="2018-11-28T02:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="2-1-封装"><a href="#2-1-封装" class="headerlink" title="2.1 封装"></a>2.1 封装</h2><ol>
-<li>面向对象三大特性：封装、继承、多态</li>
-<li>封装：隐藏类的信息，只能通过类提供的方法实现对隐藏信息的操作和访问</li>
-<li>封装实现步骤：<ol>
-<li>修改属性可见性，设为private</li>
-<li>创建getter/setter方法，用于属性的读写</li>
-<li>在getter/setter方法中加入属性控制语句，对属性值得合法性进行判断</li>
-</ol>
-</li>
-</ol>
-<h2 id="2-2-包管理Java中的类"><a href="#2-2-包管理Java中的类" class="headerlink" title="2.2 包管理Java中的类"></a>2.2 包管理Java中的类</h2><ol>
-<li>包的作用：管理Java文件、解决同名文件(类)冲突</li>
-<li>定义包：package 包名<ul>
-<li>必须放在Java源程序第一行</li>
-<li>包名间可以使用“.”隔开，eg:com.imooc.MyClass</li>
+        <h2 id="1-1-异常简介"><a href="#1-1-异常简介" class="headerlink" title="1.1 异常简介"></a>1.1 异常简介</h2><ol>
+<li>异常：有异于常态，阻止当前方法或作用域，称之为异常。</li>
+<li>异常的正确处理：提交给编程人员or用户，从而使原本中断的程序可继续运行or退出，并且保存当前操作or数据回滚，最后释放占用资源</li>
+<li>Throwable:<ol>
+<li>Error: 程序崩溃（硬伤无法处理）<ul>
+<li>VirtualMachineError:虚拟机错误</li>
+<li>ThreadDeath:线程错误</li>
 </ul>
 </li>
-<li>系统中的包：<ol>
-<li>java.(功能).(类)</li>
-<li>java.lang.(类) 包含java语言基础的类</li>
-<li>java.util.(类) 包含java语言中各种工具类</li>
-<li>java.io.(类) 包含输入、输出相关功能的类</li>
-</ol>
-</li>
-<li>包的使用：<ol>
-<li>import</li>
-<li>全小写字母</li>
-<li>com.imooc.*</li>
-</ol>
-</li>
-</ol>
-<h2 id="2-3-访问修饰符"><a href="#2-3-访问修饰符" class="headerlink" title="2.3 访问修饰符"></a>2.3 访问修饰符</h2><ol>
-<li>修饰属性和方法的访问范围</li>
-<li>访问修饰符：private,default,protected,public</li>
-<li>对应范围：本类，同包，子类，其他</li>
-</ol>
-<h2 id="2-4-this关键字"><a href="#2-4-this关键字" class="headerlink" title="2.4 this关键字"></a>2.4 this关键字</h2><ol>
-<li>this关键字代表当前对象<ul>
-<li>this.属性 操作当前对象的属性</li>
-<li>this.方法 调用当前对象的方法</li>
+<li>Exception: 编程、环境、用户操作输入出现问题<br>1.RunTimeException: 非检查异常 Java虚拟机自动抛出捕获，逻辑上检查<ul>
+<li>NullPointerException: 空指针异常</li>
+<li>ArrayIndexOutOfBoundException: 数组下标越界异常</li>
+<li>ClassCastException: 类型转换异常</li>
+<li>ArithmeticException: 算术异常<br>…</li>
 </ul>
-</li>
-<li>封装对象属性的时候，经常使用this关键字</li>
+<ol start="2">
+<li>CheckException: 检查异常 手动添加捕获处理语句</li>
 </ol>
-<h2 id="2-5-内部类"><a href="#2-5-内部类" class="headerlink" title="2.5 内部类"></a>2.5 内部类</h2><ol>
-<li>内部类的作用<ol>
-<li>内部类提供了更好的封装，把内部类隐藏在外部类之内，不允许同一个包中的其他类访问该类。</li>
-<li>内部类可以直接访问外部类的所有数据，包括私有数据。</li>
-<li>内部类所实现的功能外部类同样可以实现，只是有时使用内部类更方便</li>
-</ol>
-</li>
-<li>内部类分为以下几种：<ul>
-<li>成员内部类</li>
-<li>静态内部类</li>
-<li>方法内部类</li>
-<li>匿名内部类</li>
+<ul>
+<li>IOException: 文件异常</li>
+<li>SQLExecption: SQL异常</li>
 </ul>
 </li>
 </ol>
-<h2 id="2-6-成员内部类"><a href="#2-6-成员内部类" class="headerlink" title="2.6 成员内部类"></a>2.6 成员内部类</h2><ol>
-<li>成员内部类的使用方法：<ol>
-<li>Inner 类定义在 Outer 类的内部，相当于 Outer 类的一个<strong>成员变量的位置</strong>，Inner 类可以使用任意访问控制符，如 public 、 protected 、 private 等</li>
-<li>Inner 类中定义的 test() 方法可以<strong>直接访问 Outer 类中的所有数据</strong>，而不受访问控制符的影响，如直接访问 Outer 类中的私有属性a</li>
-<li>定义了成员内部类后，<strong>必须使用外部类对象来创建内部类对象</strong>，而不能直接去 new 一个内部类对象，即：内部类 对象名 = 外部类对象.new 内部类( );</li>
-<li>编译后：内部类名.class;外部类名$内部类名.class;</li>
-</ol>
 </li>
-<li><strong>外部类是不能直接使用内部类的成员和方法</strong>滴，即先创建内部类的对象，然后通过内部类的对象来访问其成员变量和方法。</li>
-<li>如果外部类和内部类具有相同的成员变量或方法，内部类默认访问自己的成员变量或方法，如果要访问外部类的成员变量，可以使用 this 关键字。</li>
 </ol>
-<h2 id="2-7-static内部类"><a href="#2-7-static内部类" class="headerlink" title="2.7 static内部类"></a>2.7 static内部类</h2><ol>
-<li>创建static内部类的对象时，不需要外部类的对象，可以直接创建 内部类 对象名= new 内部类();</li>
-<li>static内部类不能直接访问外部类的<strong>非静态成员</strong>，但可以通过 new 外部类().成员 的方式访问</li>
-<li>如果外部类的static成员与内部类的成员名称相同，可通过<strong>类名.静态成员</strong>访问外部类的静态成员；如果外部类的静态成员与内部类的成员名称不相同，则可通过“成员名”直接调用外部类的静态成员</li>
+<h2 id="1-2-处理异常"><a href="#1-2-处理异常" class="headerlink" title="1.2 处理异常"></a>1.2 处理异常</h2><ol>
+<li><p>try-catch:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">  <span class="comment">//一些会抛出异常的方法</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">  e.printStackTrace();</span><br><span class="line">  <span class="comment">//处理该异常的代码块</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(Exception2 e)&#123;</span><br><span class="line">  <span class="comment">//处理Exception2的代码块</span></span><br><span class="line">&#125;...<span class="keyword">finally</span>&#123;</span><br><span class="line">  <span class="comment">//最终要执行的代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>异常顺序注意子类-父类，就近寻找匹配</li>
+<li>return 在try、catch、finally中，按顺序都执行完,eg:finally是在catch里return执行完，返回调用该方法之前执行</li>
+<li>return 不在try、catch、finally中，则执行到块外的return</li>
+<li>try 语句块不可以独立存在，必须与 catch 或者 finally 块同存</li>
+</ul>
+</li>
 </ol>
-<h2 id="2-8-方法内部类"><a href="#2-8-方法内部类" class="headerlink" title="2.8 方法内部类"></a>2.8 方法内部类</h2><ol>
-<li>方法内部类就是内部类定义在外部类的方法中，方法内部类只在<strong>该方法的内部可见</strong>，即只在该方法内可以使用。</li>
-<li>由于方法内部类不能在外部类的方法以外的地方使用，因此方法内部类<strong>不能使用访问控制符和 static 修饰符</strong>。</li>
+<h2 id="1-3-异常抛出与自定义异常"><a href="#1-3-异常抛出与自定义异常" class="headerlink" title="1.3 异常抛出与自定义异常"></a>1.3 异常抛出与自定义异常</h2><ol>
+<li>throw, 将产生的异常抛出（动作）</li>
+<li><p>throws, 声明将要抛出何种类型的异常（声明）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> 方法名(参数列表) <span class="keyword">throws</span> 异常列表&#123;</span><br><span class="line">  <span class="comment">//调用会抛出异常的方法或者：throw new Exception();</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义异常</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 自定义异常类 <span class="keyword">extends</span> 异常类型</span>&#123;</span><br><span class="line">  <span class="keyword">public</span> 自定义异常类()&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> 自定义异常类(String message)&#123;</span><br><span class="line">    <span class="keyword">super</span>(message);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="1-4-异常链"><a href="#1-4-异常链" class="headerlink" title="1.4 异常链"></a>1.4 异常链</h2><ol>
+<li><p>捕获的异常包装成新的异常，在新的异常里添加对原始异常的引用，再抛出</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">catch</span>(DrunkException e)&#123;</span><br><span class="line">  RunTimeException newExc = <span class="keyword">new</span> RunTimeException(<span class="string">"..."</span>);</span><br><span class="line">  newExc.initCause(e);</span><br><span class="line">  <span class="keyword">throw</span> newExc;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">catch</span>(DrunkException e)&#123;</span><br><span class="line">  RunTimeException newExc = <span class="keyword">new</span> RunTimeException(e);</span><br><span class="line">  <span class="comment">// newExc.initCause(e);</span></span><br><span class="line">  <span class="keyword">throw</span> newExc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>捕获到的异常，可以在当前方法的 catch 块中处理，也可抛出给调用者去处理</p>
+</li>
+</ol>
+<h2 id="1-5-经验总结"><a href="#1-5-经验总结" class="headerlink" title="1.5 经验总结"></a>1.5 经验总结</h2><ol>
+<li>处理运行时异常时，采用逻辑去合理规避同时辅助try-catch处理</li>
+<li><strong>在多重catch块后面，可以加一个catch(Exception)来处理可能会被遗漏的异常</strong></li>
+<li>对于不确定的代码，也可以加上try-catch,处理潜在的异常</li>
+<li>尽量去处理异常，切忌只是简单的调用printStackTrace()去打印输出</li>
+<li>具体如何处理异常，要根据不同的业务需求和异常类型去决定</li>
+<li><strong>尽量添加finally语句块去释放占用的资源</strong></li>
 </ol>
 
       
@@ -389,7 +356,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/26/Imooc-Java-Primary II Chap2 封装/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/11/28/Imooc-Java-Primary III Chap1 异常和异常处理/">展开全文 >></a>
         </p>
       
 
@@ -684,6 +651,264 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/11/26/Imooc-Java-Primary II Chap4 多态/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Imooc-Java-Primary II Chap1 类和对象" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/26/Imooc-Java-Primary II Chap1 类和对象/">Imooc-Java-Primary II Chap1 类和对象</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/26/Imooc-Java-Primary II Chap1 类和对象/" class="archive-article-date">
+  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-1-类和对象定义"><a href="#1-1-类和对象定义" class="headerlink" title="1.1 类和对象定义"></a>1.1 类和对象定义</h2><ol>
+<li>类是模板，确定对象将会拥有的特征（属性）和行为（方法）</li>
+<li>对象是客观存在的具体实体；</li>
+</ol>
+<h2 id="1-2-定义类的步骤"><a href="#1-2-定义类的步骤" class="headerlink" title="1.2 定义类的步骤"></a>1.2 定义类的步骤</h2><ol>
+<li>定义一个类的步骤：<ul>
+<li>定义类的名称</li>
+<li>编写类的属性</li>
+<li>编写类的方法</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-3-使用对象步骤"><a href="#1-3-使用对象步骤" class="headerlink" title="1.3 使用对象步骤"></a>1.3 使用对象步骤</h2><ol>
+<li>使用对象的步骤：<ul>
+<li>创建对象：<br>类名 对象名 = new 类名/构造方法();<br>Telphone phone = new Telphone();</li>
+<li>使用对象：<br>对象名.属性;<br>对象名.方法名();</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-5-成员变量局部变量"><a href="#1-5-成员变量局部变量" class="headerlink" title="1.5 成员变量局部变量"></a>1.5 成员变量局部变量</h2><ol>
+<li>成员变量：有初始值</li>
+<li>局部变量：无初始值，就近原则优先</li>
+</ol>
+<h2 id="1-7-static变量"><a href="#1-7-static变量" class="headerlink" title="1.7 static变量"></a>1.7 static变量</h2><ol>
+<li>static变量 类所有对象共享，能被修改，可使用类名、对象名访问</li>
+</ol>
+<h2 id="1-9-static方法"><a href="#1-9-static方法" class="headerlink" title="1.9 static方法"></a>1.9 static方法</h2><ol>
+<li>static方法可直接调用同类中的静态成员，但不能直接调用非静态成员以及非静态的方法。</li>
+<li>普通成员方法中，可以直接访问同类的非静态成员和静态成员</li>
+</ol>
+<h2 id="1-10-static初始化块"><a href="#1-10-static初始化块" class="headerlink" title="1.10 static初始化块"></a>1.10 static初始化块</h2><ol>
+<li>Java可以通过初始化块进行数据赋值。</li>
+<li>static初始化块只在类加载时执行一次！只能给static变量赋值！</li>
+<li>static初始化块最先执行，然后执行普通初始化块，最后执行构造方法</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/26/Imooc-Java-Primary II Chap1 类和对象/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Imooc-Java-Primary II Chap2 封装" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/26/Imooc-Java-Primary II Chap2 封装/">Imooc-Java-Primary II Chap2 封装</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/26/Imooc-Java-Primary II Chap2 封装/" class="archive-article-date">
+  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="2-1-封装"><a href="#2-1-封装" class="headerlink" title="2.1 封装"></a>2.1 封装</h2><ol>
+<li>面向对象三大特性：封装、继承、多态</li>
+<li>封装：隐藏类的信息，只能通过类提供的方法实现对隐藏信息的操作和访问</li>
+<li>封装实现步骤：<ol>
+<li>修改属性可见性，设为private</li>
+<li>创建getter/setter方法，用于属性的读写</li>
+<li>在getter/setter方法中加入属性控制语句，对属性值得合法性进行判断</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-2-包管理Java中的类"><a href="#2-2-包管理Java中的类" class="headerlink" title="2.2 包管理Java中的类"></a>2.2 包管理Java中的类</h2><ol>
+<li>包的作用：管理Java文件、解决同名文件(类)冲突</li>
+<li>定义包：package 包名<ul>
+<li>必须放在Java源程序第一行</li>
+<li>包名间可以使用“.”隔开，eg:com.imooc.MyClass</li>
+</ul>
+</li>
+<li>系统中的包：<ol>
+<li>java.(功能).(类)</li>
+<li>java.lang.(类) 包含java语言基础的类</li>
+<li>java.util.(类) 包含java语言中各种工具类</li>
+<li>java.io.(类) 包含输入、输出相关功能的类</li>
+</ol>
+</li>
+<li>包的使用：<ol>
+<li>import</li>
+<li>全小写字母</li>
+<li>com.imooc.*</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-3-访问修饰符"><a href="#2-3-访问修饰符" class="headerlink" title="2.3 访问修饰符"></a>2.3 访问修饰符</h2><ol>
+<li>修饰属性和方法的访问范围</li>
+<li>访问修饰符：private,default,protected,public</li>
+<li>对应范围：本类，同包，子类，其他</li>
+</ol>
+<h2 id="2-4-this关键字"><a href="#2-4-this关键字" class="headerlink" title="2.4 this关键字"></a>2.4 this关键字</h2><ol>
+<li>this关键字代表当前对象<ul>
+<li>this.属性 操作当前对象的属性</li>
+<li>this.方法 调用当前对象的方法</li>
+</ul>
+</li>
+<li>封装对象属性的时候，经常使用this关键字</li>
+</ol>
+<h2 id="2-5-内部类"><a href="#2-5-内部类" class="headerlink" title="2.5 内部类"></a>2.5 内部类</h2><ol>
+<li>内部类的作用<ol>
+<li>内部类提供了更好的封装，把内部类隐藏在外部类之内，不允许同一个包中的其他类访问该类。</li>
+<li>内部类可以直接访问外部类的所有数据，包括私有数据。</li>
+<li>内部类所实现的功能外部类同样可以实现，只是有时使用内部类更方便</li>
+</ol>
+</li>
+<li>内部类分为以下几种：<ul>
+<li>成员内部类</li>
+<li>静态内部类</li>
+<li>方法内部类</li>
+<li>匿名内部类</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-6-成员内部类"><a href="#2-6-成员内部类" class="headerlink" title="2.6 成员内部类"></a>2.6 成员内部类</h2><ol>
+<li>成员内部类的使用方法：<ol>
+<li>Inner 类定义在 Outer 类的内部，相当于 Outer 类的一个<strong>成员变量的位置</strong>，Inner 类可以使用任意访问控制符，如 public 、 protected 、 private 等</li>
+<li>Inner 类中定义的 test() 方法可以<strong>直接访问 Outer 类中的所有数据</strong>，而不受访问控制符的影响，如直接访问 Outer 类中的私有属性a</li>
+<li>定义了成员内部类后，<strong>必须使用外部类对象来创建内部类对象</strong>，而不能直接去 new 一个内部类对象，即：内部类 对象名 = 外部类对象.new 内部类( );</li>
+<li>编译后：内部类名.class;外部类名$内部类名.class;</li>
+</ol>
+</li>
+<li><strong>外部类是不能直接使用内部类的成员和方法</strong>滴，即先创建内部类的对象，然后通过内部类的对象来访问其成员变量和方法。</li>
+<li>如果外部类和内部类具有相同的成员变量或方法，内部类默认访问自己的成员变量或方法，如果要访问外部类的成员变量，可以使用 this 关键字。</li>
+</ol>
+<h2 id="2-7-static内部类"><a href="#2-7-static内部类" class="headerlink" title="2.7 static内部类"></a>2.7 static内部类</h2><ol>
+<li>创建static内部类的对象时，不需要外部类的对象，可以直接创建 内部类 对象名= new 内部类();</li>
+<li>static内部类不能直接访问外部类的<strong>非静态成员</strong>，但可以通过 new 外部类().成员 的方式访问</li>
+<li>如果外部类的static成员与内部类的成员名称相同，可通过<strong>类名.静态成员</strong>访问外部类的静态成员；如果外部类的静态成员与内部类的成员名称不相同，则可通过“成员名”直接调用外部类的静态成员</li>
+</ol>
+<h2 id="2-8-方法内部类"><a href="#2-8-方法内部类" class="headerlink" title="2.8 方法内部类"></a>2.8 方法内部类</h2><ol>
+<li>方法内部类就是内部类定义在外部类的方法中，方法内部类只在<strong>该方法的内部可见</strong>，即只在该方法内可以使用。</li>
+<li>由于方法内部类不能在外部类的方法以外的地方使用，因此方法内部类<strong>不能使用访问控制符和 static 修饰符</strong>。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/26/Imooc-Java-Primary II Chap2 封装/">展开全文 >></a>
         </p>
       
 
@@ -1378,78 +1603,10 @@
 
 
   
-    <article id="post-helloworld" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/29/helloworld/">Hexo</a>
-    </h1>
-  
-
-        
-        <a href="/2018/10/29/helloworld/" class="archive-article-date">
-  	<time datetime="2018-10-29T04:27:45.433Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=461525011&auto=1&height=66"></iframe>
-
-<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/29/helloworld/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
