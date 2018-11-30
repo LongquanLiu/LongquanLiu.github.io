@@ -160,19 +160,348 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-helloworld" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-JavaBasic" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/29/helloworld/">Hexo</a>
+      <a class="article-title" href="/2018/11/02/JavaBasic/">Java Basic</a>
     </h1>
   
 
         
-        <a href="/2018/10/29/helloworld/" class="archive-article-date">
+        <a href="/2018/11/02/JavaBasic/" class="archive-article-date">
+  	<time datetime="2018-11-02T04:43:57.644Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><h3 id="面向对象的特征"><a href="#面向对象的特征" class="headerlink" title="面向对象的特征"></a>面向对象的特征</h3><p>封装、继承、多态。</p>
+<ul>
+<li>封装：隐藏对象的属性和现实细节，只对外提供公共访问方式。<blockquote>
+<p>封装的原则：将不需要对外提供的内容都隐藏（设置访问修饰符为‘private’），仅提供公共访问方法（加入逻辑判断）对其访问。</p>
+</blockquote>
+</li>
+<li>继承：继承是从已有类得到继承信息创建新类的过程。</li>
+<li>多态：多态性是指允许不同子类型的对象对同一消息作出不同的响应。简单的说就是用同样的（父类）对象引用调用同样的方法但是做了不同的事情。<blockquote>
+<p>多态性分为编译时的多态性和运行时的多态性。<br>要实现多态需要做两件事：<br>1). 方法覆盖（子类继承父类并覆盖父类中已有的或抽象的方法）<br>2). 用子类型对象赋值给父类的引用。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="代码中如何实现多态"><a href="#代码中如何实现多态" class="headerlink" title="代码中如何实现多态"></a>代码中如何实现多态</h3><p>实现多态主要有以下三种方式:</p>
+<ul>
+<li>接口实现</li>
+<li>继承父类覆盖方法<blockquote>
+<p>编译器会根据引用类型而不是实际对象来决定能够调用的方法</p>
+</blockquote>
+</li>
+<li>同一类中进行方法重载</li>
+</ul>
+<h3 id="重载（Overload）和重写（Override）的区别。"><a href="#重载（Overload）和重写（Override）的区别。" class="headerlink" title="重载（Overload）和重写（Override）的区别。"></a>重载（Overload）和重写（Override）的区别。</h3><p>方法的重载和重写都是实现多态的方式，区别在于前者实现的是编译时的多态性，后者实现的是运行时的多态性。</p>
+<ul>
+<li>重载发生在一个类中，同名的方法如果有不同的参数列表（参数类型不同、参数个数不同或者二者都不同）则视为重载，对返回类型没有要求。</li>
+<li>重写发生在子类与父类之间，重写要求子类重写的方法与父类被重写的方法有着相同的返回类型，比父类被重写的方法更好的访问，不能比父类被重写方法声明更多的异常。<br>父类的静态方法不能被子类重写。重写只适用于实例方法，不能用于静态方法<blockquote>
+<p>而子类当中含有和父类相同签名的静态方法，我们一般称之为隐藏，调用的方法为定义的类所有的静态方法。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="构造器（constructor）是否可被重写（override）？"><a href="#构造器（constructor）是否可被重写（override）？" class="headerlink" title="构造器（constructor）是否可被重写（override）？"></a>构造器（constructor）是否可被重写（override）？</h3><p>构造器不能被继承，因此不能被重写，但可以被重载。</p>
+<h3 id="抽象类和接口有什么区别？"><a href="#抽象类和接口有什么区别？" class="headerlink" title="抽象类和接口有什么区别？"></a>抽象类和接口有什么区别？</h3><blockquote>
+<p>相同点：</p>
+<ul>
+<li>抽象类和接口都不能实例化，但可以定义抽象类和接口类型的引用；</li>
+<li>一个类如果继承某个抽象类或者实现了某个接口，必须对其中的抽象方法 <em>全部</em> 进行实现，否则该类仍然需要被声明为抽象类；</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>不同点：</p>
+<ul>
+<li>接口比抽象类更加抽象（100%抽象类），抽象类中可以定义构造器，可以有具体方法和抽象方法，接口不能定义构造器，而且全部都得是抽象方法；</li>
+<li>抽象类中的成员可以是private(default)、protecetd、public，而接口中的成员全部都是public;</li>
+<li>抽象类中可以定义成员变量，而接口中的成员变量实际上都是常量；</li>
+<li>有抽象方法的类必须声明为抽象类，而抽象类未必要有抽象方法。</li>
+</ul>
+</blockquote>
+<h3 id="访问修饰符public-private-protected-以及不写（默认）时的区别？"><a href="#访问修饰符public-private-protected-以及不写（默认）时的区别？" class="headerlink" title="访问修饰符public,private,protected,以及不写（默认）时的区别？"></a>访问修饰符public,private,protected,以及不写（默认）时的区别？</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">修饰符</th>
+<th style="text-align:center">当前类</th>
+<th style="text-align:center">同包</th>
+<th style="text-align:center">子类</th>
+<th style="text-align:center">其他包</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+</tr>
+<tr>
+<td style="text-align:center">protected</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">N</td>
+</tr>
+<tr>
+<td style="text-align:center">default</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N</td>
+</tr>
+<tr>
+<td style="text-align:center">private</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N</td>
+</tr>
+</tbody>
+</table>
+<h3 id="简述一下面向对象的“六原则一法则”。"><a href="#简述一下面向对象的“六原则一法则”。" class="headerlink" title="简述一下面向对象的“六原则一法则”。"></a>简述一下面向对象的“六原则一法则”。</h3><ul>
+<li>单一职责原则：一个类只做它该做的事情。 高内聚</li>
+<li>开闭原则：软件实体应当对扩展开放，对修改关闭。<blockquote>
+<p> 在理想的状态下，当我们需要为一个软件系统增加新功能时，只需要从原来的系统派生出一些新类就可以，不需要修改原来的任何一行代码。要做到开闭有两个要点：<br> 1）抽象是关键，一个系统中如果没有抽象类或接口系统就没有扩展点；<br> 2）封装可变性，将系统中的各种可变因素封装到一个继承结构中，如果多个可变因素混杂在一起，系统将变得复杂而换乱，如果不清楚如何封装可变性，可以参考《设计模式精解》一书中对桥梁模式的讲解的章节。</p>
+</blockquote>
+</li>
+<li>依赖倒转原则：面向接口编程。<blockquote>
+<p>就是声明方法的参数类型、方法的返回类型、变量的引用类型时，尽可能使用抽象类型而不用具体类型，因为抽象类型可以被它的任何一个子类型所替代。</p>
+</blockquote>
+</li>
+<li>里氏替换原则：任何时候都可以用子类型替换掉父类型。<blockquote>
+<p>关于里氏替换原则的描述，Barbara Liskov女士的描述比这个要复杂得多，但简单的说就是能用父类型的地方就一定能使用子类型。里氏替换原则可以检查继承关系是否合理，如果一个继承关系违背了里氏替换原则，那么这个继承关系一定是错误的，需要对代码进行重构。例如让猫继承狗，或者狗继承猫，又或者让正方形继承长方形都是错误的继承关系，因为你很容易找到违反里氏替换原则的场景。需要注意的是：子类一定是增加父类的能力而不是减少父类的能力，因为子类比父类的能力更多，把能力多的对象当成能力少的对象来用当然没有任何问题。</p>
+</blockquote>
+</li>
+<li>接口隔离原则：接口要小而专，绝不能大而全。<blockquote>
+<p>接口也应该是高度内聚的。例如，琴棋书画就应该分别设计为四个接口，而不应设计成一个接口中的四个方法，因为如果设计成一个接口中的四个方法，那么这个接口很难用，毕竟琴棋书画四样都精通的人还是少数，而如果设计成四个接口，会几项就实现几个接口，这样的话每个接口被复用的可能性是很高的。Java中的接口代表能力、代表约定、代表角色。</p>
+</blockquote>
+</li>
+<li>合成聚合复用原则：优先使用聚合或合成关系复用代码。<blockquote>
+<p>通过继承来复用代码是面向对象程序设计中被滥用得最多的东西，因为所有的教科书都无一例外的对继承进行了鼓吹从而误导了初学者， <em>类与类之间简单的说有三种关系，Is-A关系、Has-A关系、Use-A关系，分别代表继承、关联和依赖。其中，关联关系根据其关联的强度又可以进一步划分为关联、聚合和合成，但说白了都是Has-A关系，合成聚合复用原则想表达的是优先考虑Has-A关系而不是Is-A关系复用代码，</em> 原因嘛可以自己从百度上找到一万个理由，需要说明的是，即使在Java的API中也有不少滥用继承的例子，例如Properties类继承了Hashtable类，Stack类继承了Vector类，这些继承明显就是错误的，更好的做法是在Properties类中放置一个Hashtable类型的成员并且将其键和值都设置为字符串来存储数据，而Stack类的设计也应该是在Stack类中放一个Vector对象来存储数据。记住：任何时候都不要继承工具类，工具是可以拥有并可以使用的，而不是拿来继承的。</p>
+</blockquote>
+</li>
+<li>迪米特法则：迪米特法则又叫最少知识原则，一个对象应当对其他对象有尽可能少的了解。 低耦合<blockquote>
+<p>迪米特法则简单的说就是如何做到”低耦合”，门面模式和调停者模式就是对迪米特法则的践行。对于门面模式可以举一个简单的例子，你去一家公司洽谈业务，你不需要了解这个公司内部是如何运作的，你甚至可以对这个公司一无所知，去的时候只需要找到公司入口处的前台美女，告诉她们你要做什么，她们会找到合适的人跟你接洽，前台的美女就是公司这个系统的门面。再复杂的系统都可以为用户提供一个简单的门面，Java Web开发中作为前端控制器的Servlet或Filter不就是一个门面吗，浏览器对服务器的运作方式一无所知，但是通过前端控制器就能够根据你的请求得到相应的服务。调停者模式也可以举一个简单的例子来说明，例如一台计算机，CPU、内存、硬盘、显卡、声卡各种设备需要相互配合才能很好的工作，但是如果这些东西都直接连接到一起，计算机的布线将异常复杂，在这种情况下，主板作为一个调停者的身份出现，它将各个设备连接在一起而不需要每个设备之间直接交换数据，这样就减小了系统的耦合度和复杂度。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h2><h3 id="String-是最基本的数据类型吗？"><a href="#String-是最基本的数据类型吗？" class="headerlink" title="String 是最基本的数据类型吗？"></a>String 是最基本的数据类型吗？</h3><p>不是，Java中基本的数据类型只有8种：byte8、short16、int32、long64、float32、double64、char16、boolean。除了基本类型（primitive type）和枚举类型（enumeration type），剩下的都是引用类型（reference type）。</p>
+<h3 id="float-f-3-4-是否正确？"><a href="#float-f-3-4-是否正确？" class="headerlink" title="float f=3.4;是否正确？"></a>float f=3.4;是否正确？</h3><p>不正确。3.4是双精度数，将双精度型（double）赋值给浮点型（float）属于溢出（相当于把长颈鹿放到兔子笼里）会造成精度损失，因此需要强制类型转换float f =(float)3.4; 或者写成float f =3.4F;。</p>
+<h3 id="short-s1-1-s1-s1-1-有错吗-short-s1-1-s1-1-有错吗？"><a href="#short-s1-1-s1-s1-1-有错吗-short-s1-1-s1-1-有错吗？" class="headerlink" title="short s1 = 1; s1 = s1 + 1;有错吗?short s1 = 1; s1 += 1;有错吗？"></a>short s1 = 1; s1 = s1 + 1;有错吗?short s1 = 1; s1 += 1;有错吗？</h3><p>对于short s1 = 1; s1 = s1 + 1;由于1是int类型，因此s1+1运算结果也是int 型，需要强制转换类型才能赋值给short型。而short s1 = 1; s1 += 1;可以正确编译，因为s1+= 1;相当于s1 = (short)(s1 + 1);其中有隐含的强制类型转换。</p>
+<h3 id="int和Integer有什么区别？"><a href="#int和Integer有什么区别？" class="headerlink" title="int和Integer有什么区别？"></a>int和Integer有什么区别？</h3><p>Java是一个近乎纯洁的面向对象编程语言，但是为了编程的方便还是引入了基本数据类型，但是为了能够将这些基本数据类型当成对象操作，Java为每一个基本数据类型都引入了对应的包装类型（wrapper class），int的包装类就是Integer，从Java 5开始引入了自动装箱/拆箱机制，使得二者可以相互转换。</p>
+<blockquote>
+<p>Java为每个原始类型提供了包装类型：</p>
+<ul>
+<li>原始类型: boolean，char，byte，short，int，long，float，double</li>
+<li>包装类型：Boolean，Character，Byte，Short，Integer，Long，Float，Double</li>
+</ul>
+</blockquote>
+<h3 id="amp-和-amp-amp-的区别？"><a href="#amp-和-amp-amp-的区别？" class="headerlink" title="&amp;和&amp;&amp;的区别？"></a>&amp;和&amp;&amp;的区别？</h3><blockquote>
+<p>&amp;运算符有两种用法：(1)按位与；(2)逻辑与。&amp;&amp;运算符是短路与运算。逻辑与跟短路与的差别是非常巨大的，虽然二者都要求运算符左右两端的布尔值都是true整个表达式的值才是true。&amp;&amp;之所以称为短路运算是因为，如果&amp;&amp;左边的表达式的值是false，右边的表达式会被直接短路掉，不会进行运算。很多时候我们可能都需要用&amp;&amp;而不是&amp;，例如在验证用户登录时判定用户名不是null而且不是空字符串，应当写为：username != null &amp;&amp;!username.equals(“”)，二者的顺序不能交换，更不能用&amp;运算符，因为第一个条件如果不成立，根本不能进行字符串的equals比较，否则会产生NullPointerException异常。注意：逻辑或运算符（|）和短路或运算符（||）的差别也是如此。</p>
+</blockquote>
+<h3 id="switch-是否能作用在byte-上，是否能作用在long-float-上，是否能作用在String上？"><a href="#switch-是否能作用在byte-上，是否能作用在long-float-上，是否能作用在String上？" class="headerlink" title="switch 是否能作用在byte 上，是否能作用在long,float 上，是否能作用在String上？"></a>switch 是否能作用在byte 上，是否能作用在long,float 上，是否能作用在String上？</h3><blockquote>
+<p>在Java 5以前，switch(expr)中，expr只能是byte、short、char、int。从Java 5开始，Java中引入了枚举类型，expr也可以是enum类型，从Java 7开始，expr还可以是字符串（String），但是长整型（long）,浮点数（float）在目前所有的版本中都是不可以的。</p>
+</blockquote>
+<h3 id="两个对象值相同-x-equals-y-true-，但却可有不同的hash-code，这句话对不对？"><a href="#两个对象值相同-x-equals-y-true-，但却可有不同的hash-code，这句话对不对？" class="headerlink" title="两个对象值相同(x.equals(y) == true)，但却可有不同的hash code，这句话对不对？"></a>两个对象值相同(x.equals(y) == true)，但却可有不同的hash code，这句话对不对？</h3><blockquote>
+<p>不对，如果两个对象x和y满足x.equals(y) == true，它们的哈希码（hash code）应当相同。Java对于eqauls方法和hashCode方法是这样规定的：</p>
+<ul>
+<li>如果两个对象相同（equals方法返回true），那么它们的hashCode值一定要相同；</li>
+<li>如果两个对象的hashCode相同，它们并不一定相同.<br>补充：关于equals和hashCode方法，很多Java程序都知道，但很多人也就是仅仅知道而已，在Joshua Bloch的大作《Effective Java》（很多软件公司，《Effective Java》、《Java编程思想》以及《重构：改善既有代码质量》是Java程序员必看书籍）中是这样介绍equals方法的：首先equals方法必须满足自反性（x.equals(x)必须返回true）、对称性（x.equals(y)返回true时，y.equals(x)也必须返回true）、传递性（x.equals(y)和y.equals(z)都返回true时，x.equals(z)也必须返回true）和一致性（当x和y引用的对象信息没有被修改时，多次调用x.equals(y)应该得到同样的返回值），而且对于任何非null值的引用x，x.equals(null)必须返回false。<br>实现高质量的equals方法的诀窍包括：</li>
+<li>使用==操作符检查”参数是否为这个对象的引用”；</li>
+<li>使用instanceof操作符检查”参数是否为正确的类型”；</li>
+<li>对于类中的关键属性，检查参数传入对象的属性是否与之相匹配；</li>
+<li>编写完equals方法后，问自己它是否满足对称性、传递性、一致性；</li>
+<li>重写equals时总是要重写hashCode；</li>
+<li>不要将equals方法参数中的Object对象替换为其他的类型，在重写时不要忘掉</li>
+</ul>
+</blockquote>
+<h3 id="当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递？"><a href="#当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递？" class="headerlink" title="当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递？"></a>当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递？</h3><p>是<strong>值传递</strong>。Java语言的方法调用只支持参数的值传递。当一个对象实例作为一个参数被传递到方法中时，参数的值就是对该对象的引用。对象的属性可以在被调用过程中被改变，但对对象引用的改变是不会影响到调用者的。C++和C#中可以通过传引用或传输出参数来改变传入的参数的值。</p>
+<h3 id="String和StringBuilder、StringBuffer的区别？"><a href="#String和StringBuilder、StringBuffer的区别？" class="headerlink" title="String和StringBuilder、StringBuffer的区别？"></a>String和StringBuilder、StringBuffer的区别？</h3><p>Java平台提供了两种类型的字符串：String和StringBuffer/StringBuilder，它们可以储存和操作字符串。其中String是<strong>只读字符串</strong>，也就意味着String引用的字符串内容是不能被改变的。而StringBuffer/StringBuilder类表示的字符串对象可以直接进行修改。StringBuilder是Java 5中引入的，它和StringBuffer的方法完全相同，区别在于它是在<strong>单线程</strong>环境下使用的，因为它的所有方面都没有被synchronized修饰，因此它的效率也比StringBuffer要高。</p>
+<h3 id="抽象的（abstract）方法是否可同时是静态的（static）-是否可同时是本地方法（native），是否可同时被synchronized修饰？"><a href="#抽象的（abstract）方法是否可同时是静态的（static）-是否可同时是本地方法（native），是否可同时被synchronized修饰？" class="headerlink" title="抽象的（abstract）方法是否可同时是静态的（static）,是否可同时是本地方法（native），是否可同时被synchronized修饰？"></a>抽象的（abstract）方法是否可同时是静态的（static）,是否可同时是本地方法（native），是否可同时被synchronized修饰？</h3><p>都不能。抽象方法需要子类重写，而静态的方法是无法被重写的，因此二者是矛盾的。本地方法是由本地代码（如C代码）实现的方法，而抽象方法是没有实现的，也是矛盾的。synchronized和方法的实现细节有关，抽象方法不涉及实现细节，因此也是相互矛盾的。</p>
+<h3 id="阐述静态变量和实例变量的区别。"><a href="#阐述静态变量和实例变量的区别。" class="headerlink" title="阐述静态变量和实例变量的区别。"></a>阐述静态变量和实例变量的区别。</h3><p>静态变量是被static修饰符修饰的变量，也称为类变量，它属于类，不属于类的任何一个对象，一个类不管创建多少个对象，静态变量在内存中有且仅有一个拷贝；实例变量必须依存于某一实例，需要先创建对象然后通过对象才能访问到它。静态变量可以实现让多个对象共享内存。<br>ps：在Java开发中，上下文类和工具类中通常会有大量的静态成员。</p>
+<h3 id="Object中有哪些公共方法？"><a href="#Object中有哪些公共方法？" class="headerlink" title="Object中有哪些公共方法？"></a>Object中有哪些公共方法？</h3><ul>
+<li>equals()</li>
+<li>clone()</li>
+<li>getClass()</li>
+<li>notify(),notifyAll(),wait()</li>
+<li>toString</li>
+</ul>
+<h3 id="是否可以从一个静态（static）方法内部发出对非静态方法的调用？"><a href="#是否可以从一个静态（static）方法内部发出对非静态方法的调用？" class="headerlink" title="是否可以从一个静态（static）方法内部发出对非静态方法的调用？"></a>是否可以从一个静态（static）方法内部发出对非静态方法的调用？</h3><p>不可以，静态方法只能访问静态成员，因为非静态方法的调用要先创建对象，在调用静态方法时可能对象并没有初始化。</p>
+<h3 id="深拷贝和浅拷贝的区别是什么？"><a href="#深拷贝和浅拷贝的区别是什么？" class="headerlink" title="深拷贝和浅拷贝的区别是什么？"></a>深拷贝和浅拷贝的区别是什么？</h3><ul>
+<li>浅拷贝：拷贝对象的所有变量都含有与原来对象相同的值，而所有对其他对象的引用仍然指向原来的对象。换言之，浅拷贝仅仅复制所考虑的对象，而不复制它引用的对象；</li>
+<li>深拷贝：拷贝对象的所有变量都含有与原来对象相同的值，而那些引用其他对象的变量将指向被复制过的新的对象。换言之，深拷贝把要复制的对象所引用的对象都复制了一遍。</li>
+</ul>
+<h3 id="String-s-new-String-“xyz”-创建了几个字符串对象？"><a href="#String-s-new-String-“xyz”-创建了几个字符串对象？" class="headerlink" title="String s = new String(“xyz”);创建了几个字符串对象？"></a>String s = new String(“xyz”);创建了几个字符串对象？</h3><p>两个对象，一个是静态区的”xyz”，一个是用new创建在堆上的对象。</p>
+<h3 id="java中-和equals-的区别-equals-和-hashcode的区别？"><a href="#java中-和equals-的区别-equals-和-hashcode的区别？" class="headerlink" title="java中==和equals()的区别,equals()和`hashcode的区别？"></a>java中==和equals()的区别,equals()和`hashcode的区别？</h3><ul>
+<li>== 是运算符，用于比较两个变量是否相等；</li>
+<li>equals()是object的类方法，用于比较两个对象是否相等。<blockquote>
+<p>默认Object类的equals方法时比较两个对象的地址，此时和==的结果一样，即：<br>基本类型比较用 ==, 比较的是他们的值。默认下，对象用 == 比较时，比较的是内存地址，如果需要比较对象内容，需要重写equals方法</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="a-b与a-equals-b-有什么区别"><a href="#a-b与a-equals-b-有什么区别" class="headerlink" title="a==b与a.equals(b)有什么区别"></a>a==b与a.equals(b)有什么区别</h3><ul>
+<li>如果a 和b 都是对象，则 a==b 是比较两个对象的引用，只有当 a 和 b 指向的是堆中的同一个对象才会返回 true</li>
+<li>a.equals(b) 是进行对象内容的（逻辑）比较，所以通常需要重写该方法来提供逻辑一致性的比较。例如，String 类重写 equals() 方法，所以可以用于两个不同对象，但是包含的字母相同的比较。</li>
+</ul>
+<h3 id="接口是否可继承（extends）接口？抽象类是否可实现（implements）接口？抽象类是否可继承具体类（concrete-class）？"><a href="#接口是否可继承（extends）接口？抽象类是否可实现（implements）接口？抽象类是否可继承具体类（concrete-class）？" class="headerlink" title="接口是否可继承（extends）接口？抽象类是否可实现（implements）接口？抽象类是否可继承具体类（concrete class）？"></a>接口是否可继承（extends）接口？抽象类是否可实现（implements）接口？抽象类是否可继承具体类（concrete class）？</h3><p><strong>接口可以继承接口，而且支持多重继承。抽象类可以实现（implement）接口，抽象类可继承具体类也可以继承抽象类。</strong></p>
+<h3 id="Java-中的final关键字有哪些用法？"><a href="#Java-中的final关键字有哪些用法？" class="headerlink" title="Java 中的final关键字有哪些用法？"></a>Java 中的final关键字有哪些用法？</h3><ul>
+<li>修饰类：表示该类不能被继承(extends)；</li>
+<li>修饰方法：表示该方法不能被重写(override)；</li>
+<li>修饰变量：表示变量只能一次赋值以后值不能被修改(constant) 。</li>
+</ul>
+<h3 id="throw和throws的区别？"><a href="#throw和throws的区别？" class="headerlink" title="throw和throws的区别？"></a>throw和throws的区别？</h3><ul>
+<li>throw用于主动抛出java.lang.Throwable 类的一个实例化对象，意思是说你可以通过关键字 throw 抛出一个 Error 或者 一个Exception，如：throw new IllegalArgumentException(“size must be multiple of 2″)。</li>
+<li>throws 的作用是作为方法声明和签名的一部分，方法被抛出相应的异常以便调用者能处理。Java 中，任何未处理的受检查异常强制在 throws 子句中声明。</li>
+</ul>
+<h3 id="Error和Exception有什么区别？"><a href="#Error和Exception有什么区别？" class="headerlink" title="Error和Exception有什么区别？"></a>Error和Exception有什么区别？</h3><ul>
+<li>Error表示系统级的错误和程序不必处理的异常，是恢复很困难的问题；eg 内存溢出…不可能要求程序能处理这样的情况。</li>
+<li>Exception表示需要捕捉或者需要程序进行处理的异常，是设计或实现的问题；即表示如果程序运行正常，从不会发送的情况。</li>
+</ul>
+<h3 id="Java语言如何进行异常处理，关键字：throws、throw、try、catch、finally分别如何使用？"><a href="#Java语言如何进行异常处理，关键字：throws、throw、try、catch、finally分别如何使用？" class="headerlink" title="Java语言如何进行异常处理，关键字：throws、throw、try、catch、finally分别如何使用？"></a>Java语言如何进行异常处理，关键字：throws、throw、try、catch、finally分别如何使用？</h3><p>在Java中，每个异常都是一个对象，它是Throwable类或其子类的实例。当一个方法出现异常后便抛出一个异常对象，该对象中包含有异常信息，调用这个对象的方法可以捕获到这个异常并可以对其进行处理。<br>Java的异常处理是通过5个关键词来实现的：try、catch、throw、throws和finally。</p>
+<blockquote>
+<p>一般情况下是用try来执行一段程序，如果系统会抛出（throw）一个异常对象，可以通过它的类型来捕获（catch）它，或通过总是执行代码块（finally）来处理； try用来指定一块预防所有异常的程序； catch子句紧跟在try块后面，用来指定你想要捕获的异常的类型； throw语句用来明确地抛出一个异常； throws用来声明一个方法可能抛出的各种异常（当然声明异常时允许无病呻吟）； finally为确保一段代码不管发生什么异常状况都要被执行；<br>try语句可以嵌套，每当遇到一个try语句，异常的结构就会被放入异常栈中，直到所有的try语句都完成。如果下一级的try语句没有对某种异常进行处理，异常栈就会执行出栈操作，直到遇到有处理这种异常的try语句或者最终将异常抛给JVM。</p>
+</blockquote>
+<h3 id="运行时异常与受检异常有何异同？"><a href="#运行时异常与受检异常有何异同？" class="headerlink" title="运行时异常与受检异常有何异同？"></a>运行时异常与受检异常有何异同？</h3><p>异常表示程序运行过程中可能出现的非正常状态，</p>
+<ul>
+<li>运行时异常表示虚拟机的通常操作中可能遇到的异常，是一种常见运行错误，只要程序设计得没有问题通常就不会发生。</li>
+<li>受检异常跟程序运行的上下文环境有关，即使程序设计无误，仍然可能因使用的问题而引发。Java编译器要求方法必须声明抛出可能发生的受检异常，但是并不要求必须声明抛出未被捕获的运行时异常。<blockquote>
+<p>异常和继承一样，是面向对象程序设计中经常被滥用的东西，在Effective Java中对异常的使用给出了以下指导原则：</p>
+<ul>
+<li>不要将异常处理用于正常的控制流（设计良好的API不应该强迫它的调用者为了正常的控制流而使用异常）</li>
+<li>对可以恢复的情况使用受检异常，对编程错误使用运行时异常</li>
+<li>避免不必要的使用受检异常（可以通过一些状态检测手段来避免异常的发生）</li>
+<li>优先使用标准的异常</li>
+<li>每个方法抛出的异常都要有文档</li>
+<li>保持异常的原子性</li>
+<li>不要在catch中忽略掉捕获到的异常</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="列出一些你常见的运行时异常"><a href="#列出一些你常见的运行时异常" class="headerlink" title="列出一些你常见的运行时异常"></a>列出一些你常见的运行时异常</h3><ul>
+<li>ArithmeticException（算术异常）</li>
+<li>ClassCastException （类转换异常）</li>
+<li>IllegalArgumentException （非法参数异常）</li>
+<li>IndexOutOfBoundsException （下标越界异常）</li>
+<li>NullPointerException （空指针异常）</li>
+<li>SecurityException （安全异常）</li>
+</ul>
+<h3 id="阐述final、finally、finalize的区别"><a href="#阐述final、finally、finalize的区别" class="headerlink" title="阐述final、finally、finalize的区别"></a>阐述final、finally、finalize的区别</h3><ul>
+<li>final: 主要有三种用法，若一个类被声明为final,意味着不能被继承，即派生出子类；（反义词abstract）若一个变量声明为final，必须在声明时给定初值，且无法被改变； 若一个方法被声明为final,则无法被子类重写覆盖；</li>
+<li>finally: 通常放于try..catch..语句块后，意味着无论正常执行还是出现异常，只要当JVM不关闭时这里的代码都会运行，可以将释放外部资源的代码放于此处；<blockquote>
+<ul>
+<li>finalize: Object类中定义的方法，Java中允许使用finalize()方法在垃圾收集器将对象从内存中清除出去之前做必要的清理工作。这个方法是由垃圾收集器在销毁对象时调用的，通过重写finalize()方法可以整理系统资源或者执行其他清理工作。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="java当中的四种引用"><a href="#java当中的四种引用" class="headerlink" title="java当中的四种引用"></a>java当中的四种引用</h3><p>强引用,软引用,弱引用,虚引用.不同的引用类型主要体现在GC上:</p>
+<ul>
+<li>强引用：如果一个对象具有强引用，它就不会被垃圾回收器回收。即使当前内存空间不足，JVM也不会回收它，而是抛出 OutOfMemoryError 错误，使程序异常终止。如果想中断强引用和某个对象之间的关联，可以显式地将引用赋值为null，这样一来的话，JVM在合适的时间就会回收该对象</li>
+<li>软引用：在使用软引用时，如果内存的空间足够，软引用就能继续被使用，而不会被垃圾回收器回收，只有在内存不足时，软引用才会被垃圾回收器回收。</li>
+<li>弱引用：具有弱引用的对象拥有的生命周期更短暂。因为当 JVM 进行垃圾回收，一旦发现弱引用对象，无论当前内存空间是否充足，都会将弱引用回收。不过由于垃圾回收器是一个优先级较低的线程，所以并不一定能迅速发现弱引用对象</li>
+<li>虚引用：顾名思义，就是形同虚设，如果一个对象仅持有虚引用，那么它相当于没有引用，在任何时候都可能被垃圾回收器回收。<br><a href="http://blog.csdn.net/dd864140130/article/details/49885811" target="_blank" rel="noopener">深入对象引用</a></li>
+</ul>
+<h3 id="为什么要有不同的引用类型"><a href="#为什么要有不同的引用类型" class="headerlink" title="为什么要有不同的引用类型"></a>为什么要有不同的引用类型</h3><p>不像C语言,我们可以控制内存的申请和释放,在Java中有时候我们需要<strong>适当的控制对象被回收的时机</strong>,因此就诞生了不同的引用类型,可以说不同的引用类型实则是对GC回收时机不可控的妥协.有以下几个使用场景可以充分的说明:<br>利用软引用和弱引用解决OOM问题：用一个HashMap来保存图片的路径和相应图片对象关联的软引用之间的映射关系，在内存不足时，JVM会自动回收这些缓存图片对象所占用的空间，从而有效地避免了OOM的问题.<br>通过软引用实现Java对象的高速缓存:比如我们创建了一Person的类，如果每次需要查询一个人的信息,哪怕是几秒中之前刚刚查询过的，都要重新构建一个实例，这将引起大量Person对象的消耗,并且由于这些对象的生命周期相对较短,会引起多次GC影响性能。此时,通过软引用和 HashMap 的结合可以构建高速缓存,提供性能.</p>
+<h3 id="内部类的作用"><a href="#内部类的作用" class="headerlink" title="内部类的作用"></a>内部类的作用</h3><p>内部类可以有多个实例,每个实例都有自己的状态信息,并且与其他外围对象的信息相互独立。</p>
+<ul>
+<li>在单个外围类中，可以让多个内部类以不同的方式实现同一接口，或者继承自同一个类；</li>
+<li>创建内部类对象时不依赖于外围类对象的创建；</li>
+<li>内部类并没有令人疑惑的“Is-a”关系，它就像是一个独立的实体。<br><strong>内部类提供了更好的封装，除了该外围类，其他类都不能访问。</strong></li>
+</ul>
+<h3 id="说出几条-Java-中方法重载的最佳实践？"><a href="#说出几条-Java-中方法重载的最佳实践？" class="headerlink" title="说出几条 Java 中方法重载的最佳实践？"></a>说出几条 Java 中方法重载的最佳实践？</h3><p>下面有几条可以遵循的方法重载的最佳实践来避免造成自动装箱的混乱：</p>
+<ul>
+<li>不要重载这样的方法：一个方法接收 int 参数，而另个方法接收 Integer 参数。</li>
+<li>不要重载参数数量一致，而只是参数顺序不同的方法。</li>
+<li>如果重载的方法参数个数多于 5 个，采用可变参数。</li>
+</ul>
+<h3 id="SimpleDateFormat是线程安全的吗？"><a href="#SimpleDateFormat是线程安全的吗？" class="headerlink" title="SimpleDateFormat是线程安全的吗？"></a>SimpleDateFormat是线程安全的吗？</h3><blockquote>
+<p>非常不幸，DateFormat 的所有实现，包括 SimpleDateFormat 都不是线程安全的，因此你不应该在多线程序中使用，除非是在对外线程安全的环境中使用，如 将 SimpleDateFormat 限制在 ThreadLocal 中。如果你不这么做，在解析或者格式化日期的时候，可能会获取到一个不正确的结果。因此，从日期、时间处理的所有实践来说，我强力推荐 joda-time 库。</p>
+</blockquote>
+<h3 id="如何格式化日期？"><a href="#如何格式化日期？" class="headerlink" title="如何格式化日期？"></a>如何格式化日期？</h3><blockquote>
+<p>Java 中，可以使用 SimpleDateFormat 类或者 joda-time 库来格式日期。DateFormat 类允许你使用多种流行的格式来格式化日期。参见答案中的示例代码，代码中演示了将日期格式化成不同的格式，如 dd-MM-yyyy 或 ddMMyyyy。</p>
+</blockquote>
+<h3 id="说说反射的用途及实现"><a href="#说说反射的用途及实现" class="headerlink" title="说说反射的用途及实现"></a>说说反射的用途及实现</h3><blockquote>
+<p>反射机制是Java语言中一个非常重要的特性，它允许程序在运行时进行自我检查，同时也允许对其内部成员进行操作。<br>反射机制提供的功能主要有：得到一个对象所属的类；获取一个类的所有成员变量和方法；在运行时创建对象；在运行时调用对象的方法；</p>
+</blockquote>
+<h3 id="说说自定义注解的场景及实现"><a href="#说说自定义注解的场景及实现" class="headerlink" title="说说自定义注解的场景及实现"></a>说说自定义注解的场景及实现</h3><blockquote>
+<p>登陆、权限拦截、日志处理，以及各种 Java 框架，如 Spring，Hibernate，JUnit 提到注解就不能不说反射，Java 自定义注解是通过运行时靠反射获取注解。<br>实际开发中，例如我们要获取某个方法的调用日志，可以通过 AOP（动态代理机制）给方法添加切面，通过反射来获取方法包含的注解，如果包含日志注解，就进行日志记录。 反射的实现在 Java 应用层面上讲，是通过对 Class 对象的操作实现的，Class 对象为我们提供了一系列方法对类进行操作。在 JVM 这个角度来说，Class 文件是一组以 8 位字节为基础单位的二进制流，各个数据项目按严格的顺序紧凑的排列在 Class 文件中，里面包含了类、方法、字段等等相关数据。<br>通过对 Class 数据流的处理我们即可得到字段、方法等数据。</p>
+</blockquote>
+<h3 id="为什么要重写hashcode-和equals-以及他们之间的区别与关系？"><a href="#为什么要重写hashcode-和equals-以及他们之间的区别与关系？" class="headerlink" title="为什么要重写hashcode()和equals()以及他们之间的区别与关系？"></a>为什么要重写hashcode()和equals()以及他们之间的区别与关系？</h3><p><a href="https://blog.csdn.net/xlgen157387/article/details/63683882" target="_blank" rel="noopener">为什么要重写hashCode()方法和equals()方法以及如何进行重写</a><br><a href="https://www.cnblogs.com/skywang12345/p/3324958.html" target="_blank" rel="noopener">Java hashCode() 和 equals()的若干问题解答</a><br><a href="http://bijian1013.iteye.com/blog/1972404" target="_blank" rel="noopener">Java中equals()与hashCode()方法详解</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/02/JavaBasic/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Hexo Start" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/29/Hexo Start/">Hexo Start</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/29/Hexo Start/" class="archive-article-date">
   	<time datetime="2018-10-29T04:27:45.433Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-29</time>
 </a>
         
@@ -203,7 +532,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/29/helloworld/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/10/29/Hexo Start/">展开全文 >></a>
         </p>
       
 
@@ -329,15 +658,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Java Imooc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
+                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
+                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
               </li>
              
               <li class="article-tag-list-item">

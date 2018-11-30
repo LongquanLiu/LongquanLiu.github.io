@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://longquanliu.github.io">
-  <title>Archives: 2018/11 | Longquan&#39;s Blog</title>
+  <title>Imooc Java Primary II Chap2 封装 | Longquan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="code">
-<meta name="keywords" content="code">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Longquan&#39;s Blog">
-<meta property="og:url" content="https://longquanliu.github.io/archives/2018/11/index.html">
+  <meta name="description" content="2.1 封装 面向对象三大特性：封装、继承、多态 封装：隐藏类的信息，只能通过类提供的方法实现对隐藏信息的操作和访问 封装实现步骤： 修改属性可见性，设为private 创建getter/setter方法，用于属性的读写 在getter/setter方法中加入属性控制语句，对属性值得合法性进行判断    2.2 包管理Java中的类 包的作用：管理Java文件、解决同名文件(类)冲突 定义包：pa">
+<meta name="keywords" content="Java Imooc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Imooc Java Primary II Chap2 封装">
+<meta property="og:url" content="https://longquanliu.github.io/2018/11/26/Imooc Java Primary II Chap2 封装/index.html">
 <meta property="og:site_name" content="Longquan&#39;s Blog">
-<meta property="og:description" content="code">
+<meta property="og:description" content="2.1 封装 面向对象三大特性：封装、继承、多态 封装：隐藏类的信息，只能通过类提供的方法实现对隐藏信息的操作和访问 封装实现步骤： 修改属性可见性，设为private 创建getter/setter方法，用于属性的读写 在getter/setter方法中加入属性控制语句，对属性值得合法性进行判断    2.2 包管理Java中的类 包的作用：管理Java文件、解决同名文件(类)冲突 定义包：pa">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-11-30T11:17:43.068Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Longquan&#39;s Blog">
-<meta name="twitter:description" content="code">
+<meta name="twitter:title" content="Imooc Java Primary II Chap2 封装">
+<meta name="twitter:description" content="2.1 封装 面向对象三大特性：封装、继承、多态 封装：隐藏类的信息，只能通过类提供的方法实现对隐藏信息的操作和访问 封装实现步骤： 修改属性可见性，设为private 创建getter/setter方法，用于属性的读写 在getter/setter方法中加入属性控制语句，对属性值得合法性进行判断    2.2 包管理Java中的类 包的作用：管理Java文件、解决同名文件(类)冲突 定义包：pa">
   
     <link rel="alternative" href="/atom.xml" title="Longquan&#39;s Blog" type="application/atom+xml">
   
@@ -158,36 +159,113 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Imooc Java Primary II Chap2 封装" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Imooc Java Primary II Chap2 封装
+    </h1>
+  
+
+        
+        <a href="/2018/11/26/Imooc Java Primary II Chap2 封装/" class="archive-article-date">
+  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="2-1-封装"><a href="#2-1-封装" class="headerlink" title="2.1 封装"></a>2.1 封装</h2><ol>
+<li>面向对象三大特性：封装、继承、多态</li>
+<li>封装：隐藏类的信息，只能通过类提供的方法实现对隐藏信息的操作和访问</li>
+<li>封装实现步骤：<ol>
+<li>修改属性可见性，设为private</li>
+<li>创建getter/setter方法，用于属性的读写</li>
+<li>在getter/setter方法中加入属性控制语句，对属性值得合法性进行判断</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-2-包管理Java中的类"><a href="#2-2-包管理Java中的类" class="headerlink" title="2.2 包管理Java中的类"></a>2.2 包管理Java中的类</h2><ol>
+<li>包的作用：管理Java文件、解决同名文件(类)冲突</li>
+<li>定义包：package 包名<ul>
+<li>必须放在Java源程序第一行</li>
+<li>包名间可以使用“.”隔开，eg:com.imooc.MyClass</li>
+</ul>
+</li>
+<li>系统中的包：<ol>
+<li>java.(功能).(类)</li>
+<li>java.lang.(类) 包含java语言基础的类</li>
+<li>java.util.(类) 包含java语言中各种工具类</li>
+<li>java.io.(类) 包含输入、输出相关功能的类</li>
+</ol>
+</li>
+<li>包的使用：<ol>
+<li>import</li>
+<li>全小写字母</li>
+<li>com.imooc.*</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-3-访问修饰符"><a href="#2-3-访问修饰符" class="headerlink" title="2.3 访问修饰符"></a>2.3 访问修饰符</h2><ol>
+<li>修饰属性和方法的访问范围</li>
+<li>访问修饰符：private,default,protected,public</li>
+<li>对应范围：本类，同包，子类，其他</li>
+</ol>
+<h2 id="2-4-this关键字"><a href="#2-4-this关键字" class="headerlink" title="2.4 this关键字"></a>2.4 this关键字</h2><ol>
+<li>this关键字代表当前对象<ul>
+<li>this.属性 操作当前对象的属性</li>
+<li>this.方法 调用当前对象的方法</li>
+</ul>
+</li>
+<li>封装对象属性的时候，经常使用this关键字</li>
+</ol>
+<h2 id="2-5-内部类"><a href="#2-5-内部类" class="headerlink" title="2.5 内部类"></a>2.5 内部类</h2><ol>
+<li>内部类的作用<ol>
+<li>内部类提供了更好的封装，把内部类隐藏在外部类之内，不允许同一个包中的其他类访问该类。</li>
+<li>内部类可以直接访问外部类的所有数据，包括私有数据。</li>
+<li>内部类所实现的功能外部类同样可以实现，只是有时使用内部类更方便</li>
+</ol>
+</li>
+<li>内部类分为以下几种：<ul>
+<li>成员内部类</li>
+<li>静态内部类</li>
+<li>方法内部类</li>
+<li>匿名内部类</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-6-成员内部类"><a href="#2-6-成员内部类" class="headerlink" title="2.6 成员内部类"></a>2.6 成员内部类</h2><ol>
+<li>成员内部类的使用方法：<ol>
+<li>Inner 类定义在 Outer 类的内部，相当于 Outer 类的一个<strong>成员变量的位置</strong>，Inner 类可以使用任意访问控制符，如 public 、 protected 、 private 等</li>
+<li>Inner 类中定义的 test() 方法可以<strong>直接访问 Outer 类中的所有数据</strong>，而不受访问控制符的影响，如直接访问 Outer 类中的私有属性a</li>
+<li>定义了成员内部类后，<strong>必须使用外部类对象来创建内部类对象</strong>，而不能直接去 new 一个内部类对象，即：内部类 对象名 = 外部类对象.new 内部类( );</li>
+<li>编译后：内部类名.class;外部类名$内部类名.class;</li>
+</ol>
+</li>
+<li><strong>外部类是不能直接使用内部类的成员和方法</strong>滴，即先创建内部类的对象，然后通过内部类的对象来访问其成员变量和方法。</li>
+<li>如果外部类和内部类具有相同的成员变量或方法，内部类默认访问自己的成员变量或方法，如果要访问外部类的成员变量，可以使用 this 关键字。</li>
+</ol>
+<h2 id="2-7-static内部类"><a href="#2-7-static内部类" class="headerlink" title="2.7 static内部类"></a>2.7 static内部类</h2><ol>
+<li>创建static内部类的对象时，不需要外部类的对象，可以直接创建 内部类 对象名= new 内部类();</li>
+<li>static内部类不能直接访问外部类的<strong>非静态成员</strong>，但可以通过 new 外部类().成员 的方式访问</li>
+<li>如果外部类的static成员与内部类的成员名称相同，可通过<strong>类名.静态成员</strong>访问外部类的静态成员；如果外部类的静态成员与内部类的成员名称不相同，则可通过“成员名”直接调用外部类的静态成员</li>
+</ol>
+<h2 id="2-8-方法内部类"><a href="#2-8-方法内部类" class="headerlink" title="2.8 方法内部类"></a>2.8 方法内部类</h2><ol>
+<li>方法内部类就是内部类定义在外部类的方法中，方法内部类只在<strong>该方法的内部可见</strong>，即只在该方法内可以使用。</li>
+<li>由于方法内部类不能在外部类的方法以外的地方使用，因此方法内部类<strong>不能使用访问控制符和 static 修饰符</strong>。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/30/Imooc Java Primary III Chap3 常用类/" class="archive-article-date">
-  	<time datetime="2018-11-30T11:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/30/Imooc Java Primary III Chap3 常用类/">Imooc Java Primary III Chap3 常用类</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -199,366 +277,128 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://longquanliu.github.io/2018/11/26/Imooc Java Primary II Chap2 封装/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/28/Imooc Java Primary III Chap2 字符串/" class="archive-article-date">
-  	<time datetime="2018-11-28T07:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-28</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/11/26/Imooc Java Primary II Chap3 继承/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Imooc Java Primary II Chap3 继承
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/11/26/Imooc Java Primary II Chap4 多态/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Imooc Java Primary II Chap4 多态</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/28/Imooc Java Primary III Chap2 字符串/">Imooc Java Primary III Chap2 字符串</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-封装"><span class="toc-number">1.</span> <span class="toc-text">2.1 封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-包管理Java中的类"><span class="toc-number">2.</span> <span class="toc-text">2.2 包管理Java中的类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-访问修饰符"><span class="toc-number">3.</span> <span class="toc-text">2.3 访问修饰符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-this关键字"><span class="toc-number">4.</span> <span class="toc-text">2.4 this关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-内部类"><span class="toc-number">5.</span> <span class="toc-text">2.5 内部类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-成员内部类"><span class="toc-number">6.</span> <span class="toc-text">2.6 成员内部类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-static内部类"><span class="toc-number">7.</span> <span class="toc-text">2.7 static内部类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-8-方法内部类"><span class="toc-number">8.</span> <span class="toc-text">2.8 方法内部类</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/28/Imooc Java Primary III Chap1 异常和异常处理/" class="archive-article-date">
-  	<time datetime="2018-11-28T02:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-28</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/28/Imooc Java Primary III Chap1 异常和异常处理/">Imooc Java Primary III Chap1 异常和异常处理</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/26/Imooc Java Primary II Chap3 继承/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/26/Imooc Java Primary II Chap3 继承/">Imooc Java Primary II Chap3 继承</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/26/Imooc Java Primary II Chap2 封装/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/26/Imooc Java Primary II Chap2 封装/">Imooc Java Primary II Chap2 封装</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/26/Imooc Java Primary II Chap4 多态/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/26/Imooc Java Primary II Chap4 多态/">Imooc Java Primary II Chap4 多态</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/">Imooc Java Primary II Chap1 类和对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/14/LeetCode Algorithm Greedy/" class="archive-article-date">
-  	<time datetime="2018-11-14T01:57:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/14/LeetCode Algorithm Greedy/">LeetCode Algorithm Greedy</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">LeetCode Greedy</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/05/LeetCode Algorithm Sort/" class="archive-article-date">
-  	<time datetime="2018-11-05T09:21:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/05/LeetCode Algorithm Sort/">Leetcode Algorithm Sort</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Leetcode Sort</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/02/LeetCode Algorithm Double Pointer/" class="archive-article-date">
-  	<time datetime="2018-11-02T07:04:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/02/LeetCode Algorithm Double Pointer/">Leetcode Algorithm Double Pointer</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Leetcode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2018/11/page/2/">2</a><a class="extend next" rel="next" href="/archives/2018/11/page/2/">Next &raquo;</a>
-    </nav>
-  
-
 
           </div>
         </div>
@@ -580,8 +420,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
