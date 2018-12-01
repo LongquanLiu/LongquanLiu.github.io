@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://longquanliu.github.io/img/Imooc%20Java%20Primary%20III/String.jpg">
 <meta property="og:image" content="https://longquanliu.github.io/img/Imooc%20Java%20Primary%20III/String_eg.jpg">
 <meta property="og:image" content="https://longquanliu.github.io/img/Imooc%20Java%20Primary%20III/StringBuilder.jpg">
-<meta property="og:updated_time" content="2018-11-30T11:27:39.004Z">
+<meta property="og:updated_time" content="2018-11-30T11:29:56.371Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Imooc Java Primary III Chap2 字符串">
 <meta name="twitter:description" content="2.1 字符串 字符串被作为 String 类型的对象处理。 String 类位于 java.lang 包中。默认情况下，该包被自动导入所有的程序。 创建String对象的方法： String s1 = “imooc” String s2 = new String(); String s3 = new String(“imooc”);    2.2 字符串的不变性1.String 对象创建后则不能">
@@ -197,8 +197,9 @@
 <li>一旦一个字符串在内存中创建，则这个字符串将不可改变。如果需要一个可以改变的字符串，我们可以使用StringBuffer或者StringBuilder</li>
 <li>每次 new 一个字符串就是产生一个新的对象，即便两个字符串的内容相同，使用 ”==” 比较时也为 ”false” ,如果只需比较内容是否相同，应使用 ”equals()” 方法</li>
 </ol>
-<h2 id="2-3-String-类的常用方法-I"><a href="#2-3-String-类的常用方法-I" class="headerlink" title="2.3 String 类的常用方法 I"></a>2.3 String 类的常用方法 I</h2><p>1.<br><img src="/img/Imooc Java Primary III/String.jpg" alt="String类的常用方法"><br>2.<br><img src="/img/Imooc Java Primary III/String_eg.jpg" alt="方法使用"></p>
-<ol start="3">
+<h2 id="2-3-String-类的常用方法-I"><a href="#2-3-String-类的常用方法-I" class="headerlink" title="2.3 String 类的常用方法 I"></a>2.3 String 类的常用方法 I</h2><ol>
+<li>String类的常用方法:<br><img src="/img/Imooc Java Primary III/String.jpg" alt="String类的常用方法"></li>
+<li>方法使用:<br><img src="/img/Imooc Java Primary III/String_eg.jpg" alt="方法使用"></li>
 <li>字符串 str 中字符的索引从0开始，范围为 0 到 str.length()-1</li>
 <li>使用 indexOf 进行字符或字符串查找时，如果匹配返回位置索引；如果没有匹配结果，返回 -1</li>
 <li>使用 substring(beginIndex , endIndex) 进行字符串截取时，包括 beginIndex 位置的字符，不包括 endIndex 位置的字符</li>
@@ -208,7 +209,8 @@
 <li>字节是计算机存储信息的基本单位，1 个字节等于 8 位， gbk 编码中 1 个汉字字符存储需要 2 个字节，1 个英文字符存储需要 1 个字节。所以我们看到上面的程序运行结果中，每个汉字对应两个字节值，如“学”对应 “-47 -89” ，而英文字母 “J” 对应 “74” 。同时，我们还发现汉字对应的字节值为负数，原因在于每个字节是 8 位，最大值不能超过 127，而汉字转换为字节后超过 127，如果超过就会溢出，以负数的形式显示。</li>
 </ol>
 <h2 id="2-5-StringBuilder类"><a href="#2-5-StringBuilder类" class="headerlink" title="2.5 StringBuilder类"></a>2.5 StringBuilder类</h2><ol>
-<li>StringBuffer 是线程安全的，而 StringBuilder 则没有实现线程安全功能，所以性能略高。<br>2.<br><img src="/img/Imooc Java Primary III/StringBuilder.jpg" alt="StringBuilder方法"></li>
+<li>StringBuffer 是线程安全的，而 StringBuilder 则没有实现线程安全功能，所以性能略高。</li>
+<li>StringBuilder方法:<br><img src="/img/Imooc Java Primary III/StringBuilder.jpg" alt="StringBuilder方法"></li>
 <li>在需要频繁对字符串进行修改操作时使用 StringBuilder 的效率比 String 要高</li>
 </ol>
 
@@ -447,15 +449,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
               </li>
              
               <li class="article-tag-list-item">
