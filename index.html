@@ -180,8 +180,70 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h2><ol>
+        <h2 id="3-1-包装类"><a href="#3-1-包装类" class="headerlink" title="3.1 包装类"></a>3.1 包装类</h2><ol>
 <li>基本类型和包装类之间的对应关系：<br><img src="/img/Imooc Java Primary III/packageClass.jpg" alt="基本类型和包装类之间的对应关系"></li>
+<li>包装类主要提供了两大类方法：<ul>
+<li>将本类型和其他基本类型进行转换的方法</li>
+<li>将字符串和本类型及包装类互相转换的方法</li>
+</ul>
+</li>
+<li>Integer 包装类的构造方法：<br><img src="/img/Imooc Java Primary III/Integer.jpg" alt=""></li>
+<li>Integer包装类的常用方法：<br><img src="/img/Imooc Java Primary III/IntegerMethod.jpg" alt=""></li>
+</ol>
+<h2 id="3-2-基本类型和包装类之间的转换"><a href="#3-2-基本类型和包装类之间的转换" class="headerlink" title="3.2 基本类型和包装类之间的转换"></a>3.2 基本类型和包装类之间的转换</h2><ol>
+<li>JDK1.5 引入自动装箱和拆箱的机制</li>
+<li><p>装箱：把基本类型转换成包装类，使其具有对象的性质，又可分为手动装箱和自动装箱</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">10</span></span><br><span class="line">Integer x = <span class="keyword">new</span> Integer(i);</span><br><span class="line">Integer y = i;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拆箱：和装箱相反，把包装类对象转换成基本类型的值，又可分为手动拆箱和自动拆箱</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer j = <span class="keyword">new</span> Integer(<span class="number">8</span>);</span><br><span class="line"><span class="keyword">int</span> m = j.intValue();</span><br><span class="line"><span class="keyword">int</span> n = j;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="3-3-基本类型和字符串之间的转换"><a href="#3-3-基本类型和字符串之间的转换" class="headerlink" title="3.3 基本类型和字符串之间的转换"></a>3.3 基本类型和字符串之间的转换</h2><ol>
+<li><p>基本类型转换为字符串有三种方法：</p>
+<ul>
+<li>使用包装类的 toString() 方法</li>
+<li>使用String类的 valueOf() 方法</li>
+<li>用一个空字符串加上基本类型，得到的就是基本类型数据对应的字符串<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> c = <span class="number">10</span>;</span><br><span class="line">String str1 = Integer.toString(c);</span><br><span class="line">String str2 = String.valueOf(c);</span><br><span class="line">String str3 = c + <span class="string">""</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>将字符串转换成基本类型有两种方法：</p>
+<ul>
+<li>调用包装类的 parseXxx 静态方法</li>
+<li>调用包装类的 valueOf() 方法转换为基本类型的包装类，会自动拆箱<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">"9"</span>;</span><br><span class="line"><span class="keyword">int</span> d = Integer.parseInt(str);</span><br><span class="line"><span class="keyword">int</span> e = Integer.valueOf(str);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-4-使用-Date-和-SimpleDateFormat-类表示时间"><a href="#3-4-使用-Date-和-SimpleDateFormat-类表示时间" class="headerlink" title="3.4 使用 Date 和 SimpleDateFormat 类表示时间"></a>3.4 使用 Date 和 SimpleDateFormat 类表示时间</h2><ol>
+<li><p>java.util 包中的 Date 类。这个类最主要的作用就是获取当前时间，Date 类的使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Date d = <span class="keyword">new</span> Date();</span><br><span class="line">System.out.println(d);</span><br><span class="line"><span class="comment">// 默认无参构造函数为当前时间</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>java.text 包中的 SimpleDateFormat 类大显身手的时候了！！可以使用 SimpleDateFormat 来对日期时间进行格式化，如可以将日期转换为指定格式的文本，也可将文本转换为日期。</p>
+<ul>
+<li>使用 format() 方法将日期转换为指定格式的文本:<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Date d = <span class="keyword">new</span> Date();</span><br><span class="line"><span class="comment">//创建SimpleDateFormat对象，指定目标格式</span></span><br><span class="line">SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line"><span class="comment">//调用format方法，格式化时间，转换为指定格式字符串</span></span><br><span class="line">String today = sdf.format(d);</span><br><span class="line">System.out.println(today);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>*使用 parse() 方法将文本转换为日期:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建日期格式的字符</span></span><br><span class="line">String day = <span class="string">"2018年12月01日 16:39:10"</span>;</span><br><span class="line"><span class="comment">//创建SimpleDateFormat对象,指定字符串的日期格式</span></span><br><span class="line">SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy年MM月dd日 HH:mm:ss"</span>);</span><br><span class="line"><span class="comment">//调用parse()方法，将字符串转换为日期</span></span><br><span class="line">Date date = df.parse(day);</span><br><span class="line">System.out.println(<span class="string">"当前时间："</span> + date);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用 SimpleDateFormat 对象的 parse() 方法时可能会出现转换异常，即 ParseException ，因此需要进行异常处理</p>
+</li>
+<li>使用 Date 类时需要导入 java.util 包，使用 SimpleDateFormat 时需要导入 java.text 包</li>
+</ol>
+<h2 id="3-5-Calendar类的应用"><a href="#3-5-Calendar类的应用" class="headerlink" title="3.5 Calendar类的应用"></a>3.5 Calendar类的应用</h2><ol>
+<li><p>java.util.Calendar 类是一个抽象类，可以通过调用 getInstance() 静态方法获取一个 Calendar 对象，此对象已由当前日期时间初始化，即默认代表当前时间，如 Calendar c = Calendar.getInstance();</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Calendar c = Calendar.getInstance();</span><br><span class="line"><span class="keyword">int</span> year = c.get(Calendar.YEAR);</span><br><span class="line"><span class="keyword">int</span> month = c.get(Calendar.MONTH) + <span class="number">1</span>; <span class="comment">// 0 is 1 MONTH</span></span><br><span class="line"><span class="keyword">int</span> day = c.get(Calendar.DAY_OF_MONTH);</span><br><span class="line"><span class="keyword">int</span> hour = c.get(Calendar.HOUR_OF_DAY);</span><br><span class="line"><span class="keyword">int</span> minute = c.get(Calendar.MINUTE);</span><br><span class="line"><span class="keyword">int</span> second = c.get(Calendar.SECOND);</span><br><span class="line">System.out.println(<span class="string">"当前时间: "</span> + year + <span class="string">"-"</span> + month + <span class="string">"-"</span> + day + <span class="string">" "</span> + hour + <span class="string">":"</span> + minute + <span class="string">":"</span> + second);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Calendar 类提供了 getTime() 方法，用来获取 Date 对象，完成 Calendar 和 Date 的转换，还可通过 getTimeInMillis() 方法，获取此 Calendar 的时间值，以毫秒为单位。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Date date = c.getTime(); <span class="comment">//将Calendar对象转换为Date对象</span></span><br><span class="line">Long time = c.getTimeInMillis(); <span class="comment">//获取当前毫秒数</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="3-6-使用-Math-类操作数据"><a href="#3-6-使用-Math-类操作数据" class="headerlink" title="3.6 使用 Math 类操作数据"></a>3.6 使用 Math 类操作数据</h2><ol>
+<li>Math 类位于 java.lang 包中，包含用于执行基本数学运算的方法， Math 类的所有方法都是静态方法，所以使用该类中的方法时，可以直接使用类名.方法名，如： Math.round();</li>
+<li>常用的方法：<br><img src="/img/Imooc Java Primary III/MathMethod.jpg" alt=""></li>
+<li>使用：<br><img src="/img/Imooc Java Primary III/MathEG.jpg" alt=""></li>
 </ol>
 
       
@@ -473,6 +535,284 @@
 
 
   
+    <article id="post-Imooc Java Primary II Chap4 多态" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap4 多态/">Imooc Java Primary II Chap4 多态</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/26/Imooc Java Primary II Chap4 多态/" class="archive-article-date">
+  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="4-1-多态"><a href="#4-1-多态" class="headerlink" title="4.1 多态"></a>4.1 多态</h2><ol>
+<li>对象的多种形态</li>
+<li>引用多态<ul>
+<li>父类的引用可以指向本类的对象</li>
+<li>父类的引用可以指向子类的对象</li>
+</ul>
+</li>
+<li>方法多态<ul>
+<li>创建本类对象时，调用的方法为本类方法</li>
+<li>创建子类对象时，调用的方法为子类重写的方法或者继承的方法</li>
+</ul>
+</li>
+<li>继承是实现多态的基础</li>
+<li><strong>父类的引用不可以调用子类独有的方法</strong></li>
+</ol>
+<h2 id="4-2-多态中的引用类型转换"><a href="#4-2-多态中的引用类型转换" class="headerlink" title="4.2 多态中的引用类型转换"></a>4.2 多态中的<strong>引用</strong>类型转换</h2><ol>
+<li>向上类型转换（隐式/自动类型转换），是小类型到大类型的转换。杯子——茶壶（安全）</li>
+<li>向下类型转换（强制类型转换），是大类型到小类型。茶壶——杯子（不安全）</li>
+<li><strong>instanceof</strong> 运算符，来解决引用对象的类型，避免类型转换的安全性问题<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(animal <span class="keyword">instanceof</span> Cat)&#123;</span><br><span class="line">  Cat cat =(Cat)animal;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  System.out.println(<span class="string">"无法进行类型转换"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="4-3-抽象类-abstract"><a href="#4-3-抽象类-abstract" class="headerlink" title="4.3 抽象类 abstract"></a>4.3 抽象类 abstract</h2><ol>
+<li>应用场景：<ul>
+<li>某个父类只知道子类应该包含怎样的方法，但无法准确知道这些子类如何实现这些方法。</li>
+<li>从多个具有相同特征的类中抽象出一个抽象类，以这个抽象类作为子类的模板，从而避免子类设计的随意性。</li>
+</ul>
+</li>
+<li>作用：限制规定子类必须实现某些方法，但不关注实现细节</li>
+<li>使用规则：<ul>
+<li>abstract定义抽象类</li>
+<li>abstract定义抽象方法，只有声明，不需要实现</li>
+<li>包含抽象方法的类是抽象类</li>
+<li>抽象类中可以包含普通的方法，也可以没有抽象的方法</li>
+<li>抽象类不能直接创建，可以定义引用变量</li>
+</ul>
+</li>
+<li>抽象方法没有方法体以分号结束;</li>
+</ol>
+<h2 id="4-4-接口-interface-implements"><a href="#4-4-接口-interface-implements" class="headerlink" title="4.4 接口 interface implements"></a>4.4 接口 interface implements</h2><ol>
+<li>接口可以理解为一种特殊的类，由<strong>全局常量和公共的抽象方法</strong>所组成</li>
+<li>类是一种具体实现体，而接口定义了某一批类所需要遵守的<strong>规范</strong>，接口不关心这些类内部的数据，也不关心这些类里方法的实现细节，它只规定这些类必须提供某些方法</li>
+<li><p>接口定义的基本语法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] interface 接口名 [extends 父接口1,父接口2...]</span><br><span class="line">&#123;</span><br><span class="line">  零个到多个常量定义...</span><br><span class="line">  零个到多个抽象方法定义...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 接口就是用来被继承实现的，修饰符一般建议用'public',不能使用private和protected修饰接口</span></span><br><span class="line"><span class="comment">// 隐式abstract</span></span><br><span class="line"><span class="comment">// 接口可以多继承</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接口定义</p>
+<ul>
+<li>常量：接口中的属性是常量，即使定义时不添加public static final 修饰符，系统也会自动加上</li>
+<li>方法：接口中的方法只能是抽象方法，总是使用，即使定义时不添加public abstract 修饰符，系统也会自动加上</li>
+</ul>
+</li>
+<li><p>使用接口：一个类可以实现一个或多个接口，实现接口使用implements关键字。Java中一个类只能继承一个父类，是不够灵活的，通过实现多个接口可以做补充。</p>
+<ul>
+<li>继承父类实现接口的语法为：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] <span class="class"><span class="keyword">class</span> 类名 <span class="keyword">extends</span> 父类 <span class="keyword">implements</span> 接口1， 接口2 ...</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  类体部分<span class="comment">//如果继承了抽象类，需要实现继承的抽象方法；要实现接口中的抽象方法</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果要继承父类，继承父类必须在实现接口之前</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>接口引用</strong>来使用实现接口的类<br>接口名 接口引用 = new 实现接口的类();</p>
+</li>
+<li>使用接口：<ul>
+<li>接口在使用过程中，还可以与匿名内部类配合使用</li>
+<li>匿名内部类就是没有名字的内部类，多用于关注实现而不关注实现类的名称<br>语法格式：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Interface i = <span class="keyword">new</span> Interface()&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"匿名内部类实现接口的方式1"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 注意实现后的分号</span></span><br><span class="line"><span class="comment">// 即使用接口的引用然后new实现，调用实现的方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Interface()&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"匿名内部类实现接口的方式2"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;.method();</span><br><span class="line"><span class="comment">// 直接new实现，调用实现的方法 Android和框架常用</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="4-5-UML简介"><a href="#4-5-UML简介" class="headerlink" title="4.5 UML简介"></a>4.5 UML简介</h2><ol>
+<li>Unified Modeling Language(UML), <strong>统一建模语言</strong>或标准建模语言。是一个支持模型化和软件系统开发的图形化语言，为软件开发的所有阶段提供模型化和可视化的支持。</li>
+<li>常用UML图<ol>
+<li>用例图(The Use Case Diagram)，能够以可视化的方式，表达系统如何满足所收集的业务规则，以及特定的<strong>用户需求</strong>等信息。</li>
+<li>序列图(The Sequence Diagram)，用于按照交互发生的一系列顺序，显示对象之间的这些交互。</li>
+<li>类图(The Class Diagram)，UML类图、业务逻辑和所有支持结构一同被用于定义全部的结构代码。</li>
+</ol>
+</li>
+<li>UML建模工具：（<strong>类图可直接生成代码</strong>）<ol>
+<li>Rational Rose,IBM</li>
+<li>Visio,MS</li>
+<li>PowerDesigner</li>
+</ol>
+</li>
+</ol>
+<h2 id="4-6-综合练习-‘dada租车系统’"><a href="#4-6-综合练习-‘dada租车系统’" class="headerlink" title="4.6 综合练习 ‘dada租车系统’"></a>4.6 综合练习 ‘dada租车系统’</h2><ol>
+<li>项目分析<ol>
+<li>数据模型分析<ul>
+<li>通过对现实世界的事与物主要特征的分析、抽象，为信息系统的实施提供数据存取的数据结构及相应的约束。</li>
+<li>数据结构组成：操作（方法）、属性</li>
+</ul>
+</li>
+<li>业务模型分析<ul>
+<li>在设计应用程序之前，应该明确应用程序必须执行哪些任务。确认业务需求的目的在于创建一个能同时满足零售商和消费者需要的解决方案。</li>
+</ul>
+</li>
+<li>显示和流程分析<ul>
+<li>显示：用户可以看到的信息提示界面</li>
+<li>流程：显示信息的执行过程、步骤</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap4 多态/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Imooc Java Primary II Chap1 类和对象" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/">Imooc Java Primary II Chap1 类和对象</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/" class="archive-article-date">
+  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-1-类和对象定义"><a href="#1-1-类和对象定义" class="headerlink" title="1.1 类和对象定义"></a>1.1 类和对象定义</h2><ol>
+<li>类是模板，确定对象将会拥有的特征（属性）和行为（方法）</li>
+<li>对象是客观存在的具体实体；</li>
+</ol>
+<h2 id="1-2-定义类的步骤"><a href="#1-2-定义类的步骤" class="headerlink" title="1.2 定义类的步骤"></a>1.2 定义类的步骤</h2><ol>
+<li>定义一个类的步骤：<ul>
+<li>定义类的名称</li>
+<li>编写类的属性</li>
+<li>编写类的方法</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-3-使用对象步骤"><a href="#1-3-使用对象步骤" class="headerlink" title="1.3 使用对象步骤"></a>1.3 使用对象步骤</h2><ol>
+<li>使用对象的步骤：<ul>
+<li>创建对象：<br>类名 对象名 = new 类名/构造方法();<br>Telphone phone = new Telphone();</li>
+<li>使用对象：<br>对象名.属性;<br>对象名.方法名();</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-5-成员变量局部变量"><a href="#1-5-成员变量局部变量" class="headerlink" title="1.5 成员变量局部变量"></a>1.5 成员变量局部变量</h2><ol>
+<li>成员变量：有初始值</li>
+<li>局部变量：无初始值，就近原则优先</li>
+</ol>
+<h2 id="1-7-static变量"><a href="#1-7-static变量" class="headerlink" title="1.7 static变量"></a>1.7 static变量</h2><ol>
+<li>static变量 类所有对象共享，能被修改，可使用类名、对象名访问</li>
+</ol>
+<h2 id="1-9-static方法"><a href="#1-9-static方法" class="headerlink" title="1.9 static方法"></a>1.9 static方法</h2><ol>
+<li>static方法可直接调用同类中的静态成员，但不能直接调用非静态成员以及非静态的方法。</li>
+<li>普通成员方法中，可以直接访问同类的非静态成员和静态成员</li>
+</ol>
+<h2 id="1-10-static初始化块"><a href="#1-10-static初始化块" class="headerlink" title="1.10 static初始化块"></a>1.10 static初始化块</h2><ol>
+<li>Java可以通过初始化块进行数据赋值。</li>
+<li>static初始化块只在类加载时执行一次！只能给static变量赋值！</li>
+<li>static初始化块最先执行，然后执行普通初始化块，最后执行构造方法</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-Imooc Java Primary II Chap3 继承" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -719,284 +1059,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap2 封装/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-Imooc Java Primary II Chap1 类和对象" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/">Imooc Java Primary II Chap1 类和对象</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-1-类和对象定义"><a href="#1-1-类和对象定义" class="headerlink" title="1.1 类和对象定义"></a>1.1 类和对象定义</h2><ol>
-<li>类是模板，确定对象将会拥有的特征（属性）和行为（方法）</li>
-<li>对象是客观存在的具体实体；</li>
-</ol>
-<h2 id="1-2-定义类的步骤"><a href="#1-2-定义类的步骤" class="headerlink" title="1.2 定义类的步骤"></a>1.2 定义类的步骤</h2><ol>
-<li>定义一个类的步骤：<ul>
-<li>定义类的名称</li>
-<li>编写类的属性</li>
-<li>编写类的方法</li>
-</ul>
-</li>
-</ol>
-<h2 id="1-3-使用对象步骤"><a href="#1-3-使用对象步骤" class="headerlink" title="1.3 使用对象步骤"></a>1.3 使用对象步骤</h2><ol>
-<li>使用对象的步骤：<ul>
-<li>创建对象：<br>类名 对象名 = new 类名/构造方法();<br>Telphone phone = new Telphone();</li>
-<li>使用对象：<br>对象名.属性;<br>对象名.方法名();</li>
-</ul>
-</li>
-</ol>
-<h2 id="1-5-成员变量局部变量"><a href="#1-5-成员变量局部变量" class="headerlink" title="1.5 成员变量局部变量"></a>1.5 成员变量局部变量</h2><ol>
-<li>成员变量：有初始值</li>
-<li>局部变量：无初始值，就近原则优先</li>
-</ol>
-<h2 id="1-7-static变量"><a href="#1-7-static变量" class="headerlink" title="1.7 static变量"></a>1.7 static变量</h2><ol>
-<li>static变量 类所有对象共享，能被修改，可使用类名、对象名访问</li>
-</ol>
-<h2 id="1-9-static方法"><a href="#1-9-static方法" class="headerlink" title="1.9 static方法"></a>1.9 static方法</h2><ol>
-<li>static方法可直接调用同类中的静态成员，但不能直接调用非静态成员以及非静态的方法。</li>
-<li>普通成员方法中，可以直接访问同类的非静态成员和静态成员</li>
-</ol>
-<h2 id="1-10-static初始化块"><a href="#1-10-static初始化块" class="headerlink" title="1.10 static初始化块"></a>1.10 static初始化块</h2><ol>
-<li>Java可以通过初始化块进行数据赋值。</li>
-<li>static初始化块只在类加载时执行一次！只能给static变量赋值！</li>
-<li>static初始化块最先执行，然后执行普通初始化块，最后执行构造方法</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-Imooc Java Primary II Chap4 多态" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap4 多态/">Imooc Java Primary II Chap4 多态</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/26/Imooc Java Primary II Chap4 多态/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="4-1-多态"><a href="#4-1-多态" class="headerlink" title="4.1 多态"></a>4.1 多态</h2><ol>
-<li>对象的多种形态</li>
-<li>引用多态<ul>
-<li>父类的引用可以指向本类的对象</li>
-<li>父类的引用可以指向子类的对象</li>
-</ul>
-</li>
-<li>方法多态<ul>
-<li>创建本类对象时，调用的方法为本类方法</li>
-<li>创建子类对象时，调用的方法为子类重写的方法或者继承的方法</li>
-</ul>
-</li>
-<li>继承是实现多态的基础</li>
-<li><strong>父类的引用不可以调用子类独有的方法</strong></li>
-</ol>
-<h2 id="4-2-多态中的引用类型转换"><a href="#4-2-多态中的引用类型转换" class="headerlink" title="4.2 多态中的引用类型转换"></a>4.2 多态中的<strong>引用</strong>类型转换</h2><ol>
-<li>向上类型转换（隐式/自动类型转换），是小类型到大类型的转换。杯子——茶壶（安全）</li>
-<li>向下类型转换（强制类型转换），是大类型到小类型。茶壶——杯子（不安全）</li>
-<li><strong>instanceof</strong> 运算符，来解决引用对象的类型，避免类型转换的安全性问题<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(animal <span class="keyword">instanceof</span> Cat)&#123;</span><br><span class="line">  Cat cat =(Cat)animal;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  System.out.println(<span class="string">"无法进行类型转换"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="4-3-抽象类-abstract"><a href="#4-3-抽象类-abstract" class="headerlink" title="4.3 抽象类 abstract"></a>4.3 抽象类 abstract</h2><ol>
-<li>应用场景：<ul>
-<li>某个父类只知道子类应该包含怎样的方法，但无法准确知道这些子类如何实现这些方法。</li>
-<li>从多个具有相同特征的类中抽象出一个抽象类，以这个抽象类作为子类的模板，从而避免子类设计的随意性。</li>
-</ul>
-</li>
-<li>作用：限制规定子类必须实现某些方法，但不关注实现细节</li>
-<li>使用规则：<ul>
-<li>abstract定义抽象类</li>
-<li>abstract定义抽象方法，只有声明，不需要实现</li>
-<li>包含抽象方法的类是抽象类</li>
-<li>抽象类中可以包含普通的方法，也可以没有抽象的方法</li>
-<li>抽象类不能直接创建，可以定义引用变量</li>
-</ul>
-</li>
-<li>抽象方法没有方法体以分号结束;</li>
-</ol>
-<h2 id="4-4-接口-interface-implements"><a href="#4-4-接口-interface-implements" class="headerlink" title="4.4 接口 interface implements"></a>4.4 接口 interface implements</h2><ol>
-<li>接口可以理解为一种特殊的类，由<strong>全局常量和公共的抽象方法</strong>所组成</li>
-<li>类是一种具体实现体，而接口定义了某一批类所需要遵守的<strong>规范</strong>，接口不关心这些类内部的数据，也不关心这些类里方法的实现细节，它只规定这些类必须提供某些方法</li>
-<li><p>接口定义的基本语法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] interface 接口名 [extends 父接口1,父接口2...]</span><br><span class="line">&#123;</span><br><span class="line">  零个到多个常量定义...</span><br><span class="line">  零个到多个抽象方法定义...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 接口就是用来被继承实现的，修饰符一般建议用'public',不能使用private和protected修饰接口</span></span><br><span class="line"><span class="comment">// 隐式abstract</span></span><br><span class="line"><span class="comment">// 接口可以多继承</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>接口定义</p>
-<ul>
-<li>常量：接口中的属性是常量，即使定义时不添加public static final 修饰符，系统也会自动加上</li>
-<li>方法：接口中的方法只能是抽象方法，总是使用，即使定义时不添加public abstract 修饰符，系统也会自动加上</li>
-</ul>
-</li>
-<li><p>使用接口：一个类可以实现一个或多个接口，实现接口使用implements关键字。Java中一个类只能继承一个父类，是不够灵活的，通过实现多个接口可以做补充。</p>
-<ul>
-<li>继承父类实现接口的语法为：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] <span class="class"><span class="keyword">class</span> 类名 <span class="keyword">extends</span> 父类 <span class="keyword">implements</span> 接口1， 接口2 ...</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  类体部分<span class="comment">//如果继承了抽象类，需要实现继承的抽象方法；要实现接口中的抽象方法</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果要继承父类，继承父类必须在实现接口之前</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p><strong>接口引用</strong>来使用实现接口的类<br>接口名 接口引用 = new 实现接口的类();</p>
-</li>
-<li>使用接口：<ul>
-<li>接口在使用过程中，还可以与匿名内部类配合使用</li>
-<li>匿名内部类就是没有名字的内部类，多用于关注实现而不关注实现类的名称<br>语法格式：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Interface i = <span class="keyword">new</span> Interface()&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"匿名内部类实现接口的方式1"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 注意实现后的分号</span></span><br><span class="line"><span class="comment">// 即使用接口的引用然后new实现，调用实现的方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Interface()&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"匿名内部类实现接口的方式2"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;.method();</span><br><span class="line"><span class="comment">// 直接new实现，调用实现的方法 Android和框架常用</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="4-5-UML简介"><a href="#4-5-UML简介" class="headerlink" title="4.5 UML简介"></a>4.5 UML简介</h2><ol>
-<li>Unified Modeling Language(UML), <strong>统一建模语言</strong>或标准建模语言。是一个支持模型化和软件系统开发的图形化语言，为软件开发的所有阶段提供模型化和可视化的支持。</li>
-<li>常用UML图<ol>
-<li>用例图(The Use Case Diagram)，能够以可视化的方式，表达系统如何满足所收集的业务规则，以及特定的<strong>用户需求</strong>等信息。</li>
-<li>序列图(The Sequence Diagram)，用于按照交互发生的一系列顺序，显示对象之间的这些交互。</li>
-<li>类图(The Class Diagram)，UML类图、业务逻辑和所有支持结构一同被用于定义全部的结构代码。</li>
-</ol>
-</li>
-<li>UML建模工具：（<strong>类图可直接生成代码</strong>）<ol>
-<li>Rational Rose,IBM</li>
-<li>Visio,MS</li>
-<li>PowerDesigner</li>
-</ol>
-</li>
-</ol>
-<h2 id="4-6-综合练习-‘dada租车系统’"><a href="#4-6-综合练习-‘dada租车系统’" class="headerlink" title="4.6 综合练习 ‘dada租车系统’"></a>4.6 综合练习 ‘dada租车系统’</h2><ol>
-<li>项目分析<ol>
-<li>数据模型分析<ul>
-<li>通过对现实世界的事与物主要特征的分析、抽象，为信息系统的实施提供数据存取的数据结构及相应的约束。</li>
-<li>数据结构组成：操作（方法）、属性</li>
-</ul>
-</li>
-<li>业务模型分析<ul>
-<li>在设计应用程序之前，应该明确应用程序必须执行哪些任务。确认业务需求的目的在于创建一个能同时满足零售商和消费者需要的解决方案。</li>
-</ul>
-</li>
-<li>显示和流程分析<ul>
-<li>显示：用户可以看到的信息提示界面</li>
-<li>流程：显示信息的执行过程、步骤</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap4 多态/">展开全文 >></a>
         </p>
       
 
@@ -1483,15 +1545,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
               </li>
              
               <li class="article-tag-list-item">
