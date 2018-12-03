@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://longquanliu.github.io">
-  <title>Leetcode Algorithm Sort | Longquan&#39;s Blog</title>
+  <title>Imooc Java Primary III Chap4 集合框架上 | Longquan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="排序快速选择用于求解 Kth Element 问题，使用快速排序的 partition() 进行实现。需要先打乱数组，否则最坏情况下时间复杂度为 O(N2)。 堆排序用于求解 TopK Elements 问题，通过维护一个大小为 K 的堆，堆中的元素就是 TopK Elements。堆排序也可以用于求解 Kth Element 问题，堆顶元素就是 Kth Element。快速选择也可以求解 Top">
-<meta name="keywords" content="Leetcode Sort">
+  <meta name="description" content="4.1 集合框架概述 集合的概念： 现实生活中：很多事物凑在一起。（购物车，商品的集合；军队，军人的集合） 数学中的集合：具有共同属性的事物的总体（有理数、整数） Java中的集合：是一种工具类，就像是容器，存储任意数量的具有共同属性的对象。   集合的作用： 在类的内部，对数据进行组织； 简单而快速的搜索大数量的条目； 有的集合接口，提供了一系列排列有序的元素，并且可以再序列中间快速的插入或者删">
+<meta name="keywords" content="Java Imooc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode Algorithm Sort">
-<meta property="og:url" content="https://longquanliu.github.io/2018/11/05/LeetCode Algorithm Sort/index.html">
+<meta property="og:title" content="Imooc Java Primary III Chap4 集合框架上">
+<meta property="og:url" content="https://longquanliu.github.io/2018/11/30/Imooc Java Primary III Chap4 集合框架上/index.html">
 <meta property="og:site_name" content="Longquan&#39;s Blog">
-<meta property="og:description" content="排序快速选择用于求解 Kth Element 问题，使用快速排序的 partition() 进行实现。需要先打乱数组，否则最坏情况下时间复杂度为 O(N2)。 堆排序用于求解 TopK Elements 问题，通过维护一个大小为 K 的堆，堆中的元素就是 TopK Elements。堆排序也可以用于求解 Kth Element 问题，堆顶元素就是 Kth Element。快速选择也可以求解 Top">
+<meta property="og:description" content="4.1 集合框架概述 集合的概念： 现实生活中：很多事物凑在一起。（购物车，商品的集合；军队，军人的集合） 数学中的集合：具有共同属性的事物的总体（有理数、整数） Java中的集合：是一种工具类，就像是容器，存储任意数量的具有共同属性的对象。   集合的作用： 在类的内部，对数据进行组织； 简单而快速的搜索大数量的条目； 有的集合接口，提供了一系列排列有序的元素，并且可以再序列中间快速的插入或者删">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-12-01T08:32:43.568Z">
+<meta property="og:image" content="https://longquanliu.github.io/2018/11/30/Imooc%20Java%20Primary%20III%20Chap4%20集合框架上/(/img/Imooc%20Java%20Primary%20III/Collection_Map.jpg">
+<meta property="og:updated_time" content="2018-12-03T12:21:20.852Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode Algorithm Sort">
-<meta name="twitter:description" content="排序快速选择用于求解 Kth Element 问题，使用快速排序的 partition() 进行实现。需要先打乱数组，否则最坏情况下时间复杂度为 O(N2)。 堆排序用于求解 TopK Elements 问题，通过维护一个大小为 K 的堆，堆中的元素就是 TopK Elements。堆排序也可以用于求解 Kth Element 问题，堆顶元素就是 Kth Element。快速选择也可以求解 Top">
+<meta name="twitter:title" content="Imooc Java Primary III Chap4 集合框架上">
+<meta name="twitter:description" content="4.1 集合框架概述 集合的概念： 现实生活中：很多事物凑在一起。（购物车，商品的集合；军队，军人的集合） 数学中的集合：具有共同属性的事物的总体（有理数、整数） Java中的集合：是一种工具类，就像是容器，存储任意数量的具有共同属性的对象。   集合的作用： 在类的内部，对数据进行组织； 简单而快速的搜索大数量的条目； 有的集合接口，提供了一系列排列有序的元素，并且可以再序列中间快速的插入或者删">
+<meta name="twitter:image" content="https://longquanliu.github.io/2018/11/30/Imooc%20Java%20Primary%20III%20Chap4%20集合框架上/(/img/Imooc%20Java%20Primary%20III/Collection_Map.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Longquan&#39;s Blog" type="application/atom+xml">
   
@@ -159,82 +161,62 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-LeetCode Algorithm Sort" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-Imooc Java Primary III Chap4 集合框架上" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Leetcode Algorithm Sort
+      Imooc Java Primary III Chap4 集合框架上
     </h1>
   
 
         
-        <a href="/2018/11/05/LeetCode Algorithm Sort/" class="archive-article-date">
-  	<time datetime="2018-11-05T09:21:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
+        <a href="/2018/11/30/Imooc Java Primary III Chap4 集合框架上/" class="archive-article-date">
+  	<time datetime="2018-11-30T11:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="快速选择"><a href="#快速选择" class="headerlink" title="快速选择"></a>快速选择</h3><p>用于求解 Kth Element 问题，使用快速排序的 partition() 进行实现。需要先打乱数组，否则最坏情况下时间复杂度为 O(N<sup>2</sup>)。</p>
-<h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><p>用于求解 TopK Elements 问题，通过维护一个大小为 K 的堆，堆中的元素就是 TopK Elements。<br>堆排序也可以用于求解 Kth Element 问题，堆顶元素就是 Kth Element。<br>快速选择也可以求解 TopK Elements 问题，因为找到 Kth Element 之后，再遍历一次数组，所有小于等于 Kth Element 的元素都是 TopK Elements。<br>可以看到，快速选择和堆排序都可以求解 Kth Element 和 TopK Elements 问题。</p>
-<h4 id="Kth-Element"><a href="#Kth-Element" class="headerlink" title="Kth Element"></a>Kth Element</h4><p><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/description/" target="_blank" rel="noopener">215. Kth Largest Element in an Array (Medium)</a><br>题目描述：找到第 k 大的元素。</p>
-<p><strong>排序</strong>：时间复杂度 O(NlogN)，空间复杂度 O(1)</p>
-<blockquote>
-<p>Arrays:<br>static void    sort​(int[] a) Sorts the specified array into ascending numerical order.<br>The sorting algorithm is a Dual-Pivot Quicksort by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm offers O(n log(n)) performance on many data sets that cause other quicksorts to degrade to quadratic performance, and is typically faster than traditional (one-pivot) Quicksort implementations.</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">4</span>] and k = <span class="number">2</span></span><br><span class="line">Output: <span class="number">5</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    <span class="keyword">return</span> nums[nums.length - k];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>堆排序</strong>：时间复杂度 O(NlogK)，空间复杂度 O(K)。</p>
-<blockquote>
-<p>PriorityQueue:</p>
-<ul>
-<li>boolean add​(E e)    Inserts the specified element into this priority queue.</li>
-<li>E peek​()    Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.</li>
-<li>E    poll​()    Retrieves and removes the head of this queue, or returns null if this queue is empty.</li>
+        <h2 id="4-1-集合框架概述"><a href="#4-1-集合框架概述" class="headerlink" title="4.1 集合框架概述"></a>4.1 集合框架概述</h2><ol>
+<li>集合的概念：<ul>
+<li>现实生活中：很多事物凑在一起。（购物车，商品的集合；军队，军人的集合）</li>
+<li>数学中的集合：具有共同属性的事物的总体（有理数、整数）</li>
+<li>Java中的集合：是一种工具类，就像是<strong>容器</strong>，存储任意数量的<strong>具有共同属性的对象</strong>。</li>
 </ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    PriorityQueue&lt;Integer&gt; pq = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line">    <span class="comment">// small heap</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> ele : nums)&#123;</span><br><span class="line">        pq.add(ele);</span><br><span class="line">        <span class="keyword">if</span>(pq.size() &gt; k)&#123;</span><br><span class="line">          <span class="comment">// keep the heap size is K</span></span><br><span class="line">            pq.poll();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pq.peek();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>快速排序</strong>：时间复杂度 O(N)，空间复杂度 O(1)。最坏情况下时间复杂度为 O(N<sup>2</sup>)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> resultPosition = nums.length - k;</span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>, right = nums.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">        <span class="keyword">int</span> eachPosition = partition(nums,left,right);</span><br><span class="line">        <span class="keyword">if</span>(eachPosition == resultPosition)&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(eachPosition &lt; resultPosition)&#123;</span><br><span class="line">            left = eachPosition + <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            right = eachPosition - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums[resultPosition];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> leftPoint = left, rightPoint = right + <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// be careful about the leftPoint is no 0, rightPoint is no length + 1;</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">        <span class="comment">// the sign is nums[left]</span></span><br><span class="line">        <span class="keyword">while</span>(nums[++leftPoint] &lt; nums[left] &amp;&amp; leftPoint &lt; right);</span><br><span class="line">        <span class="keyword">while</span>(nums[--rightPoint] &gt; nums[left] &amp;&amp; rightPoint &gt; left);</span><br><span class="line">        <span class="keyword">if</span>(leftPoint &gt;= rightPoint)&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(nums,leftPoint,rightPoint);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// the nums[rightPoint] must small than nums[left]</span></span><br><span class="line">    swap(nums,left,rightPoint);</span><br><span class="line">    <span class="keyword">return</span> rightPoint;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = a[i];</span><br><span class="line">    a[i] = a[j];</span><br><span class="line">    a[j] = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h3><h4 id="出现频率最多的K个数"><a href="#出现频率最多的K个数" class="headerlink" title="出现频率最多的K个数"></a>出现频率最多的K个数</h4><p><a href="https://leetcode.com/problems/top-k-frequent-elements/description/" target="_blank" rel="noopener">347. Top K Frequent Elements (Medium)</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>], k = <span class="number">2</span></span><br><span class="line">Output: [<span class="number">1</span>,<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-<p>设置若干个桶，每个桶存储出现频率相同的数，并且桶的下标代表桶中数出现的频率，即第 i 个桶中存储的数出现的频率为 i。<br>把数都放到桶之后，从后向前遍历桶，最先得到的 k 个数就是出现频率最多的的 k 个数。</p>
-<blockquote>
-<p>Map：Map&lt; , &gt; frequencyForNum = new HashMap&lt;&gt;();</p>
-<ul>
-<li>V put​(K key, V value)    Associates the specified value with the specified key in this map (optional operation).</li>
-<li>default V    getOrDefault​(Object key, V defaultValue)    Returns the value to which the specified key is mapped, or defaultValue if this map contains no mapping for the key.</li>
-<li>Set<k>    keySet​()    Returns a Set view of the keys contained in this map.</k></li>
-<li>V    get​(Object key)    Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.</li>
+</li>
+<li>集合的作用：<ul>
+<li>在类的内部，对数据进行组织；</li>
+<li>简单而快速的搜索大数量的条目；</li>
+<li>有的集合接口，提供了一系列排列有序的元素，并且可以再序列中间快速的插入或者删除有关元素；</li>
+<li>有的集合接口，提供了映射关系，可以通过关键字（key）去快速查找到对应的唯一对象，而这个关键字可以是任意类型。</li>
 </ul>
-</blockquote>
-<blockquote>
-<p>List: List&lt;&gt;[]buckets = new ArrayList[]; buckets[] = new ArrayList&lt;&gt;();</p>
-<ul>
-<li>boolean    add​(E e)    Appends the specified element to the end of this list (optional operation).</li>
-<li>boolean    addAll​(Collection&lt;? extends E&gt; c)    Appends all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection’s iterator (optional operation).</li>
+</li>
+<li>与数组的对比-为何选择集合而不是数组<ul>
+<li>数组的长度固定，集合长度可变（金箍棒、打狗棒）</li>
+<li>数组只能通过下标访问元素，类型固定，而有的集合可以通过任意类型查找所映射的具体对象</li>
 </ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">topKFrequent</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    Map&lt;Integer, Integer&gt; frequencyForNum = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">// key : num, value : frequency;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">        frequencyForNum.put(num, frequencyForNum.getOrDefault(num, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        <span class="comment">// be careful about the + 1 position;</span></span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;Integer&gt;[] buckets = <span class="keyword">new</span> ArrayList[nums.length + <span class="number">1</span>];</span><br><span class="line">    <span class="comment">// assume frequency is sub so need nums.length+1;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> key : frequencyForNum.keySet()) &#123;</span><br><span class="line">        <span class="keyword">int</span> frequency = frequencyForNum.get(key);</span><br><span class="line">        <span class="keyword">if</span> (buckets[frequency] == <span class="keyword">null</span>) &#123;</span><br><span class="line">            buckets[frequency] = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="comment">// new a element to put, notice the constructor;</span></span><br><span class="line">        &#125;</span><br><span class="line">        buckets[frequency].add(key);</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;Integer&gt; topK = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = buckets.length - <span class="number">1</span>; i &gt;= <span class="number">0</span> &amp;&amp; topK.size() &lt; k; i--) &#123;</span><br><span class="line">        <span class="keyword">if</span> (buckets[i] != <span class="keyword">null</span>) &#123;</span><br><span class="line">            topK.addAll(buckets[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> topK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="按照字符出现次数对字符串排序"><a href="#按照字符出现次数对字符串排序" class="headerlink" title="按照字符出现次数对字符串排序"></a>按照字符出现次数对字符串排序</h4><p><a href="https://leetcode.com/problems/sort-characters-by-frequency/description/" target="_blank" rel="noopener">451. Sort Characters By Frequency (Medium)</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line"><span class="string">"tree"</span></span><br><span class="line">Output:</span><br><span class="line"><span class="string">"eert"</span></span><br><span class="line">Explanation:</span><br><span class="line"><span class="string">'e'</span> appears twice <span class="keyword">while</span> <span class="string">'r'</span> and <span class="string">'t'</span> both appear once.</span><br><span class="line">So <span class="string">'e'</span> must appear before both <span class="string">'r'</span> and <span class="string">'t'</span>. Therefore <span class="string">"eetr"</span> is also a valid answer.</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line"><span class="string">"cccaaa"</span></span><br><span class="line">Output:</span><br><span class="line"><span class="string">"cccaaa"</span></span><br><span class="line">Explanation:</span><br><span class="line">Both <span class="string">'c'</span> and <span class="string">'a'</span> appear three times, so <span class="string">"aaaccc"</span> is also a valid answer.</span><br><span class="line">Note that <span class="string">"cacaca"</span> is incorrect, as the same characters must be together.</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>StringBuilder：StringBuilder resultString = new StringBuilder();</p>
-<ul>
-<li>StringBuilder    append​(char c)    Appends the string representation of the char argument to this sequence.</li>
-<li>String    toString​()    Returns a string representing the data in this sequence.</li>
+</li>
+<li>集合框架体系结构：<br><img src="(/img/Imooc Java Primary III/Collection_Map.jpg" alt="集合框架体系结构"></li>
+</ol>
+<p>List(序列)、Queue(队列)：排列有序可重复；Set(集)：无序不可重复<br>map:&lt;key,value&gt;Entry键值对</p>
+<h2 id="4-2-Collection-interface-amp-List-interface"><a href="#4-2-Collection-interface-amp-List-interface" class="headerlink" title="4.2 Collection interface &amp; List interface"></a>4.2 Collection interface &amp; List interface</h2><ol>
+<li>Collection接口：<ul>
+<li>是List、Set和Queue接口的父接口</li>
+<li>定义了可用于操作List、Set和Queue的方法——增删改查</li>
 </ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">frequencySort</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    Map&lt;Character,Integer&gt; frequencyChar = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">char</span> c : s.toCharArray())&#123;</span><br><span class="line">        frequencyChar.put(c,frequencyChar.getOrDefault(c,<span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    List&lt;Character&gt;[] buckets = <span class="keyword">new</span> ArrayList[s.length() + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">char</span> c : frequencyChar.keySet())&#123;</span><br><span class="line">        <span class="keyword">int</span> value = frequencyChar.get(c);</span><br><span class="line">        <span class="keyword">if</span>(buckets[value] == <span class="keyword">null</span>)&#123;</span><br><span class="line">            buckets[value] = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        buckets[value].add(c);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    StringBuilder resultString = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = buckets.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">        <span class="comment">// notice the loop times -  bucket[0~buckets.length-1]</span></span><br><span class="line">        <span class="keyword">if</span>(buckets[i] == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c : buckets[i])&#123;</span><br><span class="line">            <span class="comment">// every char need output frequency times;</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++)&#123;</span><br><span class="line">                resultString.append(c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> resultString.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="荷兰国旗问题"><a href="#荷兰国旗问题" class="headerlink" title="荷兰国旗问题"></a>荷兰国旗问题</h4><p>荷兰国旗包含三种颜色：红、白、蓝。<br>有三种颜色的球，算法的目标是将这三种球按颜色顺序正确地排列。<br>它其实是三向切分快速排序的一种变种，在三向切分快速排序中，每次切分都将数组分成三个区间：小于切分元素、等于切分元素、大于切分元素，而该算法是将数组分成三个区间：等于红色、等于白色、等于蓝色。</p>
-<p><a href="https://leetcode.com/problems/sort-colors/description/" target="_blank" rel="noopener">75. Sort Colors (Medium)</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>]</span><br><span class="line">Output: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">zero=-<span class="number">1</span>;one=<span class="number">0</span>;two=nums.length;<span class="number">6</span>   <span class="number">202110</span></span><br><span class="line">num[one]==<span class="number">2</span> --<span class="function">two <span class="title">swap</span><span class="params">(num,two,one)</span></span>; swap and don<span class="string">'t know divide,so one stay  now two is 5       002112</span></span><br><span class="line"><span class="string">false eg:</span></span><br><span class="line"><span class="string">num[one]==0 ++zero swap(num,zero,one); swap and don'</span>t know divide, so one stay now zero is <span class="number">0</span>    <span class="number">002112</span></span><br><span class="line">num[one]==<span class="number">0</span> ++<span class="function">zero <span class="title">swap</span><span class="params">(num,zero,one)</span></span>; swap and don<span class="string">'t know divide, so one stay now zero is 1    002112</span></span><br><span class="line"><span class="string">num[one]==0 ++zero swap(num,zero,one); swap and don'</span>t know divide, so one stay now zero is <span class="number">2</span>    <span class="number">200112</span></span><br><span class="line">num[one]==<span class="number">2</span> --<span class="function">two <span class="title">swap</span><span class="params">(num,two,one)</span></span>; swap and don<span class="string">'t know divide,so one stay  now two is 4       100122</span></span><br><span class="line"><span class="string">num[one]==1 ++one; now one is 1                                                                 100122</span></span><br><span class="line"><span class="string">num[one]==0 ++zero swap(num,zero,one); swap and don'</span>t know divide, so one stay now zero is <span class="number">3</span>    <span class="number">110022</span></span><br><span class="line"></span><br><span class="line">make sure position is zero,one,two(zero -<span class="number">1</span>, need efficient so two is nums.length); (one &lt; two, keep loop)</span><br><span class="line">zero=-<span class="number">1</span>;one=<span class="number">0</span>;two=nums.length;<span class="number">6</span>   <span class="number">202110</span></span><br><span class="line">num[one]==<span class="number">2</span> --<span class="function">two <span class="title">swap</span><span class="params">(num,two,one)</span></span>; swap a don<span class="string">'t know value mean efficient one is a new element,so one stay now two is 5              002112</span></span><br><span class="line"><span class="string">true eg:</span></span><br><span class="line"><span class="string">num[one]==0 ++zero swap(num,zero,one) one++; zero move means one also move, now zero is 0, one is 1    002112</span></span><br><span class="line"><span class="string">num[one]==0 ++zero swap(num,zero,one) one++; zero move means one also move, now zero is 1, one is 2    002112</span></span><br><span class="line"><span class="string">num[one]==2 --two swap(num,two,one); swap and don'</span>t know divide,so one stay  now two is <span class="number">4</span>              <span class="number">001122</span></span><br><span class="line">num[one]==<span class="number">1</span> ++one; now one is <span class="number">3</span>                                                                        <span class="number">001122</span></span><br><span class="line">num[one]==<span class="number">1</span> ++one; now one is <span class="number">4</span>                                                                        <span class="number">001122</span></span><br><span class="line">stop .. one = two = <span class="number">4</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sortColors</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> zero = -<span class="number">1</span>, one = <span class="number">0</span>, two = nums.length;</span><br><span class="line">    <span class="keyword">while</span>(one &lt; two)&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[one] == <span class="number">0</span>)&#123;</span><br><span class="line">            ++zero;</span><br><span class="line">            swap(nums,zero,one);</span><br><span class="line">            one++;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[one] == <span class="number">2</span>)&#123;</span><br><span class="line">            --two;</span><br><span class="line">            swap(nums,two,one);</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            ++one;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = nums[i];</span><br><span class="line">    nums[i] = nums[j];</span><br><span class="line">    nums[j] = temp;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>List接口及其实现类——ArrayList<ul>
+<li>List是元素有序并且可以重复的集合，被称为序列</li>
+<li>List可以精确的控制每个元素的插入位置，或删除某个位置元素</li>
+<li>ArrayList——数组序列，是List的一个重要实现类</li>
+<li>ArrayList底层是由数组实现的</li>
+</ul>
+</li>
+</ol>
 
       
 
@@ -248,7 +230,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Leetcode Sort</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
         		</li>
       		
 		</ul>
@@ -304,7 +286,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://longquanliu.github.io/2018/11/05/LeetCode Algorithm Sort/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://longquanliu.github.io/2018/11/30/Imooc Java Primary III Chap4 集合框架上/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -318,18 +300,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/11/14/LeetCode Algorithm Greedy/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/11/30/Imooc Java Primary III Chap3 常用类/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          LeetCode Algorithm Greedy
+          Imooc Java Primary III Chap3 常用类
         
       </div>
     </a>
   
   
-    <a href="/2018/11/02/LeetCode Algorithm Double Pointer/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Leetcode Algorithm Double Pointer</div>
+    <a href="/2018/11/28/Imooc Java Primary III Chap2 字符串/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Imooc Java Primary III Chap2 字符串</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -356,7 +338,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#排序"><span class="toc-number">1.</span> <span class="toc-text">排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#快速选择"><span class="toc-number">1.1.</span> <span class="toc-text">快速选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#堆排序"><span class="toc-number">1.2.</span> <span class="toc-text">堆排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Kth-Element"><span class="toc-number">1.2.1.</span> <span class="toc-text">Kth Element</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#桶排序"><span class="toc-number">1.3.</span> <span class="toc-text">桶排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#出现频率最多的K个数"><span class="toc-number">1.3.1.</span> <span class="toc-text">出现频率最多的K个数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#按照字符出现次数对字符串排序"><span class="toc-number">1.3.2.</span> <span class="toc-text">按照字符出现次数对字符串排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#荷兰国旗问题"><span class="toc-number">1.3.3.</span> <span class="toc-text">荷兰国旗问题</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-集合框架概述"><span class="toc-number">1.</span> <span class="toc-text">4.1 集合框架概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-Collection-interface-amp-List-interface"><span class="toc-number">2.</span> <span class="toc-text">4.2 Collection interface &amp; List interface</span></a></li></ol>
                     </div>
                 </span>
             </div>

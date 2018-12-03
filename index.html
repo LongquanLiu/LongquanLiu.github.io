@@ -182,13 +182,16 @@
       
         <h2 id="3-1-包装类"><a href="#3-1-包装类" class="headerlink" title="3.1 包装类"></a>3.1 包装类</h2><ol>
 <li>基本类型和包装类之间的对应关系：<br><img src="/img/Imooc Java Primary III/packageClass.jpg" alt="基本类型和包装类之间的对应关系"></li>
-<li>包装类主要提供了两大类方法：<ul>
+<li><p>包装类主要提供了两大类方法：</p>
+<ul>
 <li>将本类型和其他基本类型进行转换的方法</li>
 <li>将字符串和本类型及包装类互相转换的方法</li>
 </ul>
 </li>
-<li>Integer 包装类的构造方法：<br><img src="/img/Imooc Java Primary III/Integer.jpg" alt=""></li>
-<li>Integer包装类的常用方法：<br><img src="/img/Imooc Java Primary III/IntegerMethod.jpg" alt=""></li>
+<li><p>Integer 包装类的构造方法：<br><img src="/img/Imooc Java Primary III/Integer.jpg" alt=""></p>
+</li>
+<li><p>Integer包装类的常用方法：<br><img src="/img/Imooc Java Primary III/IntegerMethod.jpg" alt=""></p>
+</li>
 </ol>
 <h2 id="3-2-基本类型和包装类之间的转换"><a href="#3-2-基本类型和包装类之间的转换" class="headerlink" title="3.2 基本类型和包装类之间的转换"></a>3.2 基本类型和包装类之间的转换</h2><ol>
 <li>JDK1.5 引入自动装箱和拆箱的机制</li>
@@ -222,9 +225,9 @@
 </li>
 <li><p>java.text 包中的 SimpleDateFormat 类大显身手的时候了！！可以使用 SimpleDateFormat 来对日期时间进行格式化，如可以将日期转换为指定格式的文本，也可将文本转换为日期。</p>
 <ul>
-<li>使用 format() 方法将日期转换为指定格式的文本:<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Date d = <span class="keyword">new</span> Date();</span><br><span class="line"><span class="comment">//创建SimpleDateFormat对象，指定目标格式</span></span><br><span class="line">SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line"><span class="comment">//调用format方法，格式化时间，转换为指定格式字符串</span></span><br><span class="line">String today = sdf.format(d);</span><br><span class="line">System.out.println(today);</span><br></pre></td></tr></table></figure>
-</li>
+<li>使用 format() 方法将日期转换为指定格式的文本:</li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Date d = <span class="keyword">new</span> Date();</span><br><span class="line"><span class="comment">//创建SimpleDateFormat对象，指定目标格式</span></span><br><span class="line">SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line"><span class="comment">//调用format方法，格式化时间，转换为指定格式字符串</span></span><br><span class="line">String today = sdf.format(d);</span><br><span class="line">System.out.println(today);</span><br></pre></td></tr></table></figure>
 <p>*使用 parse() 方法将文本转换为日期:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建日期格式的字符</span></span><br><span class="line">String day = <span class="string">"2018年12月01日 16:39:10"</span>;</span><br><span class="line"><span class="comment">//创建SimpleDateFormat对象,指定字符串的日期格式</span></span><br><span class="line">SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy年MM月dd日 HH:mm:ss"</span>);</span><br><span class="line"><span class="comment">//调用parse()方法，将字符串转换为日期</span></span><br><span class="line">Date date = df.parse(day);</span><br><span class="line">System.out.println(<span class="string">"当前时间："</span> + date);</span><br></pre></td></tr></table></figure>
 </li>
@@ -269,6 +272,114 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/11/30/Imooc Java Primary III Chap3 常用类/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Imooc Java Primary III Chap4 集合框架上" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/Imooc Java Primary III Chap4 集合框架上/">Imooc Java Primary III Chap4 集合框架上</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/30/Imooc Java Primary III Chap4 集合框架上/" class="archive-article-date">
+  	<time datetime="2018-11-30T11:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="4-1-集合框架概述"><a href="#4-1-集合框架概述" class="headerlink" title="4.1 集合框架概述"></a>4.1 集合框架概述</h2><ol>
+<li>集合的概念：<ul>
+<li>现实生活中：很多事物凑在一起。（购物车，商品的集合；军队，军人的集合）</li>
+<li>数学中的集合：具有共同属性的事物的总体（有理数、整数）</li>
+<li>Java中的集合：是一种工具类，就像是<strong>容器</strong>，存储任意数量的<strong>具有共同属性的对象</strong>。</li>
+</ul>
+</li>
+<li>集合的作用：<ul>
+<li>在类的内部，对数据进行组织；</li>
+<li>简单而快速的搜索大数量的条目；</li>
+<li>有的集合接口，提供了一系列排列有序的元素，并且可以再序列中间快速的插入或者删除有关元素；</li>
+<li>有的集合接口，提供了映射关系，可以通过关键字（key）去快速查找到对应的唯一对象，而这个关键字可以是任意类型。</li>
+</ul>
+</li>
+<li>与数组的对比-为何选择集合而不是数组<ul>
+<li>数组的长度固定，集合长度可变（金箍棒、打狗棒）</li>
+<li>数组只能通过下标访问元素，类型固定，而有的集合可以通过任意类型查找所映射的具体对象</li>
+</ul>
+</li>
+<li>集合框架体系结构：<br><img src="(/img/Imooc Java Primary III/Collection_Map.jpg" alt="集合框架体系结构"></li>
+</ol>
+<p>List(序列)、Queue(队列)：排列有序可重复；Set(集)：无序不可重复<br>map:&lt;key,value&gt;Entry键值对</p>
+<h2 id="4-2-Collection-interface-amp-List-interface"><a href="#4-2-Collection-interface-amp-List-interface" class="headerlink" title="4.2 Collection interface &amp; List interface"></a>4.2 Collection interface &amp; List interface</h2><ol>
+<li>Collection接口：<ul>
+<li>是List、Set和Queue接口的父接口</li>
+<li>定义了可用于操作List、Set和Queue的方法——增删改查</li>
+</ul>
+</li>
+<li>List接口及其实现类——ArrayList<ul>
+<li>List是元素有序并且可以重复的集合，被称为序列</li>
+<li>List可以精确的控制每个元素的插入位置，或删除某个位置元素</li>
+<li>ArrayList——数组序列，是List的一个重要实现类</li>
+<li>ArrayList底层是由数组实现的</li>
+</ul>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/30/Imooc Java Primary III Chap4 集合框架上/">展开全文 >></a>
         </p>
       
 
@@ -422,13 +533,15 @@
         <h2 id="1-1-异常简介"><a href="#1-1-异常简介" class="headerlink" title="1.1 异常简介"></a>1.1 异常简介</h2><ol>
 <li>异常：有异于常态，阻止当前方法或作用域，称之为异常。</li>
 <li>异常的正确处理：提交给编程人员or用户，从而使原本中断的程序可继续运行or退出，并且保存当前操作or数据回滚，最后释放占用资源</li>
-<li>Throwable:<ol>
+<li><p>Throwable:</p>
+<ol>
 <li>Error: 程序崩溃（硬伤无法处理）<ul>
 <li>VirtualMachineError:虚拟机错误</li>
 <li>ThreadDeath:线程错误</li>
 </ul>
 </li>
-<li>Exception: 编程、环境、用户操作输入出现问题<ol>
+<li><p>Exception: 编程、环境、用户操作输入出现问题</p>
+<ol>
 <li>RunTimeException: 非检查异常 Java虚拟机自动抛出捕获，逻辑上检查</li>
 </ol>
 <ul>
@@ -686,129 +799,6 @@
 
 
   
-    <article id="post-Imooc Java Primary II Chap3 继承" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap3 继承/">Imooc Java Primary II Chap3 继承</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/26/Imooc Java Primary II Chap3 继承/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="3-1-继承"><a href="#3-1-继承" class="headerlink" title="3.1 继承"></a>3.1 继承</h2><ol>
-<li>继承：是类与类的一种关系，是一种“is a”的关系 Dog is a Animal<ul>
-<li>Java中的继承是单继承的</li>
-</ul>
-</li>
-<li>继承的好处：<ul>
-<li>子类拥有父类的所有属性和方法（富二代）<br>private修饰的无效（私生子）</li>
-<li>实现代码复用</li>
-</ul>
-</li>
-</ol>
-<h2 id="3-2-方法重写"><a href="#3-2-方法重写" class="headerlink" title="3.2 方法重写"></a>3.2 方法重写</h2><ol>
-<li>语法规则：以下三条都要与父类相同<ul>
-<li>返回值类型</li>
-<li>方法名</li>
-<li>参数类型及个数</li>
-</ul>
-</li>
-</ol>
-<h2 id="3-3-继承的初始化顺序"><a href="#3-3-继承的初始化顺序" class="headerlink" title="3.3 继承的初始化顺序"></a>3.3 继承的初始化顺序</h2><ol>
-<li>父类对象-父类属性初始化-父类构造方法—子类对象-子类属性初始化-子类构造方法</li>
-</ol>
-<h2 id="3-4-final关键字"><a href="#3-4-final关键字" class="headerlink" title="3.4 final关键字"></a>3.4 final关键字</h2><ol>
-<li>final 修饰类，则该类<strong>不允许被继承</strong></li>
-<li>final 修饰方法，则该方法<strong>不允许被重写</strong></li>
-<li>final 修饰属性，则该类的属性不会进行隐式初始化（即初始化属性必须有值）or在构造方法中赋值</li>
-<li>final 修饰变量，则该变量只能赋一次值，即为常量</li>
-</ol>
-<h2 id="3-5-super关键字"><a href="#3-5-super关键字" class="headerlink" title="3.5 super关键字"></a>3.5 super关键字</h2><ol>
-<li>在对象的内部使用，可以代表父类对象</li>
-<li>访问父类属性 super.age; 访问父类的方法 super.eat();</li>
-<li>子类的构造过程当中必须调用其父类的构造方法（隐式）<ul>
-<li>显示调用必须在第一行</li>
-<li>隐式默认调用父类无参构造方法</li>
-<li>若父类定义了有参的构造方法（代表父类将没有默认无参的构造方法），子类又无显式调用父类的构造方法，则编译出错</li>
-</ul>
-</li>
-</ol>
-<h2 id="3-6-Object类I"><a href="#3-6-Object类I" class="headerlink" title="3.6 Object类I"></a>3.6 Object类I</h2><ol>
-<li>toString()方法：<ul>
-<li>返回对象的<strong>hash码</strong>（对象地址字符串）,return 包名@地址</li>
-<li>可以通过重写toString()方法表示出对象的属性</li>
-</ul>
-</li>
-<li>equals()方法:<ul>
-<li>比较的是对象的<strong>引用</strong>是否指向同一块内存地址,类似于==, return boolean</li>
-<li>比较两个对象的值是否一致，即进行重写<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span> == obj)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  <span class="keyword">if</span>(obj == <span class="keyword">null</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  <span class="keyword">if</span>(getClass() != obj.getClass())</span><br><span class="line">    <span class="comment">// obj.getClass代表获取'类对象'！即判断该对象的类型</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  Dog other = (Dog)obj;</span><br><span class="line">  <span class="keyword">if</span>(age != other.age)</span><br><span class="line">    <span class="comment">// 判断'类的对象'</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap3 继承/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
     <article id="post-Imooc Java Primary II Chap4 多态" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -952,6 +942,129 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap4 多态/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Imooc Java Primary II Chap3 继承" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap3 继承/">Imooc Java Primary II Chap3 继承</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/26/Imooc Java Primary II Chap3 继承/" class="archive-article-date">
+  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="3-1-继承"><a href="#3-1-继承" class="headerlink" title="3.1 继承"></a>3.1 继承</h2><ol>
+<li>继承：是类与类的一种关系，是一种“is a”的关系 Dog is a Animal<ul>
+<li>Java中的继承是单继承的</li>
+</ul>
+</li>
+<li>继承的好处：<ul>
+<li>子类拥有父类的所有属性和方法（富二代）<br>private修饰的无效（私生子）</li>
+<li>实现代码复用</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-2-方法重写"><a href="#3-2-方法重写" class="headerlink" title="3.2 方法重写"></a>3.2 方法重写</h2><ol>
+<li>语法规则：以下三条都要与父类相同<ul>
+<li>返回值类型</li>
+<li>方法名</li>
+<li>参数类型及个数</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-3-继承的初始化顺序"><a href="#3-3-继承的初始化顺序" class="headerlink" title="3.3 继承的初始化顺序"></a>3.3 继承的初始化顺序</h2><ol>
+<li>父类对象-父类属性初始化-父类构造方法—子类对象-子类属性初始化-子类构造方法</li>
+</ol>
+<h2 id="3-4-final关键字"><a href="#3-4-final关键字" class="headerlink" title="3.4 final关键字"></a>3.4 final关键字</h2><ol>
+<li>final 修饰类，则该类<strong>不允许被继承</strong></li>
+<li>final 修饰方法，则该方法<strong>不允许被重写</strong></li>
+<li>final 修饰属性，则该类的属性不会进行隐式初始化（即初始化属性必须有值）or在构造方法中赋值</li>
+<li>final 修饰变量，则该变量只能赋一次值，即为常量</li>
+</ol>
+<h2 id="3-5-super关键字"><a href="#3-5-super关键字" class="headerlink" title="3.5 super关键字"></a>3.5 super关键字</h2><ol>
+<li>在对象的内部使用，可以代表父类对象</li>
+<li>访问父类属性 super.age; 访问父类的方法 super.eat();</li>
+<li>子类的构造过程当中必须调用其父类的构造方法（隐式）<ul>
+<li>显示调用必须在第一行</li>
+<li>隐式默认调用父类无参构造方法</li>
+<li>若父类定义了有参的构造方法（代表父类将没有默认无参的构造方法），子类又无显式调用父类的构造方法，则编译出错</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-6-Object类I"><a href="#3-6-Object类I" class="headerlink" title="3.6 Object类I"></a>3.6 Object类I</h2><ol>
+<li>toString()方法：<ul>
+<li>返回对象的<strong>hash码</strong>（对象地址字符串）,return 包名@地址</li>
+<li>可以通过重写toString()方法表示出对象的属性</li>
+</ul>
+</li>
+<li>equals()方法:<ul>
+<li>比较的是对象的<strong>引用</strong>是否指向同一块内存地址,类似于==, return boolean</li>
+<li>比较两个对象的值是否一致，即进行重写<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span> == obj)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  <span class="keyword">if</span>(obj == <span class="keyword">null</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  <span class="keyword">if</span>(getClass() != obj.getClass())</span><br><span class="line">    <span class="comment">// obj.getClass代表获取'类对象'！即判断该对象的类型</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  Dog other = (Dog)obj;</span><br><span class="line">  <span class="keyword">if</span>(age != other.age)</span><br><span class="line">    <span class="comment">// 判断'类的对象'</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap3 继承/">展开全文 >></a>
         </p>
       
 
@@ -1359,101 +1472,6 @@
 
 
   
-    <article id="post-LeetCode Algorithm Double Pointer" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/02/LeetCode Algorithm Double Pointer/">Leetcode Algorithm Double Pointer</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/02/LeetCode Algorithm Double Pointer/" class="archive-article-date">
-  	<time datetime="2018-11-02T07:04:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h2><p>双指针主要用于遍历数组，两个指针指向不同的元素，从而协同完成任务。</p>
-<h3 id="有序数组的-Two-Sum"><a href="#有序数组的-Two-Sum" class="headerlink" title="有序数组的 Two Sum"></a>有序数组的 Two Sum</h3><p><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/" target="_blank" rel="noopener">167. Two Sum II - Input array is sorted (Easy)</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: numbers = [<span class="number">2</span>,<span class="number">7</span>,<span class="number">11</span>,<span class="number">15</span>], target = <span class="number">9</span></span><br><span class="line">Output: [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line">Explanation: The sum of <span class="number">2</span> and <span class="number">7</span> is <span class="number">9</span>. Therefore index1 = <span class="number">1</span>, index2 = <span class="number">2</span>.</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span> , j = numbers.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = numbers[i] + numbers[j];</span><br><span class="line">        <span class="keyword">if</span>(sum == target)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;i+<span class="number">1</span>, j+<span class="number">1</span>&#125;;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (sum &lt; target)&#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="两数平方和"><a href="#两数平方和" class="headerlink" title="两数平方和"></a>两数平方和</h3><p><a href="https://leetcode.com/problems/sum-of-square-numbers/description/" target="_blank" rel="noopener">633. Sum of Square Numbers (Easy)</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: <span class="number">5</span></span><br><span class="line">Output: True</span><br><span class="line">Explanation: <span class="number">1</span> * <span class="number">1</span> + <span class="number">2</span> * <span class="number">2</span> = <span class="number">5</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">judgeSquareSum</span><span class="params">(<span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, j = (<span class="keyword">int</span>) Math.sqrt(c);</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= j) &#123;</span><br><span class="line">        <span class="keyword">int</span> powSum = i * i + j * j;</span><br><span class="line">        <span class="keyword">if</span> (powSum == c) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (powSum &gt; c) &#123;</span><br><span class="line">            j--;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="反转字符串中的元音字符"><a href="#反转字符串中的元音字符" class="headerlink" title="反转字符串中的元音字符"></a>反转字符串中的元音字符</h3><p><a href="https://leetcode.com/problems/reverse-vowels-of-a-string/description/" target="_blank" rel="noopener">345. Reverse Vowels of a String (Easy)</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: <span class="string">"hello"</span></span><br><span class="line">Output: <span class="string">"holle"</span></span><br><span class="line">Input: <span class="string">"leetcode"</span></span><br><span class="line">Output: <span class="string">"leotcede"</span></span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>mind：使用双指针指向待反转的两个元音字符，一个指针从头向尾遍历，一个指针从尾到头遍历。<br>Java detail:</p>
-<ul>
-<li>用一个静态final的HashSet<character> vowels 保存所有元音字符</character></li>
-<li>用char[] result 保存最后返回结果 new String(result);</li>
-<li>s.charAt(int i);vowels.contains(char c);</li>
-</ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> HashSet&lt;Character&gt; vowels = <span class="keyword">new</span> HashSet&lt;&gt;(Arrays.asList(<span class="string">'a'</span>, <span class="string">'e'</span>, <span class="string">'i'</span>, <span class="string">'o'</span>, <span class="string">'u'</span>, <span class="string">'A'</span>, <span class="string">'E'</span>, <span class="string">'I'</span>, <span class="string">'O'</span>, <span class="string">'U'</span>));</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">reverseVowels</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, j = s.length() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span>[] result = <span class="keyword">new</span> <span class="keyword">char</span>[s.length()];</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= j) &#123;</span><br><span class="line">        <span class="keyword">char</span> ci = s.charAt(i);</span><br><span class="line">        <span class="keyword">char</span> cj = s.charAt(j);</span><br><span class="line">        <span class="keyword">if</span> (!vowels.contains(ci)) &#123;</span><br><span class="line">            result[i++] = ci;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!vowels.contains(cj)) &#123;</span><br><span class="line">            result[j--] = cj;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            result[i++] = cj;</span><br><span class="line">            result[j--] = ci;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> String(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="回文字符串"><a href="#回文字符串" class="headerlink" title="回文字符串"></a>回文字符串</h3><p><a href="https://leetcode.com/problems/valid-palindrome-ii/description/" target="_blank" rel="noopener">680. Valid Palindrome II (Easy)</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: <span class="string">"aba"</span></span><br><span class="line">Output: True</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">validPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, j = s.length() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.charAt(i) == s.charAt(j))&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> isPalindrome(s, i, j-<span class="number">1</span>) || isPalindrome(s, i+<span class="number">1</span>, j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(String s, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.charAt(i) == s.charAt(j))&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="归并两个有序数组"><a href="#归并两个有序数组" class="headerlink" title="归并两个有序数组"></a>归并两个有序数组</h3><p><a href="https://leetcode.com/problems/merge-sorted-array/description/" target="_blank" rel="noopener">88. Merge Sorted Array (Easy)</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">nums1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>], m = <span class="number">3</span></span><br><span class="line">nums2 = [<span class="number">2</span>,<span class="number">5</span>,<span class="number">6</span>],       n = <span class="number">3</span></span><br><span class="line">Output: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span> m, <span class="keyword">int</span>[] nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> index1 = m - <span class="number">1</span>, index2 = n - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> indexMerge = m + n - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (index1 &gt;= <span class="number">0</span> || index2 &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (index1 &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            nums1[indexMerge--] = nums2[index2--];</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (index2 &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            nums1[indexMerge--] = nums1[index1--];</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums1[index1] &gt; nums2[index2]) &#123;</span><br><span class="line">            nums1[indexMerge--] = nums1[index1--];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            nums1[indexMerge--] = nums2[index2--];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="判断链表是否存在环"><a href="#判断链表是否存在环" class="headerlink" title="判断链表是否存在环"></a>判断链表是否存在环</h3><p><a href="https://leetcode.com/problems/linked-list-cycle/description/" target="_blank" rel="noopener">141. Linked List Cycle (Easy)</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ListNode l1 = head, l2 = head.next;</span><br><span class="line">    <span class="keyword">while</span> (l1 != <span class="keyword">null</span> &amp;&amp; l2 != <span class="keyword">null</span> &amp;&amp; l2.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (l1 == l2) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        l1 = l1.next;</span><br><span class="line">        l2 = l2.next.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="最长子序列"><a href="#最长子序列" class="headerlink" title="最长子序列"></a>最长子序列</h3><p><a href="https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/description/" target="_blank" rel="noopener">524. Longest Word in Dictionary through Deleting (Medium)</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">s = <span class="string">"abpcplea"</span>, d = [<span class="string">"ale"</span>,<span class="string">"apple"</span>,<span class="string">"monkey"</span>,<span class="string">"plea"</span>]</span><br><span class="line">Output:</span><br><span class="line"><span class="string">"apple"</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">findLongestWord</span><span class="params">(String s, List&lt;String&gt; d)</span> </span>&#123;</span><br><span class="line">    String longestWord = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span>(String targeWord : d)&#123;</span><br><span class="line">        <span class="keyword">int</span> l1 = longestWord.length(), l2 = targeWord.length();</span><br><span class="line">        <span class="keyword">if</span>(l1 &gt; l2 || (l1 == l2 &amp;&amp; longestWord.compareTo(targeWord) &lt; <span class="number">0</span>))&#123;</span><br><span class="line">            <span class="comment">// with the smallest lexicographical order.</span></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(isValid(s,targeWord))&#123;</span><br><span class="line">                longestWord = targeWord;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> longestWord;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s, String targeWord)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; s.length() &amp;&amp; j &lt; targeWord.length())&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.charAt(i) == targeWord.charAt(j))&#123;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> j == targeWord.length();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Leetcode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/02/LeetCode Algorithm Double Pointer/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1555,19 +1573,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Leetcode Sort</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Leetcode Sort</a>
               </li>
             
             <div class="clearfix"></div>
