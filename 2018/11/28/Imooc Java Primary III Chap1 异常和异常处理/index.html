@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://longquanliu.github.io">
   <title>Imooc Java Primary III Chap1 异常和异常处理 | Longquan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.1 异常简介 异常：有异于常态，阻止当前方法或作用域，称之为异常。 异常的正确处理：提交给编程人员or用户，从而使原本中断的程序可继续运行or退出，并且保存当前操作or数据回滚，最后释放占用资源 Throwable:  Error: 程序崩溃（硬伤无法处理） VirtualMachineError:虚拟机错误 ThreadDeath:线程错误   Exception: 编程、环境、用户操作输入">
+  <meta name="description" content="1.1 异常简介 异常：有异于常态，阻止当前方法或作用域，称之为异常。 异常的正确处理：提交给编程人员or用户，从而使原本中断的程序可继续运行or退出，并且保存当前操作or数据回滚，最后释放占用资源 Throwable:1) Error: 程序崩溃（硬伤无法处理） VirtualMachineError:虚拟机错误 ThreadDeath:线程错误2) Exception: 编程、环境、用户操作输">
 <meta name="keywords" content="Java Imooc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Imooc Java Primary III Chap1 异常和异常处理">
 <meta property="og:url" content="https://longquanliu.github.io/2018/11/28/Imooc Java Primary III Chap1 异常和异常处理/index.html">
 <meta property="og:site_name" content="Longquan&#39;s Blog">
-<meta property="og:description" content="1.1 异常简介 异常：有异于常态，阻止当前方法或作用域，称之为异常。 异常的正确处理：提交给编程人员or用户，从而使原本中断的程序可继续运行or退出，并且保存当前操作or数据回滚，最后释放占用资源 Throwable:  Error: 程序崩溃（硬伤无法处理） VirtualMachineError:虚拟机错误 ThreadDeath:线程错误   Exception: 编程、环境、用户操作输入">
+<meta property="og:description" content="1.1 异常简介 异常：有异于常态，阻止当前方法或作用域，称之为异常。 异常的正确处理：提交给编程人员or用户，从而使原本中断的程序可继续运行or退出，并且保存当前操作or数据回滚，最后释放占用资源 Throwable:1) Error: 程序崩溃（硬伤无法处理） VirtualMachineError:虚拟机错误 ThreadDeath:线程错误2) Exception: 编程、环境、用户操作输">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-12-03T11:40:18.403Z">
+<meta property="og:updated_time" content="2018-12-11T10:34:03.594Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Imooc Java Primary III Chap1 异常和异常处理">
-<meta name="twitter:description" content="1.1 异常简介 异常：有异于常态，阻止当前方法或作用域，称之为异常。 异常的正确处理：提交给编程人员or用户，从而使原本中断的程序可继续运行or退出，并且保存当前操作or数据回滚，最后释放占用资源 Throwable:  Error: 程序崩溃（硬伤无法处理） VirtualMachineError:虚拟机错误 ThreadDeath:线程错误   Exception: 编程、环境、用户操作输入">
+<meta name="twitter:description" content="1.1 异常简介 异常：有异于常态，阻止当前方法或作用域，称之为异常。 异常的正确处理：提交给编程人员or用户，从而使原本中断的程序可继续运行or退出，并且保存当前操作or数据回滚，最后释放占用资源 Throwable:1) Error: 程序崩溃（硬伤无法处理） VirtualMachineError:虚拟机错误 ThreadDeath:线程错误2) Exception: 编程、环境、用户操作输">
   
     <link rel="alternative" href="/atom.xml" title="Longquan&#39;s Blog" type="application/atom+xml">
   
@@ -182,27 +182,19 @@
         <h2 id="1-1-异常简介"><a href="#1-1-异常简介" class="headerlink" title="1.1 异常简介"></a>1.1 异常简介</h2><ol>
 <li>异常：有异于常态，阻止当前方法或作用域，称之为异常。</li>
 <li>异常的正确处理：提交给编程人员or用户，从而使原本中断的程序可继续运行or退出，并且保存当前操作or数据回滚，最后释放占用资源</li>
-<li><p>Throwable:</p>
-<ol>
-<li>Error: 程序崩溃（硬伤无法处理）<ul>
+<li>Throwable:<br>1) Error: 程序崩溃（硬伤无法处理）<ul>
 <li>VirtualMachineError:虚拟机错误</li>
-<li>ThreadDeath:线程错误</li>
+<li>ThreadDeath:线程错误<br>2) Exception: 编程、环境、用户操作输入出现问题</li>
 </ul>
-</li>
-<li><p>Exception: 编程、环境、用户操作输入出现问题</p>
 <ol>
-<li>RunTimeException: 非检查异常 Java虚拟机自动抛出捕获，逻辑上检查</li>
-</ol>
-<ul>
+<li>RunTimeException: 非检查异常 Java虚拟机自动抛出捕获，逻辑上检查<ul>
 <li>NullPointerException: 空指针异常</li>
 <li>ArrayIndexOutOfBoundException: 数组下标越界异常</li>
 <li>ClassCastException: 类型转换异常</li>
 <li>ArithmeticException: 算术异常<br>…</li>
 </ul>
-<ol start="2">
-<li>CheckException: 检查异常 手动添加捕获处理语句</li>
-</ol>
-<ul>
+</li>
+<li>CheckException: 检查异常 手动添加捕获处理语句<ul>
 <li>IOException: 文件异常</li>
 <li>SQLExecption: SQL异常</li>
 </ul>
@@ -338,8 +330,8 @@
     </a>
   
   
-    <a href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Imooc Java Primary II Chap1 类和对象</div>
+    <a href="/2018/11/26/Imooc Java Primary II Chap2 封装/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Imooc Java Primary II Chap2 封装</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -481,15 +473,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
               </li>
              
               <li class="article-tag-list-item">

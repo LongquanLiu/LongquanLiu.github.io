@@ -223,7 +223,7 @@
 <li><p>java.util 包中的 Date 类。这个类最主要的作用就是获取当前时间，Date 类的使用：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Date d = <span class="keyword">new</span> Date();</span><br><span class="line">System.out.println(d);</span><br><span class="line"><span class="comment">// 默认无参构造函数为当前时间</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>java.text 包中的 SimpleDateFormat 类大显身手的时候了！！可以使用 SimpleDateFormat 来对日期时间进行格式化，如可以将日期转换为指定格式的文本，也可将文本转换为日期。</p>
+<li><p>java.text 包中的 SimpleDateFormat 类, 可以使用 SimpleDateFormat 来对日期时间进行格式化，如可以将日期转换为指定格式的文本，也可将文本转换为日期。</p>
 <ul>
 <li>使用 format() 方法将日期转换为指定格式的文本:</li>
 </ul>
@@ -355,6 +355,9 @@
 <li>ArrayList底层是由数组实现的</li>
 </ul>
 </li>
+</ol>
+<h2 id="4-3-学生选课"><a href="#4-3-学生选课" class="headerlink" title="4.3 学生选课"></a>4.3 学生选课</h2><ol>
+<li>对象存入集合都变成Object类型，取出时需要进行类型转换</li>
 </ol>
 
       
@@ -533,27 +536,19 @@
         <h2 id="1-1-异常简介"><a href="#1-1-异常简介" class="headerlink" title="1.1 异常简介"></a>1.1 异常简介</h2><ol>
 <li>异常：有异于常态，阻止当前方法或作用域，称之为异常。</li>
 <li>异常的正确处理：提交给编程人员or用户，从而使原本中断的程序可继续运行or退出，并且保存当前操作or数据回滚，最后释放占用资源</li>
-<li><p>Throwable:</p>
-<ol>
-<li>Error: 程序崩溃（硬伤无法处理）<ul>
+<li>Throwable:<br>1) Error: 程序崩溃（硬伤无法处理）<ul>
 <li>VirtualMachineError:虚拟机错误</li>
-<li>ThreadDeath:线程错误</li>
+<li>ThreadDeath:线程错误<br>2) Exception: 编程、环境、用户操作输入出现问题</li>
 </ul>
-</li>
-<li><p>Exception: 编程、环境、用户操作输入出现问题</p>
 <ol>
-<li>RunTimeException: 非检查异常 Java虚拟机自动抛出捕获，逻辑上检查</li>
-</ol>
-<ul>
+<li>RunTimeException: 非检查异常 Java虚拟机自动抛出捕获，逻辑上检查<ul>
 <li>NullPointerException: 空指针异常</li>
 <li>ArrayIndexOutOfBoundException: 数组下标越界异常</li>
 <li>ClassCastException: 类型转换异常</li>
 <li>ArithmeticException: 算术异常<br>…</li>
 </ul>
-<ol start="2">
-<li>CheckException: 检查异常 手动添加捕获处理语句</li>
-</ol>
-<ul>
+</li>
+<li>CheckException: 检查异常 手动添加捕获处理语句<ul>
 <li>IOException: 文件异常</li>
 <li>SQLExecption: SQL异常</li>
 </ul>
@@ -648,19 +643,19 @@
 
 
   
-    <article id="post-Imooc Java Primary II Chap1 类和对象" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-Imooc Java Primary II Chap2 封装" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/">Imooc Java Primary II Chap1 类和对象</a>
+      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap2 封装/">Imooc Java Primary II Chap2 封装</a>
     </h1>
   
 
         
-        <a href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/" class="archive-article-date">
+        <a href="/2018/11/26/Imooc Java Primary II Chap2 封装/" class="archive-article-date">
   	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
 </a>
         
@@ -668,40 +663,84 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-1-类和对象定义"><a href="#1-1-类和对象定义" class="headerlink" title="1.1 类和对象定义"></a>1.1 类和对象定义</h2><ol>
-<li>类是模板，确定对象将会拥有的特征（属性）和行为（方法）</li>
-<li>对象是客观存在的具体实体；</li>
+        <h2 id="2-1-封装"><a href="#2-1-封装" class="headerlink" title="2.1 封装"></a>2.1 封装</h2><ol>
+<li>面向对象三大特性：封装、继承、多态</li>
+<li>封装：隐藏类的信息，只能通过类提供的方法实现对隐藏信息的操作和访问</li>
+<li>封装实现步骤：<ol>
+<li>修改属性可见性，设为private</li>
+<li>创建getter/setter方法，用于属性的读写</li>
+<li>在getter/setter方法中加入属性控制语句，对属性值得合法性进行判断</li>
 </ol>
-<h2 id="1-2-定义类的步骤"><a href="#1-2-定义类的步骤" class="headerlink" title="1.2 定义类的步骤"></a>1.2 定义类的步骤</h2><ol>
-<li>定义一个类的步骤：<ul>
-<li>定义类的名称</li>
-<li>编写类的属性</li>
-<li>编写类的方法</li>
+</li>
+</ol>
+<h2 id="2-2-包管理Java中的类"><a href="#2-2-包管理Java中的类" class="headerlink" title="2.2 包管理Java中的类"></a>2.2 包管理Java中的类</h2><ol>
+<li>包的作用：管理Java文件、解决同名文件(类)冲突</li>
+<li>定义包：package 包名<ul>
+<li>必须放在Java源程序第一行</li>
+<li>包名间可以使用“.”隔开，eg:com.imooc.MyClass</li>
+</ul>
+</li>
+<li>系统中的包：<ol>
+<li>java.(功能).(类)</li>
+<li>java.lang.(类) 包含java语言基础的类</li>
+<li>java.util.(类) 包含java语言中各种工具类</li>
+<li>java.io.(类) 包含输入、输出相关功能的类</li>
+</ol>
+</li>
+<li>包的使用：<ol>
+<li>import</li>
+<li>全小写字母</li>
+<li>com.imooc.*</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-3-访问修饰符"><a href="#2-3-访问修饰符" class="headerlink" title="2.3 访问修饰符"></a>2.3 访问修饰符</h2><ol>
+<li>修饰属性和方法的访问范围</li>
+<li>访问修饰符：private,default,protected,public</li>
+<li>对应范围：本类，同包，子类，其他</li>
+</ol>
+<h2 id="2-4-this关键字"><a href="#2-4-this关键字" class="headerlink" title="2.4 this关键字"></a>2.4 this关键字</h2><ol>
+<li>this关键字代表当前对象<ul>
+<li>this.属性 操作当前对象的属性</li>
+<li>this.方法 调用当前对象的方法</li>
+</ul>
+</li>
+<li>封装对象属性的时候，经常使用this关键字</li>
+</ol>
+<h2 id="2-5-内部类"><a href="#2-5-内部类" class="headerlink" title="2.5 内部类"></a>2.5 内部类</h2><ol>
+<li>内部类的作用<ol>
+<li>内部类提供了更好的封装，把内部类隐藏在外部类之内，不允许同一个包中的其他类访问该类。</li>
+<li>内部类可以直接访问外部类的所有数据，包括私有数据。</li>
+<li>内部类所实现的功能外部类同样可以实现，只是有时使用内部类更方便</li>
+</ol>
+</li>
+<li>内部类分为以下几种：<ul>
+<li>成员内部类</li>
+<li>静态内部类</li>
+<li>方法内部类</li>
+<li>匿名内部类</li>
 </ul>
 </li>
 </ol>
-<h2 id="1-3-使用对象步骤"><a href="#1-3-使用对象步骤" class="headerlink" title="1.3 使用对象步骤"></a>1.3 使用对象步骤</h2><ol>
-<li>使用对象的步骤：<ul>
-<li>创建对象：<br>类名 对象名 = new 类名/构造方法();<br>Telphone phone = new Telphone();</li>
-<li>使用对象：<br>对象名.属性;<br>对象名.方法名();</li>
-</ul>
+<h2 id="2-6-成员内部类"><a href="#2-6-成员内部类" class="headerlink" title="2.6 成员内部类"></a>2.6 成员内部类</h2><ol>
+<li>成员内部类的使用方法：<ol>
+<li>Inner 类定义在 Outer 类的内部，相当于 Outer 类的一个<strong>成员变量的位置</strong>，Inner 类可以使用任意访问控制符，如 public 、 protected 、 private 等</li>
+<li>Inner 类中定义的 test() 方法可以<strong>直接访问 Outer 类中的所有数据</strong>，而不受访问控制符的影响，如直接访问 Outer 类中的私有属性a</li>
+<li>定义了成员内部类后，<strong>必须使用外部类对象来创建内部类对象</strong>，而不能直接去 new 一个内部类对象，即：内部类 对象名 = 外部类对象.new 内部类( );</li>
+<li>编译后：内部类名.class;外部类名$内部类名.class;</li>
+</ol>
 </li>
+<li><strong>外部类是不能直接使用内部类的成员和方法</strong>滴，即先创建内部类的对象，然后通过内部类的对象来访问其成员变量和方法。</li>
+<li>如果外部类和内部类具有相同的成员变量或方法，内部类默认访问自己的成员变量或方法，如果要访问外部类的成员变量，可以使用 this 关键字。</li>
 </ol>
-<h2 id="1-5-成员变量局部变量"><a href="#1-5-成员变量局部变量" class="headerlink" title="1.5 成员变量局部变量"></a>1.5 成员变量局部变量</h2><ol>
-<li>成员变量：有初始值</li>
-<li>局部变量：无初始值，就近原则优先</li>
+<h2 id="2-7-static内部类"><a href="#2-7-static内部类" class="headerlink" title="2.7 static内部类"></a>2.7 static内部类</h2><ol>
+<li>创建static内部类的对象时，不需要外部类的对象，可以直接创建 内部类 对象名= new 内部类();</li>
+<li>static内部类不能直接访问外部类的<strong>非静态成员</strong>，但可以通过 new 外部类().成员 的方式访问</li>
+<li>如果外部类的static成员与内部类的成员名称相同，可通过<strong>类名.静态成员</strong>访问外部类的静态成员；如果外部类的静态成员与内部类的成员名称不相同，则可通过“成员名”直接调用外部类的静态成员</li>
 </ol>
-<h2 id="1-7-static变量"><a href="#1-7-static变量" class="headerlink" title="1.7 static变量"></a>1.7 static变量</h2><ol>
-<li>static变量 类所有对象共享，能被修改，可使用类名、对象名访问</li>
-</ol>
-<h2 id="1-9-static方法"><a href="#1-9-static方法" class="headerlink" title="1.9 static方法"></a>1.9 static方法</h2><ol>
-<li>static方法可直接调用同类中的静态成员，但不能直接调用非静态成员以及非静态的方法。</li>
-<li>普通成员方法中，可以直接访问同类的非静态成员和静态成员</li>
-</ol>
-<h2 id="1-10-static初始化块"><a href="#1-10-static初始化块" class="headerlink" title="1.10 static初始化块"></a>1.10 static初始化块</h2><ol>
-<li>Java可以通过初始化块进行数据赋值。</li>
-<li>static初始化块只在类加载时执行一次！只能给static变量赋值！</li>
-<li>static初始化块最先执行，然后执行普通初始化块，最后执行构造方法</li>
+<h2 id="2-8-方法内部类"><a href="#2-8-方法内部类" class="headerlink" title="2.8 方法内部类"></a>2.8 方法内部类</h2><ol>
+<li>方法内部类就是内部类定义在外部类的方法中，方法内部类只在<strong>该方法的内部可见</strong>，即只在该方法内可以使用。</li>
+<li>由于方法内部类不能在外部类的方法以外的地方使用，因此方法内部类<strong>不能使用访问控制符和 static 修饰符</strong>。</li>
 </ol>
 
       
@@ -726,7 +765,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap2 封装/">展开全文 >></a>
         </p>
       
 
@@ -926,157 +965,6 @@
 
 
   
-    <article id="post-Imooc Java Primary II Chap2 封装" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap2 封装/">Imooc Java Primary II Chap2 封装</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/26/Imooc Java Primary II Chap2 封装/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="2-1-封装"><a href="#2-1-封装" class="headerlink" title="2.1 封装"></a>2.1 封装</h2><ol>
-<li>面向对象三大特性：封装、继承、多态</li>
-<li>封装：隐藏类的信息，只能通过类提供的方法实现对隐藏信息的操作和访问</li>
-<li>封装实现步骤：<ol>
-<li>修改属性可见性，设为private</li>
-<li>创建getter/setter方法，用于属性的读写</li>
-<li>在getter/setter方法中加入属性控制语句，对属性值得合法性进行判断</li>
-</ol>
-</li>
-</ol>
-<h2 id="2-2-包管理Java中的类"><a href="#2-2-包管理Java中的类" class="headerlink" title="2.2 包管理Java中的类"></a>2.2 包管理Java中的类</h2><ol>
-<li>包的作用：管理Java文件、解决同名文件(类)冲突</li>
-<li>定义包：package 包名<ul>
-<li>必须放在Java源程序第一行</li>
-<li>包名间可以使用“.”隔开，eg:com.imooc.MyClass</li>
-</ul>
-</li>
-<li>系统中的包：<ol>
-<li>java.(功能).(类)</li>
-<li>java.lang.(类) 包含java语言基础的类</li>
-<li>java.util.(类) 包含java语言中各种工具类</li>
-<li>java.io.(类) 包含输入、输出相关功能的类</li>
-</ol>
-</li>
-<li>包的使用：<ol>
-<li>import</li>
-<li>全小写字母</li>
-<li>com.imooc.*</li>
-</ol>
-</li>
-</ol>
-<h2 id="2-3-访问修饰符"><a href="#2-3-访问修饰符" class="headerlink" title="2.3 访问修饰符"></a>2.3 访问修饰符</h2><ol>
-<li>修饰属性和方法的访问范围</li>
-<li>访问修饰符：private,default,protected,public</li>
-<li>对应范围：本类，同包，子类，其他</li>
-</ol>
-<h2 id="2-4-this关键字"><a href="#2-4-this关键字" class="headerlink" title="2.4 this关键字"></a>2.4 this关键字</h2><ol>
-<li>this关键字代表当前对象<ul>
-<li>this.属性 操作当前对象的属性</li>
-<li>this.方法 调用当前对象的方法</li>
-</ul>
-</li>
-<li>封装对象属性的时候，经常使用this关键字</li>
-</ol>
-<h2 id="2-5-内部类"><a href="#2-5-内部类" class="headerlink" title="2.5 内部类"></a>2.5 内部类</h2><ol>
-<li>内部类的作用<ol>
-<li>内部类提供了更好的封装，把内部类隐藏在外部类之内，不允许同一个包中的其他类访问该类。</li>
-<li>内部类可以直接访问外部类的所有数据，包括私有数据。</li>
-<li>内部类所实现的功能外部类同样可以实现，只是有时使用内部类更方便</li>
-</ol>
-</li>
-<li>内部类分为以下几种：<ul>
-<li>成员内部类</li>
-<li>静态内部类</li>
-<li>方法内部类</li>
-<li>匿名内部类</li>
-</ul>
-</li>
-</ol>
-<h2 id="2-6-成员内部类"><a href="#2-6-成员内部类" class="headerlink" title="2.6 成员内部类"></a>2.6 成员内部类</h2><ol>
-<li>成员内部类的使用方法：<ol>
-<li>Inner 类定义在 Outer 类的内部，相当于 Outer 类的一个<strong>成员变量的位置</strong>，Inner 类可以使用任意访问控制符，如 public 、 protected 、 private 等</li>
-<li>Inner 类中定义的 test() 方法可以<strong>直接访问 Outer 类中的所有数据</strong>，而不受访问控制符的影响，如直接访问 Outer 类中的私有属性a</li>
-<li>定义了成员内部类后，<strong>必须使用外部类对象来创建内部类对象</strong>，而不能直接去 new 一个内部类对象，即：内部类 对象名 = 外部类对象.new 内部类( );</li>
-<li>编译后：内部类名.class;外部类名$内部类名.class;</li>
-</ol>
-</li>
-<li><strong>外部类是不能直接使用内部类的成员和方法</strong>滴，即先创建内部类的对象，然后通过内部类的对象来访问其成员变量和方法。</li>
-<li>如果外部类和内部类具有相同的成员变量或方法，内部类默认访问自己的成员变量或方法，如果要访问外部类的成员变量，可以使用 this 关键字。</li>
-</ol>
-<h2 id="2-7-static内部类"><a href="#2-7-static内部类" class="headerlink" title="2.7 static内部类"></a>2.7 static内部类</h2><ol>
-<li>创建static内部类的对象时，不需要外部类的对象，可以直接创建 内部类 对象名= new 内部类();</li>
-<li>static内部类不能直接访问外部类的<strong>非静态成员</strong>，但可以通过 new 外部类().成员 的方式访问</li>
-<li>如果外部类的static成员与内部类的成员名称相同，可通过<strong>类名.静态成员</strong>访问外部类的静态成员；如果外部类的静态成员与内部类的成员名称不相同，则可通过“成员名”直接调用外部类的静态成员</li>
-</ol>
-<h2 id="2-8-方法内部类"><a href="#2-8-方法内部类" class="headerlink" title="2.8 方法内部类"></a>2.8 方法内部类</h2><ol>
-<li>方法内部类就是内部类定义在外部类的方法中，方法内部类只在<strong>该方法的内部可见</strong>，即只在该方法内可以使用。</li>
-<li>由于方法内部类不能在外部类的方法以外的地方使用，因此方法内部类<strong>不能使用访问控制符和 static 修饰符</strong>。</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap2 封装/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
     <article id="post-Imooc Java Primary II Chap3 继承" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -1172,6 +1060,113 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap3 继承/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Imooc Java Primary II Chap1 类和对象" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/">Imooc Java Primary II Chap1 类和对象</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/" class="archive-article-date">
+  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-1-类和对象定义"><a href="#1-1-类和对象定义" class="headerlink" title="1.1 类和对象定义"></a>1.1 类和对象定义</h2><ol>
+<li>类是模板，确定对象将会拥有的特征（属性）和行为（方法）</li>
+<li>对象是客观存在的具体实体；</li>
+</ol>
+<h2 id="1-2-定义类的步骤"><a href="#1-2-定义类的步骤" class="headerlink" title="1.2 定义类的步骤"></a>1.2 定义类的步骤</h2><ol>
+<li>定义一个类的步骤：<ul>
+<li>定义类的名称</li>
+<li>编写类的属性</li>
+<li>编写类的方法</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-3-使用对象步骤"><a href="#1-3-使用对象步骤" class="headerlink" title="1.3 使用对象步骤"></a>1.3 使用对象步骤</h2><ol>
+<li>使用对象的步骤：<ul>
+<li>创建对象：<br>类名 对象名 = new 类名/构造方法();<br>Telphone phone = new Telphone();</li>
+<li>使用对象：<br>对象名.属性;<br>对象名.方法名();</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-5-成员变量局部变量"><a href="#1-5-成员变量局部变量" class="headerlink" title="1.5 成员变量局部变量"></a>1.5 成员变量局部变量</h2><ol>
+<li>成员变量：有初始值</li>
+<li>局部变量：无初始值，就近原则优先</li>
+</ol>
+<h2 id="1-7-static变量"><a href="#1-7-static变量" class="headerlink" title="1.7 static变量"></a>1.7 static变量</h2><ol>
+<li>static变量 类所有对象共享，能被修改，可使用类名、对象名访问</li>
+</ol>
+<h2 id="1-9-static方法"><a href="#1-9-static方法" class="headerlink" title="1.9 static方法"></a>1.9 static方法</h2><ol>
+<li>static方法可直接调用同类中的静态成员，但不能直接调用非静态成员以及非静态的方法。</li>
+<li>普通成员方法中，可以直接访问同类的非静态成员和静态成员</li>
+</ol>
+<h2 id="1-10-static初始化块"><a href="#1-10-static初始化块" class="headerlink" title="1.10 static初始化块"></a>1.10 static初始化块</h2><ol>
+<li>Java可以通过初始化块进行数据赋值。</li>
+<li>static初始化块只在类加载时执行一次！只能给static变量赋值！</li>
+<li>static初始化块最先执行，然后执行普通初始化块，最后执行构造方法</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/">展开全文 >></a>
         </p>
       
 
@@ -1308,12 +1303,25 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> alreadyIn = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> profit = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> sale = <span class="number">0</span>, buy = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prices.length - <span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices[i] &lt; prices[i+<span class="number">1</span>])&#123;</span><br><span class="line">            <span class="keyword">if</span>(alreadyIn == <span class="number">0</span>)&#123;</span><br><span class="line">                buy = prices[i];</span><br><span class="line">                alreadyIn = <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">// alreadyIn = 1</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">// prices[i] &gt;= prices[i+1]</span></span><br><span class="line">            <span class="keyword">if</span>(alreadyIn == <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">// alreadyIn = 1</span></span><br><span class="line">                sale = prices[i];</span><br><span class="line">                profit += sale - buy;</span><br><span class="line">                alreadyIn = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(alreadyIn == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="comment">// if loop out and judge have in or not</span></span><br><span class="line">        profit += prices[prices.length - <span class="number">1</span>] - buy;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> profit;</span><br></pre></td></tr></table></figure>
-<h3 id="最大子序和"><a href="#最大子序和" class="headerlink" title="最大子序和"></a>最大子序和</h3><p><a href="https://leetcode-cn.com/problems/maximum-subarray/description/" target="_blank" rel="noopener">53. 最大子序和</a><br>思路：<br>preSum = nums[0],<br>// 连续子数组，preSum保存着遍历至i时当前连续子数组的最大值<br>maxSum = preSum<br>// maxSum 保存着遍历i时之前子序列(0~i-1)的最大值，添加一个元素不会影响之前子序列的最大值，可用贪心 注意初始值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> alreadyIn = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> profit = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> sale = <span class="number">0</span>, buy = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prices.length - <span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices[i] &lt; prices[i+<span class="number">1</span>])&#123;</span><br><span class="line">            <span class="keyword">if</span>(alreadyIn == <span class="number">0</span>)&#123;</span><br><span class="line">                buy = prices[i];</span><br><span class="line">                alreadyIn = <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">// alreadyIn = 1</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">// prices[i] &gt;= prices[i+1]</span></span><br><span class="line">            <span class="keyword">if</span>(alreadyIn == <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">// alreadyIn = 1</span></span><br><span class="line">                sale = prices[i];</span><br><span class="line">                profit += sale - buy;</span><br><span class="line">                alreadyIn = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(alreadyIn == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="comment">// if loop out and judge have in or not</span></span><br><span class="line">        profit += prices[prices.length - <span class="number">1</span>] - buy;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> profit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="最大子序和"><a href="#最大子序和" class="headerlink" title="最大子序和"></a>最大子序和</h3><p><a href="https://leetcode-cn.com/problems/maximum-subarray/description/" target="_blank" rel="noopener">53. 最大子序和</a><br>思路：<br>preSum = nums[0], 连续子数组，preSum保存着遍历至i时当前连续子数组的最大值<br>maxSum = preSum, maxSum 保存着遍历i时之前子序列(0~i-1)的最大值，添加一个元素不会影响之前子序列的最大值，可用贪心 注意初始值</p>
 <ol>
 <li>遍历数组<br>preSum为负值可跳过,preSum=num[i],否则为preSum=preSum+nums[i]<br>令maxSum为max(maxSum,preSum)</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> preConSum = nums[<span class="number">0</span>];</span><br><span class="line">     <span class="keyword">int</span> maxSum = preConSum;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(preConSum &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            preConSum = preConSum + nums[i];</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            preConSum = nums[i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(maxSum &lt; preConSum)&#123;</span><br><span class="line">            maxSum = preConSum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="买卖股票的最佳时机"><a href="#买卖股票的最佳时机" class="headerlink" title="买卖股票的最佳时机"></a>买卖股票的最佳时机</h3><p><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/description/" target="_blank" rel="noopener">121. 买卖股票的最佳时机(Easy)</a><br>思路：<br>buy = nums[0]<br>sale = buy; //不能在买入股票前卖出股票。<br>nowProfit = maxProfit = 0;</p>
+<ol>
+<li>遍历数组<ul>
+<li>num[i]&lt;buy,<br>  nowProfit=sale - buy;<br>  maxProfit = max(maxProfit,nowProfit);   //判断是否更新profit<br>  buy = num[i]; sale = buy //重新买入由于不能在买入股票前卖出股票,无需考虑sale</li>
+<li>num[i]&gt;buy,<ul>
+<li>sale &lt; num[i], sale = num[i]</li>
+<li>sale &gt; num[i],continue;<br>2.遍历全局结束后还需判断是否更新profit<br>nowProfit=sale - buy;<br>maxProfit = max(maxProfit,nowProfit);   //判断是否更新profit</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(prices.length == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> buy = prices[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> sale = buy;</span><br><span class="line">    <span class="keyword">int</span> maxProfit = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> nowProfit = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices[i] &lt; buy)&#123;</span><br><span class="line">            <span class="comment">//判断是否更新profit</span></span><br><span class="line">            nowProfit = sale - buy;</span><br><span class="line">            <span class="keyword">if</span>(nowProfit &gt; maxProfit)&#123;</span><br><span class="line">                maxProfit = nowProfit;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//重新买入由于不能在买入股票前卖出股票,无需考虑sale</span></span><br><span class="line">            buy = prices[i];</span><br><span class="line">            sale = buy;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//prices[i]&gt;buy</span></span><br><span class="line">            <span class="keyword">if</span>(sale &lt; prices[i])&#123;</span><br><span class="line">                sale = prices[i];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//sale &gt;= prices[i]</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//判断是否更新profit</span></span><br><span class="line">    nowProfit = sale - buy;</span><br><span class="line">    <span class="keyword">if</span>(nowProfit &gt; maxProfit)&#123;</span><br><span class="line">        maxProfit = nowProfit;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxProfit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -1595,15 +1603,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
               </li>
              
               <li class="article-tag-list-item">
