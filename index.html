@@ -160,6 +160,217 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-LeetCode Algorithm Binary Search" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/13/LeetCode Algorithm Binary Search/">LeetCode Algorithm Binary Search</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/13/LeetCode Algorithm Binary Search/" class="archive-article-date">
+  	<time datetime="2018-12-13T02:15:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><h3 id="正常实现"><a href="#正常实现" class="headerlink" title="正常实现"></a>正常实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">0</span>, high = nums.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">      <span class="comment">// notice the &lt;=</span></span><br><span class="line">        <span class="keyword">int</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums[mid] == key) &#123;</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; key) &#123;</span><br><span class="line">            high = mid - <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>二分查找也称为折半查找，每次都能将查找区间减半，这种折半特性的算法时间复杂度为 O(logN)。</p>
+<h3 id="中值mid的计算"><a href="#中值mid的计算" class="headerlink" title="中值mid的计算"></a>中值mid的计算</h3><p>有两种计算中值 m 的方式：</p>
+<ul>
+<li>mid = (low + high) / 2</li>
+<li>mid = low + (high - low) / 2<br>low + high 可能出现加法溢出，最好使用第二种方式。</li>
+</ul>
+<h3 id="变种"><a href="#变种" class="headerlink" title="变种"></a>变种</h3><p>二分查找可以有很多变种，变种实现要注意边界值的判断。例如在一个有重复元素的数组中查找 key 的最左位置的实现如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, h = nums.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; h) &#123;</span><br><span class="line">        <span class="keyword">int</span> m = l + (h - l) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums[m] &gt;= key) &#123;</span><br><span class="line">            h = m;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            l = m + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>该实现和正常实现有以下不同：</p>
+<ul>
+<li>循环条件为 l &lt; h</li>
+<li>h 的赋值表达式为 h = m</li>
+<li>最后返回 l 而不是 -1</li>
+</ul>
+<p>在 nums[m] &gt;= key 的情况下，可以推导出最左 key 位于 [l, m] 区间中，这是一个闭区间。h 的赋值表达式为 h = m，因为 m 位置也可能是解。</p>
+<p>在 h 的赋值表达式为 h = mid 的情况下，如果循环条件为 l &lt;= h，那么会出现循环无法退出的情况，因此循环条件只能是 l &lt; h。以下演示了循环条件为 l &lt;= h 时循环无法退出的情况：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nums = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>&#125;, key = <span class="number">1</span></span><br><span class="line">l   m   h</span><br><span class="line"><span class="number">0</span>   <span class="number">1</span>   <span class="number">2</span>  nums[m] &gt;= key</span><br><span class="line"><span class="number">0</span>   <span class="number">0</span>   <span class="number">1</span>  nums[m] &lt; key</span><br><span class="line"><span class="number">1</span>   <span class="number">1</span>   <span class="number">1</span>  nums[m] &gt;= key</span><br><span class="line"><span class="number">1</span>   <span class="number">1</span>   <span class="number">1</span>  nums[m] &gt;= key</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>当循环体退出时，不表示没有查找到 key，因此最后返回的结果不应该为 -1。为了验证有没有查找到，需要在调用端判断一下返回位置上的值和 key 是否相等。</p>
+<h3 id="x-的平方根"><a href="#x-的平方根" class="headerlink" title="x 的平方根"></a>x 的平方根</h3><p><a href="https://leetcode-cn.com/problems/sqrtx/description/" target="_blank" rel="noopener">69. x 的平方根(Easy)</a></p>
+<p>思路：二分查找<br>非负整数，只保留整数部分。<br>可在[0,x]之间查找，且结果应满足 sqrt = x/sqrt<br>low = 0; high = x;</p>
+<ol>
+<li>当x&lt;=1时，return x</li>
+<li>当low&lt;=high循环查找<br>mid = low + (high - low)/2<br>sqrt = x/mid;<br>if(mid == sqrt),return mid<br>else if(mid&gt;sqrt), high = mid - 1<br>else low = mid + 1;</li>
+<li>return h<blockquote>
+<p>对于 x = 8，它的开方是 2.82842…，最后应该返回 2 而不是 3。在循环条件为 l &lt;= h 并且循环退出时，h 总是比 l 小 1，也就是说 h = 2，l = 3，因此最后的返回值应该为 h 而不是 l。</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">mySqrt</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x &lt;= <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">0</span>, high = x;</span><br><span class="line">    <span class="keyword">while</span>(low &lt;= high)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = low + (high - low)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> sqrt = x/mid;</span><br><span class="line">        <span class="keyword">if</span>(mid == sqrt)&#123;</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(mid &gt; sqrt)&#123;</span><br><span class="line">            high = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> high;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">LeetCode BinarySearch</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/13/LeetCode Algorithm Binary Search/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Imooc Java Primary III Chap4 集合框架上" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/Imooc Java Primary III Chap4 集合框架上/">Imooc Java Primary III Chap4 集合框架上</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/30/Imooc Java Primary III Chap4 集合框架上/" class="archive-article-date">
+  	<time datetime="2018-11-30T11:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="4-1-集合框架概述"><a href="#4-1-集合框架概述" class="headerlink" title="4.1 集合框架概述"></a>4.1 集合框架概述</h2><ol>
+<li>集合的概念：<ul>
+<li>现实生活中：很多事物凑在一起。（购物车，商品的集合；军队，军人的集合）</li>
+<li>数学中的集合：具有共同属性的事物的总体（有理数、整数）</li>
+<li>Java中的集合：是一种工具类，就像是<strong>容器</strong>，存储任意数量的<strong>具有共同属性的对象</strong>。</li>
+</ul>
+</li>
+<li>集合的作用：<ul>
+<li>在类的内部，对数据进行组织；</li>
+<li>简单而快速的搜索大数量的条目；</li>
+<li>有的集合接口，提供了一系列排列有序的元素，并且可以再序列中间快速的插入或者删除有关元素；</li>
+<li>有的集合接口，提供了映射关系，可以通过关键字（key）去快速查找到对应的唯一对象，而这个关键字可以是任意类型。</li>
+</ul>
+</li>
+<li>与数组的对比-为何选择集合而不是数组<ul>
+<li>数组的长度固定，集合长度可变（金箍棒、打狗棒）</li>
+<li>数组只能通过下标访问元素，类型固定，而有的集合可以通过任意类型查找所映射的具体对象</li>
+</ul>
+</li>
+<li>集合框架体系结构：<br><img src="(/img/Imooc Java Primary III/Collection_Map.png" alt="集合框架体系结构"></li>
+</ol>
+<p>List(序列)、Queue(队列)：排列有序可重复；Set(集)：无序不可重复<br>map:&lt;key,value&gt;Entry键值对</p>
+<h2 id="4-2-Collection-interface-amp-List-interface"><a href="#4-2-Collection-interface-amp-List-interface" class="headerlink" title="4.2 Collection interface &amp; List interface"></a>4.2 Collection interface &amp; List interface</h2><ol>
+<li>Collection接口：<ul>
+<li>是List、Set和Queue接口的父接口</li>
+<li>定义了可用于操作List、Set和Queue的方法——增删改查</li>
+</ul>
+</li>
+<li>List接口及其实现类——ArrayList<ul>
+<li>List是元素有序并且可以重复的集合，被称为序列</li>
+<li>List可以精确的控制每个元素的插入位置，或删除某个位置元素</li>
+<li>ArrayList——数组序列，是List的一个重要实现类</li>
+<li>ArrayList底层是由数组实现的</li>
+</ul>
+</li>
+</ol>
+<h2 id="4-3-学生选课"><a href="#4-3-学生选课" class="headerlink" title="4.3 学生选课"></a>4.3 学生选课</h2><ol>
+<li>对象存入集合都变成Object类型，取出时需要进行类型转换</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/30/Imooc Java Primary III Chap4 集合框架上/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-Imooc Java Primary III Chap3 常用类" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -272,117 +483,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/11/30/Imooc Java Primary III Chap3 常用类/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-Imooc Java Primary III Chap4 集合框架上" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/30/Imooc Java Primary III Chap4 集合框架上/">Imooc Java Primary III Chap4 集合框架上</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/30/Imooc Java Primary III Chap4 集合框架上/" class="archive-article-date">
-  	<time datetime="2018-11-30T11:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="4-1-集合框架概述"><a href="#4-1-集合框架概述" class="headerlink" title="4.1 集合框架概述"></a>4.1 集合框架概述</h2><ol>
-<li>集合的概念：<ul>
-<li>现实生活中：很多事物凑在一起。（购物车，商品的集合；军队，军人的集合）</li>
-<li>数学中的集合：具有共同属性的事物的总体（有理数、整数）</li>
-<li>Java中的集合：是一种工具类，就像是<strong>容器</strong>，存储任意数量的<strong>具有共同属性的对象</strong>。</li>
-</ul>
-</li>
-<li>集合的作用：<ul>
-<li>在类的内部，对数据进行组织；</li>
-<li>简单而快速的搜索大数量的条目；</li>
-<li>有的集合接口，提供了一系列排列有序的元素，并且可以再序列中间快速的插入或者删除有关元素；</li>
-<li>有的集合接口，提供了映射关系，可以通过关键字（key）去快速查找到对应的唯一对象，而这个关键字可以是任意类型。</li>
-</ul>
-</li>
-<li>与数组的对比-为何选择集合而不是数组<ul>
-<li>数组的长度固定，集合长度可变（金箍棒、打狗棒）</li>
-<li>数组只能通过下标访问元素，类型固定，而有的集合可以通过任意类型查找所映射的具体对象</li>
-</ul>
-</li>
-<li>集合框架体系结构：<br><img src="(/img/Imooc Java Primary III/Collection_Map.png" alt="集合框架体系结构"></li>
-</ol>
-<p>List(序列)、Queue(队列)：排列有序可重复；Set(集)：无序不可重复<br>map:&lt;key,value&gt;Entry键值对</p>
-<h2 id="4-2-Collection-interface-amp-List-interface"><a href="#4-2-Collection-interface-amp-List-interface" class="headerlink" title="4.2 Collection interface &amp; List interface"></a>4.2 Collection interface &amp; List interface</h2><ol>
-<li>Collection接口：<ul>
-<li>是List、Set和Queue接口的父接口</li>
-<li>定义了可用于操作List、Set和Queue的方法——增删改查</li>
-</ul>
-</li>
-<li>List接口及其实现类——ArrayList<ul>
-<li>List是元素有序并且可以重复的集合，被称为序列</li>
-<li>List可以精确的控制每个元素的插入位置，或删除某个位置元素</li>
-<li>ArrayList——数组序列，是List的一个重要实现类</li>
-<li>ArrayList底层是由数组实现的</li>
-</ul>
-</li>
-</ol>
-<h2 id="4-3-学生选课"><a href="#4-3-学生选课" class="headerlink" title="4.3 学生选课"></a>4.3 学生选课</h2><ol>
-<li>对象存入集合都变成Object类型，取出时需要进行类型转换</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/30/Imooc Java Primary III Chap4 集合框架上/">展开全文 >></a>
         </p>
       
 
@@ -643,328 +743,6 @@
 
 
   
-    <article id="post-Imooc Java Primary II Chap2 封装" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap2 封装/">Imooc Java Primary II Chap2 封装</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/26/Imooc Java Primary II Chap2 封装/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="2-1-封装"><a href="#2-1-封装" class="headerlink" title="2.1 封装"></a>2.1 封装</h2><ol>
-<li>面向对象三大特性：封装、继承、多态</li>
-<li>封装：隐藏类的信息，只能通过类提供的方法实现对隐藏信息的操作和访问</li>
-<li>封装实现步骤：<ol>
-<li>修改属性可见性，设为private</li>
-<li>创建getter/setter方法，用于属性的读写</li>
-<li>在getter/setter方法中加入属性控制语句，对属性值得合法性进行判断</li>
-</ol>
-</li>
-</ol>
-<h2 id="2-2-包管理Java中的类"><a href="#2-2-包管理Java中的类" class="headerlink" title="2.2 包管理Java中的类"></a>2.2 包管理Java中的类</h2><ol>
-<li>包的作用：管理Java文件、解决同名文件(类)冲突</li>
-<li>定义包：package 包名<ul>
-<li>必须放在Java源程序第一行</li>
-<li>包名间可以使用“.”隔开，eg:com.imooc.MyClass</li>
-</ul>
-</li>
-<li>系统中的包：<ol>
-<li>java.(功能).(类)</li>
-<li>java.lang.(类) 包含java语言基础的类</li>
-<li>java.util.(类) 包含java语言中各种工具类</li>
-<li>java.io.(类) 包含输入、输出相关功能的类</li>
-</ol>
-</li>
-<li>包的使用：<ol>
-<li>import</li>
-<li>全小写字母</li>
-<li>com.imooc.*</li>
-</ol>
-</li>
-</ol>
-<h2 id="2-3-访问修饰符"><a href="#2-3-访问修饰符" class="headerlink" title="2.3 访问修饰符"></a>2.3 访问修饰符</h2><ol>
-<li>修饰属性和方法的访问范围</li>
-<li>访问修饰符：private,default,protected,public</li>
-<li>对应范围：本类，同包，子类，其他</li>
-</ol>
-<h2 id="2-4-this关键字"><a href="#2-4-this关键字" class="headerlink" title="2.4 this关键字"></a>2.4 this关键字</h2><ol>
-<li>this关键字代表当前对象<ul>
-<li>this.属性 操作当前对象的属性</li>
-<li>this.方法 调用当前对象的方法</li>
-</ul>
-</li>
-<li>封装对象属性的时候，经常使用this关键字</li>
-</ol>
-<h2 id="2-5-内部类"><a href="#2-5-内部类" class="headerlink" title="2.5 内部类"></a>2.5 内部类</h2><ol>
-<li>内部类的作用<ol>
-<li>内部类提供了更好的封装，把内部类隐藏在外部类之内，不允许同一个包中的其他类访问该类。</li>
-<li>内部类可以直接访问外部类的所有数据，包括私有数据。</li>
-<li>内部类所实现的功能外部类同样可以实现，只是有时使用内部类更方便</li>
-</ol>
-</li>
-<li>内部类分为以下几种：<ul>
-<li>成员内部类</li>
-<li>静态内部类</li>
-<li>方法内部类</li>
-<li>匿名内部类</li>
-</ul>
-</li>
-</ol>
-<h2 id="2-6-成员内部类"><a href="#2-6-成员内部类" class="headerlink" title="2.6 成员内部类"></a>2.6 成员内部类</h2><ol>
-<li>成员内部类的使用方法：<ol>
-<li>Inner 类定义在 Outer 类的内部，相当于 Outer 类的一个<strong>成员变量的位置</strong>，Inner 类可以使用任意访问控制符，如 public 、 protected 、 private 等</li>
-<li>Inner 类中定义的 test() 方法可以<strong>直接访问 Outer 类中的所有数据</strong>，而不受访问控制符的影响，如直接访问 Outer 类中的私有属性a</li>
-<li>定义了成员内部类后，<strong>必须使用外部类对象来创建内部类对象</strong>，而不能直接去 new 一个内部类对象，即：内部类 对象名 = 外部类对象.new 内部类( );</li>
-<li>编译后：内部类名.class;外部类名$内部类名.class;</li>
-</ol>
-</li>
-<li><strong>外部类是不能直接使用内部类的成员和方法</strong>滴，即先创建内部类的对象，然后通过内部类的对象来访问其成员变量和方法。</li>
-<li>如果外部类和内部类具有相同的成员变量或方法，内部类默认访问自己的成员变量或方法，如果要访问外部类的成员变量，可以使用 this 关键字。</li>
-</ol>
-<h2 id="2-7-static内部类"><a href="#2-7-static内部类" class="headerlink" title="2.7 static内部类"></a>2.7 static内部类</h2><ol>
-<li>创建static内部类的对象时，不需要外部类的对象，可以直接创建 内部类 对象名= new 内部类();</li>
-<li>static内部类不能直接访问外部类的<strong>非静态成员</strong>，但可以通过 new 外部类().成员 的方式访问</li>
-<li>如果外部类的static成员与内部类的成员名称相同，可通过<strong>类名.静态成员</strong>访问外部类的静态成员；如果外部类的静态成员与内部类的成员名称不相同，则可通过“成员名”直接调用外部类的静态成员</li>
-</ol>
-<h2 id="2-8-方法内部类"><a href="#2-8-方法内部类" class="headerlink" title="2.8 方法内部类"></a>2.8 方法内部类</h2><ol>
-<li>方法内部类就是内部类定义在外部类的方法中，方法内部类只在<strong>该方法的内部可见</strong>，即只在该方法内可以使用。</li>
-<li>由于方法内部类不能在外部类的方法以外的地方使用，因此方法内部类<strong>不能使用访问控制符和 static 修饰符</strong>。</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap2 封装/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-Imooc Java Primary II Chap4 多态" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap4 多态/">Imooc Java Primary II Chap4 多态</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/26/Imooc Java Primary II Chap4 多态/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="4-1-多态"><a href="#4-1-多态" class="headerlink" title="4.1 多态"></a>4.1 多态</h2><ol>
-<li>对象的多种形态</li>
-<li>引用多态<ul>
-<li>父类的引用可以指向本类的对象</li>
-<li>父类的引用可以指向子类的对象</li>
-</ul>
-</li>
-<li>方法多态<ul>
-<li>创建本类对象时，调用的方法为本类方法</li>
-<li>创建子类对象时，调用的方法为子类重写的方法或者继承的方法</li>
-</ul>
-</li>
-<li>继承是实现多态的基础</li>
-<li><strong>父类的引用不可以调用子类独有的方法</strong></li>
-</ol>
-<h2 id="4-2-多态中的引用类型转换"><a href="#4-2-多态中的引用类型转换" class="headerlink" title="4.2 多态中的引用类型转换"></a>4.2 多态中的<strong>引用</strong>类型转换</h2><ol>
-<li>向上类型转换（隐式/自动类型转换），是小类型到大类型的转换。杯子——茶壶（安全）</li>
-<li>向下类型转换（强制类型转换），是大类型到小类型。茶壶——杯子（不安全）</li>
-<li><strong>instanceof</strong> 运算符，来解决引用对象的类型，避免类型转换的安全性问题<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(animal <span class="keyword">instanceof</span> Cat)&#123;</span><br><span class="line">  Cat cat =(Cat)animal;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  System.out.println(<span class="string">"无法进行类型转换"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="4-3-抽象类-abstract"><a href="#4-3-抽象类-abstract" class="headerlink" title="4.3 抽象类 abstract"></a>4.3 抽象类 abstract</h2><ol>
-<li>应用场景：<ul>
-<li>某个父类只知道子类应该包含怎样的方法，但无法准确知道这些子类如何实现这些方法。</li>
-<li>从多个具有相同特征的类中抽象出一个抽象类，以这个抽象类作为子类的模板，从而避免子类设计的随意性。</li>
-</ul>
-</li>
-<li>作用：限制规定子类必须实现某些方法，但不关注实现细节</li>
-<li>使用规则：<ul>
-<li>abstract定义抽象类</li>
-<li>abstract定义抽象方法，只有声明，不需要实现</li>
-<li>包含抽象方法的类是抽象类</li>
-<li>抽象类中可以包含普通的方法，也可以没有抽象的方法</li>
-<li>抽象类不能直接创建，可以定义引用变量</li>
-</ul>
-</li>
-<li>抽象方法没有方法体以分号结束;</li>
-</ol>
-<h2 id="4-4-接口-interface-implements"><a href="#4-4-接口-interface-implements" class="headerlink" title="4.4 接口 interface implements"></a>4.4 接口 interface implements</h2><ol>
-<li>接口可以理解为一种特殊的类，由<strong>全局常量和公共的抽象方法</strong>所组成</li>
-<li>类是一种具体实现体，而接口定义了某一批类所需要遵守的<strong>规范</strong>，接口不关心这些类内部的数据，也不关心这些类里方法的实现细节，它只规定这些类必须提供某些方法</li>
-<li><p>接口定义的基本语法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] interface 接口名 [extends 父接口1,父接口2...]</span><br><span class="line">&#123;</span><br><span class="line">  零个到多个常量定义...</span><br><span class="line">  零个到多个抽象方法定义...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 接口就是用来被继承实现的，修饰符一般建议用'public',不能使用private和protected修饰接口</span></span><br><span class="line"><span class="comment">// 隐式abstract</span></span><br><span class="line"><span class="comment">// 接口可以多继承</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>接口定义</p>
-<ul>
-<li>常量：接口中的属性是常量，即使定义时不添加public static final 修饰符，系统也会自动加上</li>
-<li>方法：接口中的方法只能是抽象方法，总是使用，即使定义时不添加public abstract 修饰符，系统也会自动加上</li>
-</ul>
-</li>
-<li><p>使用接口：一个类可以实现一个或多个接口，实现接口使用implements关键字。Java中一个类只能继承一个父类，是不够灵活的，通过实现多个接口可以做补充。</p>
-<ul>
-<li>继承父类实现接口的语法为：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] <span class="class"><span class="keyword">class</span> 类名 <span class="keyword">extends</span> 父类 <span class="keyword">implements</span> 接口1， 接口2 ...</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  类体部分<span class="comment">//如果继承了抽象类，需要实现继承的抽象方法；要实现接口中的抽象方法</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果要继承父类，继承父类必须在实现接口之前</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p><strong>接口引用</strong>来使用实现接口的类<br>接口名 接口引用 = new 实现接口的类();</p>
-</li>
-<li>使用接口：<ul>
-<li>接口在使用过程中，还可以与匿名内部类配合使用</li>
-<li>匿名内部类就是没有名字的内部类，多用于关注实现而不关注实现类的名称<br>语法格式：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Interface i = <span class="keyword">new</span> Interface()&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"匿名内部类实现接口的方式1"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 注意实现后的分号</span></span><br><span class="line"><span class="comment">// 即使用接口的引用然后new实现，调用实现的方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Interface()&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"匿名内部类实现接口的方式2"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;.method();</span><br><span class="line"><span class="comment">// 直接new实现，调用实现的方法 Android和框架常用</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="4-5-UML简介"><a href="#4-5-UML简介" class="headerlink" title="4.5 UML简介"></a>4.5 UML简介</h2><ol>
-<li>Unified Modeling Language(UML), <strong>统一建模语言</strong>或标准建模语言。是一个支持模型化和软件系统开发的图形化语言，为软件开发的所有阶段提供模型化和可视化的支持。</li>
-<li>常用UML图<ol>
-<li>用例图(The Use Case Diagram)，能够以可视化的方式，表达系统如何满足所收集的业务规则，以及特定的<strong>用户需求</strong>等信息。</li>
-<li>序列图(The Sequence Diagram)，用于按照交互发生的一系列顺序，显示对象之间的这些交互。</li>
-<li>类图(The Class Diagram)，UML类图、业务逻辑和所有支持结构一同被用于定义全部的结构代码。</li>
-</ol>
-</li>
-<li>UML建模工具：（<strong>类图可直接生成代码</strong>）<ol>
-<li>Rational Rose,IBM</li>
-<li>Visio,MS</li>
-<li>PowerDesigner</li>
-</ol>
-</li>
-</ol>
-<h2 id="4-6-综合练习-‘dada租车系统’"><a href="#4-6-综合练习-‘dada租车系统’" class="headerlink" title="4.6 综合练习 ‘dada租车系统’"></a>4.6 综合练习 ‘dada租车系统’</h2><ol>
-<li>项目分析<ol>
-<li>数据模型分析<ul>
-<li>通过对现实世界的事与物主要特征的分析、抽象，为信息系统的实施提供数据存取的数据结构及相应的约束。</li>
-<li>数据结构组成：操作（方法）、属性</li>
-</ul>
-</li>
-<li>业务模型分析<ul>
-<li>在设计应用程序之前，应该明确应用程序必须执行哪些任务。确认业务需求的目的在于创建一个能同时满足零售商和消费者需要的解决方案。</li>
-</ul>
-</li>
-<li>显示和流程分析<ul>
-<li>显示：用户可以看到的信息提示界面</li>
-<li>流程：显示信息的执行过程、步骤</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap4 多态/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
     <article id="post-Imooc Java Primary II Chap3 继承" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -1195,6 +973,328 @@
 
 
   
+    <article id="post-Imooc Java Primary II Chap4 多态" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap4 多态/">Imooc Java Primary II Chap4 多态</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/26/Imooc Java Primary II Chap4 多态/" class="archive-article-date">
+  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="4-1-多态"><a href="#4-1-多态" class="headerlink" title="4.1 多态"></a>4.1 多态</h2><ol>
+<li>对象的多种形态</li>
+<li>引用多态<ul>
+<li>父类的引用可以指向本类的对象</li>
+<li>父类的引用可以指向子类的对象</li>
+</ul>
+</li>
+<li>方法多态<ul>
+<li>创建本类对象时，调用的方法为本类方法</li>
+<li>创建子类对象时，调用的方法为子类重写的方法或者继承的方法</li>
+</ul>
+</li>
+<li>继承是实现多态的基础</li>
+<li><strong>父类的引用不可以调用子类独有的方法</strong></li>
+</ol>
+<h2 id="4-2-多态中的引用类型转换"><a href="#4-2-多态中的引用类型转换" class="headerlink" title="4.2 多态中的引用类型转换"></a>4.2 多态中的<strong>引用</strong>类型转换</h2><ol>
+<li>向上类型转换（隐式/自动类型转换），是小类型到大类型的转换。杯子——茶壶（安全）</li>
+<li>向下类型转换（强制类型转换），是大类型到小类型。茶壶——杯子（不安全）</li>
+<li><strong>instanceof</strong> 运算符，来解决引用对象的类型，避免类型转换的安全性问题<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(animal <span class="keyword">instanceof</span> Cat)&#123;</span><br><span class="line">  Cat cat =(Cat)animal;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  System.out.println(<span class="string">"无法进行类型转换"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="4-3-抽象类-abstract"><a href="#4-3-抽象类-abstract" class="headerlink" title="4.3 抽象类 abstract"></a>4.3 抽象类 abstract</h2><ol>
+<li>应用场景：<ul>
+<li>某个父类只知道子类应该包含怎样的方法，但无法准确知道这些子类如何实现这些方法。</li>
+<li>从多个具有相同特征的类中抽象出一个抽象类，以这个抽象类作为子类的模板，从而避免子类设计的随意性。</li>
+</ul>
+</li>
+<li>作用：限制规定子类必须实现某些方法，但不关注实现细节</li>
+<li>使用规则：<ul>
+<li>abstract定义抽象类</li>
+<li>abstract定义抽象方法，只有声明，不需要实现</li>
+<li>包含抽象方法的类是抽象类</li>
+<li>抽象类中可以包含普通的方法，也可以没有抽象的方法</li>
+<li>抽象类不能直接创建，可以定义引用变量</li>
+</ul>
+</li>
+<li>抽象方法没有方法体以分号结束;</li>
+</ol>
+<h2 id="4-4-接口-interface-implements"><a href="#4-4-接口-interface-implements" class="headerlink" title="4.4 接口 interface implements"></a>4.4 接口 interface implements</h2><ol>
+<li>接口可以理解为一种特殊的类，由<strong>全局常量和公共的抽象方法</strong>所组成</li>
+<li>类是一种具体实现体，而接口定义了某一批类所需要遵守的<strong>规范</strong>，接口不关心这些类内部的数据，也不关心这些类里方法的实现细节，它只规定这些类必须提供某些方法</li>
+<li><p>接口定义的基本语法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] interface 接口名 [extends 父接口1,父接口2...]</span><br><span class="line">&#123;</span><br><span class="line">  零个到多个常量定义...</span><br><span class="line">  零个到多个抽象方法定义...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 接口就是用来被继承实现的，修饰符一般建议用'public',不能使用private和protected修饰接口</span></span><br><span class="line"><span class="comment">// 隐式abstract</span></span><br><span class="line"><span class="comment">// 接口可以多继承</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接口定义</p>
+<ul>
+<li>常量：接口中的属性是常量，即使定义时不添加public static final 修饰符，系统也会自动加上</li>
+<li>方法：接口中的方法只能是抽象方法，总是使用，即使定义时不添加public abstract 修饰符，系统也会自动加上</li>
+</ul>
+</li>
+<li><p>使用接口：一个类可以实现一个或多个接口，实现接口使用implements关键字。Java中一个类只能继承一个父类，是不够灵活的，通过实现多个接口可以做补充。</p>
+<ul>
+<li>继承父类实现接口的语法为：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] <span class="class"><span class="keyword">class</span> 类名 <span class="keyword">extends</span> 父类 <span class="keyword">implements</span> 接口1， 接口2 ...</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  类体部分<span class="comment">//如果继承了抽象类，需要实现继承的抽象方法；要实现接口中的抽象方法</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果要继承父类，继承父类必须在实现接口之前</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>接口引用</strong>来使用实现接口的类<br>接口名 接口引用 = new 实现接口的类();</p>
+</li>
+<li>使用接口：<ul>
+<li>接口在使用过程中，还可以与匿名内部类配合使用</li>
+<li>匿名内部类就是没有名字的内部类，多用于关注实现而不关注实现类的名称<br>语法格式：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Interface i = <span class="keyword">new</span> Interface()&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"匿名内部类实现接口的方式1"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 注意实现后的分号</span></span><br><span class="line"><span class="comment">// 即使用接口的引用然后new实现，调用实现的方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Interface()&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"匿名内部类实现接口的方式2"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;.method();</span><br><span class="line"><span class="comment">// 直接new实现，调用实现的方法 Android和框架常用</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="4-5-UML简介"><a href="#4-5-UML简介" class="headerlink" title="4.5 UML简介"></a>4.5 UML简介</h2><ol>
+<li>Unified Modeling Language(UML), <strong>统一建模语言</strong>或标准建模语言。是一个支持模型化和软件系统开发的图形化语言，为软件开发的所有阶段提供模型化和可视化的支持。</li>
+<li>常用UML图<ol>
+<li>用例图(The Use Case Diagram)，能够以可视化的方式，表达系统如何满足所收集的业务规则，以及特定的<strong>用户需求</strong>等信息。</li>
+<li>序列图(The Sequence Diagram)，用于按照交互发生的一系列顺序，显示对象之间的这些交互。</li>
+<li>类图(The Class Diagram)，UML类图、业务逻辑和所有支持结构一同被用于定义全部的结构代码。</li>
+</ol>
+</li>
+<li>UML建模工具：（<strong>类图可直接生成代码</strong>）<ol>
+<li>Rational Rose,IBM</li>
+<li>Visio,MS</li>
+<li>PowerDesigner</li>
+</ol>
+</li>
+</ol>
+<h2 id="4-6-综合练习-‘dada租车系统’"><a href="#4-6-综合练习-‘dada租车系统’" class="headerlink" title="4.6 综合练习 ‘dada租车系统’"></a>4.6 综合练习 ‘dada租车系统’</h2><ol>
+<li>项目分析<ol>
+<li>数据模型分析<ul>
+<li>通过对现实世界的事与物主要特征的分析、抽象，为信息系统的实施提供数据存取的数据结构及相应的约束。</li>
+<li>数据结构组成：操作（方法）、属性</li>
+</ul>
+</li>
+<li>业务模型分析<ul>
+<li>在设计应用程序之前，应该明确应用程序必须执行哪些任务。确认业务需求的目的在于创建一个能同时满足零售商和消费者需要的解决方案。</li>
+</ul>
+</li>
+<li>显示和流程分析<ul>
+<li>显示：用户可以看到的信息提示界面</li>
+<li>流程：显示信息的执行过程、步骤</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap4 多态/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Imooc Java Primary II Chap2 封装" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap2 封装/">Imooc Java Primary II Chap2 封装</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/26/Imooc Java Primary II Chap2 封装/" class="archive-article-date">
+  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="2-1-封装"><a href="#2-1-封装" class="headerlink" title="2.1 封装"></a>2.1 封装</h2><ol>
+<li>面向对象三大特性：封装、继承、多态</li>
+<li>封装：隐藏类的信息，只能通过类提供的方法实现对隐藏信息的操作和访问</li>
+<li>封装实现步骤：<ol>
+<li>修改属性可见性，设为private</li>
+<li>创建getter/setter方法，用于属性的读写</li>
+<li>在getter/setter方法中加入属性控制语句，对属性值得合法性进行判断</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-2-包管理Java中的类"><a href="#2-2-包管理Java中的类" class="headerlink" title="2.2 包管理Java中的类"></a>2.2 包管理Java中的类</h2><ol>
+<li>包的作用：管理Java文件、解决同名文件(类)冲突</li>
+<li>定义包：package 包名<ul>
+<li>必须放在Java源程序第一行</li>
+<li>包名间可以使用“.”隔开，eg:com.imooc.MyClass</li>
+</ul>
+</li>
+<li>系统中的包：<ol>
+<li>java.(功能).(类)</li>
+<li>java.lang.(类) 包含java语言基础的类</li>
+<li>java.util.(类) 包含java语言中各种工具类</li>
+<li>java.io.(类) 包含输入、输出相关功能的类</li>
+</ol>
+</li>
+<li>包的使用：<ol>
+<li>import</li>
+<li>全小写字母</li>
+<li>com.imooc.*</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-3-访问修饰符"><a href="#2-3-访问修饰符" class="headerlink" title="2.3 访问修饰符"></a>2.3 访问修饰符</h2><ol>
+<li>修饰属性和方法的访问范围</li>
+<li>访问修饰符：private,default,protected,public</li>
+<li>对应范围：本类，同包，子类，其他</li>
+</ol>
+<h2 id="2-4-this关键字"><a href="#2-4-this关键字" class="headerlink" title="2.4 this关键字"></a>2.4 this关键字</h2><ol>
+<li>this关键字代表当前对象<ul>
+<li>this.属性 操作当前对象的属性</li>
+<li>this.方法 调用当前对象的方法</li>
+</ul>
+</li>
+<li>封装对象属性的时候，经常使用this关键字</li>
+</ol>
+<h2 id="2-5-内部类"><a href="#2-5-内部类" class="headerlink" title="2.5 内部类"></a>2.5 内部类</h2><ol>
+<li>内部类的作用<ol>
+<li>内部类提供了更好的封装，把内部类隐藏在外部类之内，不允许同一个包中的其他类访问该类。</li>
+<li>内部类可以直接访问外部类的所有数据，包括私有数据。</li>
+<li>内部类所实现的功能外部类同样可以实现，只是有时使用内部类更方便</li>
+</ol>
+</li>
+<li>内部类分为以下几种：<ul>
+<li>成员内部类</li>
+<li>静态内部类</li>
+<li>方法内部类</li>
+<li>匿名内部类</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-6-成员内部类"><a href="#2-6-成员内部类" class="headerlink" title="2.6 成员内部类"></a>2.6 成员内部类</h2><ol>
+<li>成员内部类的使用方法：<ol>
+<li>Inner 类定义在 Outer 类的内部，相当于 Outer 类的一个<strong>成员变量的位置</strong>，Inner 类可以使用任意访问控制符，如 public 、 protected 、 private 等</li>
+<li>Inner 类中定义的 test() 方法可以<strong>直接访问 Outer 类中的所有数据</strong>，而不受访问控制符的影响，如直接访问 Outer 类中的私有属性a</li>
+<li>定义了成员内部类后，<strong>必须使用外部类对象来创建内部类对象</strong>，而不能直接去 new 一个内部类对象，即：内部类 对象名 = 外部类对象.new 内部类( );</li>
+<li>编译后：内部类名.class;外部类名$内部类名.class;</li>
+</ol>
+</li>
+<li><strong>外部类是不能直接使用内部类的成员和方法</strong>滴，即先创建内部类的对象，然后通过内部类的对象来访问其成员变量和方法。</li>
+<li>如果外部类和内部类具有相同的成员变量或方法，内部类默认访问自己的成员变量或方法，如果要访问外部类的成员变量，可以使用 this 关键字。</li>
+</ol>
+<h2 id="2-7-static内部类"><a href="#2-7-static内部类" class="headerlink" title="2.7 static内部类"></a>2.7 static内部类</h2><ol>
+<li>创建static内部类的对象时，不需要外部类的对象，可以直接创建 内部类 对象名= new 内部类();</li>
+<li>static内部类不能直接访问外部类的<strong>非静态成员</strong>，但可以通过 new 外部类().成员 的方式访问</li>
+<li>如果外部类的static成员与内部类的成员名称相同，可通过<strong>类名.静态成员</strong>访问外部类的静态成员；如果外部类的静态成员与内部类的成员名称不相同，则可通过“成员名”直接调用外部类的静态成员</li>
+</ol>
+<h2 id="2-8-方法内部类"><a href="#2-8-方法内部类" class="headerlink" title="2.8 方法内部类"></a>2.8 方法内部类</h2><ol>
+<li>方法内部类就是内部类定义在外部类的方法中，方法内部类只在<strong>该方法的内部可见</strong>，即只在该方法内可以使用。</li>
+<li>由于方法内部类不能在外部类的方法以外的地方使用，因此方法内部类<strong>不能使用访问控制符和 static 修饰符</strong>。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap2 封装/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-LeetCode Algorithm Greedy" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -1311,16 +1411,16 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> preConSum = nums[<span class="number">0</span>];</span><br><span class="line">     <span class="keyword">int</span> maxSum = preConSum;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(preConSum &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            preConSum = preConSum + nums[i];</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            preConSum = nums[i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(maxSum &lt; preConSum)&#123;</span><br><span class="line">            maxSum = preConSum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="买卖股票的最佳时机"><a href="#买卖股票的最佳时机" class="headerlink" title="买卖股票的最佳时机"></a>买卖股票的最佳时机</h3><p><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/description/" target="_blank" rel="noopener">121. 买卖股票的最佳时机(Easy)</a><br>思路：<br>buy = nums[0]<br>sale = buy; //不能在买入股票前卖出股票。<br>nowProfit = maxProfit = 0;</p>
 <ol>
-<li>遍历数组<ul>
-<li>num[i]&lt;buy,<br>  nowProfit=sale - buy;<br>  maxProfit = max(maxProfit,nowProfit);   //判断是否更新profit<br>  buy = num[i]; sale = buy //重新买入由于不能在买入股票前卖出股票,无需考虑sale</li>
-<li>num[i]&gt;buy,<ul>
+<li>遍历数组<br>1) num[i]&lt;buy,<pre><code>nowProfit=sale - buy;
+maxProfit = max(maxProfit,nowProfit);   //判断是否更新profit
+buy = num[i]; sale = buy //重新买入由于不能在买入股票前卖出股票,无需考虑sale
+</code></pre>2) num[i]&gt;buy,<ul>
 <li>sale &lt; num[i], sale = num[i]</li>
-<li>sale &gt; num[i],continue;<br>2.遍历全局结束后还需判断是否更新profit<br>nowProfit=sale - buy;<br>maxProfit = max(maxProfit,nowProfit);   //判断是否更新profit</li>
-</ul>
-</li>
+<li>sale &gt; num[i],continue;</li>
 </ul>
 </li>
 </ol>
+<p>2.遍历全局结束后还需判断是否更新profit<br>  nowProfit=sale - buy;<br>  maxProfit = max(maxProfit,nowProfit);   //判断是否更新profit</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(prices.length == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> buy = prices[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> sale = buy;</span><br><span class="line">    <span class="keyword">int</span> maxProfit = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> nowProfit = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices[i] &lt; buy)&#123;</span><br><span class="line">            <span class="comment">//判断是否更新profit</span></span><br><span class="line">            nowProfit = sale - buy;</span><br><span class="line">            <span class="keyword">if</span>(nowProfit &gt; maxProfit)&#123;</span><br><span class="line">                maxProfit = nowProfit;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//重新买入由于不能在买入股票前卖出股票,无需考虑sale</span></span><br><span class="line">            buy = prices[i];</span><br><span class="line">            sale = buy;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//prices[i]&gt;buy</span></span><br><span class="line">            <span class="keyword">if</span>(sale &lt; prices[i])&#123;</span><br><span class="line">                sale = prices[i];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//sale &gt;= prices[i]</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//判断是否更新profit</span></span><br><span class="line">    nowProfit = sale - buy;</span><br><span class="line">    <span class="keyword">if</span>(nowProfit &gt; maxProfit)&#123;</span><br><span class="line">        maxProfit = nowProfit;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxProfit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
@@ -1346,134 +1446,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/11/14/LeetCode Algorithm Greedy/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-LeetCode Algorithm Sort" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/05/LeetCode Algorithm Sort/">Leetcode Algorithm Sort</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/05/LeetCode Algorithm Sort/" class="archive-article-date">
-  	<time datetime="2018-11-05T09:21:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="快速选择"><a href="#快速选择" class="headerlink" title="快速选择"></a>快速选择</h3><p>用于求解 Kth Element 问题，使用快速排序的 partition() 进行实现。需要先打乱数组，否则最坏情况下时间复杂度为 O(N<sup>2</sup>)。</p>
-<h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><p>用于求解 TopK Elements 问题，通过维护一个大小为 K 的堆，堆中的元素就是 TopK Elements。<br>堆排序也可以用于求解 Kth Element 问题，堆顶元素就是 Kth Element。<br>快速选择也可以求解 TopK Elements 问题，因为找到 Kth Element 之后，再遍历一次数组，所有小于等于 Kth Element 的元素都是 TopK Elements。<br>可以看到，快速选择和堆排序都可以求解 Kth Element 和 TopK Elements 问题。</p>
-<h4 id="Kth-Element"><a href="#Kth-Element" class="headerlink" title="Kth Element"></a>Kth Element</h4><p><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/description/" target="_blank" rel="noopener">215. Kth Largest Element in an Array (Medium)</a><br>题目描述：找到第 k 大的元素。</p>
-<p><strong>排序</strong>：时间复杂度 O(NlogN)，空间复杂度 O(1)</p>
-<blockquote>
-<p>Arrays:<br>static void    sort​(int[] a) Sorts the specified array into ascending numerical order.<br>The sorting algorithm is a Dual-Pivot Quicksort by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm offers O(n log(n)) performance on many data sets that cause other quicksorts to degrade to quadratic performance, and is typically faster than traditional (one-pivot) Quicksort implementations.</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">4</span>] and k = <span class="number">2</span></span><br><span class="line">Output: <span class="number">5</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    <span class="keyword">return</span> nums[nums.length - k];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>堆排序</strong>：时间复杂度 O(NlogK)，空间复杂度 O(K)。</p>
-<blockquote>
-<p>PriorityQueue:</p>
-<ul>
-<li>boolean add​(E e)    Inserts the specified element into this priority queue.</li>
-<li>E peek​()    Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.</li>
-<li>E    poll​()    Retrieves and removes the head of this queue, or returns null if this queue is empty.</li>
-</ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    PriorityQueue&lt;Integer&gt; pq = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line">    <span class="comment">// small heap</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> ele : nums)&#123;</span><br><span class="line">        pq.add(ele);</span><br><span class="line">        <span class="keyword">if</span>(pq.size() &gt; k)&#123;</span><br><span class="line">          <span class="comment">// keep the heap size is K</span></span><br><span class="line">            pq.poll();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pq.peek();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>快速排序</strong>：时间复杂度 O(N)，空间复杂度 O(1)。最坏情况下时间复杂度为 O(N<sup>2</sup>)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> resultPosition = nums.length - k;</span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>, right = nums.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">        <span class="keyword">int</span> eachPosition = partition(nums,left,right);</span><br><span class="line">        <span class="keyword">if</span>(eachPosition == resultPosition)&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(eachPosition &lt; resultPosition)&#123;</span><br><span class="line">            left = eachPosition + <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            right = eachPosition - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums[resultPosition];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> leftPoint = left, rightPoint = right + <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// be careful about the leftPoint is no 0, rightPoint is no length + 1;</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">        <span class="comment">// the sign is nums[left]</span></span><br><span class="line">        <span class="keyword">while</span>(nums[++leftPoint] &lt; nums[left] &amp;&amp; leftPoint &lt; right);</span><br><span class="line">        <span class="keyword">while</span>(nums[--rightPoint] &gt; nums[left] &amp;&amp; rightPoint &gt; left);</span><br><span class="line">        <span class="keyword">if</span>(leftPoint &gt;= rightPoint)&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(nums,leftPoint,rightPoint);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// the nums[rightPoint] must small than nums[left]</span></span><br><span class="line">    swap(nums,left,rightPoint);</span><br><span class="line">    <span class="keyword">return</span> rightPoint;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = a[i];</span><br><span class="line">    a[i] = a[j];</span><br><span class="line">    a[j] = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h3><h4 id="出现频率最多的K个数"><a href="#出现频率最多的K个数" class="headerlink" title="出现频率最多的K个数"></a>出现频率最多的K个数</h4><p><a href="https://leetcode.com/problems/top-k-frequent-elements/description/" target="_blank" rel="noopener">347. Top K Frequent Elements (Medium)</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>], k = <span class="number">2</span></span><br><span class="line">Output: [<span class="number">1</span>,<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-<p>设置若干个桶，每个桶存储出现频率相同的数，并且桶的下标代表桶中数出现的频率，即第 i 个桶中存储的数出现的频率为 i。<br>把数都放到桶之后，从后向前遍历桶，最先得到的 k 个数就是出现频率最多的的 k 个数。</p>
-<blockquote>
-<p>Map：Map&lt; , &gt; frequencyForNum = new HashMap&lt;&gt;();</p>
-<ul>
-<li>V put​(K key, V value)    Associates the specified value with the specified key in this map (optional operation).</li>
-<li>default V    getOrDefault​(Object key, V defaultValue)    Returns the value to which the specified key is mapped, or defaultValue if this map contains no mapping for the key.</li>
-<li>Set<k>    keySet​()    Returns a Set view of the keys contained in this map.</k></li>
-<li>V    get​(Object key)    Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>List: List&lt;&gt;[]buckets = new ArrayList[]; buckets[] = new ArrayList&lt;&gt;();</p>
-<ul>
-<li>boolean    add​(E e)    Appends the specified element to the end of this list (optional operation).</li>
-<li>boolean    addAll​(Collection&lt;? extends E&gt; c)    Appends all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection’s iterator (optional operation).</li>
-</ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">topKFrequent</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    Map&lt;Integer, Integer&gt; frequencyForNum = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">// key : num, value : frequency;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">        frequencyForNum.put(num, frequencyForNum.getOrDefault(num, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        <span class="comment">// be careful about the + 1 position;</span></span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;Integer&gt;[] buckets = <span class="keyword">new</span> ArrayList[nums.length + <span class="number">1</span>];</span><br><span class="line">    <span class="comment">// assume frequency is sub so need nums.length+1;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> key : frequencyForNum.keySet()) &#123;</span><br><span class="line">        <span class="keyword">int</span> frequency = frequencyForNum.get(key);</span><br><span class="line">        <span class="keyword">if</span> (buckets[frequency] == <span class="keyword">null</span>) &#123;</span><br><span class="line">            buckets[frequency] = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="comment">// new a element to put, notice the constructor;</span></span><br><span class="line">        &#125;</span><br><span class="line">        buckets[frequency].add(key);</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;Integer&gt; topK = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = buckets.length - <span class="number">1</span>; i &gt;= <span class="number">0</span> &amp;&amp; topK.size() &lt; k; i--) &#123;</span><br><span class="line">        <span class="keyword">if</span> (buckets[i] != <span class="keyword">null</span>) &#123;</span><br><span class="line">            topK.addAll(buckets[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> topK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="按照字符出现次数对字符串排序"><a href="#按照字符出现次数对字符串排序" class="headerlink" title="按照字符出现次数对字符串排序"></a>按照字符出现次数对字符串排序</h4><p><a href="https://leetcode.com/problems/sort-characters-by-frequency/description/" target="_blank" rel="noopener">451. Sort Characters By Frequency (Medium)</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line"><span class="string">"tree"</span></span><br><span class="line">Output:</span><br><span class="line"><span class="string">"eert"</span></span><br><span class="line">Explanation:</span><br><span class="line"><span class="string">'e'</span> appears twice <span class="keyword">while</span> <span class="string">'r'</span> and <span class="string">'t'</span> both appear once.</span><br><span class="line">So <span class="string">'e'</span> must appear before both <span class="string">'r'</span> and <span class="string">'t'</span>. Therefore <span class="string">"eetr"</span> is also a valid answer.</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line"><span class="string">"cccaaa"</span></span><br><span class="line">Output:</span><br><span class="line"><span class="string">"cccaaa"</span></span><br><span class="line">Explanation:</span><br><span class="line">Both <span class="string">'c'</span> and <span class="string">'a'</span> appear three times, so <span class="string">"aaaccc"</span> is also a valid answer.</span><br><span class="line">Note that <span class="string">"cacaca"</span> is incorrect, as the same characters must be together.</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>StringBuilder：StringBuilder resultString = new StringBuilder();</p>
-<ul>
-<li>StringBuilder    append​(char c)    Appends the string representation of the char argument to this sequence.</li>
-<li>String    toString​()    Returns a string representing the data in this sequence.</li>
-</ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">frequencySort</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    Map&lt;Character,Integer&gt; frequencyChar = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">char</span> c : s.toCharArray())&#123;</span><br><span class="line">        frequencyChar.put(c,frequencyChar.getOrDefault(c,<span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    List&lt;Character&gt;[] buckets = <span class="keyword">new</span> ArrayList[s.length() + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">char</span> c : frequencyChar.keySet())&#123;</span><br><span class="line">        <span class="keyword">int</span> value = frequencyChar.get(c);</span><br><span class="line">        <span class="keyword">if</span>(buckets[value] == <span class="keyword">null</span>)&#123;</span><br><span class="line">            buckets[value] = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        buckets[value].add(c);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    StringBuilder resultString = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = buckets.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">        <span class="comment">// notice the loop times -  bucket[0~buckets.length-1]</span></span><br><span class="line">        <span class="keyword">if</span>(buckets[i] == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c : buckets[i])&#123;</span><br><span class="line">            <span class="comment">// every char need output frequency times;</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++)&#123;</span><br><span class="line">                resultString.append(c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> resultString.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="荷兰国旗问题"><a href="#荷兰国旗问题" class="headerlink" title="荷兰国旗问题"></a>荷兰国旗问题</h4><p>荷兰国旗包含三种颜色：红、白、蓝。<br>有三种颜色的球，算法的目标是将这三种球按颜色顺序正确地排列。<br>它其实是三向切分快速排序的一种变种，在三向切分快速排序中，每次切分都将数组分成三个区间：小于切分元素、等于切分元素、大于切分元素，而该算法是将数组分成三个区间：等于红色、等于白色、等于蓝色。</p>
-<p><a href="https://leetcode.com/problems/sort-colors/description/" target="_blank" rel="noopener">75. Sort Colors (Medium)</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>]</span><br><span class="line">Output: [<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">zero=-<span class="number">1</span>;one=<span class="number">0</span>;two=nums.length;<span class="number">6</span>   <span class="number">202110</span></span><br><span class="line">num[one]==<span class="number">2</span> --<span class="function">two <span class="title">swap</span><span class="params">(num,two,one)</span></span>; swap and don<span class="string">'t know divide,so one stay  now two is 5       002112</span></span><br><span class="line"><span class="string">false eg:</span></span><br><span class="line"><span class="string">num[one]==0 ++zero swap(num,zero,one); swap and don'</span>t know divide, so one stay now zero is <span class="number">0</span>    <span class="number">002112</span></span><br><span class="line">num[one]==<span class="number">0</span> ++<span class="function">zero <span class="title">swap</span><span class="params">(num,zero,one)</span></span>; swap and don<span class="string">'t know divide, so one stay now zero is 1    002112</span></span><br><span class="line"><span class="string">num[one]==0 ++zero swap(num,zero,one); swap and don'</span>t know divide, so one stay now zero is <span class="number">2</span>    <span class="number">200112</span></span><br><span class="line">num[one]==<span class="number">2</span> --<span class="function">two <span class="title">swap</span><span class="params">(num,two,one)</span></span>; swap and don<span class="string">'t know divide,so one stay  now two is 4       100122</span></span><br><span class="line"><span class="string">num[one]==1 ++one; now one is 1                                                                 100122</span></span><br><span class="line"><span class="string">num[one]==0 ++zero swap(num,zero,one); swap and don'</span>t know divide, so one stay now zero is <span class="number">3</span>    <span class="number">110022</span></span><br><span class="line"></span><br><span class="line">make sure position is zero,one,two(zero -<span class="number">1</span>, need efficient so two is nums.length); (one &lt; two, keep loop)</span><br><span class="line">zero=-<span class="number">1</span>;one=<span class="number">0</span>;two=nums.length;<span class="number">6</span>   <span class="number">202110</span></span><br><span class="line">num[one]==<span class="number">2</span> --<span class="function">two <span class="title">swap</span><span class="params">(num,two,one)</span></span>; swap a don<span class="string">'t know value mean efficient one is a new element,so one stay now two is 5              002112</span></span><br><span class="line"><span class="string">true eg:</span></span><br><span class="line"><span class="string">num[one]==0 ++zero swap(num,zero,one) one++; zero move means one also move, now zero is 0, one is 1    002112</span></span><br><span class="line"><span class="string">num[one]==0 ++zero swap(num,zero,one) one++; zero move means one also move, now zero is 1, one is 2    002112</span></span><br><span class="line"><span class="string">num[one]==2 --two swap(num,two,one); swap and don'</span>t know divide,so one stay  now two is <span class="number">4</span>              <span class="number">001122</span></span><br><span class="line">num[one]==<span class="number">1</span> ++one; now one is <span class="number">3</span>                                                                        <span class="number">001122</span></span><br><span class="line">num[one]==<span class="number">1</span> ++one; now one is <span class="number">4</span>                                                                        <span class="number">001122</span></span><br><span class="line">stop .. one = two = <span class="number">4</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sortColors</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> zero = -<span class="number">1</span>, one = <span class="number">0</span>, two = nums.length;</span><br><span class="line">    <span class="keyword">while</span>(one &lt; two)&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[one] == <span class="number">0</span>)&#123;</span><br><span class="line">            ++zero;</span><br><span class="line">            swap(nums,zero,one);</span><br><span class="line">            one++;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[one] == <span class="number">2</span>)&#123;</span><br><span class="line">            --two;</span><br><span class="line">            swap(nums,two,one);</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            ++one;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = nums[i];</span><br><span class="line">    nums[i] = nums[j];</span><br><span class="line">    nums[j] = temp;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Leetcode Sort</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/05/LeetCode Algorithm Sort/">展开全文 >></a>
         </p>
       
 
@@ -1603,15 +1575,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">LeetCode BinarySearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
               </li>
              
               <li class="article-tag-list-item">

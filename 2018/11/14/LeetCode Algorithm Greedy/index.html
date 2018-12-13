@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Longquan&#39;s Blog">
 <meta property="og:description" content="贪心思想保证每次操作都是局部最优的，并且最后得到的结果是全局最优的。 分配饼干455. Assign Cookies (Easy) 12345678910Input: [1,2,3], [1,1]Output: 1Explanation: You have 3 children and 2 cookies. The greed factors of 3 children are 1, 2, 3.A">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-12-12T13:09:27.650Z">
+<meta property="og:updated_time" content="2018-12-13T02:14:57.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Algorithm Greedy">
 <meta name="twitter:description" content="贪心思想保证每次操作都是局部最优的，并且最后得到的结果是全局最优的。 分配饼干455. Assign Cookies (Easy) 12345678910Input: [1,2,3], [1,1]Output: 1Explanation: You have 3 children and 2 cookies. The greed factors of 3 children are 1, 2, 3.A">
@@ -275,16 +275,16 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> preConSum = nums[<span class="number">0</span>];</span><br><span class="line">     <span class="keyword">int</span> maxSum = preConSum;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(preConSum &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            preConSum = preConSum + nums[i];</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            preConSum = nums[i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(maxSum &lt; preConSum)&#123;</span><br><span class="line">            maxSum = preConSum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="买卖股票的最佳时机"><a href="#买卖股票的最佳时机" class="headerlink" title="买卖股票的最佳时机"></a>买卖股票的最佳时机</h3><p><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/description/" target="_blank" rel="noopener">121. 买卖股票的最佳时机(Easy)</a><br>思路：<br>buy = nums[0]<br>sale = buy; //不能在买入股票前卖出股票。<br>nowProfit = maxProfit = 0;</p>
 <ol>
-<li>遍历数组<ul>
-<li>num[i]&lt;buy,<br>  nowProfit=sale - buy;<br>  maxProfit = max(maxProfit,nowProfit);   //判断是否更新profit<br>  buy = num[i]; sale = buy //重新买入由于不能在买入股票前卖出股票,无需考虑sale</li>
-<li>num[i]&gt;buy,<ul>
+<li>遍历数组<br>1) num[i]&lt;buy,<pre><code>nowProfit=sale - buy;
+maxProfit = max(maxProfit,nowProfit);   //判断是否更新profit
+buy = num[i]; sale = buy //重新买入由于不能在买入股票前卖出股票,无需考虑sale
+</code></pre>2) num[i]&gt;buy,<ul>
 <li>sale &lt; num[i], sale = num[i]</li>
-<li>sale &gt; num[i],continue;<br>2.遍历全局结束后还需判断是否更新profit<br>nowProfit=sale - buy;<br>maxProfit = max(maxProfit,nowProfit);   //判断是否更新profit</li>
-</ul>
-</li>
+<li>sale &gt; num[i],continue;</li>
 </ul>
 </li>
 </ol>
+<p>2.遍历全局结束后还需判断是否更新profit<br>  nowProfit=sale - buy;<br>  maxProfit = max(maxProfit,nowProfit);   //判断是否更新profit</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(prices.length == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> buy = prices[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> sale = buy;</span><br><span class="line">    <span class="keyword">int</span> maxProfit = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> nowProfit = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices[i] &lt; buy)&#123;</span><br><span class="line">            <span class="comment">//判断是否更新profit</span></span><br><span class="line">            nowProfit = sale - buy;</span><br><span class="line">            <span class="keyword">if</span>(nowProfit &gt; maxProfit)&#123;</span><br><span class="line">                maxProfit = nowProfit;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//重新买入由于不能在买入股票前卖出股票,无需考虑sale</span></span><br><span class="line">            buy = prices[i];</span><br><span class="line">            sale = buy;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//prices[i]&gt;buy</span></span><br><span class="line">            <span class="keyword">if</span>(sale &lt; prices[i])&#123;</span><br><span class="line">                sale = prices[i];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//sale &gt;= prices[i]</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//判断是否更新profit</span></span><br><span class="line">    nowProfit = sale - buy;</span><br><span class="line">    <span class="keyword">if</span>(nowProfit &gt; maxProfit)&#123;</span><br><span class="line">        maxProfit = nowProfit;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxProfit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
@@ -369,11 +369,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/11/26/Imooc Java Primary II Chap2 封装/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Imooc Java Primary II Chap1 类和对象
+          Imooc Java Primary II Chap2 封装
         
       </div>
     </a>
@@ -522,15 +522,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">LeetCode BinarySearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
               </li>
              
               <li class="article-tag-list-item">
