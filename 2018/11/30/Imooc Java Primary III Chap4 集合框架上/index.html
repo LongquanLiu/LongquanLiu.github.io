@@ -17,7 +17,7 @@
 <meta property="og:description" content="4.1 集合框架概述 集合的概念： 现实生活中：很多事物凑在一起。（购物车，商品的集合；军队，军人的集合） 数学中的集合：具有共同属性的事物的总体（有理数、整数） Java中的集合：是一种工具类，就像是容器，存储任意数量的具有共同属性的对象。   集合的作用： 在类的内部，对数据进行组织； 简单而快速的搜索大数量的条目； 有的集合接口，提供了一系列排列有序的元素，并且可以再序列中间快速的插入或者删">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://longquanliu.github.io/2018/11/30/Imooc%20Java%20Primary%20III%20Chap4%20集合框架上/(/img/Imooc%20Java%20Primary%20III/Collection_Map.png">
-<meta property="og:updated_time" content="2018-12-11T11:03:45.501Z">
+<meta property="og:updated_time" content="2018-12-13T12:44:29.821Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Imooc Java Primary III Chap4 集合框架上">
 <meta name="twitter:description" content="4.1 集合框架概述 集合的概念： 现实生活中：很多事物凑在一起。（购物车，商品的集合；军队，军人的集合） 数学中的集合：具有共同属性的事物的总体（有理数、整数） Java中的集合：是一种工具类，就像是容器，存储任意数量的具有共同属性的对象。   集合的作用： 在类的内部，对数据进行组织； 简单而快速的搜索大数量的条目； 有的集合接口，提供了一系列排列有序的元素，并且可以再序列中间快速的插入或者删">
@@ -219,6 +219,19 @@
 </ol>
 <h2 id="4-3-学生选课"><a href="#4-3-学生选课" class="headerlink" title="4.3 学生选课"></a>4.3 学生选课</h2><ol>
 <li>对象存入集合都变成Object类型，取出时需要进行类型转换</li>
+<li>Iterator依赖于某个集合存在，不具备存储集合的功能</li>
+<li>ClassCastException 泛型，eg：在未定义List泛型时，往List中添加字符串；</li>
+</ol>
+<h2 id="4-9-泛型"><a href="#4-9-泛型" class="headerlink" title="4.9 泛型"></a>4.9 泛型</h2><ol>
+<li>集合中的元素，可以是任意类型的对象(对象的引用)<ul>
+<li>如果把某个对象放入集合，则会忽略他的类型，而把她当做Object处理</li>
+</ul>
+</li>
+<li>泛型则是规定了某个集合只可以存放特定类型的对象<ul>
+<li>会在编译期间进行类型检查</li>
+<li>可以直接按指定类型获取集合元素</li>
+</ul>
+</li>
 </ol>
 
       
@@ -341,7 +354,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-集合框架概述"><span class="toc-number">1.</span> <span class="toc-text">4.1 集合框架概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-Collection-interface-amp-List-interface"><span class="toc-number">2.</span> <span class="toc-text">4.2 Collection interface &amp; List interface</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-学生选课"><span class="toc-number">3.</span> <span class="toc-text">4.3 学生选课</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-集合框架概述"><span class="toc-number">1.</span> <span class="toc-text">4.1 集合框架概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-Collection-interface-amp-List-interface"><span class="toc-number">2.</span> <span class="toc-text">4.2 Collection interface &amp; List interface</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-学生选课"><span class="toc-number">3.</span> <span class="toc-text">4.3 学生选课</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-9-泛型"><span class="toc-number">4.</span> <span class="toc-text">4.9 泛型</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -464,11 +477,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
               </li>
              
               <li class="article-tag-list-item">

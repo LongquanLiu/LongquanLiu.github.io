@@ -208,6 +208,22 @@
 </li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">mySqrt</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x &lt;= <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">0</span>, high = x;</span><br><span class="line">    <span class="keyword">while</span>(low &lt;= high)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = low + (high - low)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> sqrt = x/mid;</span><br><span class="line">        <span class="keyword">if</span>(mid == sqrt)&#123;</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(mid &gt; sqrt)&#123;</span><br><span class="line">            high = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> high;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="寻找比目标字母大的最小字母"><a href="#寻找比目标字母大的最小字母" class="headerlink" title="寻找比目标字母大的最小字母"></a>寻找比目标字母大的最小字母</h3><p><a href="https://leetcode-cn.com/problems/find-smallest-letter-greater-than-target/description/" target="_blank" rel="noopener">744. 寻找比目标字母大的最小字母(Easy)</a></p>
+<p>思路：二分查找<br>寻找有序数组里面比目标字母大的最小字母<br>low = 0; high = length;</p>
+<ol>
+<li>二分查找数组，low&lt;high时循环,mid = low + (high - low)/2;<ul>
+<li>letters[mid] &gt;= target, high =mid;</li>
+<li>letters[mid] &lt; target, low = mid + 1;</li>
+</ul>
+</li>
+<li>正常return letters[high]（high与low皆可）;考虑边界情况：</li>
+</ol>
+<ul>
+<li>若是target 小于数组中的所有字符，返回第一个字符，正常return letters[high];</li>
+<li>若是target 大于数组中的所有字符，亦返回第一个字符（要求：数组里字母的顺序是循环的）；<br>notice:</li>
+<li>low&lt;high ，由于high=mid有不变的情况，若想等则可能死循环</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">char</span> <span class="title">nextGreatestLetter</span><span class="params">(<span class="keyword">char</span>[] letters, <span class="keyword">char</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">0</span>, high = letters.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(low &lt; high)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = low + (high - low)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(letters[mid] &gt; target)&#123;</span><br><span class="line">            <span class="comment">// notice &gt;=, high = mid</span></span><br><span class="line">            high = mid;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">// letters[mid] &lt; target</span></span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(high == letters.length - <span class="number">1</span> &amp;&amp; target &gt;= letters[high])&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> letters[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> letters[high];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -318,6 +334,19 @@
 </ol>
 <h2 id="4-3-学生选课"><a href="#4-3-学生选课" class="headerlink" title="4.3 学生选课"></a>4.3 学生选课</h2><ol>
 <li>对象存入集合都变成Object类型，取出时需要进行类型转换</li>
+<li>Iterator依赖于某个集合存在，不具备存储集合的功能</li>
+<li>ClassCastException 泛型，eg：在未定义List泛型时，往List中添加字符串；</li>
+</ol>
+<h2 id="4-9-泛型"><a href="#4-9-泛型" class="headerlink" title="4.9 泛型"></a>4.9 泛型</h2><ol>
+<li>集合中的元素，可以是任意类型的对象(对象的引用)<ul>
+<li>如果把某个对象放入集合，则会忽略他的类型，而把她当做Object处理</li>
+</ul>
+</li>
+<li>泛型则是规定了某个集合只可以存放特定类型的对象<ul>
+<li>会在编译期间进行类型检查</li>
+<li>可以直接按指定类型获取集合元素</li>
+</ul>
+</li>
 </ol>
 
       
@@ -743,236 +772,6 @@
 
 
   
-    <article id="post-Imooc Java Primary II Chap3 继承" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap3 继承/">Imooc Java Primary II Chap3 继承</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/26/Imooc Java Primary II Chap3 继承/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="3-1-继承"><a href="#3-1-继承" class="headerlink" title="3.1 继承"></a>3.1 继承</h2><ol>
-<li>继承：是类与类的一种关系，是一种“is a”的关系 Dog is a Animal<ul>
-<li>Java中的继承是单继承的</li>
-</ul>
-</li>
-<li>继承的好处：<ul>
-<li>子类拥有父类的所有属性和方法（富二代）<br>private修饰的无效（私生子）</li>
-<li>实现代码复用</li>
-</ul>
-</li>
-</ol>
-<h2 id="3-2-方法重写"><a href="#3-2-方法重写" class="headerlink" title="3.2 方法重写"></a>3.2 方法重写</h2><ol>
-<li>语法规则：以下三条都要与父类相同<ul>
-<li>返回值类型</li>
-<li>方法名</li>
-<li>参数类型及个数</li>
-</ul>
-</li>
-</ol>
-<h2 id="3-3-继承的初始化顺序"><a href="#3-3-继承的初始化顺序" class="headerlink" title="3.3 继承的初始化顺序"></a>3.3 继承的初始化顺序</h2><ol>
-<li>父类对象-父类属性初始化-父类构造方法—子类对象-子类属性初始化-子类构造方法</li>
-</ol>
-<h2 id="3-4-final关键字"><a href="#3-4-final关键字" class="headerlink" title="3.4 final关键字"></a>3.4 final关键字</h2><ol>
-<li>final 修饰类，则该类<strong>不允许被继承</strong></li>
-<li>final 修饰方法，则该方法<strong>不允许被重写</strong></li>
-<li>final 修饰属性，则该类的属性不会进行隐式初始化（即初始化属性必须有值）or在构造方法中赋值</li>
-<li>final 修饰变量，则该变量只能赋一次值，即为常量</li>
-</ol>
-<h2 id="3-5-super关键字"><a href="#3-5-super关键字" class="headerlink" title="3.5 super关键字"></a>3.5 super关键字</h2><ol>
-<li>在对象的内部使用，可以代表父类对象</li>
-<li>访问父类属性 super.age; 访问父类的方法 super.eat();</li>
-<li>子类的构造过程当中必须调用其父类的构造方法（隐式）<ul>
-<li>显示调用必须在第一行</li>
-<li>隐式默认调用父类无参构造方法</li>
-<li>若父类定义了有参的构造方法（代表父类将没有默认无参的构造方法），子类又无显式调用父类的构造方法，则编译出错</li>
-</ul>
-</li>
-</ol>
-<h2 id="3-6-Object类I"><a href="#3-6-Object类I" class="headerlink" title="3.6 Object类I"></a>3.6 Object类I</h2><ol>
-<li>toString()方法：<ul>
-<li>返回对象的<strong>hash码</strong>（对象地址字符串）,return 包名@地址</li>
-<li>可以通过重写toString()方法表示出对象的属性</li>
-</ul>
-</li>
-<li>equals()方法:<ul>
-<li>比较的是对象的<strong>引用</strong>是否指向同一块内存地址,类似于==, return boolean</li>
-<li>比较两个对象的值是否一致，即进行重写<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span> == obj)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  <span class="keyword">if</span>(obj == <span class="keyword">null</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  <span class="keyword">if</span>(getClass() != obj.getClass())</span><br><span class="line">    <span class="comment">// obj.getClass代表获取'类对象'！即判断该对象的类型</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  Dog other = (Dog)obj;</span><br><span class="line">  <span class="keyword">if</span>(age != other.age)</span><br><span class="line">    <span class="comment">// 判断'类的对象'</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap3 继承/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-Imooc Java Primary II Chap1 类和对象" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/">Imooc Java Primary II Chap1 类和对象</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-1-类和对象定义"><a href="#1-1-类和对象定义" class="headerlink" title="1.1 类和对象定义"></a>1.1 类和对象定义</h2><ol>
-<li>类是模板，确定对象将会拥有的特征（属性）和行为（方法）</li>
-<li>对象是客观存在的具体实体；</li>
-</ol>
-<h2 id="1-2-定义类的步骤"><a href="#1-2-定义类的步骤" class="headerlink" title="1.2 定义类的步骤"></a>1.2 定义类的步骤</h2><ol>
-<li>定义一个类的步骤：<ul>
-<li>定义类的名称</li>
-<li>编写类的属性</li>
-<li>编写类的方法</li>
-</ul>
-</li>
-</ol>
-<h2 id="1-3-使用对象步骤"><a href="#1-3-使用对象步骤" class="headerlink" title="1.3 使用对象步骤"></a>1.3 使用对象步骤</h2><ol>
-<li>使用对象的步骤：<ul>
-<li>创建对象：<br>类名 对象名 = new 类名/构造方法();<br>Telphone phone = new Telphone();</li>
-<li>使用对象：<br>对象名.属性;<br>对象名.方法名();</li>
-</ul>
-</li>
-</ol>
-<h2 id="1-5-成员变量局部变量"><a href="#1-5-成员变量局部变量" class="headerlink" title="1.5 成员变量局部变量"></a>1.5 成员变量局部变量</h2><ol>
-<li>成员变量：有初始值</li>
-<li>局部变量：无初始值，就近原则优先</li>
-</ol>
-<h2 id="1-7-static变量"><a href="#1-7-static变量" class="headerlink" title="1.7 static变量"></a>1.7 static变量</h2><ol>
-<li>static变量 类所有对象共享，能被修改，可使用类名、对象名访问</li>
-</ol>
-<h2 id="1-9-static方法"><a href="#1-9-static方法" class="headerlink" title="1.9 static方法"></a>1.9 static方法</h2><ol>
-<li>static方法可直接调用同类中的静态成员，但不能直接调用非静态成员以及非静态的方法。</li>
-<li>普通成员方法中，可以直接访问同类的非静态成员和静态成员</li>
-</ol>
-<h2 id="1-10-static初始化块"><a href="#1-10-static初始化块" class="headerlink" title="1.10 static初始化块"></a>1.10 static初始化块</h2><ol>
-<li>Java可以通过初始化块进行数据赋值。</li>
-<li>static初始化块只在类加载时执行一次！只能给static变量赋值！</li>
-<li>static初始化块最先执行，然后执行普通初始化块，最后执行构造方法</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
     <article id="post-Imooc Java Primary II Chap4 多态" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -1116,6 +915,236 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap4 多态/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Imooc Java Primary II Chap1 类和对象" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/">Imooc Java Primary II Chap1 类和对象</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/" class="archive-article-date">
+  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-1-类和对象定义"><a href="#1-1-类和对象定义" class="headerlink" title="1.1 类和对象定义"></a>1.1 类和对象定义</h2><ol>
+<li>类是模板，确定对象将会拥有的特征（属性）和行为（方法）</li>
+<li>对象是客观存在的具体实体；</li>
+</ol>
+<h2 id="1-2-定义类的步骤"><a href="#1-2-定义类的步骤" class="headerlink" title="1.2 定义类的步骤"></a>1.2 定义类的步骤</h2><ol>
+<li>定义一个类的步骤：<ul>
+<li>定义类的名称</li>
+<li>编写类的属性</li>
+<li>编写类的方法</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-3-使用对象步骤"><a href="#1-3-使用对象步骤" class="headerlink" title="1.3 使用对象步骤"></a>1.3 使用对象步骤</h2><ol>
+<li>使用对象的步骤：<ul>
+<li>创建对象：<br>类名 对象名 = new 类名/构造方法();<br>Telphone phone = new Telphone();</li>
+<li>使用对象：<br>对象名.属性;<br>对象名.方法名();</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-5-成员变量局部变量"><a href="#1-5-成员变量局部变量" class="headerlink" title="1.5 成员变量局部变量"></a>1.5 成员变量局部变量</h2><ol>
+<li>成员变量：有初始值</li>
+<li>局部变量：无初始值，就近原则优先</li>
+</ol>
+<h2 id="1-7-static变量"><a href="#1-7-static变量" class="headerlink" title="1.7 static变量"></a>1.7 static变量</h2><ol>
+<li>static变量 类所有对象共享，能被修改，可使用类名、对象名访问</li>
+</ol>
+<h2 id="1-9-static方法"><a href="#1-9-static方法" class="headerlink" title="1.9 static方法"></a>1.9 static方法</h2><ol>
+<li>static方法可直接调用同类中的静态成员，但不能直接调用非静态成员以及非静态的方法。</li>
+<li>普通成员方法中，可以直接访问同类的非静态成员和静态成员</li>
+</ol>
+<h2 id="1-10-static初始化块"><a href="#1-10-static初始化块" class="headerlink" title="1.10 static初始化块"></a>1.10 static初始化块</h2><ol>
+<li>Java可以通过初始化块进行数据赋值。</li>
+<li>static初始化块只在类加载时执行一次！只能给static变量赋值！</li>
+<li>static初始化块最先执行，然后执行普通初始化块，最后执行构造方法</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Imooc Java Primary II Chap3 继承" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap3 继承/">Imooc Java Primary II Chap3 继承</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/26/Imooc Java Primary II Chap3 继承/" class="archive-article-date">
+  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="3-1-继承"><a href="#3-1-继承" class="headerlink" title="3.1 继承"></a>3.1 继承</h2><ol>
+<li>继承：是类与类的一种关系，是一种“is a”的关系 Dog is a Animal<ul>
+<li>Java中的继承是单继承的</li>
+</ul>
+</li>
+<li>继承的好处：<ul>
+<li>子类拥有父类的所有属性和方法（富二代）<br>private修饰的无效（私生子）</li>
+<li>实现代码复用</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-2-方法重写"><a href="#3-2-方法重写" class="headerlink" title="3.2 方法重写"></a>3.2 方法重写</h2><ol>
+<li>语法规则：以下三条都要与父类相同<ul>
+<li>返回值类型</li>
+<li>方法名</li>
+<li>参数类型及个数</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-3-继承的初始化顺序"><a href="#3-3-继承的初始化顺序" class="headerlink" title="3.3 继承的初始化顺序"></a>3.3 继承的初始化顺序</h2><ol>
+<li>父类对象-父类属性初始化-父类构造方法—子类对象-子类属性初始化-子类构造方法</li>
+</ol>
+<h2 id="3-4-final关键字"><a href="#3-4-final关键字" class="headerlink" title="3.4 final关键字"></a>3.4 final关键字</h2><ol>
+<li>final 修饰类，则该类<strong>不允许被继承</strong></li>
+<li>final 修饰方法，则该方法<strong>不允许被重写</strong></li>
+<li>final 修饰属性，则该类的属性不会进行隐式初始化（即初始化属性必须有值）or在构造方法中赋值</li>
+<li>final 修饰变量，则该变量只能赋一次值，即为常量</li>
+</ol>
+<h2 id="3-5-super关键字"><a href="#3-5-super关键字" class="headerlink" title="3.5 super关键字"></a>3.5 super关键字</h2><ol>
+<li>在对象的内部使用，可以代表父类对象</li>
+<li>访问父类属性 super.age; 访问父类的方法 super.eat();</li>
+<li>子类的构造过程当中必须调用其父类的构造方法（隐式）<ul>
+<li>显示调用必须在第一行</li>
+<li>隐式默认调用父类无参构造方法</li>
+<li>若父类定义了有参的构造方法（代表父类将没有默认无参的构造方法），子类又无显式调用父类的构造方法，则编译出错</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-6-Object类I"><a href="#3-6-Object类I" class="headerlink" title="3.6 Object类I"></a>3.6 Object类I</h2><ol>
+<li>toString()方法：<ul>
+<li>返回对象的<strong>hash码</strong>（对象地址字符串）,return 包名@地址</li>
+<li>可以通过重写toString()方法表示出对象的属性</li>
+</ul>
+</li>
+<li>equals()方法:<ul>
+<li>比较的是对象的<strong>引用</strong>是否指向同一块内存地址,类似于==, return boolean</li>
+<li>比较两个对象的值是否一致，即进行重写<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span> == obj)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  <span class="keyword">if</span>(obj == <span class="keyword">null</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  <span class="keyword">if</span>(getClass() != obj.getClass())</span><br><span class="line">    <span class="comment">// obj.getClass代表获取'类对象'！即判断该对象的类型</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  Dog other = (Dog)obj;</span><br><span class="line">  <span class="keyword">if</span>(age != other.age)</span><br><span class="line">    <span class="comment">// 判断'类的对象'</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap3 继承/">展开全文 >></a>
         </p>
       
 
@@ -1583,11 +1612,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
