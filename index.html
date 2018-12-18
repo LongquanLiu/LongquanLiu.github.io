@@ -230,12 +230,21 @@
 <li>low&lt;high ，由于high=mid有不变的情况，若相等则可能死循环</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNonDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">0</span>, high = nums.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(low &lt; high)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = low + (high - low)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(mid % <span class="number">2</span> == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="comment">// make sure mid is even</span></span><br><span class="line">            mid--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(nums[mid] == nums[mid+<span class="number">1</span>])&#123;</span><br><span class="line">            low = mid + <span class="number">2</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">// nums[mid] != nums[mid+1]</span></span><br><span class="line">            high = mid;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums[high];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="第一个错误的版本"><a href="#第一个错误的版本" class="headerlink" title="第一个错误的版本"></a>第一个错误的版本</h3><p><a href="https://leetcode-cn.com/problems/first-bad-version/description/" target="_blank" rel="noopener">278. 第一个错误的版本</a></p>
+<h3 id="第一个错误的版本"><a href="#第一个错误的版本" class="headerlink" title="第一个错误的版本"></a>第一个错误的版本</h3><p><a href="https://leetcode-cn.com/problems/first-bad-version/description/" target="_blank" rel="noopener">278. 第一个错误的版本(Easy)</a></p>
 <p>思路：二分查找<br>第一个错误的版本target，以错误的版本之后的所有版本都是错的<br>low = 0; high = length-1;<br>mid = low + (high - low)/2<br>isBadVersion(mid)==true, target在[low,mid],high = mid;<br>isBadVersion(mid)==false, target在[mid+1,high],low = mid + 1;<br>return high<br>notice:</p>
 <ul>
 <li>low&lt;high ，由于high=mid有不变的情况，若相等则可能死循环</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstBadVersion</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">1</span>, high = n;</span><br><span class="line">    <span class="keyword">while</span>(low &lt; high)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = low + (high - low)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(isBadVersion(mid))&#123;</span><br><span class="line">            high = mid;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//isBadVersion(mid) == false</span></span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> high;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="寻找旋转排序数组中的最小值"><a href="#寻找旋转排序数组中的最小值" class="headerlink" title="寻找旋转排序数组中的最小值"></a>寻找旋转排序数组中的最小值</h3><p><a href="https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/description/" target="_blank" rel="noopener">153. 寻找旋转排序数组中的最小值(Medium)</a></p>
+<p>思路：二分查找<br>low = 0; high = length-1;<br>mid = low + (high - low)/2</p>
+<ul>
+<li>nums[mid] &lt; nums[high], min在[low,mid], high = mid;</li>
+<li>nums[mid] &gt; nums[high], min在[mid+1,high],low = mid+1<br>return nums[high]<br>notice:</li>
+<li>low&lt;high ，由于high=mid有不变的情况，若相等则可能死循环</li>
+<li>compare nums[mid]~nums[high]</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMin</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">0</span>, high = nums.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(low &lt; high)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = low + (high - low)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(nums[mid] &lt; nums[high])&#123;</span><br><span class="line">            high = mid;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">// nums[mid] &gt; nums[high]</span></span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums[high];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -260,141 +269,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/12/13/LeetCode Algorithm Binary Search/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-Imooc Java Primary III Chap4 集合框架上" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/30/Imooc Java Primary III Chap4 集合框架上/">Imooc Java Primary III Chap4 集合框架上</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/30/Imooc Java Primary III Chap4 集合框架上/" class="archive-article-date">
-  	<time datetime="2018-11-30T11:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="4-1-集合框架概述"><a href="#4-1-集合框架概述" class="headerlink" title="4.1 集合框架概述"></a>4.1 集合框架概述</h2><ol>
-<li>集合的概念：<ul>
-<li>现实生活中：很多事物凑在一起。（购物车，商品的集合；军队，军人的集合）</li>
-<li>数学中的集合：具有共同属性的事物的总体（有理数、整数）</li>
-<li>Java中的集合：是一种工具类，就像是<strong>容器</strong>，存储任意数量的<strong>具有共同属性的对象</strong>。</li>
-</ul>
-</li>
-<li>集合的作用：<ul>
-<li>在类的内部，对数据进行组织；</li>
-<li>简单而快速的搜索大数量的条目；</li>
-<li>有的集合接口，提供了一系列排列有序的元素，并且可以再序列中间快速的插入或者删除有关元素；</li>
-<li>有的集合接口，提供了映射关系，可以通过关键字（key）去快速查找到对应的唯一对象，而这个关键字可以是任意类型。</li>
-</ul>
-</li>
-<li>与数组的对比-为何选择集合而不是数组<ul>
-<li>数组的长度固定，集合长度可变（金箍棒、打狗棒）</li>
-<li>数组只能通过下标访问元素，类型固定，而有的集合可以通过任意类型查找所映射的具体对象</li>
-</ul>
-</li>
-<li>集合框架体系结构：<br><img src="(/img/Imooc Java Primary III/Collection_Map.png" alt="集合框架体系结构"></li>
-</ol>
-<p>List(序列)、Queue(队列)：排列有序可重复；Set(集)：无序不可重复<br>map:&lt;key,value&gt;Entry键值对</p>
-<h2 id="4-2-Collection-interface-amp-List-interface"><a href="#4-2-Collection-interface-amp-List-interface" class="headerlink" title="4.2 Collection interface &amp; List interface"></a>4.2 Collection interface &amp; List interface</h2><ol>
-<li>Collection接口：<ul>
-<li>是List、Set和Queue接口的父接口</li>
-<li>定义了可用于操作List、Set和Queue的方法——增删改查</li>
-</ul>
-</li>
-<li>List接口及其实现类——ArrayList<ul>
-<li>List是元素有序并且可以重复的集合，被称为序列</li>
-<li>List可以精确的控制每个元素的插入位置，或删除某个位置元素</li>
-<li>ArrayList——数组序列，是List的一个重要实现类</li>
-<li>ArrayList底层是由数组实现的</li>
-</ul>
-</li>
-</ol>
-<h2 id="4-3-学生选课"><a href="#4-3-学生选课" class="headerlink" title="4.3 学生选课"></a>4.3 学生选课</h2><ol>
-<li>对象存入集合都变成Object类型，取出时需要进行类型转换</li>
-<li>Iterator依赖于某个集合存在，不具备存储集合的功能</li>
-<li>ClassCastException 泛型，eg：在未定义List泛型时，往List中添加字符串；</li>
-</ol>
-<h2 id="4-9-泛型"><a href="#4-9-泛型" class="headerlink" title="4.9 泛型"></a>4.9 泛型</h2><ol>
-<li>集合中的元素，可以是任意类型的对象(对象的引用)<ul>
-<li>如果把某个对象放入集合，则会忽略他的类型，而把她当做Object处理</li>
-</ul>
-</li>
-<li>泛型则是规定了某个集合只可以存放特定类型的对象<ul>
-<li>会在编译期间进行类型检查</li>
-<li>可以直接按指定类型获取集合元素</li>
-</ul>
-</li>
-<li>泛型集合：泛型类型、泛型的子类型</li>
-<li>泛型集合中的限定类型不能是基本数据类型(int,long,boolean);但可以通过包装类来限定数据类型(Integer,Long,Boolean).</li>
-</ol>
-<h2 id="4-11-Set集合"><a href="#4-11-Set集合" class="headerlink" title="4.11 Set集合"></a>4.11 Set集合</h2><ol>
-<li>Set接口及其实现类——HashSet<ul>
-<li>Set是元素无序并且不可重复的集合，被称为集</li>
-<li>HashSet——哈希集，是Set一个重要实现类</li>
-</ul>
-</li>
-<li>遍历Set中的元素只能用ForEach、Iterator;不能用get()-无序</li>
-<li>Set 中可以添加空对象</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/30/Imooc Java Primary III Chap4 集合框架上/">展开全文 >></a>
         </p>
       
 
@@ -535,6 +409,141 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/11/30/Imooc Java Primary III Chap3 常用类/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Imooc Java Primary III Chap4 集合框架上" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/Imooc Java Primary III Chap4 集合框架上/">Imooc Java Primary III Chap4 集合框架上</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/30/Imooc Java Primary III Chap4 集合框架上/" class="archive-article-date">
+  	<time datetime="2018-11-30T11:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="4-1-集合框架概述"><a href="#4-1-集合框架概述" class="headerlink" title="4.1 集合框架概述"></a>4.1 集合框架概述</h2><ol>
+<li>集合的概念：<ul>
+<li>现实生活中：很多事物凑在一起。（购物车，商品的集合；军队，军人的集合）</li>
+<li>数学中的集合：具有共同属性的事物的总体（有理数、整数）</li>
+<li>Java中的集合：是一种工具类，就像是<strong>容器</strong>，存储任意数量的<strong>具有共同属性的对象</strong>。</li>
+</ul>
+</li>
+<li>集合的作用：<ul>
+<li>在类的内部，对数据进行组织；</li>
+<li>简单而快速的搜索大数量的条目；</li>
+<li>有的集合接口，提供了一系列排列有序的元素，并且可以再序列中间快速的插入或者删除有关元素；</li>
+<li>有的集合接口，提供了映射关系，可以通过关键字（key）去快速查找到对应的唯一对象，而这个关键字可以是任意类型。</li>
+</ul>
+</li>
+<li>与数组的对比-为何选择集合而不是数组<ul>
+<li>数组的长度固定，集合长度可变（金箍棒、打狗棒）</li>
+<li>数组只能通过下标访问元素，类型固定，而有的集合可以通过任意类型查找所映射的具体对象</li>
+</ul>
+</li>
+<li>集合框架体系结构：<br><img src="(/img/Imooc Java Primary III/Collection_Map.png" alt="集合框架体系结构"></li>
+</ol>
+<p>List(序列)、Queue(队列)：排列有序可重复；Set(集)：无序不可重复<br>map:&lt;key,value&gt;Entry键值对</p>
+<h2 id="4-2-Collection-interface-amp-List-interface"><a href="#4-2-Collection-interface-amp-List-interface" class="headerlink" title="4.2 Collection interface &amp; List interface"></a>4.2 Collection interface &amp; List interface</h2><ol>
+<li>Collection接口：<ul>
+<li>是List、Set和Queue接口的父接口</li>
+<li>定义了可用于操作List、Set和Queue的方法——增删改查</li>
+</ul>
+</li>
+<li>List接口及其实现类——ArrayList<ul>
+<li>List是元素有序并且可以重复的集合，被称为序列</li>
+<li>List可以精确的控制每个元素的插入位置，或删除某个位置元素</li>
+<li>ArrayList——数组序列，是List的一个重要实现类</li>
+<li>ArrayList底层是由数组实现的</li>
+</ul>
+</li>
+</ol>
+<h2 id="4-3-学生选课"><a href="#4-3-学生选课" class="headerlink" title="4.3 学生选课"></a>4.3 学生选课</h2><ol>
+<li>对象存入集合都变成Object类型，取出时需要进行类型转换</li>
+<li>Iterator依赖于某个集合存在，不具备存储集合的功能</li>
+<li>ClassCastException 泛型，eg：在未定义List泛型时，往List中添加字符串；</li>
+</ol>
+<h2 id="4-9-泛型"><a href="#4-9-泛型" class="headerlink" title="4.9 泛型"></a>4.9 泛型</h2><ol>
+<li>集合中的元素，可以是任意类型的对象(对象的引用)<ul>
+<li>如果把某个对象放入集合，则会忽略他的类型，而把她当做Object处理</li>
+</ul>
+</li>
+<li>泛型则是规定了某个集合只可以存放特定类型的对象<ul>
+<li>会在编译期间进行类型检查</li>
+<li>可以直接按指定类型获取集合元素</li>
+</ul>
+</li>
+<li>泛型集合：泛型类型、泛型的子类型</li>
+<li>泛型集合中的限定类型不能是基本数据类型(int,long,boolean);但可以通过包装类来限定数据类型(Integer,Long,Boolean).</li>
+</ol>
+<h2 id="4-11-Set集合"><a href="#4-11-Set集合" class="headerlink" title="4.11 Set集合"></a>4.11 Set集合</h2><ol>
+<li>Set接口及其实现类——HashSet<ul>
+<li>Set是元素无序并且不可重复的集合，被称为集</li>
+<li>HashSet——哈希集，是Set一个重要实现类</li>
+</ul>
+</li>
+<li>遍历Set中的元素只能用ForEach、Iterator;不能用get()-无序</li>
+<li>Set 中可以添加空对象</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/30/Imooc Java Primary III Chap4 集合框架上/">展开全文 >></a>
         </p>
       
 
@@ -1025,157 +1034,6 @@
 
 
   
-    <article id="post-Imooc Java Primary II Chap2 封装" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap2 封装/">Imooc Java Primary II Chap2 封装</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/26/Imooc Java Primary II Chap2 封装/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="2-1-封装"><a href="#2-1-封装" class="headerlink" title="2.1 封装"></a>2.1 封装</h2><ol>
-<li>面向对象三大特性：封装、继承、多态</li>
-<li>封装：隐藏类的信息，只能通过类提供的方法实现对隐藏信息的操作和访问</li>
-<li>封装实现步骤：<ol>
-<li>修改属性可见性，设为private</li>
-<li>创建getter/setter方法，用于属性的读写</li>
-<li>在getter/setter方法中加入属性控制语句，对属性值得合法性进行判断</li>
-</ol>
-</li>
-</ol>
-<h2 id="2-2-包管理Java中的类"><a href="#2-2-包管理Java中的类" class="headerlink" title="2.2 包管理Java中的类"></a>2.2 包管理Java中的类</h2><ol>
-<li>包的作用：管理Java文件、解决同名文件(类)冲突</li>
-<li>定义包：package 包名<ul>
-<li>必须放在Java源程序第一行</li>
-<li>包名间可以使用“.”隔开，eg:com.imooc.MyClass</li>
-</ul>
-</li>
-<li>系统中的包：<ol>
-<li>java.(功能).(类)</li>
-<li>java.lang.(类) 包含java语言基础的类</li>
-<li>java.util.(类) 包含java语言中各种工具类</li>
-<li>java.io.(类) 包含输入、输出相关功能的类</li>
-</ol>
-</li>
-<li>包的使用：<ol>
-<li>import</li>
-<li>全小写字母</li>
-<li>com.imooc.*</li>
-</ol>
-</li>
-</ol>
-<h2 id="2-3-访问修饰符"><a href="#2-3-访问修饰符" class="headerlink" title="2.3 访问修饰符"></a>2.3 访问修饰符</h2><ol>
-<li>修饰属性和方法的访问范围</li>
-<li>访问修饰符：private,default,protected,public</li>
-<li>对应范围：本类，同包，子类，其他</li>
-</ol>
-<h2 id="2-4-this关键字"><a href="#2-4-this关键字" class="headerlink" title="2.4 this关键字"></a>2.4 this关键字</h2><ol>
-<li>this关键字代表当前对象<ul>
-<li>this.属性 操作当前对象的属性</li>
-<li>this.方法 调用当前对象的方法</li>
-</ul>
-</li>
-<li>封装对象属性的时候，经常使用this关键字</li>
-</ol>
-<h2 id="2-5-内部类"><a href="#2-5-内部类" class="headerlink" title="2.5 内部类"></a>2.5 内部类</h2><ol>
-<li>内部类的作用<ol>
-<li>内部类提供了更好的封装，把内部类隐藏在外部类之内，不允许同一个包中的其他类访问该类。</li>
-<li>内部类可以直接访问外部类的所有数据，包括私有数据。</li>
-<li>内部类所实现的功能外部类同样可以实现，只是有时使用内部类更方便</li>
-</ol>
-</li>
-<li>内部类分为以下几种：<ul>
-<li>成员内部类</li>
-<li>静态内部类</li>
-<li>方法内部类</li>
-<li>匿名内部类</li>
-</ul>
-</li>
-</ol>
-<h2 id="2-6-成员内部类"><a href="#2-6-成员内部类" class="headerlink" title="2.6 成员内部类"></a>2.6 成员内部类</h2><ol>
-<li>成员内部类的使用方法：<ol>
-<li>Inner 类定义在 Outer 类的内部，相当于 Outer 类的一个<strong>成员变量的位置</strong>，Inner 类可以使用任意访问控制符，如 public 、 protected 、 private 等</li>
-<li>Inner 类中定义的 test() 方法可以<strong>直接访问 Outer 类中的所有数据</strong>，而不受访问控制符的影响，如直接访问 Outer 类中的私有属性a</li>
-<li>定义了成员内部类后，<strong>必须使用外部类对象来创建内部类对象</strong>，而不能直接去 new 一个内部类对象，即：内部类 对象名 = 外部类对象.new 内部类( );</li>
-<li>编译后：内部类名.class;外部类名$内部类名.class;</li>
-</ol>
-</li>
-<li><strong>外部类是不能直接使用内部类的成员和方法</strong>滴，即先创建内部类的对象，然后通过内部类的对象来访问其成员变量和方法。</li>
-<li>如果外部类和内部类具有相同的成员变量或方法，内部类默认访问自己的成员变量或方法，如果要访问外部类的成员变量，可以使用 this 关键字。</li>
-</ol>
-<h2 id="2-7-static内部类"><a href="#2-7-static内部类" class="headerlink" title="2.7 static内部类"></a>2.7 static内部类</h2><ol>
-<li>创建static内部类的对象时，不需要外部类的对象，可以直接创建 内部类 对象名= new 内部类();</li>
-<li>static内部类不能直接访问外部类的<strong>非静态成员</strong>，但可以通过 new 外部类().成员 的方式访问</li>
-<li>如果外部类的static成员与内部类的成员名称相同，可通过<strong>类名.静态成员</strong>访问外部类的静态成员；如果外部类的静态成员与内部类的成员名称不相同，则可通过“成员名”直接调用外部类的静态成员</li>
-</ol>
-<h2 id="2-8-方法内部类"><a href="#2-8-方法内部类" class="headerlink" title="2.8 方法内部类"></a>2.8 方法内部类</h2><ol>
-<li>方法内部类就是内部类定义在外部类的方法中，方法内部类只在<strong>该方法的内部可见</strong>，即只在该方法内可以使用。</li>
-<li>由于方法内部类不能在外部类的方法以外的地方使用，因此方法内部类<strong>不能使用访问控制符和 static 修饰符</strong>。</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap2 封装/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
     <article id="post-Imooc Java Primary II Chap4 多态" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -1319,6 +1177,157 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap4 多态/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Imooc Java Primary II Chap2 封装" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap2 封装/">Imooc Java Primary II Chap2 封装</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/26/Imooc Java Primary II Chap2 封装/" class="archive-article-date">
+  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="2-1-封装"><a href="#2-1-封装" class="headerlink" title="2.1 封装"></a>2.1 封装</h2><ol>
+<li>面向对象三大特性：封装、继承、多态</li>
+<li>封装：隐藏类的信息，只能通过类提供的方法实现对隐藏信息的操作和访问</li>
+<li>封装实现步骤：<ol>
+<li>修改属性可见性，设为private</li>
+<li>创建getter/setter方法，用于属性的读写</li>
+<li>在getter/setter方法中加入属性控制语句，对属性值得合法性进行判断</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-2-包管理Java中的类"><a href="#2-2-包管理Java中的类" class="headerlink" title="2.2 包管理Java中的类"></a>2.2 包管理Java中的类</h2><ol>
+<li>包的作用：管理Java文件、解决同名文件(类)冲突</li>
+<li>定义包：package 包名<ul>
+<li>必须放在Java源程序第一行</li>
+<li>包名间可以使用“.”隔开，eg:com.imooc.MyClass</li>
+</ul>
+</li>
+<li>系统中的包：<ol>
+<li>java.(功能).(类)</li>
+<li>java.lang.(类) 包含java语言基础的类</li>
+<li>java.util.(类) 包含java语言中各种工具类</li>
+<li>java.io.(类) 包含输入、输出相关功能的类</li>
+</ol>
+</li>
+<li>包的使用：<ol>
+<li>import</li>
+<li>全小写字母</li>
+<li>com.imooc.*</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-3-访问修饰符"><a href="#2-3-访问修饰符" class="headerlink" title="2.3 访问修饰符"></a>2.3 访问修饰符</h2><ol>
+<li>修饰属性和方法的访问范围</li>
+<li>访问修饰符：private,default,protected,public</li>
+<li>对应范围：本类，同包，子类，其他</li>
+</ol>
+<h2 id="2-4-this关键字"><a href="#2-4-this关键字" class="headerlink" title="2.4 this关键字"></a>2.4 this关键字</h2><ol>
+<li>this关键字代表当前对象<ul>
+<li>this.属性 操作当前对象的属性</li>
+<li>this.方法 调用当前对象的方法</li>
+</ul>
+</li>
+<li>封装对象属性的时候，经常使用this关键字</li>
+</ol>
+<h2 id="2-5-内部类"><a href="#2-5-内部类" class="headerlink" title="2.5 内部类"></a>2.5 内部类</h2><ol>
+<li>内部类的作用<ol>
+<li>内部类提供了更好的封装，把内部类隐藏在外部类之内，不允许同一个包中的其他类访问该类。</li>
+<li>内部类可以直接访问外部类的所有数据，包括私有数据。</li>
+<li>内部类所实现的功能外部类同样可以实现，只是有时使用内部类更方便</li>
+</ol>
+</li>
+<li>内部类分为以下几种：<ul>
+<li>成员内部类</li>
+<li>静态内部类</li>
+<li>方法内部类</li>
+<li>匿名内部类</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-6-成员内部类"><a href="#2-6-成员内部类" class="headerlink" title="2.6 成员内部类"></a>2.6 成员内部类</h2><ol>
+<li>成员内部类的使用方法：<ol>
+<li>Inner 类定义在 Outer 类的内部，相当于 Outer 类的一个<strong>成员变量的位置</strong>，Inner 类可以使用任意访问控制符，如 public 、 protected 、 private 等</li>
+<li>Inner 类中定义的 test() 方法可以<strong>直接访问 Outer 类中的所有数据</strong>，而不受访问控制符的影响，如直接访问 Outer 类中的私有属性a</li>
+<li>定义了成员内部类后，<strong>必须使用外部类对象来创建内部类对象</strong>，而不能直接去 new 一个内部类对象，即：内部类 对象名 = 外部类对象.new 内部类( );</li>
+<li>编译后：内部类名.class;外部类名$内部类名.class;</li>
+</ol>
+</li>
+<li><strong>外部类是不能直接使用内部类的成员和方法</strong>滴，即先创建内部类的对象，然后通过内部类的对象来访问其成员变量和方法。</li>
+<li>如果外部类和内部类具有相同的成员变量或方法，内部类默认访问自己的成员变量或方法，如果要访问外部类的成员变量，可以使用 this 关键字。</li>
+</ol>
+<h2 id="2-7-static内部类"><a href="#2-7-static内部类" class="headerlink" title="2.7 static内部类"></a>2.7 static内部类</h2><ol>
+<li>创建static内部类的对象时，不需要外部类的对象，可以直接创建 内部类 对象名= new 内部类();</li>
+<li>static内部类不能直接访问外部类的<strong>非静态成员</strong>，但可以通过 new 外部类().成员 的方式访问</li>
+<li>如果外部类的static成员与内部类的成员名称相同，可通过<strong>类名.静态成员</strong>访问外部类的静态成员；如果外部类的静态成员与内部类的成员名称不相同，则可通过“成员名”直接调用外部类的静态成员</li>
+</ol>
+<h2 id="2-8-方法内部类"><a href="#2-8-方法内部类" class="headerlink" title="2.8 方法内部类"></a>2.8 方法内部类</h2><ol>
+<li>方法内部类就是内部类定义在外部类的方法中，方法内部类只在<strong>该方法的内部可见</strong>，即只在该方法内可以使用。</li>
+<li>由于方法内部类不能在外部类的方法以外的地方使用，因此方法内部类<strong>不能使用访问控制符和 static 修饰符</strong>。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap2 封装/">展开全文 >></a>
         </p>
       
 
@@ -1627,19 +1636,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">LeetCode BinarySearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">LeetCode BinarySearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
               </li>
              
               <li class="article-tag-list-item">
