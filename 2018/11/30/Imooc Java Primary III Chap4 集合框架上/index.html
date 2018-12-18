@@ -17,7 +17,7 @@
 <meta property="og:description" content="4.1 集合框架概述 集合的概念： 现实生活中：很多事物凑在一起。（购物车，商品的集合；军队，军人的集合） 数学中的集合：具有共同属性的事物的总体（有理数、整数） Java中的集合：是一种工具类，就像是容器，存储任意数量的具有共同属性的对象。   集合的作用： 在类的内部，对数据进行组织； 简单而快速的搜索大数量的条目； 有的集合接口，提供了一系列排列有序的元素，并且可以再序列中间快速的插入或者删">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://longquanliu.github.io/2018/11/30/Imooc%20Java%20Primary%20III%20Chap4%20集合框架上/(/img/Imooc%20Java%20Primary%20III/Collection_Map.png">
-<meta property="og:updated_time" content="2018-12-13T12:44:29.821Z">
+<meta property="og:updated_time" content="2018-12-17T06:16:00.791Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Imooc Java Primary III Chap4 集合框架上">
 <meta name="twitter:description" content="4.1 集合框架概述 集合的概念： 现实生活中：很多事物凑在一起。（购物车，商品的集合；军队，军人的集合） 数学中的集合：具有共同属性的事物的总体（有理数、整数） Java中的集合：是一种工具类，就像是容器，存储任意数量的具有共同属性的对象。   集合的作用： 在类的内部，对数据进行组织； 简单而快速的搜索大数量的条目； 有的集合接口，提供了一系列排列有序的元素，并且可以再序列中间快速的插入或者删">
@@ -232,6 +232,17 @@
 <li>可以直接按指定类型获取集合元素</li>
 </ul>
 </li>
+<li>泛型集合：泛型类型、泛型的子类型</li>
+<li>泛型集合中的限定类型不能是基本数据类型(int,long,boolean);但可以通过包装类来限定数据类型(Integer,Long,Boolean).</li>
+</ol>
+<h2 id="4-11-Set集合"><a href="#4-11-Set集合" class="headerlink" title="4.11 Set集合"></a>4.11 Set集合</h2><ol>
+<li>Set接口及其实现类——HashSet<ul>
+<li>Set是元素无序并且不可重复的集合，被称为集</li>
+<li>HashSet——哈希集，是Set一个重要实现类</li>
+</ul>
+</li>
+<li>遍历Set中的元素只能用ForEach、Iterator;不能用get()-无序</li>
+<li>Set 中可以添加空对象</li>
 </ol>
 
       
@@ -316,18 +327,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/11/30/Imooc Java Primary III Chap3 常用类/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/12/13/LeetCode Algorithm Binary Search/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Imooc Java Primary III Chap3 常用类
+          LeetCode Algorithm Binary Search
         
       </div>
     </a>
   
   
-    <a href="/2018/11/28/Imooc Java Primary III Chap2 字符串/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Imooc Java Primary III Chap2 字符串</div>
+    <a href="/2018/11/30/Imooc Java Primary III Chap3 常用类/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Imooc Java Primary III Chap3 常用类</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -354,7 +365,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-集合框架概述"><span class="toc-number">1.</span> <span class="toc-text">4.1 集合框架概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-Collection-interface-amp-List-interface"><span class="toc-number">2.</span> <span class="toc-text">4.2 Collection interface &amp; List interface</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-学生选课"><span class="toc-number">3.</span> <span class="toc-text">4.3 学生选课</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-9-泛型"><span class="toc-number">4.</span> <span class="toc-text">4.9 泛型</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-集合框架概述"><span class="toc-number">1.</span> <span class="toc-text">4.1 集合框架概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-Collection-interface-amp-List-interface"><span class="toc-number">2.</span> <span class="toc-text">4.2 Collection interface &amp; List interface</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-学生选课"><span class="toc-number">3.</span> <span class="toc-text">4.3 学生选课</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-9-泛型"><span class="toc-number">4.</span> <span class="toc-text">4.9 泛型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-11-Set集合"><span class="toc-number">5.</span> <span class="toc-text">4.11 Set集合</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -469,19 +480,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">LeetCode BinarySearch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
+                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
               </li>
              
               <li class="article-tag-list-item">

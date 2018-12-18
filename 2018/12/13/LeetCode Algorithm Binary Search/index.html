@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Longquan&#39;s Blog">
 <meta property="og:description" content="二分查找正常实现123456789101112131415public int binarySearch(int[] nums, int key) &amp;#123;    int low = 0, high = nums.length - 1;    while (low &amp;lt;= high) &amp;#123;      // notice the &amp;lt;=        int mid = low">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-12-17T02:23:56.870Z">
+<meta property="og:updated_time" content="2018-12-18T01:24:42.129Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Algorithm Binary Search">
 <meta name="twitter:description" content="二分查找正常实现123456789101112131415public int binarySearch(int[] nums, int key) &amp;#123;    int low = 0, high = nums.length - 1;    while (low &amp;lt;= high) &amp;#123;      // notice the &amp;lt;=        int mid = low">
@@ -229,6 +229,12 @@
 <li>low&lt;high ，由于high=mid有不变的情况，若相等则可能死循环</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNonDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">0</span>, high = nums.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(low &lt; high)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = low + (high - low)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(mid % <span class="number">2</span> == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="comment">// make sure mid is even</span></span><br><span class="line">            mid--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(nums[mid] == nums[mid+<span class="number">1</span>])&#123;</span><br><span class="line">            low = mid + <span class="number">2</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">// nums[mid] != nums[mid+1]</span></span><br><span class="line">            high = mid;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums[high];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="第一个错误的版本"><a href="#第一个错误的版本" class="headerlink" title="第一个错误的版本"></a>第一个错误的版本</h3><p><a href="https://leetcode-cn.com/problems/first-bad-version/description/" target="_blank" rel="noopener">278. 第一个错误的版本</a></p>
+<p>思路：二分查找<br>第一个错误的版本target，以错误的版本之后的所有版本都是错的<br>low = 0; high = length-1;<br>mid = low + (high - low)/2<br>isBadVersion(mid)==true, target在[low,mid],high = mid;<br>isBadVersion(mid)==false, target在[mid+1,high],low = mid + 1;<br>return high<br>notice:</p>
+<ul>
+<li>low&lt;high ，由于high=mid有不变的情况，若相等则可能死循环</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstBadVersion</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">1</span>, high = n;</span><br><span class="line">    <span class="keyword">while</span>(low &lt; high)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = low + (high - low)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(isBadVersion(mid))&#123;</span><br><span class="line">            high = mid;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//isBadVersion(mid) == false</span></span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> high;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -313,8 +319,8 @@
 <nav id="article-nav">
   
   
-    <a href="/2018/11/30/Imooc Java Primary III Chap3 常用类/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Imooc Java Primary III Chap3 常用类</div>
+    <a href="/2018/11/30/Imooc Java Primary III Chap4 集合框架上/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Imooc Java Primary III Chap4 集合框架上</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -341,7 +347,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#二分查找"><span class="toc-number">1.</span> <span class="toc-text">二分查找</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#正常实现"><span class="toc-number">1.1.</span> <span class="toc-text">正常实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度"><span class="toc-number">1.2.</span> <span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中值mid的计算"><span class="toc-number">1.3.</span> <span class="toc-text">中值mid的计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变种"><span class="toc-number">1.4.</span> <span class="toc-text">变种</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x-的平方根"><span class="toc-number">1.5.</span> <span class="toc-text">x 的平方根</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#寻找比目标字母大的最小字母"><span class="toc-number">1.6.</span> <span class="toc-text">寻找比目标字母大的最小字母</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#寻找有序数组中的单一元素"><span class="toc-number">1.7.</span> <span class="toc-text">寻找有序数组中的单一元素</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#二分查找"><span class="toc-number">1.</span> <span class="toc-text">二分查找</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#正常实现"><span class="toc-number">1.1.</span> <span class="toc-text">正常实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度"><span class="toc-number">1.2.</span> <span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中值mid的计算"><span class="toc-number">1.3.</span> <span class="toc-text">中值mid的计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变种"><span class="toc-number">1.4.</span> <span class="toc-text">变种</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x-的平方根"><span class="toc-number">1.5.</span> <span class="toc-text">x 的平方根</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#寻找比目标字母大的最小字母"><span class="toc-number">1.6.</span> <span class="toc-text">寻找比目标字母大的最小字母</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#寻找有序数组中的单一元素"><span class="toc-number">1.7.</span> <span class="toc-text">寻找有序数组中的单一元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第一个错误的版本"><span class="toc-number">1.8.</span> <span class="toc-text">第一个错误的版本</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -456,19 +462,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">LeetCode BinarySearch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
+                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LeetCode Greedy</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
