@@ -120,8 +120,8 @@ public int mySqrt(int x) {
 寻找有序数组里面比目标字母大的最小字母
 low = 0; high = length;
 1. 二分查找数组，low<high时循环,mid = low + (high - low)/2;
-    * letters[mid] >= target, high =mid;
-    * letters[mid] < target, low = mid + 1;
+    * letters[mid] > target, high =mid;
+    * letters[mid] <= target, low = mid + 1;
 2. 正常return letters[high]（high与low皆可）;考虑边界情况：
 * 若是target 小于数组中的所有字符，返回第一个字符，正常return letters[high];
 * 若是target 大于数组中的所有字符，亦返回第一个字符（要求：数组里字母的顺序是循环的）；
