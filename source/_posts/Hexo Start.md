@@ -43,3 +43,8 @@ More info: [Deployment](https://hexo.io/docs/deployment.html)
 ### Mutile Device
 [如何解决github+Hexo的博客多终端同步问题](https://blog.csdn.net/Monkey_LZL/article/details/60870891)
 [Hexo博客多台电脑设备同步管理](https://www.jianshu.com/p/0558c041e56d)
+
+### something solution
+
+[git pull遇到错误：error: Your local changes to the following files would be overwritten by merge](https://blog.csdn.net/misakaqunianxiatian/article/details/51103734)
+hexo deploy with error, 可以删除.deploy_git文件夹重新部署生成
