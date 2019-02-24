@@ -302,3 +302,37 @@ public int findMin(int[] nums) {
     return nums[high];
 }
 ```
+
+### 在排序数组中查找元素的第一个和最后一个位置
+
+[34. 在排序数组中查找元素的第一个和最后一个位置](https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
+
+思路：要求时间复杂度O(logN),二分查找
+
+```Java
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int low = 0, high = nums.length - 1;
+        int anslow = -1, anshigh = -1;
+        while(low <= high){
+            int mid = low + (high - low)/2;
+            if(nums[mid] == target){
+                // judge []
+                anslow = anshigh = mid;
+                while((anslow >= 1) && (nums[anslow-1] == target)){
+                    anslow--;
+                }
+                while((anshigh <= nums.length - 2) && (nums[anshigh+1] == target)){
+                    anshigh++;
+                }
+                break;
+            }else if(nums[mid] < target){
+                low = mid + 1;
+            }else{
+                high = mid - 1;
+            }
+        }
+        return new int[]{anslow,anshigh};
+    }
+}
+```
