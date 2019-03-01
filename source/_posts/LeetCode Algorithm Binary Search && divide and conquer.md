@@ -336,3 +336,54 @@ class Solution {
     }
 }
 ```
+
+### 分治 为运算表达式设计优先级
+
+[241 为运算表达式设计优先级](https://leetcode-cn.com/problems/different-ways-to-add-parentheses/)
+
+```java
+class Solution {
+    public List<Integer> diffWaysToCompute(String input) {
+        List<Integer> ans = new ArrayList<Integer>();
+        for(int i = 0; i < input.length(); i++){
+            char c = input.charAt(i);
+            if(c == '+' || c == '-' || c == '*'){
+                List<Integer> left = new ArrayList<Integer>();
+                List<Integer> right = new ArrayList<Integer>();
+                left = diffWaysToCompute(input.substring(0,i));
+                right = diffWaysToCompute(input.substring(i+1));
+                for(int l : left){
+                    for(int r : right){
+                       switch(c){
+                           case '+':
+                               ans.add(l+r);
+                               break;
+                           case '-':
+                               ans.add(l-r);
+                               break;
+                           case '*':
+                               ans.add(l*r);
+                               break;
+
+                       }
+                    }
+                }
+
+
+            }
+
+        }
+        if(ans.size() == 0){
+            ans.add(Integer.valueOf(input));
+        }
+        return ans;
+    }
+}
+
+/*
+分治算法，考虑将每个表达式分解成左右两个表达式，递归求解剩下的值。
+当递归到只剩一个数字，或者只剩数字+‘运算符’+数字时直接进行笛卡尔计算。
+考虑用ArrayList，注意返回值
+ps: string.length(); string.substring(); ArrayList.size();
+*/
+```
