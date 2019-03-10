@@ -1,3 +1,9 @@
+---
+title: pro git
+date: 2019-3-10
+tags: Git
+---
+
 ## 1.1 关于版本控制
 
 * 本地版本控制系统(VCS)：简单数据库记录文件的差异（补丁集）；**查阅恢复特定版本**  
@@ -28,9 +34,9 @@
   检查配置信息：$git config --list;
   设置你的用户名称与邮件地址：$git config --global user.name "LongquanLiu"; $git config --global user.email 773970134@qq.com
 
-## 2.1 获取Git仓库
+## 2.1 获取Git仓库  
 
-1. 取得Git仓库的方法(git init/git clone)       
+1. 取得Git仓库的方法(git init/git clone)         
   1. 在现有目录中初始化仓库
   ```git
   $git init    //创建一个.git的子目录，含有初始化Git仓库中所有的必须文件
