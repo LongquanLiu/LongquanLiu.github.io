@@ -36,18 +36,18 @@ tags: Git
 
 ## 2.1 获取Git仓库  
 
-1. 取得Git仓库的方法(git init/git clone)         
+1. 取得Git仓库的方法(git init/git clone)            
   1. 在现有目录中初始化仓库
   ```git
   $git init    //创建一个.git的子目录，含有初始化Git仓库中所有的必须文件
   $git add *.c     //对指定文件的跟踪
   $git commit -m 'initial project version'     //提交
-  ```
+  ```   
   2. 克隆现有的仓库  
   ```git
   $git clone https://github.com/LongquanLiu/LongquanLiu.github.io.git name  //将Git仓库中的每个文件的每个版本都拉取下来(Default)
   ps:git支持 https://  git:// user@server:path/to/repo.git(SSH) 协议
-  ```  
+  ```    
 
 ## 2.2 记录每次更新到仓库
 
