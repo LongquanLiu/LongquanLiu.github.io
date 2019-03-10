@@ -160,6 +160,169 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Chap1~3 git基础" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-1-关于版本控制"><a href="#1-1-关于版本控制" class="headerlink" title="1.1 关于版本控制"></a>1.1 关于版本控制</h2><ul>
+<li>本地版本控制系统(VCS)：简单数据库记录文件的差异（补丁集）；<strong>查阅恢复特定版本</strong>  </li>
+<li>集中化的版本控制系统(CVCS)：单一的一个集中管理服务器，客户端通过连接服务器，取出最新的 <em>文件</em> 或者提交更新；<strong>多个系统协同工作</strong>  </li>
+<li>分布式版本控制系统(DVCS)：客户端不仅提取最新版本快照，而把整个代码仓库完整镜像下来；<strong>任一服务器宕机亦可恢复</strong></li>
+</ul>
+<h2 id="1-2-git简史"><a href="#1-2-git简史" class="headerlink" title="1.2 git简史"></a>1.2 git简史</h2><ul>
+<li>91-02年，提交补丁，归档；02-05年，BitKeeper（商用）；05年-至今，Git</li>
+</ul>
+<h2 id="1-3-git基础"><a href="#1-3-git基础" class="headerlink" title="1.3 git基础"></a>1.3 git基础</h2><ul>
+<li><p>Git与其它版本控制系统(CVS/Subversion/Perforce)区别是：</p>
+<ol>
+<li>直接记录快照，而非差异比较：<br>other:存储一组文件与初始版本随时间累积的 <em>差异</em>；<br>Git：存储项目随时间改变的 <em>快照</em>，like小型文件系统的一组快照，保存全文件快照的 <em>索引</em>，未修改旧文件，直接用链接，新文件则存储并建立链接。</li>
+<li>近乎所有操作都在本地执行：不需连接服务器去获取历史，离线工作</li>
+<li>Git保证完整性：所有数据存储前都计算校验和，机制是基于文件内容或目录结构计算SHA-1 Hash（40个十六进制字符）组成字符串；Git数据库中保存的信息都是以 <em>文件内容的Hash值来索引，而非文件名</em></li>
+</ol>
+</li>
+<li><p>Git三种状态与三个工作区域</p>
+<ol>
+<li>三个工作区域：本地工作目录(Working Directory)/暂存区域(Staging Area)/Git仓库(git directory/Repository)  </li>
+<li>三种状态：已修改(modified)/已暂存(staged)/已提交(committed)<br>工作目录是对项目的某个版本独立提取出来的内容;Git仓库目录是Git用来保存项目的元数据和对象数据库的地方;暂存区域是一个文件，保存了下次将提交的文件列表信息，一般在 Git 仓库目录中;</li>
+</ol>
+</li>
+</ul>
+<h2 id="1-6-Git配置"><a href="#1-6-Git配置" class="headerlink" title="1.6 Git配置"></a>1.6 Git配置</h2><ul>
+<li>初始配置：<br>检查配置信息：$git config –list;<br>设置你的用户名称与邮件地址：$git config –global user.name “LongquanLiu”; $git config –global user.email <a href="mailto:773970134@qq.com" target="_blank" rel="noopener">773970134@qq.com</a></li>
+</ul>
+<h2 id="2-1-获取Git仓库"><a href="#2-1-获取Git仓库" class="headerlink" title="2.1 获取Git仓库"></a>2.1 获取Git仓库</h2><ol>
+<li><p>取得Git仓库的方法(git init/git clone)       </p>
+<ol>
+<li><p>在现有目录中初始化仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$git init    //创建一个.git的子目录，含有初始化Git仓库中所有的必须文件</span><br><span class="line">$git add *.c     //对指定文件的跟踪</span><br><span class="line">$git commit -m &apos;initial project version&apos;     //提交</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>克隆现有的仓库  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">  $git clone https://github.com/LongquanLiu/LongquanLiu.github.io.git name  //将Git仓库中的每个文件的每个版本都拉取下来(Default)</span><br><span class="line">  ps:git支持 https://  git:// user@server:path/to/repo.git(SSH) 协议</span><br><span class="line">  ```  </span><br><span class="line"></span><br><span class="line">## 2.2 记录每次更新到仓库</span><br><span class="line"></span><br><span class="line">1. 检查当前文件状态/跟踪新文件/暂存已修改文件(git status/git add)</span><br><span class="line">  ```git</span><br><span class="line">  $git status</span><br><span class="line">  On branch master</span><br><span class="line"></span><br><span class="line">  nothing to commit, working directory clean    //所有已跟踪文件在上次提交后都未被更改过；没有任何处于未跟踪状态的新文件</span><br><span class="line"></span><br><span class="line">  - 创建一个新的 README 文件</span><br><span class="line">  Untracked files:README</span><br><span class="line">  nothing added to commit but untracked files present     //未跟踪的文件，意味之前的快照（提交）中没有这些文件，不自动跟踪，使一些生成的二进制文件不会包含进来</span><br><span class="line"></span><br><span class="line">  - 跟踪新文件</span><br><span class="line">  $git add README</span><br><span class="line">  &amp;git status</span><br><span class="line">  Changes to be committed:    //说明已暂存状态</span><br><span class="line">   new file:   README</span><br><span class="line"></span><br><span class="line">  - 修改CONTRIBUTING.md的已被跟踪的文件</span><br><span class="line">  $git status</span><br><span class="line">  Changes to be committed:    //说明已暂存状态</span><br><span class="line">   new file:   README</span><br><span class="line">  Changes not staged for commit:  //说明已跟踪文件的内容发生变化，但未放到暂存区，要暂存需要git add</span><br><span class="line">    modified:   CONTRIBUTING.md</span><br><span class="line">  ps: git add 是个多功能命令：可跟踪新文件；把已跟踪文件放到暂存区；合并时把有冲突的文件标记为已解决状态；可理解为‘添加内容到下一次提交中’</span><br><span class="line"></span><br><span class="line">  - 将&quot;CONTRIBUTING.md&quot;放到暂存区</span><br><span class="line">  $ git add CONTRIBUTING.md</span><br><span class="line">  $ git status</span><br><span class="line">  Changes to be committed:  //两个文件都已暂存</span><br><span class="line">    new file:   README</span><br><span class="line">    modified:   CONTRIBUTING.md</span><br><span class="line"></span><br><span class="line">  - 在CONTRIBUTING.md里再加条注释，重新编辑存盘后</span><br><span class="line">  $ git status</span><br><span class="line">  Changes to be committed:    //此CONTRIBUTING.md是最后一次运行git add的版本</span><br><span class="line">    new file:   README</span><br><span class="line">    modified:   CONTRIBUTING.md</span><br><span class="line">  Changes not staged for commit:</span><br><span class="line">    modified:   CONTRIBUTING.md</span><br><span class="line">  ps:有做修订，需重新运行 git add 把最新版本重新暂存起来</span><br><span class="line">  ```    </span><br><span class="line"></span><br><span class="line">2. 忽略文件(.gitignore)</span><br><span class="line">  ```git</span><br><span class="line">  $cat .gitignore</span><br><span class="line">  *.[oa]    //忽略所有以 .o 或 .a 结尾的文件</span><br><span class="line">  *~    //忽略所有以波浪符（~）结尾的文件</span><br><span class="line">  ps:创建名为 .gitignore 的文件，列出要忽略的文件模式</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>文件 .gitignore 的格式规范如下：<br>所有空行或者以＃开头的行都会被Git忽略；可以使用标准的glob模式匹配；匹配模式可以以（/）开头防止递归；匹配模式可以以（/）结尾指定目录；要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取反。   </p>
+</li>
+<li><p>查看已暂存和未暂存的修改(git diff)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$git diff  // 查看尚未暂存的文件改动（本地工作目录与暂存区域快照间的差异）</span><br><span class="line">$git diff --cached(staged)    //查看已暂存文件改动（暂存区域快照与git仓库最新版本的差异）</span><br><span class="line">通过文件补丁的格式显示改变</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交更新&amp;跳过使用暂存区域(git commit)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$git commit -m &quot;something you want to annotation&quot;     //提交更新</span><br><span class="line">$git commit -a -m &apos;...&apos;     //自动把所有已经跟踪过的文件暂存起来一并提交</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>移除文件(git rm)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$git rm ..md    //从暂存区域移除，连带从本地工作目录中删除，不再跟踪</span><br><span class="line">$git rm --cached README     //从暂存区域移除，文件依旧保存在磁盘</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>移动文件(git mv)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git mv README.md README     //对文件改名</span><br><span class="line">=</span><br><span class="line">$ mv README.md README</span><br><span class="line">$ git rm README.md</span><br><span class="line">$ git add README</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="2-3查看提交历史-git-log"><a href="#2-3查看提交历史-git-log" class="headerlink" title="2.3查看提交历史(git log)"></a>2.3查看提交历史(git log)</h2>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git log     //SHA-1 校验和、作者的名字和电子邮件地址、提交时间以及提交说明</span><br><span class="line">git log -p -2     // -p，用来显示每次提交的内容差异。 你也可以加上 -2 来仅显示最近两次提交</span><br></pre></td></tr></table></figure>
+<h2 id="2-4撤销操作"><a href="#2-4撤销操作" class="headerlink" title="2.4撤销操作"></a>2.4撤销操作</h2><ol>
+<li><p>提交完发现漏掉了几个文件没有添加，或者提交信息写错(git commit –amend)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &apos;initial commit&apos;</span><br><span class="line">$ git add forgotten_file</span><br><span class="line">$ git commit --amend    //最终你只会有一个提交 - 第二次提交将代替第一次提交的结果</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>取消暂存的文件(git reset HEAD <file>)</file></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD *.md     //取消暂存</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>撤消对文件的修改(git checkout – <file>)</file></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- *.md    //撤销修改，还原成上次提交时的样子</span><br><span class="line">ps:git checkout -- [file] 是一个危险的命令，这很重要。 你对那个文件做的任何修改都会消失 - 你只是拷贝了另一个文件来覆盖它。 除非你确实清楚不想要那个文件了，否则不要使用这个命令。</span><br><span class="line">如果你仍然想保留对那个文件做出的修改，但是现在仍然需要撤消，我们将会在 Git 分支 介绍保存进度与分支；这些通常是更好的做法。</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="2-5-远程仓库的使用"><a href="#2-5-远程仓库的使用" class="headerlink" title="2.5 远程仓库的使用"></a>2.5 远程仓库的使用</h2><ol>
+<li><p>查看远程仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote -v     //显示需要读写远程仓库使用的 Git 保存的简写与其对应的 URL（需在本地工作目录下）.</span><br><span class="line">git remote show origin    //查看特定仓库</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加远程仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add pandasync https://github.com/LongquanLiu/PandaSync     //运行 git remote add &lt;shortname&gt; &lt;url&gt; 添加一个新的远程 Git 仓库，使用字符串 pandasync 来代替整个 URL</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从远程仓库中抓取与拉取</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch [remote-name]     //会将数据拉取到你的本地仓库 - 它并不会自动合并或修改你当前的工作</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>推送到远程仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push [remote-name] [branch-name]    //只有当你有所克隆服务器的写入权限，并且之前没有人推送过时，这条命令才能生效。 当你和其他人在同一时间克隆，他们先推送到上游然后你再推送到上游，你的推送就会毫无疑问地被拒绝。 你必须先将他们的工作拉取下来并将其合并进你的工作后才能推送</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>远程仓库的移除与重命名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote rename pandasync pandasync2    //重命名</span><br><span class="line">git remote rm pandasync     //删除</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="2-6-打标签"><a href="#2-6-打标签" class="headerlink" title="2.6 打标签"></a>2.6 打标签</h2><ol>
+<li><p>列出标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br><span class="line">git tag -l &apos;v1.8.5*&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git tag -a v1.4 -m &apos;my version 1.4&apos;     //附注标签</span><br><span class="line">ps:附注标签是存储在 Git 数据库中的一个完整对象。 它们是可以被校验的；其中包含打标签者的名字、电子邮件地址、日期时间；还有一个标签信息</span><br><span class="line">git show v1.4     //命令可以看到标签信息与对应的提交信息</span><br><span class="line">git tag v1.4-lw   //轻量标签本质上是将提交校验和存储到一个文件中 - 没有保存任何其他信息。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>共享标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push origin [tagname]</span><br><span class="line">git push origin --tags    //把所有不在远程仓库服务器上的标签全部传送。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git tag -d &lt;tagname&gt;</span><br><span class="line">git push &lt;remote&gt; :refs/tags/&lt;tagname&gt;     //更新你的远程仓库（删除了标签）。</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="2-7-Git别名"><a href="#2-7-Git别名" class="headerlink" title="2.7 Git别名"></a>2.7 Git别名</h2>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global alias.co checkout</span><br><span class="line">$ git config --global alias.br branch</span><br><span class="line">$ git config --global alias.ci commit</span><br><span class="line">$ git config --global alias.st status</span><br><span class="line"></span><br><span class="line">eg:</span><br><span class="line">git config --global alias.unstage &apos;reset HEAD --&apos;</span><br><span class="line">既有:$ git unstage fileA</span><br><span class="line">$ git reset HEAD -- fileA     //等价</span><br><span class="line"></span><br><span class="line">git config --global alias.last &apos;log -1 HEAD&apos;</span><br><span class="line">git last    //看到最后一次提交</span><br></pre></td></tr></table></figure>
+<h2 id="3-1-分支简介"><a href="#3-1-分支简介" class="headerlink" title="3.1 分支简介"></a>3.1 分支简介</h2><ol>
+<li><p>Git仓库一般包含：提交对象；树对象；blob对象；</p>
+<blockquote>
+<p>提交对象：会包含一个指向暂存内容快照的指针。 还包含了作者的姓名和邮箱、提交时输入的信息以及指向它的父对象的指针（可能有多个，如多分支合并）；<br> 树对象：记录着目录结构和blob对象索引<br> blob对象：保存着文件快照   </p>
+</blockquote>
+<p> ps:git分支本质仅仅是指向提交对象的可变指针</p>
+</li>
+<li><p>分支创建(git branch)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git branch testing    //在当前所在的提交对象上创建一个指针</span><br><span class="line">ps:创建了一个可以移动的新的指针；HEAD 指向当前所在的分支</span><br><span class="line">git log --oneline --decorate    //git log 命令查看各个分支当前所指的对象</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分支切换(git checkout)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git checkout testing    //此时HEAD 就指向 testing 分支</span><br><span class="line">若此时对文件修改提交，则testing分支向前移动</span><br><span class="line">git checkout master   //一是使 HEAD 指回 master 分支，二是将工作目录恢复成 master 分支所指向的快照内容。</span><br><span class="line">ps:branch,checkout,commit;</span><br><span class="line">$ git log --oneline --decorate --graph --all //查看项目分叉历史</span><br><span class="line">优点：由于分支实质上是指向提交对象的可变指针（所指对象校验和（长度为 40 的 SHA-1 值字符串））文件，只需写入40字符和1换行符---简单快</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="3-2-分支的新建与合并"><a href="#3-2-分支的新建与合并" class="headerlink" title="3.2 分支的新建与合并"></a>3.2 分支的新建与合并</h2><ul>
+<li>新建分支/分支合并/遇到冲突时的分支合并<br>———-新建分支<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b iss53     //新建分支iss53并同时切换到iss53分支上</span><br><span class="line">Switched to a new branch &quot;iss53&quot;</span><br><span class="line">...     //modified ..++</span><br><span class="line">$ git checkout master</span><br><span class="line">Switched to branch &apos;master&apos;</span><br><span class="line">$ git checkout -b hotfix    //新建分支hotfix并同时切换到hotfix分支上</span><br><span class="line">Switched to a new branch &apos;hotfix&apos;</span><br><span class="line">...     //modified ..++</span><br><span class="line">$ git checkout master</span><br><span class="line">$ git merge hotfix    //当你试图合并两个分支时，如果顺着一个分支走下去能够到达另一个分支，那么 Git 在合并两者的时候，只会简单的将指针向前推进（指针右移）,合并操作没有需要解决的分歧Fast-forward</span><br><span class="line">...Fast-forward...</span><br><span class="line">$ git branch -d hotfix    //删除分支hotfix</span><br><span class="line">----------分支合并</span><br><span class="line">$ git checkout iss53</span><br><span class="line">Switched to branch &quot;iss53&quot;</span><br><span class="line">...     //modified ..++</span><br><span class="line">$ git checkout master</span><br><span class="line">Switched to branch &apos;master&apos;</span><br><span class="line">$ git merge iss53         //非直接祖先，Git 会使用两个分支的末端所指的快照（C4 和 C5）以及这两个分支的工作祖先（C2），做一个简单的三方合并（有两个父指针）。</span><br><span class="line">$ git branch -d iss53     //删除分支iss53</span><br><span class="line">----------遇到冲突时的分支合并</span><br><span class="line">// 你对 #53 问题的修改和有关 hotfix 的修改都涉及到同一个文件的同一处，在合并它们的时候就会产生合并冲突</span><br><span class="line">$ git checkout master</span><br><span class="line">Switched to branch &apos;master&apos;</span><br><span class="line">$ git merge iss53     // Git 做了合并，但是没有自动地创建一个新的合并提交,需处理完冲突手动提交</span><br><span class="line">$ git status      //查看那些因包含合并冲突而处于未合并（unmerged）状态的文件</span><br><span class="line">//  HEAD/master 所指示的版本（======= 的上半部分）iss53 分支所指示的版本在 ======= 的下半部分;冲突全部解决之后git add然后commit，最后删除多余分支</span><br><span class="line">ps:git mergetool  //图形化工具解决冲突</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="3-3-分支管理"><a href="#3-3-分支管理" class="headerlink" title="3.3 分支管理"></a>3.3 分支管理</h2>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git branch    //当前所有分支的一个列表; * 字符,代表当前 HEAD 指针所指向的分支</span><br><span class="line">$ git branch -v     //查看每一个分支的最后一次提交</span><br><span class="line">$ git branch --merged     //已经合并到当前分支的分支,该列表除*以外的分支通常可用 git branch -d 删除掉</span><br><span class="line">$ git branch --no-merged    //未合并到当前分支的分支；git branch -d 命令删除它时会失败，unless -D</span><br></pre></td></tr></table></figure>
+<h2 id="3-4-分支开发工作流"><a href="#3-4-分支开发工作流" class="headerlink" title="3.4 分支开发工作流"></a>3.4 分支开发工作流</h2><p>  长期分支：master/develop/topic   //渐进稳定分支<br>  特性分支: 短期分支，它被用来实现单一特性或其相关工作。eg:上述分支</p>
+<h2 id="3-5-远程分支"><a href="#3-5-远程分支" class="headerlink" title="3.5 远程分支"></a>3.5 远程分支</h2><h2 id="3-6-变基"><a href="#3-6-变基" class="headerlink" title="3.6 变基"></a>3.6 变基</h2><p>  Git 整合不同分支有两种方法：merge(三方合并) 以及 rebase<br>  rebase: 你可以提取在 C4（分支祖先c2）中引入的补丁和修改，然后在 C3 （分支祖先c2）的基础上应用一次<br>  ps:合并结果没有区别，只是变基使得提交历史更加整洁</p>
+<p>参考文献：<a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">Pro Git</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/10/Chap1~3 git基础/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-JavaBasic" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -725,6 +888,146 @@ mid奇数(对应数组位置eg 1.3),if(nums[mid] == nums[mid-1]){
 
 
   
+    <article id="post-Imooc Java Primary III Chap3 常用类" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/Imooc Java Primary III Chap3 常用类/">Imooc Java Primary III Chap3 常用类</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/30/Imooc Java Primary III Chap3 常用类/" class="archive-article-date">
+  	<time datetime="2018-11-30T11:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="3-1-包装类"><a href="#3-1-包装类" class="headerlink" title="3.1 包装类"></a>3.1 包装类</h2><ol>
+<li>基本类型和包装类之间的对应关系：<br><img src="/img/Imooc Java Primary III/packageClass.jpg" alt="基本类型和包装类之间的对应关系"></li>
+<li><p>包装类主要提供了两大类方法：</p>
+<ul>
+<li>将本类型和其他基本类型进行转换的方法</li>
+<li>将字符串和本类型及包装类互相转换的方法</li>
+</ul>
+</li>
+<li><p>Integer 包装类的构造方法：<br><img src="/img/Imooc Java Primary III/Integer.jpg" alt=""></p>
+</li>
+<li><p>Integer包装类的常用方法：<br><img src="/img/Imooc Java Primary III/IntegerMethod.jpg" alt=""></p>
+</li>
+</ol>
+<h2 id="3-2-基本类型和包装类之间的转换"><a href="#3-2-基本类型和包装类之间的转换" class="headerlink" title="3.2 基本类型和包装类之间的转换"></a>3.2 基本类型和包装类之间的转换</h2><ol>
+<li>JDK1.5 引入自动装箱和拆箱的机制</li>
+<li><p>装箱：把基本类型转换成包装类，使其具有对象的性质，又可分为手动装箱和自动装箱</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">10</span></span><br><span class="line">Integer x = <span class="keyword">new</span> Integer(i);</span><br><span class="line">Integer y = i;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拆箱：和装箱相反，把包装类对象转换成基本类型的值，又可分为手动拆箱和自动拆箱</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer j = <span class="keyword">new</span> Integer(<span class="number">8</span>);</span><br><span class="line"><span class="keyword">int</span> m = j.intValue();</span><br><span class="line"><span class="keyword">int</span> n = j;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="3-3-基本类型和字符串之间的转换"><a href="#3-3-基本类型和字符串之间的转换" class="headerlink" title="3.3 基本类型和字符串之间的转换"></a>3.3 基本类型和字符串之间的转换</h2><ol>
+<li><p>基本类型转换为字符串有三种方法：</p>
+<ul>
+<li>使用包装类的 toString() 方法</li>
+<li>使用String类的 valueOf() 方法</li>
+<li>用一个空字符串加上基本类型，得到的就是基本类型数据对应的字符串<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> c = <span class="number">10</span>;</span><br><span class="line">String str1 = Integer.toString(c);</span><br><span class="line">String str2 = String.valueOf(c);</span><br><span class="line">String str3 = c + <span class="string">""</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>将字符串转换成基本类型有两种方法：</p>
+<ul>
+<li>调用包装类的 parseXxx 静态方法</li>
+<li>调用包装类的 valueOf() 方法转换为基本类型的包装类，会自动拆箱<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">"9"</span>;</span><br><span class="line"><span class="keyword">int</span> d = Integer.parseInt(str);</span><br><span class="line"><span class="keyword">int</span> e = Integer.valueOf(str);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-4-使用-Date-和-SimpleDateFormat-类表示时间"><a href="#3-4-使用-Date-和-SimpleDateFormat-类表示时间" class="headerlink" title="3.4 使用 Date 和 SimpleDateFormat 类表示时间"></a>3.4 使用 Date 和 SimpleDateFormat 类表示时间</h2><ol>
+<li><p>java.util 包中的 Date 类。这个类最主要的作用就是获取当前时间，Date 类的使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Date d = <span class="keyword">new</span> Date();</span><br><span class="line">System.out.println(d);</span><br><span class="line"><span class="comment">// 默认无参构造函数为当前时间</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>java.text 包中的 SimpleDateFormat 类, 可以使用 SimpleDateFormat 来对日期时间进行格式化，如可以将日期转换为指定格式的文本，也可将文本转换为日期。</p>
+<ul>
+<li>使用 format() 方法将日期转换为指定格式的文本:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Date d = <span class="keyword">new</span> Date();</span><br><span class="line"><span class="comment">//创建SimpleDateFormat对象，指定目标格式</span></span><br><span class="line">SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line"><span class="comment">//调用format方法，格式化时间，转换为指定格式字符串</span></span><br><span class="line">String today = sdf.format(d);</span><br><span class="line">System.out.println(today);</span><br></pre></td></tr></table></figure>
+<p>*使用 parse() 方法将文本转换为日期:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建日期格式的字符</span></span><br><span class="line">String day = <span class="string">"2018年12月01日 16:39:10"</span>;</span><br><span class="line"><span class="comment">//创建SimpleDateFormat对象,指定字符串的日期格式</span></span><br><span class="line">SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy年MM月dd日 HH:mm:ss"</span>);</span><br><span class="line"><span class="comment">//调用parse()方法，将字符串转换为日期</span></span><br><span class="line">Date date = df.parse(day);</span><br><span class="line">System.out.println(<span class="string">"当前时间："</span> + date);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用 SimpleDateFormat 对象的 parse() 方法时可能会出现转换异常，即 ParseException ，因此需要进行异常处理</p>
+</li>
+<li>使用 Date 类时需要导入 java.util 包，使用 SimpleDateFormat 时需要导入 java.text 包</li>
+</ol>
+<h2 id="3-5-Calendar类的应用"><a href="#3-5-Calendar类的应用" class="headerlink" title="3.5 Calendar类的应用"></a>3.5 Calendar类的应用</h2><ol>
+<li><p>java.util.Calendar 类是一个抽象类，可以通过调用 getInstance() 静态方法获取一个 Calendar 对象，此对象已由当前日期时间初始化，即默认代表当前时间，如 Calendar c = Calendar.getInstance();</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Calendar c = Calendar.getInstance();</span><br><span class="line"><span class="keyword">int</span> year = c.get(Calendar.YEAR);</span><br><span class="line"><span class="keyword">int</span> month = c.get(Calendar.MONTH) + <span class="number">1</span>; <span class="comment">// 0 is 1 MONTH</span></span><br><span class="line"><span class="keyword">int</span> day = c.get(Calendar.DAY_OF_MONTH);</span><br><span class="line"><span class="keyword">int</span> hour = c.get(Calendar.HOUR_OF_DAY);</span><br><span class="line"><span class="keyword">int</span> minute = c.get(Calendar.MINUTE);</span><br><span class="line"><span class="keyword">int</span> second = c.get(Calendar.SECOND);</span><br><span class="line">System.out.println(<span class="string">"当前时间: "</span> + year + <span class="string">"-"</span> + month + <span class="string">"-"</span> + day + <span class="string">" "</span> + hour + <span class="string">":"</span> + minute + <span class="string">":"</span> + second);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Calendar 类提供了 getTime() 方法，用来获取 Date 对象，完成 Calendar 和 Date 的转换，还可通过 getTimeInMillis() 方法，获取此 Calendar 的时间值，以毫秒为单位。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Date date = c.getTime(); <span class="comment">//将Calendar对象转换为Date对象</span></span><br><span class="line">Long time = c.getTimeInMillis(); <span class="comment">//获取当前毫秒数</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="3-6-使用-Math-类操作数据"><a href="#3-6-使用-Math-类操作数据" class="headerlink" title="3.6 使用 Math 类操作数据"></a>3.6 使用 Math 类操作数据</h2><ol>
+<li>Math 类位于 java.lang 包中，包含用于执行基本数学运算的方法， Math 类的所有方法都是静态方法，所以使用该类中的方法时，可以直接使用类名.方法名，如： Math.round();</li>
+<li>常用的方法：<br><img src="/img/Imooc Java Primary III/MathMethod.jpg" alt=""></li>
+<li>使用：<br><img src="/img/Imooc Java Primary III/MathEG.jpg" alt=""></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/30/Imooc Java Primary III Chap3 常用类/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-Imooc Java Primary III Chap456 集合框架" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -843,146 +1146,6 @@ mid奇数(对应数组位置eg 1.3),if(nums[mid] == nums[mid-1]){
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/11/30/Imooc Java Primary III Chap456 集合框架/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-Imooc Java Primary III Chap3 常用类" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/30/Imooc Java Primary III Chap3 常用类/">Imooc Java Primary III Chap3 常用类</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/30/Imooc Java Primary III Chap3 常用类/" class="archive-article-date">
-  	<time datetime="2018-11-30T11:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="3-1-包装类"><a href="#3-1-包装类" class="headerlink" title="3.1 包装类"></a>3.1 包装类</h2><ol>
-<li>基本类型和包装类之间的对应关系：<br><img src="/img/Imooc Java Primary III/packageClass.jpg" alt="基本类型和包装类之间的对应关系"></li>
-<li><p>包装类主要提供了两大类方法：</p>
-<ul>
-<li>将本类型和其他基本类型进行转换的方法</li>
-<li>将字符串和本类型及包装类互相转换的方法</li>
-</ul>
-</li>
-<li><p>Integer 包装类的构造方法：<br><img src="/img/Imooc Java Primary III/Integer.jpg" alt=""></p>
-</li>
-<li><p>Integer包装类的常用方法：<br><img src="/img/Imooc Java Primary III/IntegerMethod.jpg" alt=""></p>
-</li>
-</ol>
-<h2 id="3-2-基本类型和包装类之间的转换"><a href="#3-2-基本类型和包装类之间的转换" class="headerlink" title="3.2 基本类型和包装类之间的转换"></a>3.2 基本类型和包装类之间的转换</h2><ol>
-<li>JDK1.5 引入自动装箱和拆箱的机制</li>
-<li><p>装箱：把基本类型转换成包装类，使其具有对象的性质，又可分为手动装箱和自动装箱</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">10</span></span><br><span class="line">Integer x = <span class="keyword">new</span> Integer(i);</span><br><span class="line">Integer y = i;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>拆箱：和装箱相反，把包装类对象转换成基本类型的值，又可分为手动拆箱和自动拆箱</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer j = <span class="keyword">new</span> Integer(<span class="number">8</span>);</span><br><span class="line"><span class="keyword">int</span> m = j.intValue();</span><br><span class="line"><span class="keyword">int</span> n = j;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="3-3-基本类型和字符串之间的转换"><a href="#3-3-基本类型和字符串之间的转换" class="headerlink" title="3.3 基本类型和字符串之间的转换"></a>3.3 基本类型和字符串之间的转换</h2><ol>
-<li><p>基本类型转换为字符串有三种方法：</p>
-<ul>
-<li>使用包装类的 toString() 方法</li>
-<li>使用String类的 valueOf() 方法</li>
-<li>用一个空字符串加上基本类型，得到的就是基本类型数据对应的字符串<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> c = <span class="number">10</span>;</span><br><span class="line">String str1 = Integer.toString(c);</span><br><span class="line">String str2 = String.valueOf(c);</span><br><span class="line">String str3 = c + <span class="string">""</span>;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>将字符串转换成基本类型有两种方法：</p>
-<ul>
-<li>调用包装类的 parseXxx 静态方法</li>
-<li>调用包装类的 valueOf() 方法转换为基本类型的包装类，会自动拆箱<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">"9"</span>;</span><br><span class="line"><span class="keyword">int</span> d = Integer.parseInt(str);</span><br><span class="line"><span class="keyword">int</span> e = Integer.valueOf(str);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="3-4-使用-Date-和-SimpleDateFormat-类表示时间"><a href="#3-4-使用-Date-和-SimpleDateFormat-类表示时间" class="headerlink" title="3.4 使用 Date 和 SimpleDateFormat 类表示时间"></a>3.4 使用 Date 和 SimpleDateFormat 类表示时间</h2><ol>
-<li><p>java.util 包中的 Date 类。这个类最主要的作用就是获取当前时间，Date 类的使用：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Date d = <span class="keyword">new</span> Date();</span><br><span class="line">System.out.println(d);</span><br><span class="line"><span class="comment">// 默认无参构造函数为当前时间</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>java.text 包中的 SimpleDateFormat 类, 可以使用 SimpleDateFormat 来对日期时间进行格式化，如可以将日期转换为指定格式的文本，也可将文本转换为日期。</p>
-<ul>
-<li>使用 format() 方法将日期转换为指定格式的文本:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Date d = <span class="keyword">new</span> Date();</span><br><span class="line"><span class="comment">//创建SimpleDateFormat对象，指定目标格式</span></span><br><span class="line">SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line"><span class="comment">//调用format方法，格式化时间，转换为指定格式字符串</span></span><br><span class="line">String today = sdf.format(d);</span><br><span class="line">System.out.println(today);</span><br></pre></td></tr></table></figure>
-<p>*使用 parse() 方法将文本转换为日期:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建日期格式的字符</span></span><br><span class="line">String day = <span class="string">"2018年12月01日 16:39:10"</span>;</span><br><span class="line"><span class="comment">//创建SimpleDateFormat对象,指定字符串的日期格式</span></span><br><span class="line">SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy年MM月dd日 HH:mm:ss"</span>);</span><br><span class="line"><span class="comment">//调用parse()方法，将字符串转换为日期</span></span><br><span class="line">Date date = df.parse(day);</span><br><span class="line">System.out.println(<span class="string">"当前时间："</span> + date);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调用 SimpleDateFormat 对象的 parse() 方法时可能会出现转换异常，即 ParseException ，因此需要进行异常处理</p>
-</li>
-<li>使用 Date 类时需要导入 java.util 包，使用 SimpleDateFormat 时需要导入 java.text 包</li>
-</ol>
-<h2 id="3-5-Calendar类的应用"><a href="#3-5-Calendar类的应用" class="headerlink" title="3.5 Calendar类的应用"></a>3.5 Calendar类的应用</h2><ol>
-<li><p>java.util.Calendar 类是一个抽象类，可以通过调用 getInstance() 静态方法获取一个 Calendar 对象，此对象已由当前日期时间初始化，即默认代表当前时间，如 Calendar c = Calendar.getInstance();</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Calendar c = Calendar.getInstance();</span><br><span class="line"><span class="keyword">int</span> year = c.get(Calendar.YEAR);</span><br><span class="line"><span class="keyword">int</span> month = c.get(Calendar.MONTH) + <span class="number">1</span>; <span class="comment">// 0 is 1 MONTH</span></span><br><span class="line"><span class="keyword">int</span> day = c.get(Calendar.DAY_OF_MONTH);</span><br><span class="line"><span class="keyword">int</span> hour = c.get(Calendar.HOUR_OF_DAY);</span><br><span class="line"><span class="keyword">int</span> minute = c.get(Calendar.MINUTE);</span><br><span class="line"><span class="keyword">int</span> second = c.get(Calendar.SECOND);</span><br><span class="line">System.out.println(<span class="string">"当前时间: "</span> + year + <span class="string">"-"</span> + month + <span class="string">"-"</span> + day + <span class="string">" "</span> + hour + <span class="string">":"</span> + minute + <span class="string">":"</span> + second);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Calendar 类提供了 getTime() 方法，用来获取 Date 对象，完成 Calendar 和 Date 的转换，还可通过 getTimeInMillis() 方法，获取此 Calendar 的时间值，以毫秒为单位。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Date date = c.getTime(); <span class="comment">//将Calendar对象转换为Date对象</span></span><br><span class="line">Long time = c.getTimeInMillis(); <span class="comment">//获取当前毫秒数</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="3-6-使用-Math-类操作数据"><a href="#3-6-使用-Math-类操作数据" class="headerlink" title="3.6 使用 Math 类操作数据"></a>3.6 使用 Math 类操作数据</h2><ol>
-<li>Math 类位于 java.lang 包中，包含用于执行基本数学运算的方法， Math 类的所有方法都是静态方法，所以使用该类中的方法时，可以直接使用类名.方法名，如： Math.round();</li>
-<li>常用的方法：<br><img src="/img/Imooc Java Primary III/MathMethod.jpg" alt=""></li>
-<li>使用：<br><img src="/img/Imooc Java Primary III/MathEG.jpg" alt=""></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/30/Imooc Java Primary III Chap3 常用类/">展开全文 >></a>
         </p>
       
 
@@ -1243,19 +1406,19 @@ mid奇数(对应数组位置eg 1.3),if(nums[mid] == nums[mid-1]){
 
 
   
-    <article id="post-Imooc Java Primary II Chap1 类和对象" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-Imooc Java Primary II Chap2 封装" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/">Imooc Java Primary II Chap1 类和对象</a>
+      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap2 封装/">Imooc Java Primary II Chap2 封装</a>
     </h1>
   
 
         
-        <a href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/" class="archive-article-date">
+        <a href="/2018/11/26/Imooc Java Primary II Chap2 封装/" class="archive-article-date">
   	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
 </a>
         
@@ -1263,40 +1426,84 @@ mid奇数(对应数组位置eg 1.3),if(nums[mid] == nums[mid-1]){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-1-类和对象定义"><a href="#1-1-类和对象定义" class="headerlink" title="1.1 类和对象定义"></a>1.1 类和对象定义</h2><ol>
-<li>类是模板，确定对象将会拥有的特征（属性）和行为（方法）</li>
-<li>对象是客观存在的具体实体；</li>
+        <h2 id="2-1-封装"><a href="#2-1-封装" class="headerlink" title="2.1 封装"></a>2.1 封装</h2><ol>
+<li>面向对象三大特性：封装、继承、多态</li>
+<li>封装：隐藏类的信息，只能通过类提供的方法实现对隐藏信息的操作和访问</li>
+<li>封装实现步骤：<ol>
+<li>修改属性可见性，设为private</li>
+<li>创建getter/setter方法，用于属性的读写</li>
+<li>在getter/setter方法中加入属性控制语句，对属性值得合法性进行判断</li>
 </ol>
-<h2 id="1-2-定义类的步骤"><a href="#1-2-定义类的步骤" class="headerlink" title="1.2 定义类的步骤"></a>1.2 定义类的步骤</h2><ol>
-<li>定义一个类的步骤：<ul>
-<li>定义类的名称</li>
-<li>编写类的属性</li>
-<li>编写类的方法</li>
+</li>
+</ol>
+<h2 id="2-2-包管理Java中的类"><a href="#2-2-包管理Java中的类" class="headerlink" title="2.2 包管理Java中的类"></a>2.2 包管理Java中的类</h2><ol>
+<li>包的作用：管理Java文件、解决同名文件(类)冲突</li>
+<li>定义包：package 包名<ul>
+<li>必须放在Java源程序第一行</li>
+<li>包名间可以使用“.”隔开，eg:com.imooc.MyClass</li>
+</ul>
+</li>
+<li>系统中的包：<ol>
+<li>java.(功能).(类)</li>
+<li>java.lang.(类) 包含java语言基础的类</li>
+<li>java.util.(类) 包含java语言中各种工具类</li>
+<li>java.io.(类) 包含输入、输出相关功能的类</li>
+</ol>
+</li>
+<li>包的使用：<ol>
+<li>import</li>
+<li>全小写字母</li>
+<li>com.imooc.*</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-3-访问修饰符"><a href="#2-3-访问修饰符" class="headerlink" title="2.3 访问修饰符"></a>2.3 访问修饰符</h2><ol>
+<li>修饰属性和方法的访问范围</li>
+<li>访问修饰符：private,default,protected,public</li>
+<li>对应范围：本类，同包，子类，其他</li>
+</ol>
+<h2 id="2-4-this关键字"><a href="#2-4-this关键字" class="headerlink" title="2.4 this关键字"></a>2.4 this关键字</h2><ol>
+<li>this关键字代表当前对象<ul>
+<li>this.属性 操作当前对象的属性</li>
+<li>this.方法 调用当前对象的方法</li>
+</ul>
+</li>
+<li>封装对象属性的时候，经常使用this关键字</li>
+</ol>
+<h2 id="2-5-内部类"><a href="#2-5-内部类" class="headerlink" title="2.5 内部类"></a>2.5 内部类</h2><ol>
+<li>内部类的作用<ol>
+<li>内部类提供了更好的封装，把内部类隐藏在外部类之内，不允许同一个包中的其他类访问该类。</li>
+<li>内部类可以直接访问外部类的所有数据，包括私有数据。</li>
+<li>内部类所实现的功能外部类同样可以实现，只是有时使用内部类更方便</li>
+</ol>
+</li>
+<li>内部类分为以下几种：<ul>
+<li>成员内部类</li>
+<li>静态内部类</li>
+<li>方法内部类</li>
+<li>匿名内部类</li>
 </ul>
 </li>
 </ol>
-<h2 id="1-3-使用对象步骤"><a href="#1-3-使用对象步骤" class="headerlink" title="1.3 使用对象步骤"></a>1.3 使用对象步骤</h2><ol>
-<li>使用对象的步骤：<ul>
-<li>创建对象：<br>类名 对象名 = new 类名/构造方法();<br>Telphone phone = new Telphone();</li>
-<li>使用对象：<br>对象名.属性;<br>对象名.方法名();</li>
-</ul>
+<h2 id="2-6-成员内部类"><a href="#2-6-成员内部类" class="headerlink" title="2.6 成员内部类"></a>2.6 成员内部类</h2><ol>
+<li>成员内部类的使用方法：<ol>
+<li>Inner 类定义在 Outer 类的内部，相当于 Outer 类的一个<strong>成员变量的位置</strong>，Inner 类可以使用任意访问控制符，如 public 、 protected 、 private 等</li>
+<li>Inner 类中定义的 test() 方法可以<strong>直接访问 Outer 类中的所有数据</strong>，而不受访问控制符的影响，如直接访问 Outer 类中的私有属性a</li>
+<li>定义了成员内部类后，<strong>必须使用外部类对象来创建内部类对象</strong>，而不能直接去 new 一个内部类对象，即：内部类 对象名 = 外部类对象.new 内部类( );</li>
+<li>编译后：内部类名.class;外部类名$内部类名.class;</li>
+</ol>
 </li>
+<li><strong>外部类是不能直接使用内部类的成员和方法</strong>滴，即先创建内部类的对象，然后通过内部类的对象来访问其成员变量和方法。</li>
+<li>如果外部类和内部类具有相同的成员变量或方法，内部类默认访问自己的成员变量或方法，如果要访问外部类的成员变量，可以使用 this 关键字。</li>
 </ol>
-<h2 id="1-5-成员变量局部变量"><a href="#1-5-成员变量局部变量" class="headerlink" title="1.5 成员变量局部变量"></a>1.5 成员变量局部变量</h2><ol>
-<li>成员变量：有初始值</li>
-<li>局部变量：无初始值，就近原则优先</li>
+<h2 id="2-7-static内部类"><a href="#2-7-static内部类" class="headerlink" title="2.7 static内部类"></a>2.7 static内部类</h2><ol>
+<li>创建static内部类的对象时，不需要外部类的对象，可以直接创建 内部类 对象名= new 内部类();</li>
+<li>static内部类不能直接访问外部类的<strong>非静态成员</strong>，但可以通过 new 外部类().成员 的方式访问</li>
+<li>如果外部类的static成员与内部类的成员名称相同，可通过<strong>类名.静态成员</strong>访问外部类的静态成员；如果外部类的静态成员与内部类的成员名称不相同，则可通过“成员名”直接调用外部类的静态成员</li>
 </ol>
-<h2 id="1-7-static变量"><a href="#1-7-static变量" class="headerlink" title="1.7 static变量"></a>1.7 static变量</h2><ol>
-<li>static变量 类所有对象共享，能被修改，可使用类名、对象名访问</li>
-</ol>
-<h2 id="1-9-static方法"><a href="#1-9-static方法" class="headerlink" title="1.9 static方法"></a>1.9 static方法</h2><ol>
-<li>static方法可直接调用同类中的静态成员，但不能直接调用非静态成员以及非静态的方法。</li>
-<li>普通成员方法中，可以直接访问同类的非静态成员和静态成员</li>
-</ol>
-<h2 id="1-10-static初始化块"><a href="#1-10-static初始化块" class="headerlink" title="1.10 static初始化块"></a>1.10 static初始化块</h2><ol>
-<li>Java可以通过初始化块进行数据赋值。</li>
-<li>static初始化块只在类加载时执行一次！只能给static变量赋值！</li>
-<li>static初始化块最先执行，然后执行普通初始化块，最后执行构造方法</li>
+<h2 id="2-8-方法内部类"><a href="#2-8-方法内部类" class="headerlink" title="2.8 方法内部类"></a>2.8 方法内部类</h2><ol>
+<li>方法内部类就是内部类定义在外部类的方法中，方法内部类只在<strong>该方法的内部可见</strong>，即只在该方法内可以使用。</li>
+<li>由于方法内部类不能在外部类的方法以外的地方使用，因此方法内部类<strong>不能使用访问控制符和 static 修饰符</strong>。</li>
 </ol>
 
       
@@ -1321,7 +1528,7 @@ mid奇数(对应数组位置eg 1.3),if(nums[mid] == nums[mid-1]){
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap2 封装/">展开全文 >></a>
         </p>
       
 
@@ -1445,177 +1652,6 @@ mid奇数(对应数组位置eg 1.3),if(nums[mid] == nums[mid-1]){
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap3 继承/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-Imooc Java Primary II Chap4 多态" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap4 多态/">Imooc Java Primary II Chap4 多态</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/26/Imooc Java Primary II Chap4 多态/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="4-1-多态"><a href="#4-1-多态" class="headerlink" title="4.1 多态"></a>4.1 多态</h2><ol>
-<li>对象的多种形态</li>
-<li>引用多态<ul>
-<li>父类的引用可以指向本类的对象</li>
-<li>父类的引用可以指向子类的对象</li>
-</ul>
-</li>
-<li>方法多态<ul>
-<li>创建本类对象时，调用的方法为本类方法</li>
-<li>创建子类对象时，调用的方法为子类重写的方法或者继承的方法</li>
-</ul>
-</li>
-<li>继承是实现多态的基础</li>
-<li><strong>父类的引用不可以调用子类独有的方法</strong></li>
-</ol>
-<h2 id="4-2-多态中的引用类型转换"><a href="#4-2-多态中的引用类型转换" class="headerlink" title="4.2 多态中的引用类型转换"></a>4.2 多态中的<strong>引用</strong>类型转换</h2><ol>
-<li>向上类型转换（隐式/自动类型转换），是小类型到大类型的转换。杯子——茶壶（安全）</li>
-<li>向下类型转换（强制类型转换），是大类型到小类型。茶壶——杯子（不安全）</li>
-<li><strong>instanceof</strong> 运算符，来解决引用对象的类型，避免类型转换的安全性问题<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(animal <span class="keyword">instanceof</span> Cat)&#123;</span><br><span class="line">  Cat cat =(Cat)animal;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  System.out.println(<span class="string">"无法进行类型转换"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="4-3-抽象类-abstract"><a href="#4-3-抽象类-abstract" class="headerlink" title="4.3 抽象类 abstract"></a>4.3 抽象类 abstract</h2><ol>
-<li>应用场景：<ul>
-<li>某个父类只知道子类应该包含怎样的方法，但无法准确知道这些子类如何实现这些方法。</li>
-<li>从多个具有相同特征的类中抽象出一个抽象类，以这个抽象类作为子类的模板，从而避免子类设计的随意性。</li>
-</ul>
-</li>
-<li>作用：限制规定子类必须实现某些方法，但不关注实现细节</li>
-<li>使用规则：<ul>
-<li>abstract定义抽象类</li>
-<li>abstract定义抽象方法，只有声明，不需要实现</li>
-<li>包含抽象方法的类是抽象类</li>
-<li>抽象类中可以包含普通的方法，也可以没有抽象的方法</li>
-<li>抽象类不能直接创建，可以定义引用变量</li>
-</ul>
-</li>
-<li>抽象方法没有方法体以分号结束;</li>
-</ol>
-<h2 id="4-4-接口-interface-implements"><a href="#4-4-接口-interface-implements" class="headerlink" title="4.4 接口 interface implements"></a>4.4 接口 interface implements</h2><ol>
-<li>接口可以理解为一种特殊的类，由<strong>全局常量和公共的抽象方法</strong>所组成</li>
-<li>类是一种具体实现体，而接口定义了某一批类所需要遵守的<strong>规范</strong>，接口不关心这些类内部的数据，也不关心这些类里方法的实现细节，它只规定这些类必须提供某些方法</li>
-<li><p>接口定义的基本语法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] interface 接口名 [extends 父接口1,父接口2...]</span><br><span class="line">&#123;</span><br><span class="line">  零个到多个常量定义...</span><br><span class="line">  零个到多个抽象方法定义...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 接口就是用来被继承实现的，修饰符一般建议用'public',不能使用private和protected修饰接口</span></span><br><span class="line"><span class="comment">// 隐式abstract</span></span><br><span class="line"><span class="comment">// 接口可以多继承</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>接口定义</p>
-<ul>
-<li>常量：接口中的属性是常量，即使定义时不添加public static final 修饰符，系统也会自动加上</li>
-<li>方法：接口中的方法只能是抽象方法，总是使用，即使定义时不添加public abstract 修饰符，系统也会自动加上</li>
-</ul>
-</li>
-<li><p>使用接口：一个类可以实现一个或多个接口，实现接口使用implements关键字。Java中一个类只能继承一个父类，是不够灵活的，通过实现多个接口可以做补充。</p>
-<ul>
-<li>继承父类实现接口的语法为：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] <span class="class"><span class="keyword">class</span> 类名 <span class="keyword">extends</span> 父类 <span class="keyword">implements</span> 接口1， 接口2 ...</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  类体部分<span class="comment">//如果继承了抽象类，需要实现继承的抽象方法；要实现接口中的抽象方法</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果要继承父类，继承父类必须在实现接口之前</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p><strong>接口引用</strong>来使用实现接口的类<br>接口名 接口引用 = new 实现接口的类();</p>
-</li>
-<li>使用接口：<ul>
-<li>接口在使用过程中，还可以与匿名内部类配合使用</li>
-<li>匿名内部类就是没有名字的内部类，多用于关注实现而不关注实现类的名称<br>语法格式：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Interface i = <span class="keyword">new</span> Interface()&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"匿名内部类实现接口的方式1"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 注意实现后的分号</span></span><br><span class="line"><span class="comment">// 即使用接口的引用然后new实现，调用实现的方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Interface()&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"匿名内部类实现接口的方式2"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;.method();</span><br><span class="line"><span class="comment">// 直接new实现，调用实现的方法 Android和框架常用</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="4-5-UML简介"><a href="#4-5-UML简介" class="headerlink" title="4.5 UML简介"></a>4.5 UML简介</h2><ol>
-<li>Unified Modeling Language(UML), <strong>统一建模语言</strong>或标准建模语言。是一个支持模型化和软件系统开发的图形化语言，为软件开发的所有阶段提供模型化和可视化的支持。</li>
-<li>常用UML图<ol>
-<li>用例图(The Use Case Diagram)，能够以可视化的方式，表达系统如何满足所收集的业务规则，以及特定的<strong>用户需求</strong>等信息。</li>
-<li>序列图(The Sequence Diagram)，用于按照交互发生的一系列顺序，显示对象之间的这些交互。</li>
-<li>类图(The Class Diagram)，UML类图、业务逻辑和所有支持结构一同被用于定义全部的结构代码。</li>
-</ol>
-</li>
-<li>UML建模工具：（<strong>类图可直接生成代码</strong>）<ol>
-<li>Rational Rose,IBM</li>
-<li>Visio,MS</li>
-<li>PowerDesigner</li>
-</ol>
-</li>
-</ol>
-<h2 id="4-6-综合练习-‘dada租车系统’"><a href="#4-6-综合练习-‘dada租车系统’" class="headerlink" title="4.6 综合练习 ‘dada租车系统’"></a>4.6 综合练习 ‘dada租车系统’</h2><ol>
-<li>项目分析<ol>
-<li>数据模型分析<ul>
-<li>通过对现实世界的事与物主要特征的分析、抽象，为信息系统的实施提供数据存取的数据结构及相应的约束。</li>
-<li>数据结构组成：操作（方法）、属性</li>
-</ul>
-</li>
-<li>业务模型分析<ul>
-<li>在设计应用程序之前，应该明确应用程序必须执行哪些任务。确认业务需求的目的在于创建一个能同时满足零售商和消费者需要的解决方案。</li>
-</ul>
-</li>
-<li>显示和流程分析<ul>
-<li>显示：用户可以看到的信息提示界面</li>
-<li>流程：显示信息的执行过程、步骤</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap4 多态/">展开全文 >></a>
         </p>
       
 
