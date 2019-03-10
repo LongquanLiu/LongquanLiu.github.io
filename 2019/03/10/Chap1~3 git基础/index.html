@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://longquanliu.github.io">
-  <title>Longquan&#39;s Blog</title>
+  <title>pro git | Longquan&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="1.1 关于版本控制 本地版本控制系统(VCS)：简单数据库记录文件的差异（补丁集）；查阅恢复特定版本   集中化的版本控制系统(CVCS)：单一的一个集中管理服务器，客户端通过连接服务器，取出最新的 文件 或者提交更新；多个系统协同工作   分布式版本控制系统(DVCS)：客户端不仅提取最新版本快照，而把整个代码仓库完整镜像下来；任一服务器宕机亦可恢复  1.2 git简史 91-02年，提交补">
-<meta name="keywords" content="code">
+<meta name="keywords" content="Git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Longquan&#39;s Blog">
+<meta property="og:title" content="pro git">
 <meta property="og:url" content="https://longquanliu.github.io/2019/03/10/Chap1~3 git基础/index.html">
 <meta property="og:site_name" content="Longquan&#39;s Blog">
 <meta property="og:description" content="1.1 关于版本控制 本地版本控制系统(VCS)：简单数据库记录文件的差异（补丁集）；查阅恢复特定版本   集中化的版本控制系统(CVCS)：单一的一个集中管理服务器，客户端通过连接服务器，取出最新的 文件 或者提交更新；多个系统协同工作   分布式版本控制系统(DVCS)：客户端不仅提取最新版本快照，而把整个代码仓库完整镜像下来；任一服务器宕机亦可恢复  1.2 git简史 91-02年，提交补">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-03-10T08:18:59.000Z">
+<meta property="og:updated_time" content="2019-03-10T08:34:46.452Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Longquan&#39;s Blog">
+<meta name="twitter:title" content="pro git">
 <meta name="twitter:description" content="1.1 关于版本控制 本地版本控制系统(VCS)：简单数据库记录文件的差异（补丁集）；查阅恢复特定版本   集中化的版本控制系统(CVCS)：单一的一个集中管理服务器，客户端通过连接服务器，取出最新的 文件 或者提交更新；多个系统协同工作   分布式版本控制系统(DVCS)：客户端不仅提取最新版本快照，而把整个代码仓库完整镜像下来；任一服务器宕机亦可恢复  1.2 git简史 91-02年，提交补">
   
     <link rel="alternative" href="/atom.xml" title="Longquan&#39;s Blog" type="application/atom+xml">
@@ -162,6 +162,21 @@
             <article id="post-Chap1~3 git基础" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      pro git
+    </h1>
+  
+
+        
+        <a href="/2019/03/10/Chap1~3 git基础/" class="archive-article-date">
+  	<time datetime="2019-03-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-10</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="1-1-关于版本控制"><a href="#1-1-关于版本控制" class="headerlink" title="1.1 关于版本控制"></a>1.1 关于版本控制</h2><ul>
@@ -191,7 +206,7 @@
 <li>初始配置：<br>检查配置信息：$git config –list;<br>设置你的用户名称与邮件地址：$git config –global user.name “LongquanLiu”; $git config –global user.email <a href="mailto:773970134@qq.com" target="_blank" rel="noopener">773970134@qq.com</a></li>
 </ul>
 <h2 id="2-1-获取Git仓库"><a href="#2-1-获取Git仓库" class="headerlink" title="2.1 获取Git仓库"></a>2.1 获取Git仓库</h2><ol>
-<li><p>取得Git仓库的方法(git init/git clone)       </p>
+<li><p>取得Git仓库的方法(git init/git clone)         </p>
 <ol>
 <li><p>在现有目录中初始化仓库</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$git init    //创建一个.git的子目录，含有初始化Git仓库中所有的必须文件</span><br><span class="line">$git add *.c     //对指定文件的跟踪</span><br><span class="line">$git commit -m &apos;initial project version&apos;     //提交</span><br></pre></td></tr></table></figure>
@@ -289,6 +304,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -514,6 +540,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
             
             <div class="clearfix"></div>
