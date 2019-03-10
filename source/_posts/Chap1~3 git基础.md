@@ -47,7 +47,8 @@ tags: Git
   ```git
   $git clone https://github.com/LongquanLiu/LongquanLiu.github.io.git name  //将Git仓库中的每个文件的每个版本都拉取下来(Default)
   ps:git支持 https://  git:// user@server:path/to/repo.git(SSH) 协议
-  ```    
+  ```
+
 
 ## 2.2 记录每次更新到仓库
 
