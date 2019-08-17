@@ -180,7 +180,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&lt;<swardoffer>&gt; all solution by me</swardoffer></p>
+        <p>SwardOffer all solution by me</p>
 <h3 id="1-二维数组中的查找"><a href="#1-二维数组中的查找" class="headerlink" title="1.二维数组中的查找"></a>1.二维数组中的查找</h3><p>在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 二维数组中的查找</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 标签：二分查找 数组</span></span><br><span class="line"><span class="comment"> * 时间复杂度：O(n)</span></span><br><span class="line"><span class="comment"> * 思路：从左下角（右上角）元素n开始查找（当row和col在有效范围内）:</span></span><br><span class="line"><span class="comment"> *        等于target，返回true</span></span><br><span class="line"><span class="comment"> *        大于target，row--;</span></span><br><span class="line"><span class="comment"> *        小于target，col++;</span></span><br><span class="line"><span class="comment"> *      未找到，返回false</span></span><br><span class="line"><span class="comment"> *      特殊情况：输入数组为空</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> target, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; <span class="built_in">array</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">array</span>.empty() || <span class="built_in">array</span>[<span class="number">0</span>].empty())&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> row = <span class="built_in">array</span>.size()<span class="number">-1</span>, col = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(row &gt;= <span class="number">0</span> &amp;&amp; col &lt; <span class="built_in">array</span>[<span class="number">0</span>].size())&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">array</span>[row][col] == target)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">array</span>[row][col] &lt; target)&#123;</span><br><span class="line">                col++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                row--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="2-替换空格"><a href="#2-替换空格" class="headerlink" title="2.替换空格"></a>2.替换空格</h3><p>请实现一个函数，将一个字符串中的每个空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。</p>
@@ -1207,6 +1207,146 @@ mid奇数(对应数组位置eg 1.3),if(nums[mid] == nums[mid-1]){
 
 
   
+    <article id="post-Imooc Java Primary III Chap3 常用类" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/Imooc Java Primary III Chap3 常用类/">Imooc Java Primary III Chap3 常用类</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/30/Imooc Java Primary III Chap3 常用类/" class="archive-article-date">
+  	<time datetime="2018-11-29T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="3-1-包装类"><a href="#3-1-包装类" class="headerlink" title="3.1 包装类"></a>3.1 包装类</h2><ol>
+<li>基本类型和包装类之间的对应关系：<br><img src="/img/Imooc Java Primary III/packageClass.jpg" alt="基本类型和包装类之间的对应关系"></li>
+<li><p>包装类主要提供了两大类方法：</p>
+<ul>
+<li>将本类型和其他基本类型进行转换的方法</li>
+<li>将字符串和本类型及包装类互相转换的方法</li>
+</ul>
+</li>
+<li><p>Integer 包装类的构造方法：<br><img src="/img/Imooc Java Primary III/Integer.jpg" alt=""></p>
+</li>
+<li><p>Integer包装类的常用方法：<br><img src="/img/Imooc Java Primary III/IntegerMethod.jpg" alt=""></p>
+</li>
+</ol>
+<h2 id="3-2-基本类型和包装类之间的转换"><a href="#3-2-基本类型和包装类之间的转换" class="headerlink" title="3.2 基本类型和包装类之间的转换"></a>3.2 基本类型和包装类之间的转换</h2><ol>
+<li>JDK1.5 引入自动装箱和拆箱的机制</li>
+<li><p>装箱：把基本类型转换成包装类，使其具有对象的性质，又可分为手动装箱和自动装箱</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">10</span></span><br><span class="line">Integer x = <span class="keyword">new</span> Integer(i);</span><br><span class="line">Integer y = i;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拆箱：和装箱相反，把包装类对象转换成基本类型的值，又可分为手动拆箱和自动拆箱</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer j = <span class="keyword">new</span> Integer(<span class="number">8</span>);</span><br><span class="line"><span class="keyword">int</span> m = j.intValue();</span><br><span class="line"><span class="keyword">int</span> n = j;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="3-3-基本类型和字符串之间的转换"><a href="#3-3-基本类型和字符串之间的转换" class="headerlink" title="3.3 基本类型和字符串之间的转换"></a>3.3 基本类型和字符串之间的转换</h2><ol>
+<li><p>基本类型转换为字符串有三种方法：</p>
+<ul>
+<li>使用包装类的 toString() 方法</li>
+<li>使用String类的 valueOf() 方法</li>
+<li>用一个空字符串加上基本类型，得到的就是基本类型数据对应的字符串<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> c = <span class="number">10</span>;</span><br><span class="line">String str1 = Integer.toString(c);</span><br><span class="line">String str2 = String.valueOf(c);</span><br><span class="line">String str3 = c + <span class="string">""</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>将字符串转换成基本类型有两种方法：</p>
+<ul>
+<li>调用包装类的 parseXxx 静态方法</li>
+<li>调用包装类的 valueOf() 方法转换为基本类型的包装类，会自动拆箱<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">"9"</span>;</span><br><span class="line"><span class="keyword">int</span> d = Integer.parseInt(str);</span><br><span class="line"><span class="keyword">int</span> e = Integer.valueOf(str);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-4-使用-Date-和-SimpleDateFormat-类表示时间"><a href="#3-4-使用-Date-和-SimpleDateFormat-类表示时间" class="headerlink" title="3.4 使用 Date 和 SimpleDateFormat 类表示时间"></a>3.4 使用 Date 和 SimpleDateFormat 类表示时间</h2><ol>
+<li><p>java.util 包中的 Date 类。这个类最主要的作用就是获取当前时间，Date 类的使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Date d = <span class="keyword">new</span> Date();</span><br><span class="line">System.out.println(d);</span><br><span class="line"><span class="comment">// 默认无参构造函数为当前时间</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>java.text 包中的 SimpleDateFormat 类, 可以使用 SimpleDateFormat 来对日期时间进行格式化，如可以将日期转换为指定格式的文本，也可将文本转换为日期。</p>
+<ul>
+<li>使用 format() 方法将日期转换为指定格式的文本:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Date d = <span class="keyword">new</span> Date();</span><br><span class="line"><span class="comment">//创建SimpleDateFormat对象，指定目标格式</span></span><br><span class="line">SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line"><span class="comment">//调用format方法，格式化时间，转换为指定格式字符串</span></span><br><span class="line">String today = sdf.format(d);</span><br><span class="line">System.out.println(today);</span><br></pre></td></tr></table></figure>
+<p>*使用 parse() 方法将文本转换为日期:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建日期格式的字符</span></span><br><span class="line">String day = <span class="string">"2018年12月01日 16:39:10"</span>;</span><br><span class="line"><span class="comment">//创建SimpleDateFormat对象,指定字符串的日期格式</span></span><br><span class="line">SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy年MM月dd日 HH:mm:ss"</span>);</span><br><span class="line"><span class="comment">//调用parse()方法，将字符串转换为日期</span></span><br><span class="line">Date date = df.parse(day);</span><br><span class="line">System.out.println(<span class="string">"当前时间："</span> + date);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用 SimpleDateFormat 对象的 parse() 方法时可能会出现转换异常，即 ParseException ，因此需要进行异常处理</p>
+</li>
+<li>使用 Date 类时需要导入 java.util 包，使用 SimpleDateFormat 时需要导入 java.text 包</li>
+</ol>
+<h2 id="3-5-Calendar类的应用"><a href="#3-5-Calendar类的应用" class="headerlink" title="3.5 Calendar类的应用"></a>3.5 Calendar类的应用</h2><ol>
+<li><p>java.util.Calendar 类是一个抽象类，可以通过调用 getInstance() 静态方法获取一个 Calendar 对象，此对象已由当前日期时间初始化，即默认代表当前时间，如 Calendar c = Calendar.getInstance();</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Calendar c = Calendar.getInstance();</span><br><span class="line"><span class="keyword">int</span> year = c.get(Calendar.YEAR);</span><br><span class="line"><span class="keyword">int</span> month = c.get(Calendar.MONTH) + <span class="number">1</span>; <span class="comment">// 0 is 1 MONTH</span></span><br><span class="line"><span class="keyword">int</span> day = c.get(Calendar.DAY_OF_MONTH);</span><br><span class="line"><span class="keyword">int</span> hour = c.get(Calendar.HOUR_OF_DAY);</span><br><span class="line"><span class="keyword">int</span> minute = c.get(Calendar.MINUTE);</span><br><span class="line"><span class="keyword">int</span> second = c.get(Calendar.SECOND);</span><br><span class="line">System.out.println(<span class="string">"当前时间: "</span> + year + <span class="string">"-"</span> + month + <span class="string">"-"</span> + day + <span class="string">" "</span> + hour + <span class="string">":"</span> + minute + <span class="string">":"</span> + second);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Calendar 类提供了 getTime() 方法，用来获取 Date 对象，完成 Calendar 和 Date 的转换，还可通过 getTimeInMillis() 方法，获取此 Calendar 的时间值，以毫秒为单位。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Date date = c.getTime(); <span class="comment">//将Calendar对象转换为Date对象</span></span><br><span class="line">Long time = c.getTimeInMillis(); <span class="comment">//获取当前毫秒数</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="3-6-使用-Math-类操作数据"><a href="#3-6-使用-Math-类操作数据" class="headerlink" title="3.6 使用 Math 类操作数据"></a>3.6 使用 Math 类操作数据</h2><ol>
+<li>Math 类位于 java.lang 包中，包含用于执行基本数学运算的方法， Math 类的所有方法都是静态方法，所以使用该类中的方法时，可以直接使用类名.方法名，如： Math.round();</li>
+<li>常用的方法：<br><img src="/img/Imooc Java Primary III/MathMethod.jpg" alt=""></li>
+<li>使用：<br><img src="/img/Imooc Java Primary III/MathEG.jpg" alt=""></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/30/Imooc Java Primary III Chap3 常用类/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-Imooc Java Primary III Chap456 集合框架" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -1220,7 +1360,7 @@ mid奇数(对应数组位置eg 1.3),if(nums[mid] == nums[mid-1]){
 
         
         <a href="/2018/11/30/Imooc Java Primary III Chap456 集合框架/" class="archive-article-date">
-  	<time datetime="2018-11-30T11:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
+  	<time datetime="2018-11-29T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
 </a>
         
       </header>
@@ -1353,248 +1493,6 @@ mid奇数(对应数组位置eg 1.3),if(nums[mid] == nums[mid-1]){
 
 
   
-    <article id="post-Imooc Java Primary III Chap3 常用类" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/30/Imooc Java Primary III Chap3 常用类/">Imooc Java Primary III Chap3 常用类</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/30/Imooc Java Primary III Chap3 常用类/" class="archive-article-date">
-  	<time datetime="2018-11-30T11:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="3-1-包装类"><a href="#3-1-包装类" class="headerlink" title="3.1 包装类"></a>3.1 包装类</h2><ol>
-<li>基本类型和包装类之间的对应关系：<br><img src="/img/Imooc Java Primary III/packageClass.jpg" alt="基本类型和包装类之间的对应关系"></li>
-<li><p>包装类主要提供了两大类方法：</p>
-<ul>
-<li>将本类型和其他基本类型进行转换的方法</li>
-<li>将字符串和本类型及包装类互相转换的方法</li>
-</ul>
-</li>
-<li><p>Integer 包装类的构造方法：<br><img src="/img/Imooc Java Primary III/Integer.jpg" alt=""></p>
-</li>
-<li><p>Integer包装类的常用方法：<br><img src="/img/Imooc Java Primary III/IntegerMethod.jpg" alt=""></p>
-</li>
-</ol>
-<h2 id="3-2-基本类型和包装类之间的转换"><a href="#3-2-基本类型和包装类之间的转换" class="headerlink" title="3.2 基本类型和包装类之间的转换"></a>3.2 基本类型和包装类之间的转换</h2><ol>
-<li>JDK1.5 引入自动装箱和拆箱的机制</li>
-<li><p>装箱：把基本类型转换成包装类，使其具有对象的性质，又可分为手动装箱和自动装箱</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">10</span></span><br><span class="line">Integer x = <span class="keyword">new</span> Integer(i);</span><br><span class="line">Integer y = i;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>拆箱：和装箱相反，把包装类对象转换成基本类型的值，又可分为手动拆箱和自动拆箱</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer j = <span class="keyword">new</span> Integer(<span class="number">8</span>);</span><br><span class="line"><span class="keyword">int</span> m = j.intValue();</span><br><span class="line"><span class="keyword">int</span> n = j;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="3-3-基本类型和字符串之间的转换"><a href="#3-3-基本类型和字符串之间的转换" class="headerlink" title="3.3 基本类型和字符串之间的转换"></a>3.3 基本类型和字符串之间的转换</h2><ol>
-<li><p>基本类型转换为字符串有三种方法：</p>
-<ul>
-<li>使用包装类的 toString() 方法</li>
-<li>使用String类的 valueOf() 方法</li>
-<li>用一个空字符串加上基本类型，得到的就是基本类型数据对应的字符串<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> c = <span class="number">10</span>;</span><br><span class="line">String str1 = Integer.toString(c);</span><br><span class="line">String str2 = String.valueOf(c);</span><br><span class="line">String str3 = c + <span class="string">""</span>;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>将字符串转换成基本类型有两种方法：</p>
-<ul>
-<li>调用包装类的 parseXxx 静态方法</li>
-<li>调用包装类的 valueOf() 方法转换为基本类型的包装类，会自动拆箱<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">"9"</span>;</span><br><span class="line"><span class="keyword">int</span> d = Integer.parseInt(str);</span><br><span class="line"><span class="keyword">int</span> e = Integer.valueOf(str);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="3-4-使用-Date-和-SimpleDateFormat-类表示时间"><a href="#3-4-使用-Date-和-SimpleDateFormat-类表示时间" class="headerlink" title="3.4 使用 Date 和 SimpleDateFormat 类表示时间"></a>3.4 使用 Date 和 SimpleDateFormat 类表示时间</h2><ol>
-<li><p>java.util 包中的 Date 类。这个类最主要的作用就是获取当前时间，Date 类的使用：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Date d = <span class="keyword">new</span> Date();</span><br><span class="line">System.out.println(d);</span><br><span class="line"><span class="comment">// 默认无参构造函数为当前时间</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>java.text 包中的 SimpleDateFormat 类, 可以使用 SimpleDateFormat 来对日期时间进行格式化，如可以将日期转换为指定格式的文本，也可将文本转换为日期。</p>
-<ul>
-<li>使用 format() 方法将日期转换为指定格式的文本:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Date d = <span class="keyword">new</span> Date();</span><br><span class="line"><span class="comment">//创建SimpleDateFormat对象，指定目标格式</span></span><br><span class="line">SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line"><span class="comment">//调用format方法，格式化时间，转换为指定格式字符串</span></span><br><span class="line">String today = sdf.format(d);</span><br><span class="line">System.out.println(today);</span><br></pre></td></tr></table></figure>
-<p>*使用 parse() 方法将文本转换为日期:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建日期格式的字符</span></span><br><span class="line">String day = <span class="string">"2018年12月01日 16:39:10"</span>;</span><br><span class="line"><span class="comment">//创建SimpleDateFormat对象,指定字符串的日期格式</span></span><br><span class="line">SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy年MM月dd日 HH:mm:ss"</span>);</span><br><span class="line"><span class="comment">//调用parse()方法，将字符串转换为日期</span></span><br><span class="line">Date date = df.parse(day);</span><br><span class="line">System.out.println(<span class="string">"当前时间："</span> + date);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调用 SimpleDateFormat 对象的 parse() 方法时可能会出现转换异常，即 ParseException ，因此需要进行异常处理</p>
-</li>
-<li>使用 Date 类时需要导入 java.util 包，使用 SimpleDateFormat 时需要导入 java.text 包</li>
-</ol>
-<h2 id="3-5-Calendar类的应用"><a href="#3-5-Calendar类的应用" class="headerlink" title="3.5 Calendar类的应用"></a>3.5 Calendar类的应用</h2><ol>
-<li><p>java.util.Calendar 类是一个抽象类，可以通过调用 getInstance() 静态方法获取一个 Calendar 对象，此对象已由当前日期时间初始化，即默认代表当前时间，如 Calendar c = Calendar.getInstance();</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Calendar c = Calendar.getInstance();</span><br><span class="line"><span class="keyword">int</span> year = c.get(Calendar.YEAR);</span><br><span class="line"><span class="keyword">int</span> month = c.get(Calendar.MONTH) + <span class="number">1</span>; <span class="comment">// 0 is 1 MONTH</span></span><br><span class="line"><span class="keyword">int</span> day = c.get(Calendar.DAY_OF_MONTH);</span><br><span class="line"><span class="keyword">int</span> hour = c.get(Calendar.HOUR_OF_DAY);</span><br><span class="line"><span class="keyword">int</span> minute = c.get(Calendar.MINUTE);</span><br><span class="line"><span class="keyword">int</span> second = c.get(Calendar.SECOND);</span><br><span class="line">System.out.println(<span class="string">"当前时间: "</span> + year + <span class="string">"-"</span> + month + <span class="string">"-"</span> + day + <span class="string">" "</span> + hour + <span class="string">":"</span> + minute + <span class="string">":"</span> + second);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Calendar 类提供了 getTime() 方法，用来获取 Date 对象，完成 Calendar 和 Date 的转换，还可通过 getTimeInMillis() 方法，获取此 Calendar 的时间值，以毫秒为单位。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Date date = c.getTime(); <span class="comment">//将Calendar对象转换为Date对象</span></span><br><span class="line">Long time = c.getTimeInMillis(); <span class="comment">//获取当前毫秒数</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="3-6-使用-Math-类操作数据"><a href="#3-6-使用-Math-类操作数据" class="headerlink" title="3.6 使用 Math 类操作数据"></a>3.6 使用 Math 类操作数据</h2><ol>
-<li>Math 类位于 java.lang 包中，包含用于执行基本数学运算的方法， Math 类的所有方法都是静态方法，所以使用该类中的方法时，可以直接使用类名.方法名，如： Math.round();</li>
-<li>常用的方法：<br><img src="/img/Imooc Java Primary III/MathMethod.jpg" alt=""></li>
-<li>使用：<br><img src="/img/Imooc Java Primary III/MathEG.jpg" alt=""></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/30/Imooc Java Primary III Chap3 常用类/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-Imooc Java Primary III Chap2 字符串" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/28/Imooc Java Primary III Chap2 字符串/">Imooc Java Primary III Chap2 字符串</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/28/Imooc Java Primary III Chap2 字符串/" class="archive-article-date">
-  	<time datetime="2018-11-28T07:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="2-1-字符串"><a href="#2-1-字符串" class="headerlink" title="2.1 字符串"></a>2.1 字符串</h2><ol>
-<li>字符串被作为 String 类型的对象处理。 String 类位于 java.lang 包中。默认情况下，该包被自动导入所有的程序。</li>
-<li>创建String对象的方法：<ol>
-<li>String s1 = “imooc”</li>
-<li>String s2 = new String();</li>
-<li>String s3 = new String(“imooc”);</li>
-</ol>
-</li>
-</ol>
-<h2 id="2-2-字符串的不变性"><a href="#2-2-字符串的不变性" class="headerlink" title="2.2 字符串的不变性"></a>2.2 字符串的不变性</h2><p>1.String 对象创建后则不能被修改，是不可变的，所谓的修改其实是创建了新的对象，所指向的内存空间不同。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">String s1 =<span class="string">"爱慕课"</span>;</span><br><span class="line">String s2 =<span class="string">"爱慕课"</span>;</span><br><span class="line">String s3 = <span class="keyword">new</span> String(<span class="string">"爱慕课"</span>);</span><br><span class="line">String s4 = <span class="keyword">new</span> String(<span class="string">"爱慕课"</span>);</span><br><span class="line"><span class="comment">// 多次出现的字符串常量，java程序只创建一个，所以返回true</span></span><br><span class="line">System.out.println(s1 == s2);</span><br><span class="line"><span class="comment">// s1和s3是不同的对象，所以返回false</span></span><br><span class="line">System.out.println(s1 == s3);</span><br><span class="line"><span class="comment">// s3和s4是不同的对象，所以返回false</span></span><br><span class="line">System.out.println(s3 == s4);</span><br><span class="line">s1 = <span class="string">"欢迎来到："</span> + s1;</span><br><span class="line"><span class="comment">// 字符串s1被修改，指向新的内存空间</span></span><br><span class="line">System.out.println(s1);</span><br></pre></td></tr></table></figure></p>
-<ol start="2">
-<li>一旦一个字符串在内存中创建，则这个字符串将不可改变。如果需要一个可以改变的字符串，我们可以使用StringBuffer或者StringBuilder</li>
-<li>每次 new 一个字符串就是产生一个新的对象，即便两个字符串的内容相同，使用 ”==” 比较时也为 ”false” ,如果只需比较内容是否相同，应使用 ”equals()” 方法</li>
-</ol>
-<h2 id="2-3-String-类的常用方法-I"><a href="#2-3-String-类的常用方法-I" class="headerlink" title="2.3 String 类的常用方法 I"></a>2.3 String 类的常用方法 I</h2><ol>
-<li>String类的常用方法:<br><img src="/img/Imooc Java Primary III/String.jpg" alt="String类的常用方法"></li>
-<li>方法使用:<br><img src="/img/Imooc Java Primary III/String_eg.jpg" alt="方法使用"></li>
-<li>字符串 str 中字符的索引从0开始，范围为 0 到 str.length()-1</li>
-<li>使用 indexOf 进行字符或字符串查找时，如果匹配返回位置索引；如果没有匹配结果，返回 -1</li>
-<li>使用 substring(beginIndex , endIndex) 进行字符串截取时，包括 beginIndex 位置的字符，不包括 endIndex 位置的字符</li>
-</ol>
-<h2 id="2-4-String-类的常用方法-II"><a href="#2-4-String-类的常用方法-II" class="headerlink" title="2.4 String 类的常用方法 II"></a>2.4 String 类的常用方法 II</h2><ol>
-<li>==: 判断两个字符串在内存中首地址是否相同，即判断是否是同一个字符串对象；equals(): 比较存储在两个字符串对象中的内容是否一致</li>
-<li>字节是计算机存储信息的基本单位，1 个字节等于 8 位， gbk 编码中 1 个汉字字符存储需要 2 个字节，1 个英文字符存储需要 1 个字节。所以我们看到上面的程序运行结果中，每个汉字对应两个字节值，如“学”对应 “-47 -89” ，而英文字母 “J” 对应 “74” 。同时，我们还发现汉字对应的字节值为负数，原因在于每个字节是 8 位，最大值不能超过 127，而汉字转换为字节后超过 127，如果超过就会溢出，以负数的形式显示。</li>
-</ol>
-<h2 id="2-5-StringBuilder类"><a href="#2-5-StringBuilder类" class="headerlink" title="2.5 StringBuilder类"></a>2.5 StringBuilder类</h2><ol>
-<li>StringBuffer 是线程安全的，而 StringBuilder 则没有实现线程安全功能，所以性能略高。</li>
-<li>StringBuilder方法:<br><img src="/img/Imooc Java Primary III/StringBuilder.jpg" alt="StringBuilder方法"></li>
-<li>在需要频繁对字符串进行修改操作时使用 StringBuilder 的效率比 String 要高</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/28/Imooc Java Primary III Chap2 字符串/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
     <article id="post-Imooc Java Primary III Chap1 异常和异常处理" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -1608,7 +1506,7 @@ mid奇数(对应数组位置eg 1.3),if(nums[mid] == nums[mid-1]){
 
         
         <a href="/2018/11/28/Imooc Java Primary III Chap1 异常和异常处理/" class="archive-article-date">
-  	<time datetime="2018-11-28T02:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-28</time>
+  	<time datetime="2018-11-27T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-28</time>
 </a>
         
       </header>
@@ -1725,104 +1623,55 @@ mid奇数(对应数组位置eg 1.3),if(nums[mid] == nums[mid-1]){
 
 
   
-    <article id="post-Imooc Java Primary II Chap2 封装" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-Imooc Java Primary III Chap2 字符串" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap2 封装/">Imooc Java Primary II Chap2 封装</a>
+      <a class="article-title" href="/2018/11/28/Imooc Java Primary III Chap2 字符串/">Imooc Java Primary III Chap2 字符串</a>
     </h1>
   
 
         
-        <a href="/2018/11/26/Imooc Java Primary II Chap2 封装/" class="archive-article-date">
-  	<time datetime="2018-11-26T08:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
+        <a href="/2018/11/28/Imooc Java Primary III Chap2 字符串/" class="archive-article-date">
+  	<time datetime="2018-11-27T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="2-1-封装"><a href="#2-1-封装" class="headerlink" title="2.1 封装"></a>2.1 封装</h2><ol>
-<li>面向对象三大特性：封装、继承、多态</li>
-<li>封装：隐藏类的信息，只能通过类提供的方法实现对隐藏信息的操作和访问</li>
-<li>封装实现步骤：<ol>
-<li>修改属性可见性，设为private</li>
-<li>创建getter/setter方法，用于属性的读写</li>
-<li>在getter/setter方法中加入属性控制语句，对属性值得合法性进行判断</li>
+        <h2 id="2-1-字符串"><a href="#2-1-字符串" class="headerlink" title="2.1 字符串"></a>2.1 字符串</h2><ol>
+<li>字符串被作为 String 类型的对象处理。 String 类位于 java.lang 包中。默认情况下，该包被自动导入所有的程序。</li>
+<li>创建String对象的方法：<ol>
+<li>String s1 = “imooc”</li>
+<li>String s2 = new String();</li>
+<li>String s3 = new String(“imooc”);</li>
 </ol>
 </li>
 </ol>
-<h2 id="2-2-包管理Java中的类"><a href="#2-2-包管理Java中的类" class="headerlink" title="2.2 包管理Java中的类"></a>2.2 包管理Java中的类</h2><ol>
-<li>包的作用：管理Java文件、解决同名文件(类)冲突</li>
-<li>定义包：package 包名<ul>
-<li>必须放在Java源程序第一行</li>
-<li>包名间可以使用“.”隔开，eg:com.imooc.MyClass</li>
-</ul>
-</li>
-<li>系统中的包：<ol>
-<li>java.(功能).(类)</li>
-<li>java.lang.(类) 包含java语言基础的类</li>
-<li>java.util.(类) 包含java语言中各种工具类</li>
-<li>java.io.(类) 包含输入、输出相关功能的类</li>
+<h2 id="2-2-字符串的不变性"><a href="#2-2-字符串的不变性" class="headerlink" title="2.2 字符串的不变性"></a>2.2 字符串的不变性</h2><p>1.String 对象创建后则不能被修改，是不可变的，所谓的修改其实是创建了新的对象，所指向的内存空间不同。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">String s1 =<span class="string">"爱慕课"</span>;</span><br><span class="line">String s2 =<span class="string">"爱慕课"</span>;</span><br><span class="line">String s3 = <span class="keyword">new</span> String(<span class="string">"爱慕课"</span>);</span><br><span class="line">String s4 = <span class="keyword">new</span> String(<span class="string">"爱慕课"</span>);</span><br><span class="line"><span class="comment">// 多次出现的字符串常量，java程序只创建一个，所以返回true</span></span><br><span class="line">System.out.println(s1 == s2);</span><br><span class="line"><span class="comment">// s1和s3是不同的对象，所以返回false</span></span><br><span class="line">System.out.println(s1 == s3);</span><br><span class="line"><span class="comment">// s3和s4是不同的对象，所以返回false</span></span><br><span class="line">System.out.println(s3 == s4);</span><br><span class="line">s1 = <span class="string">"欢迎来到："</span> + s1;</span><br><span class="line"><span class="comment">// 字符串s1被修改，指向新的内存空间</span></span><br><span class="line">System.out.println(s1);</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>一旦一个字符串在内存中创建，则这个字符串将不可改变。如果需要一个可以改变的字符串，我们可以使用StringBuffer或者StringBuilder</li>
+<li>每次 new 一个字符串就是产生一个新的对象，即便两个字符串的内容相同，使用 ”==” 比较时也为 ”false” ,如果只需比较内容是否相同，应使用 ”equals()” 方法</li>
 </ol>
-</li>
-<li>包的使用：<ol>
-<li>import</li>
-<li>全小写字母</li>
-<li>com.imooc.*</li>
+<h2 id="2-3-String-类的常用方法-I"><a href="#2-3-String-类的常用方法-I" class="headerlink" title="2.3 String 类的常用方法 I"></a>2.3 String 类的常用方法 I</h2><ol>
+<li>String类的常用方法:<br><img src="/img/Imooc Java Primary III/String.jpg" alt="String类的常用方法"></li>
+<li>方法使用:<br><img src="/img/Imooc Java Primary III/String_eg.jpg" alt="方法使用"></li>
+<li>字符串 str 中字符的索引从0开始，范围为 0 到 str.length()-1</li>
+<li>使用 indexOf 进行字符或字符串查找时，如果匹配返回位置索引；如果没有匹配结果，返回 -1</li>
+<li>使用 substring(beginIndex , endIndex) 进行字符串截取时，包括 beginIndex 位置的字符，不包括 endIndex 位置的字符</li>
 </ol>
-</li>
+<h2 id="2-4-String-类的常用方法-II"><a href="#2-4-String-类的常用方法-II" class="headerlink" title="2.4 String 类的常用方法 II"></a>2.4 String 类的常用方法 II</h2><ol>
+<li>==: 判断两个字符串在内存中首地址是否相同，即判断是否是同一个字符串对象；equals(): 比较存储在两个字符串对象中的内容是否一致</li>
+<li>字节是计算机存储信息的基本单位，1 个字节等于 8 位， gbk 编码中 1 个汉字字符存储需要 2 个字节，1 个英文字符存储需要 1 个字节。所以我们看到上面的程序运行结果中，每个汉字对应两个字节值，如“学”对应 “-47 -89” ，而英文字母 “J” 对应 “74” 。同时，我们还发现汉字对应的字节值为负数，原因在于每个字节是 8 位，最大值不能超过 127，而汉字转换为字节后超过 127，如果超过就会溢出，以负数的形式显示。</li>
 </ol>
-<h2 id="2-3-访问修饰符"><a href="#2-3-访问修饰符" class="headerlink" title="2.3 访问修饰符"></a>2.3 访问修饰符</h2><ol>
-<li>修饰属性和方法的访问范围</li>
-<li>访问修饰符：private,default,protected,public</li>
-<li>对应范围：本类，同包，子类，其他</li>
-</ol>
-<h2 id="2-4-this关键字"><a href="#2-4-this关键字" class="headerlink" title="2.4 this关键字"></a>2.4 this关键字</h2><ol>
-<li>this关键字代表当前对象<ul>
-<li>this.属性 操作当前对象的属性</li>
-<li>this.方法 调用当前对象的方法</li>
-</ul>
-</li>
-<li>封装对象属性的时候，经常使用this关键字</li>
-</ol>
-<h2 id="2-5-内部类"><a href="#2-5-内部类" class="headerlink" title="2.5 内部类"></a>2.5 内部类</h2><ol>
-<li>内部类的作用<ol>
-<li>内部类提供了更好的封装，把内部类隐藏在外部类之内，不允许同一个包中的其他类访问该类。</li>
-<li>内部类可以直接访问外部类的所有数据，包括私有数据。</li>
-<li>内部类所实现的功能外部类同样可以实现，只是有时使用内部类更方便</li>
-</ol>
-</li>
-<li>内部类分为以下几种：<ul>
-<li>成员内部类</li>
-<li>静态内部类</li>
-<li>方法内部类</li>
-<li>匿名内部类</li>
-</ul>
-</li>
-</ol>
-<h2 id="2-6-成员内部类"><a href="#2-6-成员内部类" class="headerlink" title="2.6 成员内部类"></a>2.6 成员内部类</h2><ol>
-<li>成员内部类的使用方法：<ol>
-<li>Inner 类定义在 Outer 类的内部，相当于 Outer 类的一个<strong>成员变量的位置</strong>，Inner 类可以使用任意访问控制符，如 public 、 protected 、 private 等</li>
-<li>Inner 类中定义的 test() 方法可以<strong>直接访问 Outer 类中的所有数据</strong>，而不受访问控制符的影响，如直接访问 Outer 类中的私有属性a</li>
-<li>定义了成员内部类后，<strong>必须使用外部类对象来创建内部类对象</strong>，而不能直接去 new 一个内部类对象，即：内部类 对象名 = 外部类对象.new 内部类( );</li>
-<li>编译后：内部类名.class;外部类名$内部类名.class;</li>
-</ol>
-</li>
-<li><strong>外部类是不能直接使用内部类的成员和方法</strong>滴，即先创建内部类的对象，然后通过内部类的对象来访问其成员变量和方法。</li>
-<li>如果外部类和内部类具有相同的成员变量或方法，内部类默认访问自己的成员变量或方法，如果要访问外部类的成员变量，可以使用 this 关键字。</li>
-</ol>
-<h2 id="2-7-static内部类"><a href="#2-7-static内部类" class="headerlink" title="2.7 static内部类"></a>2.7 static内部类</h2><ol>
-<li>创建static内部类的对象时，不需要外部类的对象，可以直接创建 内部类 对象名= new 内部类();</li>
-<li>static内部类不能直接访问外部类的<strong>非静态成员</strong>，但可以通过 new 外部类().成员 的方式访问</li>
-<li>如果外部类的static成员与内部类的成员名称相同，可通过<strong>类名.静态成员</strong>访问外部类的静态成员；如果外部类的静态成员与内部类的成员名称不相同，则可通过“成员名”直接调用外部类的静态成员</li>
-</ol>
-<h2 id="2-8-方法内部类"><a href="#2-8-方法内部类" class="headerlink" title="2.8 方法内部类"></a>2.8 方法内部类</h2><ol>
-<li>方法内部类就是内部类定义在外部类的方法中，方法内部类只在<strong>该方法的内部可见</strong>，即只在该方法内可以使用。</li>
-<li>由于方法内部类不能在外部类的方法以外的地方使用，因此方法内部类<strong>不能使用访问控制符和 static 修饰符</strong>。</li>
+<h2 id="2-5-StringBuilder类"><a href="#2-5-StringBuilder类" class="headerlink" title="2.5 StringBuilder类"></a>2.5 StringBuilder类</h2><ol>
+<li>StringBuffer 是线程安全的，而 StringBuilder 则没有实现线程安全功能，所以性能略高。</li>
+<li>StringBuilder方法:<br><img src="/img/Imooc Java Primary III/StringBuilder.jpg" alt="StringBuilder方法"></li>
+<li>在需要频繁对字符串进行修改操作时使用 StringBuilder 的效率比 String 要高</li>
 </ol>
 
       
@@ -1847,7 +1696,114 @@ mid奇数(对应数组位置eg 1.3),if(nums[mid] == nums[mid-1]){
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap2 封装/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/11/28/Imooc Java Primary III Chap2 字符串/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Imooc Java Primary II Chap1 类和对象" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/">Imooc Java Primary II Chap1 类和对象</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/" class="archive-article-date">
+  	<time datetime="2018-11-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-1-类和对象定义"><a href="#1-1-类和对象定义" class="headerlink" title="1.1 类和对象定义"></a>1.1 类和对象定义</h2><ol>
+<li>类是模板，确定对象将会拥有的特征（属性）和行为（方法）</li>
+<li>对象是客观存在的具体实体；</li>
+</ol>
+<h2 id="1-2-定义类的步骤"><a href="#1-2-定义类的步骤" class="headerlink" title="1.2 定义类的步骤"></a>1.2 定义类的步骤</h2><ol>
+<li>定义一个类的步骤：<ul>
+<li>定义类的名称</li>
+<li>编写类的属性</li>
+<li>编写类的方法</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-3-使用对象步骤"><a href="#1-3-使用对象步骤" class="headerlink" title="1.3 使用对象步骤"></a>1.3 使用对象步骤</h2><ol>
+<li>使用对象的步骤：<ul>
+<li>创建对象：<br>类名 对象名 = new 类名/构造方法();<br>Telphone phone = new Telphone();</li>
+<li>使用对象：<br>对象名.属性;<br>对象名.方法名();</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-5-成员变量局部变量"><a href="#1-5-成员变量局部变量" class="headerlink" title="1.5 成员变量局部变量"></a>1.5 成员变量局部变量</h2><ol>
+<li>成员变量：有初始值</li>
+<li>局部变量：无初始值，就近原则优先</li>
+</ol>
+<h2 id="1-7-static变量"><a href="#1-7-static变量" class="headerlink" title="1.7 static变量"></a>1.7 static变量</h2><ol>
+<li>static变量 类所有对象共享，能被修改，可使用类名、对象名访问</li>
+</ol>
+<h2 id="1-9-static方法"><a href="#1-9-static方法" class="headerlink" title="1.9 static方法"></a>1.9 static方法</h2><ol>
+<li>static方法可直接调用同类中的静态成员，但不能直接调用非静态成员以及非静态的方法。</li>
+<li>普通成员方法中，可以直接访问同类的非静态成员和静态成员</li>
+</ol>
+<h2 id="1-10-static初始化块"><a href="#1-10-static初始化块" class="headerlink" title="1.10 static初始化块"></a>1.10 static初始化块</h2><ol>
+<li>Java可以通过初始化块进行数据赋值。</li>
+<li>static初始化块只在类加载时执行一次！只能给static变量赋值！</li>
+<li>static初始化块最先执行，然后执行普通初始化块，最后执行构造方法</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java Imooc</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/26/Imooc Java Primary II Chap1 类和对象/">展开全文 >></a>
         </p>
       
 
